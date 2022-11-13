@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>apzs</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/assets/img/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="这是apzs的个人笔记">
+    <meta name="author" content="apzs">
+    <meta name="keywords" content="这里主要记载Vue、ES6、Promise、SpringBoot、SpringCloud等技术">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.f429574a.css" as="style"><link rel="preload" href="/assets/js/app.31b87ad2.js" as="script"><link rel="preload" href="/assets/js/9.29309c47.js" as="script"><link rel="preload" href="/assets/js/2.71fc0aa0.js" as="script"><link rel="preload" href="/assets/js/18.c55f83b7.js" as="script"><link rel="preload" href="/assets/js/3.274cd4ce.js" as="script"><link rel="prefetch" href="/assets/js/10.abcb9719.js"><link rel="prefetch" href="/assets/js/11.c9bf17b7.js"><link rel="prefetch" href="/assets/js/12.6cc358de.js"><link rel="prefetch" href="/assets/js/13.622be29c.js"><link rel="prefetch" href="/assets/js/14.12426e8b.js"><link rel="prefetch" href="/assets/js/15.80ee28d0.js"><link rel="prefetch" href="/assets/js/16.ec9aecc6.js"><link rel="prefetch" href="/assets/js/17.c86d5487.js"><link rel="prefetch" href="/assets/js/19.6602c621.js"><link rel="prefetch" href="/assets/js/20.42b43614.js"><link rel="prefetch" href="/assets/js/21.eef2f7a0.js"><link rel="prefetch" href="/assets/js/22.4408e024.js"><link rel="prefetch" href="/assets/js/23.4d18c201.js"><link rel="prefetch" href="/assets/js/24.a8712328.js"><link rel="prefetch" href="/assets/js/25.ce59d684.js"><link rel="prefetch" href="/assets/js/26.13916d81.js"><link rel="prefetch" href="/assets/js/27.2b22f291.js"><link rel="prefetch" href="/assets/js/28.817b5c90.js"><link rel="prefetch" href="/assets/js/29.8921670a.js"><link rel="prefetch" href="/assets/js/30.0e58589c.js"><link rel="prefetch" href="/assets/js/31.6d6e985a.js"><link rel="prefetch" href="/assets/js/32.b6ab0f64.js"><link rel="prefetch" href="/assets/js/4.d18bedac.js"><link rel="prefetch" href="/assets/js/5.86588e49.js"><link rel="prefetch" href="/assets/js/6.0ece11e0.js"><link rel="prefetch" href="/assets/js/7.f189254b.js"><link rel="prefetch" href="/assets/js/8.41c85647.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f429574a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="apzs" class="logo"> <span class="site-name can-hide">apzs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  External
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">
+  博客搭建教程
+</a></div><div class="nav-item"><a href="/about/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Guide
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Language Menu" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/chinese/" class="nav-link">
+  Chinese
+</a></li><li class="dropdown-item"><!----> <a href="/language/japanese/" class="nav-link">
+  Japanese
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="阅读源码" class="dropdown-title"><span class="title">阅读源码</span> <span class="arrow down"></span></button> <button type="button" aria-label="阅读源码" class="mobile-dropdown-title"><span class="title">阅读源码</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sourceCode/spring/springboot/" class="nav-link">
+  搭建spring-boot源码环境
+</a></li><li class="dropdown-subitem"><a href="/language/japanese/" class="nav-link">
+  Japanese
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sourceCode/other/mybatis/" class="nav-link">
+  MyBatis源码阅读
+</a></li><li class="dropdown-subitem"><a href="/language/japanese/" class="nav-link">
+  Japanese
+</a></li></ul></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  External
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">
+  博客搭建教程
+</a></div><div class="nav-item"><a href="/about/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Guide
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Language Menu" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/chinese/" class="nav-link">
+  Chinese
+</a></li><li class="dropdown-item"><!----> <a href="/language/japanese/" class="nav-link">
+  Japanese
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="阅读源码" class="dropdown-title"><span class="title">阅读源码</span> <span class="arrow down"></span></button> <button type="button" aria-label="阅读源码" class="mobile-dropdown-title"><span class="title">阅读源码</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sourceCode/spring/springboot/" class="nav-link">
+  搭建spring-boot源码环境
+</a></li><li class="dropdown-subitem"><a href="/language/japanese/" class="nav-link">
+  Japanese
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sourceCode/other/mybatis/" class="nav-link">
+  MyBatis源码阅读
+</a></li><li class="dropdown-subitem"><a href="/language/japanese/" class="nav-link">
+  Japanese
+</a></li></ul></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/other/%E5%BA%94%E7%94%A8%E9%9B%86%E6%88%90-%E5%9C%A8Hexo%E3%80%81Hugo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gitalk%E5%9F%BA%E4%BA%8EGithub%E4%B8%8A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%9A%84issue%E6%97%A0%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5....html#_0x00-gitalk-基于github的评论系统" class="sidebar-link">0x00 Gitalk - 基于Github的评论系统</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/other/%E5%BA%94%E7%94%A8%E9%9B%86%E6%88%90-%E5%9C%A8Hexo%E3%80%81Hugo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gitalk%E5%9F%BA%E4%BA%8EGithub%E4%B8%8A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%9A%84issue%E6%97%A0%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5....html#_1-快速介绍" class="sidebar-link">1.快速介绍</a></li><li class="sidebar-sub-header"><a href="/blog/other/%E5%BA%94%E7%94%A8%E9%9B%86%E6%88%90-%E5%9C%A8Hexo%E3%80%81Hugo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gitalk%E5%9F%BA%E4%BA%8EGithub%E4%B8%8A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%9A%84issue%E6%97%A0%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5....html#_2-安装部署" class="sidebar-link">2.安装部署</a></li><li class="sidebar-sub-header"><a href="/blog/other/%E5%BA%94%E7%94%A8%E9%9B%86%E6%88%90-%E5%9C%A8Hexo%E3%80%81Hugo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gitalk%E5%9F%BA%E4%BA%8EGithub%E4%B8%8A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%9A%84issue%E6%97%A0%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5....html#_3-使用实践" class="sidebar-link">3.使用实践</a></li><li class="sidebar-sub-header"><a href="/blog/other/%E5%BA%94%E7%94%A8%E9%9B%86%E6%88%90-%E5%9C%A8Hexo%E3%80%81Hugo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gitalk%E5%9F%BA%E4%BA%8EGithub%E4%B8%8A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%9A%84issue%E6%97%A0%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5....html#n-入坑出坑" class="sidebar-link">n.入坑出坑</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>#应用集成-在Hexo、Hugo博客框架中使用Gitalk基于Github上仓库项目的issue无后端服务评论系统实践...
+关注「<strong>WeiyiGeek</strong>」公众号</p> <p>设为「<strong>特别关注</strong>」每天带你玩转网络安全运维、应用开发、物联网IOT学习！</p> <img alt="209de7df2bde4a88193cadb58f7b8c7f.jpeg" src="https://img-blog.csdnimg.cn/img_convert/209de7df2bde4a88193cadb58f7b8c7f.jpeg"> <p><strong>本章目录：</strong></p> <p>0x00 Gitalk - 基于Github的评论系统</p> <ul><li>1.使用Gitalk进行Github的Oauth认证无法跨域获取Token问题解决办法 -  1.快速介绍 -  2.安装部署 -  3.使用实践 -  n.入坑出坑
+首发地址：</li></ul> <p>原文地址:</p> <h2 id="_0x00-gitalk-基于github的评论系统"><a href="#_0x00-gitalk-基于github的评论系统" class="header-anchor">#</a> 0x00 Gitalk - 基于Github的评论系统</h2> <p>描述: 我想对于所有使用hexo、Hugo或者WordPress自建博客的博主来说GitTalk应该不陌生，GitTalk通过Github的OpenAPI以及issues功能实现社区评论确实还是很方便的，除开对国内访问速度较慢就没啥毛病，但是考虑到新手朋友此处还是简单介绍一下。</p> <h3 id="_1-快速介绍"><a href="#_1-快速介绍" class="header-anchor">#</a> 1.快速介绍</h3> <p>描述: Gitalk 是一个基于 Github Issue 和 Preact 的现代评论组件。 功能：</p> <ul><li>使用 github 帐号进行身份验证 -  无服务器，所有评论将存储为 github 问题 -  个人和组织的github项目都可以用来存储评论 -  本地化，支持多国语言 [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko, fa, ja] -  类似 Facebook 的无干扰模式（可以通过 DistentionFreeMode 选项启用） -  热键提交评论（cmd|ctrl + enter）
+项目地址：https://github.com/gitalk/gitalk 帮助文档：https://github.com/gitalk/gitalk/blob/master/readme-cn.md</li></ul> <p>温馨提示: 当前 Gitalk 最新版本为 1.7.2 (Mar 3, 2021), 如后续随着时间推移，可能会有些许变化，建议参考官网（https://github.com/gitalk/gitalk/tags）</p> <h3 id="_2-安装部署"><a href="#_2-安装部署" class="header-anchor">#</a> 2.安装部署</h3> <p>描述：安装引用Gitalk评论系统的两种方式，</p> <p><strong>安装实践</strong></p> <ul><li>方式1.在你的HTML页面中使用 link 与 script 标签引入。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>link rel<span class="token operator">=</span><span class="token string">&quot;stylesheet&quot;</span> href<span class="token operator">=</span><span class="token string">&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+ 
+ 
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> or <span class="token operator">--</span><span class="token operator">&gt;</span>
+ 
+ 
+<span class="token operator">&lt;</span>link rel<span class="token operator">=</span><span class="token string">&quot;stylesheet&quot;</span> href<span class="token operator">=</span><span class="token string">&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><ul><li>方式2.使用 npm 安装 gital 模块。</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 模块安装</span>
+<span class="token function">npm</span> i <span class="token parameter variable">--save</span> gitalk
+ 
+ 
+<span class="token comment"># 项目导入</span>
+<span class="token function">import</span> <span class="token string">'gitalk/dist/gitalk.css'</span>
+<span class="token function">import</span> Gitalk from <span class="token string">'gitalk'</span>
+</code></pre></div><p><strong>配置实践</strong></p> <p>首先，您需要为商店评论选择一个公共 github 存储库（已存在或创建一个新存储库），然后创建一个 GitHub 应用程序，如果你没有，点击这里 (https://github.com/settings/applications/new) 注册一个新的。</p> <div class="language- extra-class"><pre class="language-text"><code>Application name : BlogTalk
+Homepage URL : https://blog.weiyigeek.top
+Application description : 欢迎访问 WeiyiGeek blog\'s [blog.weiyigeek.top] talk about , 欢迎留言骚扰哟，亲!Authorization callback URL : https://blog.weiyigeek.top
+</code></pre></div><img alt="df5780da1b64d6a63fe9bd5b04538529.png" src="https://img-blog.csdnimg.cn/img_convert/df5780da1b64d6a63fe9bd5b04538529.png"> <p>注意：您必须在授权回调 URL 字段中指定网站域 url。</p> <p>然后，创建完成后你将获取Client ID 与 Client Secret，如下所示：</p> <img alt="ad74a481fa88b04b085f862f76a4aa9d.png" src="https://img-blog.csdnimg.cn/img_convert/ad74a481fa88b04b085f862f76a4aa9d.png"> <p>注意：后续更新修改可以进行访问 <code>Settings/Developer settings</code> ( https://github.com/settings/developers )</p> <p>最后，创建一个公共仓库此处我创建的是blogtalk，创建完后在项目的(https://github.com/WeiyiGeek/blogtalk/settings)中启用 issue 即可</p> <img alt="6e31fafd8a05cf732a871c79f60cb56b.png" src="https://img-blog.csdnimg.cn/img_convert/6e31fafd8a05cf732a871c79f60cb56b.png"> <p><strong>使用方式1.将如下代码添加到您的页面：</strong></p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>gitalk-container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+        <span class="token keyword">const</span> gitalk <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Gitalk</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          <span class="token literal-property property">clientID</span><span class="token operator">:</span> <span class="token string">'GitHub Application Client ID'</span><span class="token punctuation">,</span>          <span class="token comment">// 8d8e96********797026d3</span>
+          <span class="token literal-property property">clientSecret</span><span class="token operator">:</span> <span class="token string">'GitHub Application Client Secret'</span><span class="token punctuation">,</span>  <span class="token comment">// secrets**********secrets</span>
+          <span class="token literal-property property">repo</span><span class="token operator">:</span> <span class="token string">'GitHub repo'</span><span class="token punctuation">,</span>          <span class="token comment">// blogtalk</span>
+          <span class="token literal-property property">owner</span><span class="token operator">:</span> <span class="token string">'GitHub repo owner'</span><span class="token punctuation">,</span>   <span class="token comment">// WeiyiGeek</span>
+          <span class="token literal-property property">admin</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'GitHub repo owner and collaborators, only these guys can initialize github issues'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// ['WeiyiGeek']</span>
+          <span class="token literal-property property">id</span><span class="token operator">:</span> location<span class="token punctuation">.</span>pathname<span class="token punctuation">,</span>      <span class="token comment">// Ensure uniqueness and length less than 50</span>
+          <span class="token literal-property property">distractionFreeMode</span><span class="token operator">:</span> <span class="token boolean">false</span>  <span class="token comment">// Facebook-like distraction free mode</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        gitalk<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'gitalk-container'</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p><strong>使用方式2.在React中使用</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> GitalkComponent <span class="token keyword">from</span> <span class="token string">&quot;gitalk/dist/gitalk-component&quot;</span><span class="token punctuation">;</span>
+<span class="token comment">// 并使用类似的组件</span>
+<span class="token operator">&lt;</span>GitalkComponent options<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">clientID</span><span class="token operator">:</span> <span class="token string">&quot;...&quot;</span><span class="token punctuation">,</span>
+  <span class="token comment">// ...</span>
+  <span class="token comment">// options below</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><p>温馨提示: Gitalk 对象实例化参数参考 (https://github.com/gitalk/gitalk#options)</p> <h3 id="_3-使用实践"><a href="#_3-使用实践" class="header-anchor">#</a> 3.使用实践</h3> <p><strong>在 Hexo 中使用</strong> 描述: 此处以我的博客[https://blog.weiyigeek.top] 为例进行演示配置，此处笔者使用的是 hexo + mellow 主题 , 已经经过二次魔改（有需要该博客主题请在公众号回复【mellow博客主题】或者访问 https://weiyigeek.top/wechat.html?key=mellow博客主题 ）。</p> <ul><li>Step 1.在 Hexo 主题中的 _config.yaml 配置加入如下配置片段。</li></ul> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># gittalk 评论系统</span>
+<span class="token key atrule">gitalk</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">owner</span><span class="token punctuation">:</span> WeiyiGeek  <span class="token comment"># github账号</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> blogtalk    <span class="token comment"># 留言仓库</span>
+  <span class="token key atrule">proxy</span><span class="token punctuation">:</span> /github/login/oauth/access_token <span class="token comment"># 反向代理解决跨域问题,后续将会主要讲解哦。</span>
+  <span class="token key atrule">oauth</span><span class="token punctuation">:</span>
+    <span class="token key atrule">client_id</span><span class="token punctuation">:</span> 8d8e965c<span class="token important">******97026d3</span>       <span class="token comment"># Github App Auth ID </span>
+    <span class="token key atrule">client_secret</span><span class="token punctuation">:</span> e9c6141cb1f02f721<span class="token important">********d01cb4d7a8f069</span> <span class="token comment">#  Github App Auth secret</span>
+  <span class="token key atrule">perPage</span><span class="token punctuation">:</span> <span class="token number">15</span>
+</code></pre></div><ul><li>Step 2.在主题文档引擎中加入如下片段。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">&quot;gitalk-container&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 实际上是将 <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span> js 下载到了本地 <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">&quot;text/javascript&quot;</span> src<span class="token operator">=</span><span class="token string">&quot;&lt;%- url_for(theme_js('/js/plugins/gitalk.min', cache)) %&gt;&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+ 
+ 
+ 
+ 
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">&quot;text/javascript&quot;</span> src<span class="token operator">=</span><span class="token string">&quot;&lt;%- url_for(theme_js('/js/custom/gitalk.init', cache)) %&gt;&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> themes\mellow\source\js\custom\gitalk<span class="token punctuation">.</span>init<span class="token punctuation">.</span>js <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token keyword">var</span> gitalk <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Gitalk</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">clientID</span><span class="token operator">:</span> <span class="token string">'&lt;%- theme.gitalk.oauth.client_id %&gt;'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">clientSecret</span><span class="token operator">:</span> <span class="token string">'&lt;%- theme.gitalk.oauth.client_secret %&gt;'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">repo</span><span class="token operator">:</span> <span class="token string">'&lt;%- theme.gitalk.repo %&gt;'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">owner</span><span class="token operator">:</span> <span class="token string">'&lt;%- theme.gitalk.owner %&gt;'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">admin</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'&lt;%- theme.gitalk.owner %&gt;'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">id</span><span class="token operator">:</span> location<span class="token punctuation">.</span>pathname<span class="token punctuation">,</span>
+  <span class="token literal-property property">proxy</span><span class="token operator">:</span> <span class="token string">'&lt;%- theme.gitalk.proxy %&gt;'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">distractionFreeMode</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+#  hexo g 生成静态文件后的样子
+# <span class="token keyword">var</span> gitalk <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Gitalk</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+#   clientID<span class="token operator">:</span> <span class="token string">'8d8e965c******97026d3'</span><span class="token punctuation">,</span>
+#   clientSecret<span class="token operator">:</span> <span class="token string">'e9c6141cb1f02f721********d01cb4d7a8f069'</span><span class="token punctuation">,</span>
+#   repo<span class="token operator">:</span> <span class="token string">'blogtalk'</span><span class="token punctuation">,</span>
+#   owner<span class="token operator">:</span> <span class="token string">'WeiyiGeek'</span><span class="token punctuation">,</span>
+#   admin<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'WeiyiGeek'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+#   id<span class="token operator">:</span> location<span class="token punctuation">.</span>pathname<span class="token punctuation">,</span>
+#   proxy<span class="token operator">:</span> <span class="token string">'/github/login/oauth/access_token'</span><span class="token punctuation">,</span>
+#   distractionFreeMode<span class="token operator">:</span> <span class="token boolean">false</span>
+# <span class="token punctuation">}</span><span class="token punctuation">)</span>
+ 
+ 
+# 创建 gitalk<span class="token operator">-</span>container 
+gitalk<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'gitalk-container'</span><span class="token punctuation">)</span>
+</code></pre></div><p>温馨提示: 建议将<code>distractionFreeMode</code>设置为false,因为True真心难看。</p> <p>温馨提示: 为了 Github Apps ID 与 Secrets 的安全，我们需要针对上面 <code>new Gitalk</code> 实例化参数进行js加密混淆 (http://www.esjson.com/jsEncrypt.html)</p> <h3 id="n-入坑出坑"><a href="#n-入坑出坑" class="header-anchor">#</a> n.入坑出坑</h3> <p>1.使用Gitalk进行Github的Oauth认证无法跨域获取Token问题解决办法</p> <p>描述: 在最开始之初我们也是使用官方演示代码中，使用的第三方提供的CORS代理服务，他会默认放行所有CORS请求，但是随着而来的问题是登陆会出现网络错误 Error: Network Error 或者在使用时出现 Forbidden 错误 (https://github.com/gitalk/gitalk/issues/514) 。</p> <p>目前由于该CORS代理服务遭到滥用，因此做了限制，导致GitTalk失效，在实践中发现如下CORS代理服务其要么有限制要么根本不能使用，所以实践的朋友们就不要像使用如下CORS代理服务：</p> <div class="language- extra-class"><pre class="language-text"><code># 限流
+https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token
+# 被墙
+https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token
+</code></pre></div><p>温馨提示: CORS Anywhere 是一个 NodeJS 代理，它将 CORS 标头添加到代理请求中。项目地址 (https://github.com/Rob--W/cors-anywhere)</p> <p>在 百度 CSDN 中捡了一圈垃圾之后，还是没有最好的解决方案，然后通过某种方式Google了一下，找到两种替代的方式<code>利用cloudflare worker (不幸得是默认的cf worker的域名workers.dev被墙了)或者 Vercel 搭建在线代理（无vps推荐使用Vercel）</code> 或者 <code>使用VPS中的nginx服务器来反代 https://github.com (比较推荐-当前博主正在使用)</code>。</p> <p><strong>方式1.没有VPS或者自己的服务器（想白嫖的）</strong> 描述: 在 cloudflare (https://dash.cloudflare.com/login/) 上创建一个免费的在线代理来解决gitalk授权登录跨域问题，利用CloudFlare Worker创建在线代理，不需要我们有服务器，也不需要搭建Node.js服务，只需要注册一个CloudFlare账号，创建一个Worker，部署一个JS脚本就可以了，简单方便，下面我们就来看看如何创建吧。</p> <img alt="39fe66f45b30e1ad725ffd3332e3544e.jpeg" src="https://img-blog.csdnimg.cn/img_convert/39fe66f45b30e1ad725ffd3332e3544e.jpeg"> <p>创建好之后我们便可编辑其 Worker 服务代码，如下代码也可通过 https://github.com/WeiyiGeek/SecOpsDev/tree/master/Application/Blog/Hexo/Gitalk 获得。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> exclude <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment">// Regexp for blacklisted urls</span>
+<span class="token keyword">const</span> include <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^https?:\/\/.*weiyigeek\.top$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^https?:\/\/localhost</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// Regexp for whitelisted origins e.g.</span>
+<span class="token keyword">const</span> apiKeys <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">EZWTLwVEqFnaycMzdhBz</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Test App'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">expired</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">expiresAt</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2023-01-01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// Regexp for blacklisted urls</span>
+    <span class="token literal-property property">include</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;^http.?://www.weiyigeek.top$&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;weiyigeek.top$&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;^https?://localhost/&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// Regexp for whitelisted origins</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+ 
+ 
+<span class="token comment">// Config is all above this line.</span>
+<span class="token comment">// It should not be necessary to change anything below.</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">verifyCredentials</span><span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Throws exception on verification failure.</span>
+  <span class="token keyword">const</span> requestApiKey <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'x-cors-proxy-api-key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>apiKeys<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>requestApiKey<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnauthorizedException</span><span class="token punctuation">(</span><span class="token string">'Invalid authorization key.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>apiKeys<span class="token punctuation">[</span>requestApiKey<span class="token punctuation">]</span><span class="token punctuation">.</span>expired<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnauthorizedException</span><span class="token punctuation">(</span><span class="token string">'Expired authorization key.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>apiKeys<span class="token punctuation">[</span>requestApiKey<span class="token punctuation">]</span><span class="token punctuation">.</span>expiresAt <span class="token operator">&amp;&amp;</span> apiKeys<span class="token punctuation">[</span>requestApiKey<span class="token punctuation">]</span><span class="token punctuation">.</span>expiresAt<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnauthorizedException</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Expired authorization key.\nKey was valid until: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>apiKeys<span class="token punctuation">[</span>requestApiKey<span class="token punctuation">]</span><span class="token punctuation">.</span>expiresAt<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">return</span> apiKeys<span class="token punctuation">[</span>requestApiKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">checkRequiredHeadersPresent</span><span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Throws exception on verification failure.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'Origin'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'x-requested-with'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Missing required request header. Must specify one of: origin,x-requested-with'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">UnauthorizedException</span><span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">401</span><span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>statusText <span class="token operator">=</span> <span class="token string">'Unauthorized'</span><span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> reason<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">BadRequestException</span><span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>statusText <span class="token operator">=</span> <span class="token string">'Bad Request'</span><span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> reason<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">isListed</span><span class="token punctuation">(</span><span class="token parameter">uri<span class="token punctuation">,</span> listing</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> returnValue <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> uri <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> m <span class="token keyword">of</span> listing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>uri<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        returnValue <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token comment">//   Decide what to do when Origin is null</span>
+    returnValue <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// True accepts null origins false rejects them.</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">return</span> returnValue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">fix</span><span class="token punctuation">(</span><span class="token parameter">myHeaders<span class="token punctuation">,</span> request<span class="token punctuation">,</span> isOPTIONS</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  myHeaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'Access-Control-Allow-Origin'</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'Origin'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>isOPTIONS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    myHeaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'Access-Control-Allow-Methods'</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'access-control-request-method'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> acrh <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'access-control-request-headers'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>acrh<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      myHeaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'Access-Control-Allow-Headers'</span><span class="token punctuation">,</span> acrh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+ 
+    myHeaders<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">'X-Content-Type-Options'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">return</span> myHeaders<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">parseURL</span><span class="token punctuation">(</span><span class="token parameter">requestUrl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> match <span class="token operator">=</span> requestUrl<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^(?:(https?:)?\/\/)?(([^/?]+?)(?::(\d{0,5})(?=[/?]|$))?)([/?][\S\s]*|$)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//                              ^^^^^^^          ^^^^^^^^      ^^^^^^^                ^^^^^^^^^^^^</span>
+  <span class="token comment">//                            1:protocol       3:hostname     4:port                 5:path + query string</span>
+  <span class="token comment">//                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+  <span class="token comment">//                                            2:host</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>match<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'no match'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Invalid URL for proxy request.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'parseURL:match:'</span><span class="token punctuation">,</span> match<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>match<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'nothing in match group 1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^https?:</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>requestUrl<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The pattern at top could mistakenly parse &quot;http:///&quot; as host=&quot;http:&quot; and path=///.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Invalid URL for proxy request.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+ 
+    <span class="token comment">// Scheme is omitted.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>requestUrl<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'//'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'&quot;//&quot; is omitted'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      requestUrl <span class="token operator">=</span> <span class="token string">'//'</span> <span class="token operator">+</span> requestUrl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+ 
+    requestUrl <span class="token operator">=</span> <span class="token punctuation">(</span>match<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'443'</span> <span class="token operator">?</span> <span class="token string">'https:'</span> <span class="token operator">:</span> <span class="token string">'http:'</span><span class="token punctuation">)</span> <span class="token operator">+</span> requestUrl<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">const</span> parsed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>requestUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>parsed<span class="token punctuation">.</span>hostname<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'&quot;http://:1/&quot; and &quot;http:/notenoughslashes&quot; could end up here.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Invalid URL for proxy request.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">return</span> parsed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">proxyRequest</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> activeApiKey</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> isOPTIONS <span class="token operator">=</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>method <span class="token operator">===</span> <span class="token string">'OPTIONS'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> originUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> origin <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'Origin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// ParseURL throws when the url is invalid</span>
+  <span class="token keyword">const</span> fetchUrl <span class="token operator">=</span> <span class="token function">parseURL</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>originUrl<span class="token punctuation">.</span>origin<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token comment">// Throws if it fails the check</span>
+  <span class="token function">checkRequiredHeadersPresent</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token comment">// Excluding urls which are not allowed as destination urls</span>
+  <span class="token comment">// Exclude origins which are not int he included ones</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isListed</span><span class="token punctuation">(</span>fetchUrl<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">...</span>exclude<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">(</span>activeApiKey<span class="token operator">?.</span>exclude <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">isListed</span><span class="token punctuation">(</span>origin<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">...</span>include<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">(</span>activeApiKey<span class="token operator">?.</span>include <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Origin or Destination URL is not allowed.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">let</span> corsHeaders <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'x-cors-headers'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>corsHeaders <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      corsHeaders <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>corsHeaders<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>originUrl<span class="token punctuation">.</span>pathname<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Pathname does not start with &quot;/&quot;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">const</span> recvHpaireaders <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> pair <span class="token keyword">of</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token string">'^origin'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token string">'eferer'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token string">'^cf-'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token string">'^x-forw'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token string">'^x-cors-headers'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      recvHpaireaders<span class="token punctuation">[</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>corsHeaders <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> c <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>corsHeaders<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      recvHpaireaders<span class="token punctuation">[</span>c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">const</span> newRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Request</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">headers</span><span class="token operator">:</span> recvHpaireaders<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>fetchUrl<span class="token punctuation">,</span> newRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> myHeaders <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Headers</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> newCorsHeaders <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> allh <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> pair <span class="token keyword">of</span> response<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    newCorsHeaders<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    allh<span class="token punctuation">[</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  newCorsHeaders<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'cors-received-headers'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  myHeaders <span class="token operator">=</span> <span class="token function">fix</span><span class="token punctuation">(</span>myHeaders<span class="token punctuation">,</span> request<span class="token punctuation">,</span> isOPTIONS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  myHeaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'Access-Control-Expose-Headers'</span><span class="token punctuation">,</span> newCorsHeaders<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  myHeaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'cors-received-headers'</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>allh<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token keyword">const</span> body <span class="token operator">=</span> isOPTIONS <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">headers</span><span class="token operator">:</span> myHeaders<span class="token punctuation">,</span>
+    <span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token punctuation">(</span>isOPTIONS <span class="token operator">?</span> <span class="token number">200</span> <span class="token operator">:</span> response<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">statusText</span><span class="token operator">:</span> <span class="token punctuation">(</span>isOPTIONS <span class="token operator">?</span> <span class="token string">'OK'</span> <span class="token operator">:</span> response<span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">function</span> <span class="token function">homeRequest</span><span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> isOPTIONS <span class="token operator">=</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>method <span class="token operator">===</span> <span class="token string">'OPTIONS'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> originUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> origin <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'Origin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> remIp <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'CF-Connecting-IP'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> corsHeaders <span class="token operator">=</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'x-cors-headers'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> myHeaders <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Headers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  myHeaders <span class="token operator">=</span> <span class="token function">fix</span><span class="token punctuation">(</span>myHeaders<span class="token punctuation">,</span> request<span class="token punctuation">,</span> isOPTIONS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+ 
+  <span class="token keyword">let</span> country <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> colo <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> request<span class="token punctuation">.</span>cf <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    country <span class="token operator">=</span> <span class="token keyword">typeof</span> request<span class="token punctuation">.</span>cf<span class="token punctuation">.</span>country <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> <span class="token boolean">false</span> <span class="token operator">:</span> request<span class="token punctuation">.</span>cf<span class="token punctuation">.</span>country<span class="token punctuation">;</span>
+    colo <span class="token operator">=</span> <span class="token keyword">typeof</span> request<span class="token punctuation">.</span>cf<span class="token punctuation">.</span>colo <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> <span class="token boolean">false</span> <span class="token operator">:</span> request<span class="token punctuation">.</span>cf<span class="token punctuation">.</span>colo<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>
+    <span class="token string">'CLOUDFLARE-CORS-ANYWHERE\n\n'</span>
+        <span class="token operator">+</span> <span class="token string">'Source:\nhttps://github.com/chrisspiegl/cloudflare-cors-anywhere\n\n'</span>
+        <span class="token operator">+</span> <span class="token string">'Usage:\n'</span>
+        <span class="token operator">+</span> originUrl<span class="token punctuation">.</span>origin <span class="token operator">+</span> <span class="token string">'/{uri}\n'</span>
+        <span class="token operator">+</span> <span class="token string">'Header x-cors-proxy-api-key must be set with valid api key\n'</span>
+        <span class="token operator">+</span> <span class="token string">'Header origin or x-requested-with must be set\n\n'</span>
+        <span class="token comment">// + 'Limits: 100,000 requests/day\n'</span>
+        <span class="token comment">// + '          1,000 requests/10 minutes\n\n'</span>
+        <span class="token operator">+</span> <span class="token punctuation">(</span>origin <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token operator">:</span> <span class="token string">'Origin: '</span> <span class="token operator">+</span> origin <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>
+        <span class="token operator">+</span> <span class="token string">'Ip: '</span> <span class="token operator">+</span> remIp <span class="token operator">+</span> <span class="token string">'\n'</span>
+        <span class="token operator">+</span> <span class="token punctuation">(</span>country <span class="token operator">?</span> <span class="token string">'Country: '</span> <span class="token operator">+</span> country <span class="token operator">+</span> <span class="token string">'\n'</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">)</span>
+        <span class="token operator">+</span> <span class="token punctuation">(</span>colo <span class="token operator">?</span> <span class="token string">'Datacenter: '</span> <span class="token operator">+</span> colo <span class="token operator">+</span> <span class="token string">'\n'</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'\n'</span>
+        <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>corsHeaders <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token operator">:</span> <span class="token string">'\nx-cors-headers: '</span> <span class="token operator">+</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>corsHeaders<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token literal-property property">headers</span><span class="token operator">:</span> myHeaders<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>protocol<span class="token punctuation">,</span> pathname<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// In the case of a &quot;Basic&quot; authentication, the exchange MUST happen over an HTTPS (TLS) connection to be secure.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>protocol <span class="token operator">!==</span> <span class="token string">'https:'</span> <span class="token operator">||</span> request<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'x-forwarded-proto'</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token string">'https'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestException</span><span class="token punctuation">(</span><span class="token string">'Must use a HTTPS connection.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>pathname<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'/favicon.ico'</span><span class="token operator">:</span>
+    <span class="token keyword">case</span> <span class="token string">'/robots.txt'</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token number">204</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'/'</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> <span class="token function">homeRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Not 100% sure if this is a good idea…</span>
+      <span class="token comment">// Right now all OPTIONS requests are just simply replied to because otherwise they fail.</span>
+      <span class="token comment">// This is necessary because apparently, OPTIONS requests do not carry the `x-cors-proxy-api-key` header so this can not be authorized.</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>method <span class="token operator">===</span> <span class="token string">'OPTIONS'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token function">fix</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Headers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> request<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">statusText</span><span class="token operator">:</span> <span class="token string">'OK'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+ 
+ 
+      <span class="token comment">// The &quot;x-cors-proxy-api-key&quot; header is sent when authenticated.</span>
+      <span class="token comment">//if (request.headers.has('x-cors-proxy-api-key')) {</span>
+        <span class="token comment">// Throws exception when authorization fails.</span>
+        <span class="token comment">//const activeApiKey = verifyCredentials(request);</span>
+ 
+ 
+        <span class="token comment">// Only returns this response when no exception is thrown.</span>
+        <span class="token keyword">return</span> <span class="token function">proxyRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//}</span>
+ 
+ 
+      <span class="token comment">// Not authenticated.</span>
+      <span class="token comment">//throw new UnauthorizedException('Valid x-cors-proxy-api-key header has to be provided.');</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ 
+ 
+<span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span>
+    <span class="token function">handleRequest</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> message <span class="token operator">=</span> error<span class="token punctuation">.</span>reason <span class="token operator">||</span> error<span class="token punctuation">.</span>stack <span class="token operator">||</span> <span class="token string">'Unknown Error'</span><span class="token punctuation">;</span>
+ 
+ 
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">status</span><span class="token operator">:</span> error<span class="token punctuation">.</span>status <span class="token operator">||</span> <span class="token number">500</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">statusText</span><span class="token operator">:</span> error<span class="token punctuation">.</span>statusText <span class="token operator">||</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'text/plain;charset=UTF-8'</span><span class="token punctuation">,</span>
+          <span class="token comment">// Disables caching by default.</span>
+          <span class="token string-property property">'Cache-Control'</span><span class="token operator">:</span> <span class="token string">'no-store'</span><span class="token punctuation">,</span>
+          <span class="token comment">// Returns the &quot;Content-Length&quot; header for HTTP HEAD requests.</span>
+          <span class="token string-property property">'Content-Length'</span><span class="token operator">:</span> message<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>部署结果: https://cors-anywhere.weiyigeek.workers.dev/  可惜国内被墙。</p> <img alt="38d60f02c147519ebdcb897b4032c1d0.png" src="https://img-blog.csdnimg.cn/img_convert/38d60f02c147519ebdcb897b4032c1d0.png"> <p>温馨提示: cloudflare 构建无服务器应用程序免费版本每天限额10万次请求，所有为了避免其它 people 恶意使用，请在使用时设置访问白名单, 上述源码来源于 (https://github.com/chrisspiegl/cloudflare-cors-anywhere)。</p> <p>温馨提示: 除了使用 cloudflare 还可以使用 Vercel 免费部署node.js项目解决跨域问题，你可参考该项目 (https://github.com/Dedicatus546/cors-server) 最新推荐使用，此处就不在累述。</p> <p><strong>方式2.有公网VPS、服务器</strong> 描述: 由于我自己有VPS所以就不借用 cloudflare 与 Vercel，因为其国内网络原因，时而通畅时而有缓慢 , 此处我将使用Nginx服务在blog.conf配置Nginx文件中加入如下location指令片段</p> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token comment"># https - www.weiyigeek.top</span>
+<span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">443</span> ssl http2</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">server_name</span>  blog.weiyigeek.top</span><span class="token punctuation">;</span>
+   
+  <span class="token comment"># 插入 CORS 关键点</span>
+  <span class="token directive"><span class="token keyword">add_header</span> Access-Control-Allow-Origin <span class="token string">'*.weiyigeek.top'</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">add_header</span> Access-Control-Allow-Methods <span class="token string">'GET,POST,OPTIONS'</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">add_header</span> Access-Control-Allow-Headers <span class="token string">'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization'</span></span><span class="token punctuation">;</span>
+ 
+ 
+...
+ 
+ 
+  <span class="token comment"># 插入 Gitalk Auth Use 关键点</span>
+  <span class="token directive"><span class="token keyword">location</span> /github</span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$request_method</span> = <span class="token string">'OPTIONS'</span>)</span> <span class="token punctuation">{</span>
+      <span class="token directive"><span class="token keyword">return</span> <span class="token number">204</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token directive"><span class="token keyword">proxy_pass</span> https://github.com/</span><span class="token punctuation">;</span> <span class="token comment"># 注意尾部斜杠不能少</span>
+  <span class="token punctuation">}</span>
+ 
+ 
+...
+  <span class="token directive"><span class="token keyword">error_page</span>  <span class="token number">403</span>          /warn/403.html</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">error_page</span>  <span class="token number">404</span>          /warn/404.html</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">error_page</span>  <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span>  /warn/500.html</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">error_page</span>  <span class="token number">504</span>          /warn/504.html</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>配置完成后检测blog.conf配置以及重载nginx服务 <code>nginx -t &amp;amp;&amp;amp; nginx -s reload</code>, 然后修改Hexo 主题中的 _config.yaml 将 Gitalk 的 proxy 配置为 <code>proxy: /github/login/oauth/access_token</code> 即可。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># gittalk 评论系统</span>
+<span class="token key atrule">gitalk</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">owner</span><span class="token punctuation">:</span> WeiyiGeek  <span class="token comment"># github账号</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> blogtalk    <span class="token comment"># 留言仓库</span>
+  <span class="token key atrule">proxy</span><span class="token punctuation">:</span> /github/login/oauth/access_token <span class="token comment"># 关键点 （前台请求是https://blog.weiyigeek.top/github/login/oauth/access_token, 而实际请求是https://github.com/login/oauth/access_token，所以解决了跨域问题）</span>
+  <span class="token key atrule">oauth</span><span class="token punctuation">:</span>
+    <span class="token key atrule">client_id</span><span class="token punctuation">:</span> 8d8e965c<span class="token important">******97026d3</span>       <span class="token comment"># Github App Auth ID </span>
+    <span class="token key atrule">client_secret</span><span class="token punctuation">:</span> e9c6141cb1f02f721<span class="token important">********d01cb4d7a8f069</span> <span class="token comment">#  Github App Auth secret</span>
+  <span class="token key atrule">perPage</span><span class="token punctuation">:</span> <span class="token number">15</span>
+</code></pre></div><p>之后，我们需要批量初始每篇文章issue根据其路径<code>/2020/3-20-658.html</code>，此处采用了<code>gitalk-auto-init.js</code>脚本进行批量初始化文章issue。</p> <p>温馨提示: 下述 <code>gitalk-auto-init.js</code> 脚本可以通过如下连接( https://github.com/WeiyiGeek/SecOpsDev/tree/master/Application/Blog/Hexo/Gitalk )进行获取</p> <p>脚本依赖:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">npm</span> i <span class="token parameter variable">-S</span> hexo-generator-sitemap
+$ <span class="token function">npm</span> i <span class="token parameter variable">-D</span> md5 moment request xml-parser
++ moment@2.29.2
++ request@2.88.2
++ md5@2.3.0
++ xml-parser@1.2.1
+added <span class="token number">55</span> packages from <span class="token number">70</span> contributors <span class="token keyword">in</span> <span class="token number">8</span>.467s
+</code></pre></div><p>配置运行:</p> <div class="language-html extra-class"><pre class="language-html"><code>// gitalk-auto-init.js 脚本部分片段
+// 配置信息
+const config = {
+  username: 'weiyigeek',   // GitHub repository 所有者，可以是个人或者组织。对应Gitalk配置中的owner
+  repo: &quot;blogtalk&quot;,         // 储存评论issue的github仓库名，仅需要仓库名字即可。对应 Gitalk配置中的repo
+  token: 'ghp_wnpWqL********6RIf0NR5iD',   // 前面在Github中的 personal access token
+  sitemap: path.join(__dirname, './public/sitemap.xml'), // 自己站点的 sitemap 文件地址
+  cache: true, // 是否启用缓存，启用缓存会将已经初始化的数据写入配置的 gitalkCacheFile 文件，下一次直接通过缓存文件判断
+  gitalkCacheFile: path.join(__dirname, './gitalk-init-cache.json'), // 用于保存 gitalk 已经初始化的 id 列表
+  gitalkErrorFile: path.join(__dirname, './gitalk-init-error.json'), // 用于保存 gitalk 初始化报错的数据
+};
+ 
+ 
+// sitemap.xml 示例
+<span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>urlset</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.sitemaps.org/schemas/sitemap/0.9<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>loc</span><span class="token punctuation">&gt;</span></span>https://blog.weiyigeek.top/2020/5-28-588.html<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>loc</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lastmod</span><span class="token punctuation">&gt;</span></span>2022-08-15T14:39:08.638Z<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lastmod</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Ingress-Nginx进阶学习实践扩充配置记录<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+    ....
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>urlset</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><img alt="18261a88dd173de8ac734cb79f59934f.png" src="https://img-blog.csdnimg.cn/img_convert/18261a88dd173de8ac734cb79f59934f.png"> <p><strong>执行结果:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>--------- 运行结果 ---------
+ 
+报错数据：1 条。参考文件 /mnt/e/githubProject/blog/gitalk-init-error.json。
+本次成功：27 条。
+写入缓存：90 条，已初始化 63 条，本次成功：27 条。参考文件 /mnt/e/githubProject/blog/gitalk-init-cache.json。
+</code></pre></div><p>我们也可以通过 blogtalk 项目中 issue (https://github.com/WeiyiGeek/blogtalk/issues) 查看初始化结果以及最新评论。</p> <img alt="34461fc2646f936653d17db3d9b40e01.png" src="https://img-blog.csdnimg.cn/img_convert/34461fc2646f936653d17db3d9b40e01.png"> <p>在初始化issue完成之后，我们可以找到一篇 https://blog.weiyigeek.top/about/ 文章进行留言验证。</p> <img alt="2cefb18dabaf76f878e0ddcaa9e9441e.png" src="https://img-blog.csdnimg.cn/img_convert/2cefb18dabaf76f878e0ddcaa9e9441e.png"> <p>本文至此完毕，更多技术文章，尽情期待下一章节！</p> <p>原文地址: https://blog.weiyigeek.top/2022/8-17-682.html</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年11月8日星期二晚上9点17分</span></div></footer> <!---->  <!----></main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.31b87ad2.js" defer></script><script src="/assets/js/9.29309c47.js" defer></script><script src="/assets/js/2.71fc0aa0.js" defer></script><script src="/assets/js/18.c55f83b7.js" defer></script><script src="/assets/js/3.274cd4ce.js" defer></script>
+  </body>
+</html>
