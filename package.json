@@ -1,0 +1,22 @@
+{
+  "name": "apzs",
+  "version": "2.0.0",
+  "description": "apzs的个人博客",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src",
+    "docs:clean-dev": "vuepress dev src --clean-cache",
+    "docs:update-package": "npx vp-update"
+  },
+  "devDependencies": {
+    "@vue/repl": "^3.1.0",
+    "@vuepress/client": "2.0.0-rc.0",
+    "@waline/client": "^3.0.0-alpha.8",
+    "vue": "^3.3.12",
+    "vuepress": "2.0.0-rc.0",
+    "vuepress-plugin-search-pro": "^2.0.0-rc.7",
+    "vuepress-theme-hope": "2.0.0-rc.5"
+  }
+}
