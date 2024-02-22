@@ -1,14 +1,14 @@
-import { defineUserConfig } from "vuepress";
+import {defineUserConfig, viteBundler} from "vuepress";
 import theme from "./theme.js";
 import {searchProPlugin} from "vuepress-plugin-search-pro";
-
+// @ts-ignore
+import modifyImagePath from "./plugin.js";
 // @ts-ignore
 export default defineUserConfig({
   base: "/",
-
   lang: "zh-CN",
-  title: "博客演示",
-  description: "vuepress-theme-hope 的博客演示",
+  title: "apzs",
+  description: "apzs 的个人博客",
   theme,
   plugins: [
     searchProPlugin({
@@ -25,8 +25,11 @@ export default defineUserConfig({
           formatter: "标签：$content",
         },
       ],
-    }),
+    })
   ],
   // Enable it with pwa
   // shouldPrefetch: false,
+  extendsBundlerOptions: (config, app) => {
+    modifyImagePath()
+  },
 });
