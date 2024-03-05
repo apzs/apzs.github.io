@@ -258,7 +258,7 @@ ReactDOM.render(<App />,document.getElementById("root"))
 
 这样在重新启动应用，就成功了。
 
-![image-20230812150359213](image/image-20230812150359213.png)
+![image-20230812150359213](https://gitlab.com/apzs/image/-/raw/master/image/image-20230812150359213.png)
 
 我们也不建议这样直接将内容放入App组件中，尽量还是用内部组件。
 
@@ -310,11 +310,11 @@ export default class App extends Component{
 
 这样的结果和前面是一样的。推荐使用这种目录结构去使用组件
 
-![image-20230720134753551](image/image-20230720134753551.png)
+![image-20230720134753551](https://gitlab.com/apzs/image/-/raw/master/image/image-20230720134753551.png)
 
 > 将组件修改为`jsx`后缀，这样会有更加丰富的提示
 
-![image-20221025142952888](image/6d23ae1393d60c7598fa0f9172061b98051a8f8e.png)
+![image-20221025142952888](https://gitlab.com/apzs/image/-/raw/master/image/6d23ae1393d60c7598fa0f9172061b98051a8f8e.png)
 
 默认暴露和分别暴露：
 
@@ -343,7 +343,7 @@ export default class App extends Component{
 > console.log("Component",Component);
 > ```
 >
-> ![image-20230720132430005](image/image-20230720132430005.png)
+> ![image-20230720132430005](https://gitlab.com/apzs/image/-/raw/master/image/image-20230720132430005.png)
 >
 > 我们可以即使用默认暴露也使用分别暴露，这样我们就可以使用`import React from "./module.js";`获取默认暴露的值，使用`import {Component} from "./module.js";`获取分别暴露的值。
 >
@@ -370,7 +370,7 @@ export default class App extends Component{
 > console.log("Component",Component);
 > ```
 >
-> ![image-20230720132609021](image/image-20230720132609021.png)
+> ![image-20230720132609021](https://gitlab.com/apzs/image/-/raw/master/image/image-20230720132609021.png)
 
 ## 5.组件
 
@@ -638,11 +638,11 @@ export default class Hello extends Component{
 
 如果不使用css模块化，则两个模块都是用了相同的`className`，则后面的组件的样式会覆盖前面的
 
-![image-20230812154758930](image/image-20230812154758930.png)
+![image-20230812154758930](https://gitlab.com/apzs/image/-/raw/master/image/image-20230812154758930.png)
 
 使用css模块化后，即使`className`都为`title`，样式依然不会被覆盖，react帮我们修改了class的名称
 
-![image-20230812154520343](image/image-20230812154520343.png)
+![image-20230812154520343](https://gitlab.com/apzs/image/-/raw/master/image/image-20230812154520343.png)
 
 以下是详细的代码：
 
@@ -838,7 +838,7 @@ export default defineConfig({
 
 ```
 
-![image-20230729110707255](image/image-20230729110707255.png)
+![image-20230729110707255](https://gitlab.com/apzs/image/-/raw/master/image/image-20230729110707255.png)
 
 ### 7.4 连续赋值解构 & 重命名
 

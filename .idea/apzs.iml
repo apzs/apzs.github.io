@@ -2,7 +2,47 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/src/front-advance/react/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-advance/scss/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-advance/webpack/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-advance/vue/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-advance/vue/img" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-base/html&amp;css/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-base/js/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/.temp" />
+      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/.cache" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/1.Java基础语法/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/2.Java核心/resource" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/2.Java核心/img" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/2.Java核心/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/3.JavaWeb/other" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/3.JavaWeb/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/5.SSM/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/6.redis/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/7.SpringBoot2/1" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/7.SpringBoot2/2" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/7.SpringBoot2/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/10.nginx/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-advance/10.nginx/images" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/3.mysql/images" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/4.JavaWeb/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-base/4.JavaWeb/other" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/11.docker/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/12.gitlab+jeckins/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/13.SpringSecurity/other" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/13.SpringSecurity/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/14.Netty/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/14.Netty/img" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/16.ShardingSphere5/images" />
+      <excludeFolder url="file://$MODULE_DIR$/src/back-senior/17.mongodb/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sourceCode/spring/SpringSecurity/other" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-project/硅谷甄选 (Vue3+ts)/img" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-project/尚品汇 (Vue2+js)/other" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-project/个人博客搭建教程/other" />
+      <excludeFolder url="file://$MODULE_DIR$/src/front-project/个人博客搭建教程/image" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

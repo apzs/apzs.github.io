@@ -105,11 +105,11 @@
 
 这样，就会在页面中的这个div容器上添加这个h1.
 
-![image-20230804211505179](image/image-20230804211505179.png)
+![image-20230804211505179](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804211505179.png)
 
 控制台会报如下警告，可以不用管，到脚手架的时候会解决
 
-![image-20230804220436891](image/image-20230804220436891.png)
+![image-20230804220436891](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804220436891.png)
 
 详细说明：
 
@@ -222,7 +222,7 @@ ReactDOM.render(
 );
 ```
 
-<img src="image/image-20230715122409023.png" alt="image-20230715122409023" style="zoom:50%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230715122409023.png" alt="image-20230715122409023" style="zoom:50%;" />
 
 8. 注释写在花括号里
 
@@ -308,7 +308,7 @@ ReactDOM.render(
 </html>
 ```
 
-![image-20230715132944336](image/image-20230715132944336.png)
+![image-20230715132944336](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715132944336.png)
 
 ### 根据集合数据动态生成 `<li>`
 
@@ -331,7 +331,7 @@ ReactDOM.render(
 </script>
 ```
 
-![image-20230715122652249](image/image-20230715122652249.png)
+![image-20230715122652249](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715122652249.png)
 
 ## 4、关于虚拟DOM
 
@@ -358,7 +358,7 @@ ReactDOM.render(
 </script>
 ````
 
-![image-20230804220046274](image/image-20230804220046274.png)
+![image-20230804220046274](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804220046274.png)
 
 # 二、面向组件编程
 
@@ -397,7 +397,7 @@ ReactDOM.render(
 </script>
 ```
 
-![image-20230804221941701](image/image-20230804221941701.png)
+![image-20230804221941701](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804221941701.png)
 
 该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。
 
@@ -436,7 +436,7 @@ React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<d
 </script>
 ```
 
-![image-20230804221857662](image/image-20230804221857662.png)
+![image-20230804221857662](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804221857662.png)
 
 每次组件更新时 `render` 方法都会被调用，但只要在相同的 DOM 节点中渲染 `<MyComponent/>` ，就仅有一个 `MyComponent` 组件的 class 实例被创建使用。这就使得我们可以使用如 state 或生命周期方法等很多其他特性。
 
@@ -488,7 +488,7 @@ s1.speak();
 </script>
 ```
 
-![image-20230715145145564](image/image-20230715145145564.png)
+![image-20230715145145564](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715145145564.png)
 
 ### 1.3 组合组件
 
@@ -517,7 +517,7 @@ s1.speak();
 </script>
 ```
 
-![image-20230804222330734](image/image-20230804222330734.png)
+![image-20230804222330734](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804222330734.png)
 
 通常来说，每个新的 React 应用程序的顶层组件都是 `App` 组件。但是，如果你将 React 集成到现有的应用程序中，你可能需要使用像 `Button` 这样的小组件，并自下而上地将这类组件逐步应用到视图层的每一处。
 
@@ -560,7 +560,7 @@ s1.speak();
 
 该组件用于描述一个社交媒体网站上的评论功能，它接收 `author`（对象），`text` （字符串）以及 `date`（日期）作为 props。
 
-![image-20230804223106223](image/image-20230804223106223.png)
+![image-20230804223106223](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804223106223.png)
 
 该组件由于嵌套的关系，变得难以维护，且很难复用它的各个部分。因此，让我们从中提取一些组件出来。
 
@@ -681,7 +681,7 @@ function Comment(props) {
 </body>
 ```
 
-![image-20230715161021100](image/image-20230715161021100.png)
+![image-20230715161021100](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715161021100.png)
 
 ```html
 <body>
@@ -710,7 +710,7 @@ function Comment(props) {
 </body>
 ```
 
-![image-20230715161248136](image/image-20230715161248136.png)
+![image-20230715161248136](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715161248136.png)
 
 #### 2.1.2 React添加点击事件
 
@@ -755,7 +755,7 @@ function Comment(props) {
 
 > 我们看到直接输出isHot的值为true，而点击对象却显示isHot的值为false，其实这是谷歌的问题。点击这个蓝色的问号，就有如下提示`This value was evaluated upon first expanding. It may have changed since then.`告诉我们这个值有可能是已经改变后的值（也就是显示的是我们点击这个对象的详细信息时现在的值，并不是我们输出的时候这个对象的值）
 
-![image-20230715165758843](image/image-20230715165758843.png)
+![image-20230715165758843](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715165758843.png)
 
 我们可以调用`setState`更新值，可以看到dom更新了，而值貌似没有更新，这其实是因为`setState`是异步更新的（不绝对，原生方法里调用setState可能是同步的），设个定时器再查看就可以看到已经更新isHot的值了
 
@@ -771,7 +771,7 @@ function changeWeather() {
 }
 ```
 
-![image-20230715170633758](image/image-20230715170633758.png)
+![image-20230715170633758](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715170633758.png)
 
 React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同：
 
@@ -838,7 +838,7 @@ function Form() {
   }
 ```
 
-![image-20230804230446453](image/image-20230804230446453.png)
+![image-20230804230446453](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804230446453.png)
 
 #### 2.1.4 解决this指向
 
@@ -897,11 +897,11 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 
 > 使用`changeWeather() {}`这种方式，`changeWeather`方法会放在Weather的原型对象上
 
-![image-20230715181921348](image/image-20230715181921348.png)
+![image-20230715181921348](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715181921348.png)
 
 > 使用`changeWeather = function(){}`这种方式`changeWeather`方法会放在Weather自身上
 
-![image-20230715191608023](image/image-20230715191608023.png)
+![image-20230715191608023](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715191608023.png)
 
 通过`bind`的方式，我们还可以传递参数：
 
@@ -929,7 +929,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230805143440727](image/image-20230805143440727.png)
+![image-20230805143440727](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805143440727.png)
 
 在**类式组件**的函数中，不能直接修改`state`值，即不能使用`this.state.isHot = false`，这样修改dom不会更新， React不允许直接修改`state`，应该通过类的原型对象上的方法 `setState()`，然后内部会调用`render`函数重新渲染页面
 
@@ -976,7 +976,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230805112642662](image/image-20230805112642662.png)
+![image-20230805112642662](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805112642662.png)
 
 ##### 通过高阶函数（推荐）
 
@@ -1003,7 +1003,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230805140059703](image/image-20230805140059703.png)
+![image-20230805140059703](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805140059703.png)
 
 通过高阶函数不仅可以解决this指向，还能传递参数，并且`changeWeather`方法不管是哪种方式都能得到正确的this
 
@@ -1035,7 +1035,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230805140648589](image/image-20230805140648589.png)
+![image-20230805140648589](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805140648589.png)
 
 ##### <a name="详细解释">详细解释</a>
 
@@ -1076,7 +1076,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230715183414815](image/image-20230715183414815.png)
+![image-20230715183414815](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715183414815.png)
 
 **箭头函数**
 
@@ -1105,7 +1105,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230715192323475](image/image-20230715192323475.png)
+![image-20230715192323475](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715192323475.png)
 
 **高阶函数**
 
@@ -1139,7 +1139,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230805142323444](image/image-20230805142323444.png)
+![image-20230805142323444](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805142323444.png)
 
 ### 2.2 简化版本
 
@@ -1161,7 +1161,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 </script>
 ```
 
-![image-20230805142605098](image/image-20230805142605098.png)
+![image-20230805142605098](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805142605098.png)
 
 2. 使用了箭头函数，将this进行了改变（由于箭头函数没有自己的this，当我们在箭头函数中输出this时，会找箭头函数外面的this，这里其实就是`Weather`对象）
 
@@ -1231,7 +1231,7 @@ this.setState((state,props)=>{
 this.setState(state=>({isHot: !state.isHot}))
 ```
 
-![image-20230805113924130](image/image-20230805113924130.png)
+![image-20230805113924130](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805113924130.png)
 
 - 在执行 `setState`操作后，React 会自动调用一次 `render()`
 - `render()` 的执行次数是 1+n (1 为初始化时的自动调用，n 为状态更新的次数)
@@ -1259,7 +1259,7 @@ this.setState(this.setState(state=>({isHot: !state.isHot})),()=>{
 })
 ```
 
-![image-20230805114853400](image/image-20230805114853400.png)
+![image-20230805114853400](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805114853400.png)
 
 ### 2.4 State 的更新可能是同步的
 
@@ -1292,7 +1292,7 @@ this.setState(this.setState(state=>({isHot: !state.isHot})),()=>{
 </script>
 ```
 
-![image-20230805150316737](image/image-20230805150316737.png)
+![image-20230805150316737](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805150316737.png)
 
 ~~但是通过这个原生JS的，可以发现，控制台打印的就是11，也就是已经对其进行了处理。也就是进行了同步的更新。~~
 
@@ -1375,7 +1375,7 @@ this.setState(this.setState(state=>({isHot: !state.isHot})),()=>{
 
 通过以上三个代码的测试，发现18版本的react不管是`原生js绑定的事件`还是`setTimeout回调函数` ，在里面执行setState方法都是异步更新的
 
-![image-20230805151222882](image/image-20230805151222882.png)
+![image-20230805151222882](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805151222882.png)
 
 **React怎么调用同步或者异步的呢？**
 
@@ -1442,7 +1442,7 @@ function FormattedDate(props) {
 </script>
 ```
 
-<img src="./image/image-20230715212938910.png" alt="image-20230715212938910" style="zoom:50%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230715212938910.png" alt="image-20230715212938910" style="zoom:50%;" />
 
 如果传递的数据是一个对象，使用如下方式可以更加简便的使用
 
@@ -1506,7 +1506,7 @@ console.log(p2)  //{name:"张三",age:"18",sex:"女"}
 > // console.log(...p);
 > ```
 >
-> ![image-20230805155234181](image/image-20230805155234181.png)
+> ![image-20230805155234181](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805155234181.png)
 >
 > **js中`{..p}`不可以展开对象，在react组件上能使用`{..p}`展开对象是因为babel+react的语法规则使得{..p}可以展开对象，但是只有在标签中才能使用**
 
@@ -1582,7 +1582,7 @@ react对此提供了相应的解决方法：
 </body>
 ```
 
-![image-20230805160317178](image/image-20230805160317178.png)
+![image-20230805160317178](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805160317178.png)
 
 当传入的 `prop` 值类型不正确时，JavaScript 控制台将会显示警告。出于性能方面的考虑，`propTypes` 仅在开发模式下进行检查。
 
@@ -1754,7 +1754,7 @@ MyComponent.propTypes = {
 </script>
 ```
 
-![image-20230805160511485](image/image-20230805160511485.png)
+![image-20230805160511485](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805160511485.png)
 
 在使用的时候可以通过 `this.props`来获取值 类式组件的 `props`:
 
@@ -1788,7 +1788,7 @@ MyComponent.propTypes = {
 </script>
 ```
 
-<img src="image/image-20230716100119985.png" alt="image-20230716100119985" style="zoom: 67%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230716100119985.png" alt="image-20230716100119985" style="zoom: 67%;" />
 
 ### 3.4、构造器this.props的bug
 
@@ -1801,7 +1801,7 @@ constructor(props){
 }
 ```
 
-![image-20230716101835730](image/image-20230716101835730.png)
+![image-20230716101835730](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716101835730.png)
 
 如果不给父类传递props，调用`this.props`则会出现结果为`undefined`的bug
 
@@ -1812,7 +1812,7 @@ constructor(props){
 }
 ```
 
-![image-20230716102026799](image/image-20230716102026799.png)
+![image-20230716102026799](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716102026799.png)
 
 ### 3.5 函数式组件使用props
 
@@ -1885,7 +1885,7 @@ function add(acc, amount) {
 }
 ```
 
-![image-20230805161557266](image/image-20230805161557266.png)
+![image-20230805161557266](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805161557266.png)
 
 下面的例子也不是纯函数，因为相同的入参，多次调用会返回不同的结果。
 
@@ -1901,7 +1901,7 @@ function getRandom(num) {
 console.log("getRandom",getRandom(100));
 ```
 
-![image-20230805162158138](image/image-20230805162158138.png)
+![image-20230805162158138](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805162158138.png)
 
 ## 4.refs
 
@@ -1961,7 +1961,7 @@ Refs 提供了一种方式，允许我们访问 DOM 节点或在 `render` 方法
 </script>
 ```
 
-![image-20230716105249582](image/image-20230716105249582.png)
+![image-20230716105249582](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716105249582.png)
 
 **注意**
 
@@ -2007,7 +2007,7 @@ React 也支持另一种设置 refs 的方式，称为“回调 refs”。它能
 </script>
 ```
 
-![image-20230805163047531](image/image-20230805163047531.png)
+![image-20230805163047531](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805163047531.png)
 
 **关于回调 refs 的说明**
 
@@ -2040,13 +2040,13 @@ class Demo extends React.Component {
 
 刚渲染完会调用一次
 
-![image-20230716112051863](image/image-20230716112051863.png)
+![image-20230716112051863](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716112051863.png)
 
 触发模板更新会调用两次（清空控制台，点击`点击切换天气`按钮）
 
 > 第一次传递一个null值把之前的属性清空，再重新赋值。
 
-![image-20230716112120216](image/image-20230716112120216.png)
+![image-20230716112120216](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716112120216.png)
 
 如果不想总是这样重新创建新的函数，可以使用下面的方案
 
@@ -2086,7 +2086,7 @@ React 将在组件挂载时，会调用 `ref` 回调函数并传入 DOM 元素�
 
 > 使用这种方式，渲染时会触发一次，之后无论你怎么更新模板都不会再次触发
 
-![image-20230716113312234](image/image-20230716113312234.png)
+![image-20230716113312234](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716113312234.png)
 
 你可以在组件间传递回调形式的 refs，就像你可以传递通过 `React.createRef()` 创建的对象 refs 一样。
 
@@ -2168,7 +2168,7 @@ class Demo extends React.Component {
 }
 ```
 
-![image-20230716144914470](image/image-20230716144914470.png)
+![image-20230716144914470](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716144914470.png)
 
 ### 4.4、不要过度使用ref
 
@@ -2192,7 +2192,7 @@ class Demo extends React.Component {
 }
 ```
 
-![image-20230716150546859](image/image-20230716150546859.png)
+![image-20230716150546859](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716150546859.png)
 
 ### 4.5 为 DOM 元素添加 ref
 
@@ -2388,7 +2388,7 @@ function CustomTextInput(props) {
 </script>
 ```
 
-![image-20230805171011513](image/image-20230805171011513.png)
+![image-20230805171011513](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805171011513.png)
 
 ## 3.  高阶函数和函数柯里化
 
@@ -2496,7 +2496,7 @@ const data2 = {[field]:"jerry"}
 console.log(data2);
 ```
 
-![image-20230805214123702](image/image-20230805214123702.png)
+![image-20230805214123702](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805214123702.png)
 
 **高阶函数解释**
 
@@ -2517,7 +2517,7 @@ const result = sum(1)(2)(3)
 console.log(result);
 ```
 
-![image-20230805214358025](image/image-20230805214358025.png)
+![image-20230805214358025](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805214358025.png)
 
 **方式一解释**
 
@@ -2554,7 +2554,7 @@ saveFormData = (dataType) => {
 </script>
 ```
 
-![image-20230805230001645](image/image-20230805230001645.png)
+![image-20230805230001645](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805230001645.png)
 
 **方式二解释**
 
@@ -2588,7 +2588,7 @@ saveFormData = (dataType, value) => {
 </script>
 ```
 
-![image-20230805230621238](image/image-20230805230621238.png)
+![image-20230805230621238](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805230621238.png)
 
 # 四、生命周期
 
@@ -2625,7 +2625,7 @@ saveFormData = (dataType, value) => {
 | :--: | :--------------------: | ------------------------------------------------------------ |
 |  1   | componentWillUnmount() | 组将将要被卸载：一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息 |
 
-![react生命周期(旧)](image/eca620dfbbcdc3325be4a1f167f9a4ca2a0dfb7a.png)
+![react生命周期(旧)](https://gitlab.com/apzs/image/-/raw/master/image/eca620dfbbcdc3325be4a1f167f9a4ca2a0dfb7a.png)
 
 在最新的react版本中，有些生命周期钩子被抛弃了，具体函数如下：
 
@@ -2664,7 +2664,7 @@ saveFormData = (dataType, value) => {
 | :--: | :--------------------: | ------------------------------------------------------------ |
 |  1   | componentWillUnmount() | 组将将要被卸载：一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息 |
 
-![image-20221023222949399](image/1ad3acfd13159cfdc364a487dfc4335f7a9a1a06.png)
+![image-20221023222949399](https://gitlab.com/apzs/image/-/raw/master/image/1ad3acfd13159cfdc364a487dfc4335f7a9a1a06.png)
 
 ## 2. 初始化阶段（旧）
 
@@ -2793,7 +2793,7 @@ class Demo extends React.Component {
 </script>
 ```
 
-![image-20230716203124548](image/image-20230716203124548.png)
+![image-20230716203124548](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716203124548.png)
 
 ## 3. 初始化阶段（新）
 
@@ -2988,7 +2988,7 @@ ReactDOM.render(<A />, document.getElementById('test'))
 </script>
 ```
 
-![image-20230716213708943](image/image-20230716213708943.png)
+![image-20230716213708943](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716213708943.png)
 
 ### 3.2 shouldComponentUpdate
 
@@ -3106,11 +3106,11 @@ componentDidUpdate(prevProps,prevState,snapshotValue) {
 
 点击`点我+1`触发的事件：
 
-![image-20230716205227100](image/image-20230716205227100.png)
+![image-20230716205227100](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716205227100.png)
 
 点击`不更改任何状态中的数据，强制更新一下`触发的更新
 
-![image-20230716211536227](image/image-20230716211536227.png)
+![image-20230716211536227](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716211536227.png)
 
 ## 更新阶段（新）
 
@@ -3146,7 +3146,7 @@ static getDerivedStateFromProps(props,state){
 
 在一个区域内，定时的输出以行话，如果内容大小超过了区域大小，就出现滚动条，但是内容不进行移动 
 
-![BeforeGender](image/0ce6f820adb5b75e44b1df2332caa58bb8eaa257.gif)
+![BeforeGender](https://gitlab.com/apzs/image/-/raw/master/image/0ce6f820adb5b75e44b1df2332caa58bb8eaa257.gif)
 
 如上面的动图：区域内部的内容展现没有变化，但是可以看见滚动条在变化，也就是说上面依旧有内容在输出，只不过不在这个区域内部展现。
 
@@ -3319,7 +3319,7 @@ componentDidUpdate(preProps,preState,height){
 </script>
 ```
 
-![image-20230717140138625](image/image-20230717140138625.png)
+![image-20230717140138625](https://gitlab.com/apzs/image/-/raw/master/image/image-20230717140138625.png)
 
 ## 5.卸载组件
 
@@ -3655,7 +3655,7 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算�
 </script>
 ```
 
-![image-20230806151056415](image/image-20230806151056415.png)
+![image-20230806151056415](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806151056415.png)
 
 页面展示：
 
@@ -3689,7 +3689,7 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算�
 </script>
 ```
 
-![image-20230806151257788](image/image-20230806151257788.png)
+![image-20230806151257788](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806151257788.png)
 
 ### 1.2 三目运算符
 
@@ -3720,7 +3720,7 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算�
 </script>
 ````
 
-![image-20230806151559512](image/image-20230806151559512.png)
+![image-20230806151559512](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806151559512.png)
 
 ### 1.3 与运算符&&
 
@@ -3749,7 +3749,7 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算�
 </script>
 ````
 
-![image-20230806151957194](image/image-20230806151957194.png)
+![image-20230806151957194](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806151957194.png)
 
 之所以能这样做，是因为在 JavaScript 中，`true && expression` 总是会返回 `expression`, 而 `false && expression` 总是会返回 `false`。
 
@@ -3795,7 +3795,7 @@ render() {
 </script>
 ```
 
-![image-20230806152056415](image/image-20230806152056415.png)
+![image-20230806152056415](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806152056415.png)
 
 声明一个变量并使用 `if` 语句进行条件渲染是不错的方式，但有时你可能会想使用更为简洁的语法，那就是内联条件渲染的方法与运算和三目运算符
 
@@ -3840,15 +3840,15 @@ render() {
 
 初始情况：
 
-![image-20230806153211888](image/image-20230806153211888.png)
+![image-20230806153211888](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806153211888.png)
 
 点击`Hide`后：
 
-![image-20230806153221734](image/image-20230806153221734.png)
+![image-20230806153221734](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806153221734.png)
 
 点击`Show`后：
 
-![image-20230806153250205](image/image-20230806153250205.png)
+![image-20230806153250205](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806153250205.png)
 
 在组件的 `render` 方法中返回 `null` 并不会影响组件的生命周期。例如，上面这个示例中，`componentDidUpdate` 依然会被调用。
 
@@ -3901,7 +3901,7 @@ const listItems = numbers.map((number) =>  <li>{number}</li>);
 
 这段代码生成了一个 1 到 5 的项目符号列表。
 
-![image-20230806222903272](image/image-20230806222903272.png)
+![image-20230806222903272](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806222903272.png)
 
 ### 2.2 基础列表组件
 
@@ -3927,7 +3927,7 @@ const listItems = numbers.map((number) =>  <li>{number}</li>);
 </script>
 ```
 
-![image-20230806223304340](image/image-20230806223304340.png)
+![image-20230806223304340](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806223304340.png)
 
 当我们运行这段代码，将会看到一个警告 `a key should be provided for list items`，意思是当你创建一个元素时，必须包括一个特殊的 `key` 属性。我们将在下一节diff算法中讨论这是为什么。
 
@@ -3954,7 +3954,7 @@ const listItems = numbers.map((number) =>  <li>{number}</li>);
 </script>
 ```
 
-![image-20230806223403246](image/image-20230806223403246.png)
+![image-20230806223403246](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806223403246.png)
 
 ## 3. key
 
@@ -4215,7 +4215,7 @@ this.state.person.map((preson,index)=>{
 
 如下图展现在页面中：
 
-![image-20221024225054061](image/ad5611b1f134b0a842dd2365db974714c98f6a9c.png)
+![image-20221024225054061](https://gitlab.com/apzs/image/-/raw/master/image/ad5611b1f134b0a842dd2365db974714c98f6a9c.png)
 
 此时，我们想在点击按钮之后动态的添加一个对象，并且放入到li标签中，在重新渲染到页面中。
 
@@ -4232,11 +4232,11 @@ addObject = () =>{
 
 如下动图所示：
 
-![addObject](image/ff6d81e4297b4798020721e60df525a2036f796e.gif)
+![addObject](https://gitlab.com/apzs/image/-/raw/master/image/ff6d81e4297b4798020721e60df525a2036f796e.gif)
 
 这样看，虽然完成了功能。但是其实存在效率上的问题， 我们先来看一下两个前后组件状态的变化：
 
-![image-20221024225208300](image/21767b62ed6cd7f93b146dccdbe4b7007ab00c14.png)
+![image-20221024225208300](https://gitlab.com/apzs/image/-/raw/master/image/21767b62ed6cd7f93b146dccdbe4b7007ab00c14.png)
 
 我们发现，组件第一个变成了王五，张三和李四都移下去了。因为我们使用Index作为Key，这三个标签的key也就发生了改变【张三原本的key是0，现在变成了1，李四的key原本是1，现在变成了2，王五变成了0】
 
@@ -4304,4 +4304,4 @@ React元素不是DOM对象，那为什么可以被添加到页面中去呢？实
 
 最后，我们手动操作DOM时，由于无法完全掌握全局DOM情况，经常会出现不必要的DOM操作，比如，本来只需要修改一个子节点，但却不小心修改了父节点，导致所有的子节点都被修改。效果呈现上可能没有什么问题，但是性能上确实千差万别，修改一个节点和修改多个节点对于系统的消耗可是完全不同的。然而在虚拟DOM中，引入了diff算法，React元素在更新时会通过diff算法和之前的元素进行比较，然后只会对DOM做必要的更新来呈现结果。简单来说，就是拿新建的元素和旧的元素进行比较，只对发生变化的部分对DOM进行更新，减少DOM的操作，从而提升了性能。
 
-![image-20221025135929891](image/d343f27193258344b3ef4adf5b0f7f0f3f558a66.png)
+![image-20221025135929891](https://gitlab.com/apzs/image/-/raw/master/image/d343f27193258344b3ef4adf5b0f7f0f3f558a66.png)

@@ -87,7 +87,7 @@ function App() {
 }
 ```
 
-![image-20221027201435122](https://i0.hdslb.com/bfs/album/3a8c62e2e92fc6adc7ae1e70cb0f39c18de3bb76.png)
+![image-20221027201435122](https://gitlab.com/apzs/image/-/raw/master/image/3a8c62e2e92fc6adc7ae1e70cb0f39c18de3bb76.png)
 
 **`调用 useState` 方法的时候做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但是我们可以叫他任何名字，比如 `banana`。这是一种在函数调用时保存变量的方式 —— `useState` 是一种新方法，它与 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就会”消失”，而 state 中的变量会被 React 保留。
 
@@ -223,7 +223,7 @@ export default class App extends Component {
 }
 ```
 
-![GIF 2023-8-26 22-53-35](image/GIF%202023-8-26%2022-53-35.gif)
+![GIF 2023-8-26 22-53-35](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-26%2022-53-35.gif)
 
 在函数式组件中也可以实现，它采用的是 `Effect Hook` ，它的语法更加的简单，同时融合了 `componentDidUpdata` 生命周期，极大的方便了我们的开发，`Effect Hook` 可以让你在函数组件中执行副作用操作，专门用来处理那些不能直接写在组件内部的代码。
 
@@ -289,11 +289,11 @@ export default function App() {
 
 没有设置useEffect函数的第二个参数时，count或random的状态改变后都会执行`useEffect`函数，而count和random的状态没有改变时不会执行`useEffect`函数（但会重新调用App函数以渲染视图，读者可以在App函数里输出一下试试）
 
-<img src="image/GIF%202023-8-27%2015-47-31.gif" alt="GIF 2023-8-27 15-47-31" style="zoom:50%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2015-47-31.gif" alt="GIF 2023-8-27 15-47-31" style="zoom:50%;" />
 
 设置`useEffect`函数的第二个参数为`[count]`之后，只有`count`的状态改变后才执行`useEffect`函数，而`count`和`random`的状态没有改变或只改变`random`的状态时并不会执行`useEffect`函数（但会重新调用App函数以渲染视图，读者可以在App函数里输出一下试试）
 
-<img src="image/GIF%202023-8-27%2015-38-54.gif" alt="GIF 2023-8-27 15-38-54" style="zoom:50%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2015-38-54.gif" alt="GIF 2023-8-27 15-38-54" style="zoom:50%;" />
 
 ### 3.5 组件销毁时执行
 
@@ -311,7 +311,7 @@ useEffect(() => {
 
 我们有如下需求：首先需要一个定时器，初始时定时器的值为0，随后每1秒自动增加1，我们点击`点我+1`按钮后值可以立即加一，当点击卸载组件时清除定时器。
 
-<img src="image/GIF%202023-8-27%2016-25-28.gif" alt="GIF 2023-8-27 16-25-28" style="zoom:50%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2016-25-28.gif" alt="GIF 2023-8-27 16-25-28" style="zoom:50%;" />
 
 `src/App.jsx`：我们在`useEffect`函数的第二个参数里传入一个空数组，即任何变量的更新都不会重新执行`useEffect`里的函数，这样做的目的是避免重复创建定时器，最后导致数据呈指数级增长从而导致内存溢出，同时我们的第一个参数有一个高阶函数的返回值，当我们卸载组件时会执行这个高阶函数。
 
@@ -388,7 +388,7 @@ export default function App(){
 }
 ```
 
-![GIF 2023-8-27 16-48-35](image/GIF%202023-8-27%2016-48-35.gif)
+![GIF 2023-8-27 16-48-35](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2016-48-35.gif)
 
 ## 完整代码
 
@@ -452,7 +452,7 @@ root.render(
 export default root
 ```
 
-![GIF 2023-8-27 17-14-59](image/GIF%202023-8-27%2017-14-59.gif)
+![GIF 2023-8-27 17-14-59](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2017-14-59.gif)
 
 
 
@@ -500,7 +500,7 @@ function Demo(props) {
 }
 ```
 
-![GIF 2023-8-27 17-10-01](image/GIF%202023-8-27%2017-10-01.gif)
+![GIF 2023-8-27 17-10-01](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2017-10-01.gif)
 
 ## 5 React.StrictMode 严格模式
 
@@ -656,7 +656,7 @@ function Counter({initialCount}) {
 }
 ```
 
-![image-20221030143937094](https://i0.hdslb.com/bfs/album/08a8b739d946a92c01ec286bfce8b81771a42e71.png)
+![image-20221030143937094](https://gitlab.com/apzs/image/-/raw/master/image/08a8b739d946a92c01ec286bfce8b81771a42e71.png)
 
 ### 5.3 跳过 dispatch
 
@@ -717,7 +717,7 @@ function A() {
 
 当APP组件重新渲染时，A组件也会重新渲染。A组件中没有state，甚至连props都没有设置。换言之，A组件无论如何渲染，每次渲染的结果都是相同的，虽然重渲染并不会应用到真实DOM上，但很显然这种渲染是完全没有必要的。
 
-![image-20221030172720453](https://i0.hdslb.com/bfs/album/86fdfde2cc02ab0826730bc14eefc637c2696ecd.png)
+![image-20221030172720453](https://gitlab.com/apzs/image/-/raw/master/image/86fdfde2cc02ab0826730bc14eefc637c2696ecd.png)
 
 为了减少像A组件这样组件的渲染，React为我们提供了一个方法`React.memo()`。该方法是一个高阶函数，可以用来根据组件的props对组件进行缓存，当一个组件的父组件发生重新渲染，而子组件的props没有发生变化时，它会直接将缓存中的组件渲染结果返回而不是再次触发子组件的重新渲染，这样一来就大大的降低了子组件重新渲染的次数。
 
@@ -758,7 +758,7 @@ const A = React.memo(() => {
 
 在点击增加后，我们发现只有`App`重新渲染了。
 
-![image-20221030173239606](https://i0.hdslb.com/bfs/album/0a613f29500b63ae26e2db2870ef9c18f3e7815f.png)
+![image-20221030173239606](https://gitlab.com/apzs/image/-/raw/master/image/0a613f29500b63ae26e2db2870ef9c18f3e7815f.png)
 
 这时我们改下代码
 
@@ -801,11 +801,11 @@ const A = React.memo(props => {
 
 这时界面是这样的
 
-![image-20221030174105525](https://i0.hdslb.com/bfs/album/9ddba53bea0c611e1c3e2837761f2b60f2f29322.png)
+![image-20221030174105525](https://gitlab.com/apzs/image/-/raw/master/image/9ddba53bea0c611e1c3e2837761f2b60f2f29322.png)
 
 点击3次后，表达式为`true`，A组件的`props`发生改变，所以重新渲染了。
 
-![image-20221030173754653](https://i0.hdslb.com/bfs/album/0f5ff4c127b4d404f1207ccbf497a5cd271d4651.png)
+![image-20221030173754653](https://gitlab.com/apzs/image/-/raw/master/image/0f5ff4c127b4d404f1207ccbf497a5cd271d4651.png)
 
 ### 1.4 使用注意
 
@@ -852,7 +852,7 @@ const A = React.memo(props => {
 
 点击`A组件的增加`,发现`A组件`也重新渲染了
 
-![image-20221030175830062](https://i0.hdslb.com/bfs/album/3e8995b7352d72b47e772ea6c7fed94ef1531267.png)
+![image-20221030175830062](https://gitlab.com/apzs/image/-/raw/master/image/3e8995b7352d72b47e772ea6c7fed94ef1531267.png)
 
 这是因为`App组件`重新渲染的时候，`clickHandler`也重新创建了，这时传递给子组件的`clickHandler`和上一次不一样，所以`react.memo`失效了。
 
@@ -948,7 +948,7 @@ function Foo() {
 
 点击`A组件的增加`,发现只有`App组件`重新渲染了。因为`clickHandler`没有重新创建，传给子组件的没有变化，所以子组件这次没有重新渲染。
 
-![image-20221030180349406](https://i0.hdslb.com/bfs/album/2e7d34de3518ecb98ac3433cae205a4683a069f5.png)
+![image-20221030180349406](https://gitlab.com/apzs/image/-/raw/master/image/2e7d34de3518ecb98ac3433cae205a4683a069f5.png)
 
 **完整代码**
 
@@ -1026,7 +1026,7 @@ const A = React.memo(props => {
 
 增加了一个`num`，让每一次`count`的增加比上次多1，现在这样写是有问题的。
 
-![image-20221030181249832](https://i0.hdslb.com/bfs/album/2e04eb7727a7b875a3b771761c4c4d2ac9e30b04.png)
+![image-20221030181249832](https://gitlab.com/apzs/image/-/raw/master/image/2e04eb7727a7b875a3b771761c4c4d2ac9e30b04.png)
 
 点击了两次增加后，预期值应该是4，但是显示的是3，是为什么呢？
 
@@ -1043,7 +1043,7 @@ const clickHandler = useCallback(() => {
 
 这样`num`变化了，这个函数也会重新创建。
 
-![image-20221030181534667](https://i0.hdslb.com/bfs/album/d1f9956dac9668ab3c7af6dc5f093f1155f39d6b.png)
+![image-20221030181534667](https://gitlab.com/apzs/image/-/raw/master/image/d1f9956dac9668ab3c7af6dc5f093f1155f39d6b.png)
 
 点击了两次增加后，count变成了预期值4。
 
@@ -1092,7 +1092,7 @@ export default App
 
 这是一个计数器案例，但是多添加了一个函数展示结果，这种情况这个函数只需要在一开始调用一次就够了，但是`count`的改变会导致重新渲染模板，这样`sum`函数也会反复执行。
 
-![image-20221107143139632](https://i0.hdslb.com/bfs/album/2e224dfe8aa7df39ae77c2d98bede3d590d7d1b8.png)
+![image-20221107143139632](https://gitlab.com/apzs/image/-/raw/master/image/2e224dfe8aa7df39ae77c2d98bede3d590d7d1b8.png)
 
 现在这个`sum`函数太简单了，体现不出性能上的问题，我们可以把sum中的逻辑改复杂一点。
 
@@ -1128,7 +1128,7 @@ export default App
 
 增加了一个功能，让这个函数起码3秒才能执行完。
 
-![image-20221107143451560](https://i0.hdslb.com/bfs/album/67454e5c8256260a19f3cc84d2b1da78935ec5d3.png)
+![image-20221107143451560](https://gitlab.com/apzs/image/-/raw/master/image/67454e5c8256260a19f3cc84d2b1da78935ec5d3.png)
 
 这个时候因为`sum`函数要3秒才能执行完，导致下面数字显示也变慢了3秒。
 
@@ -1142,7 +1142,7 @@ export default App
 <p>sum的结果：{useMemo(() => sum(a, b), [])}</p>
 ```
 
-![image-20221107143946116](https://i0.hdslb.com/bfs/album/790ec03b82b253c6a80c823542d21b745adb8035.png)
+![image-20221107143946116](https://gitlab.com/apzs/image/-/raw/master/image/790ec03b82b253c6a80c823542d21b745adb8035.png)
 
 第一次加载慢是不可避免的，但是这个钩子函数将`sum`函数的返回值缓存起来，这样我们模板重新渲染时就没有再去执行`sum`函数，而是直接使用上一次的返回值。
 
@@ -1194,7 +1194,7 @@ export default App
 
 现在有一个问题，如果`Sum`组件接收的值变化了，网页上显示的还是原来的缓存值，这个时候就要利用第二个参数。
 
-![image-20221107145159066](https://i0.hdslb.com/bfs/album/deecc395220dcff4c6c9acb8b71bbda6ca6a5ae7.png)
+![image-20221107145159066](https://gitlab.com/apzs/image/-/raw/master/image/deecc395220dcff4c6c9acb8b71bbda6ca6a5ae7.png)
 
 `App.jsx`
 
@@ -1204,7 +1204,7 @@ const result = useMemo(() => <Sum a={a} b={b} />, [a])
 
 > 这里的意思和以前是一样的，如果`a`的值变化了，将会重新计算。
 
-![image-20221107145403725](https://i0.hdslb.com/bfs/album/931d55fbd9ffca98894a4b8178c8da9751231923.png)
+![image-20221107145403725](https://gitlab.com/apzs/image/-/raw/master/image/931d55fbd9ffca98894a4b8178c8da9751231923.png)
 
 ## 4.React.forwardRef
 
@@ -1245,7 +1245,7 @@ export default function App() {
 
 因此，当 React 附加了 ref 属性之后，`ref.current` 将直接指向 `<input>` DOM 元素实例。
 
-![image-20221107150428406](https://i0.hdslb.com/bfs/album/1cb30d9536293b08fe2097448858e58e3826a242.png)
+![image-20221107150428406](https://gitlab.com/apzs/image/-/raw/master/image/1cb30d9536293b08fe2097448858e58e3826a242.png)
 
 我们改造`App`组件
 
@@ -1264,7 +1264,7 @@ export default function App() {
 }
 ```
 
-![image-20221107150535398](https://i0.hdslb.com/bfs/album/97b65dfb2775fb6d2b94e3e7e0bd1c57a0f45571.png)
+![image-20221107150535398](https://gitlab.com/apzs/image/-/raw/master/image/97b65dfb2775fb6d2b94e3e7e0bd1c57a0f45571.png)
 
 我们可以直接在`App`组件操作`Child`组件的内容，但是这样并不好，我们希望`Child`组件的内容只由`Child`组件自己去操作，所以引出了`useImperativeHandle`
 
@@ -1318,10 +1318,10 @@ export default function App() {
 
 我们来看看`childRef`的输出是什么
 
-![image-20221107151926890](https://i0.hdslb.com/bfs/album/bf501a8976223d92e9330a13aadba40a623e73b0.png)
+![image-20221107151926890](https://gitlab.com/apzs/image/-/raw/master/image/bf501a8976223d92e9330a13aadba40a623e73b0.png)
 
 可以发现我们把子组件的`changeInputValue`暴露出去了。
 
-![image-20221107152122394](https://i0.hdslb.com/bfs/album/fb13b0f4d452eae98a26edeabc03076defb73f52.png)
+![image-20221107152122394](https://gitlab.com/apzs/image/-/raw/master/image/fb13b0f4d452eae98a26edeabc03076defb73f52.png)
 
 点击按钮发现也是可以正常使用的。

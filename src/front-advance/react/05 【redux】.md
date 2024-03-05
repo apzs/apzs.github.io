@@ -56,7 +56,7 @@ Redux可以理解为是reducer和context的结合体，使用Redux即可管理�
 
 除此之外，还有很多情况都需要使用 Redux 来实现
 
-![image-20221030202337038](https://i0.hdslb.com/bfs/album/f78372dd1bfa1c1930fa8f653d2d8372b92887e5.png)
+![image-20221030202337038](](https://gitlab.com/apzs/image/-/raw/master/image/f78372dd1bfa1c1930fa8f653d2d8372b92887e5.png)
 
 如上图所示，`redux` 通过将所有的 `state` 集中到组件顶部，能够灵活的将所有 `state` 各取所需地分发给所有的组件。
 
@@ -68,7 +68,7 @@ Redux可以理解为是reducer和context的结合体，使用Redux即可管理�
 
 ## 4.Redux 的工作流程
 
-![redux原理图](image/redux%E5%8E%9F%E7%90%86%E5%9B%BE.png)
+![redux原理图](https://gitlab.com/apzs/image/-/raw/master/image/redux%E5%8E%9F%E7%90%86%E5%9B%BE.png)
 
 如上图所示，`redux` 的工作流程大致如下：
 
@@ -88,7 +88,7 @@ Redux可以理解为是reducer和context的结合体，使用Redux即可管理�
 
 网页中我们实现一个简单的计数器功能，页面长成这样：
 
-![image-20230815214626435](image/image-20230815214626435.png)
+![image-20230815214626435](https://gitlab.com/apzs/image/-/raw/master/image/image-20230815214626435.png)
 
 ```html
 <button id="btn01">增加2</button>
@@ -1197,7 +1197,7 @@ export default createStore(countReducer,composeWithDevTools(applyMiddleware(thun
 
 然后安装`Redux DevTools`即可
 
-![image-20230822222701679](image/image-20230822222701679.png)
+![image-20230822222701679](https://gitlab.com/apzs/image/-/raw/master/image/image-20230822222701679.png)
 
 ## 8.多个Reducer
 
@@ -1273,7 +1273,7 @@ react_staging
 
 **实现效果**
 
-<img src="image/GIF%202023-8-22%2013-49-09.gif" alt="GIF 2023-8-22 13-49-09" style="zoom:67%;" />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-22%2013-49-09.gif" alt="GIF 2023-8-22 13-49-09" style="zoom:67%;" />
 
 **完整代码**
 
@@ -1950,7 +1950,7 @@ yarn add react-redux @reduxjs/toolkit
 
 创建 slice 需要一个字符串名称来标识切片、一个初始 state 以及一个或多个定义了该如何更新 state 的 reducer 函数。slice 创建后 ，我们可以导出 slice 中生成的 Redux action creators 和 reducer 函数。
 
-![image-20221031123543763](https://i0.hdslb.com/bfs/album/25d2cece6e104dafc01ff6febf4205f0faafe145.png)
+![image-20221031123543763](](https://gitlab.com/apzs/image/-/raw/master/image/25d2cece6e104dafc01ff6febf4205f0faafe145.png)
 
 `store/features/counterSlice.js`
 
@@ -2002,7 +2002,7 @@ createSlice是一个全自动的创建reducer切片的方法，在它的内部�
 
 我们可以看看`counterSlice`和`counterSlice.actions`是什么样子
 
-![image-20221031124548096](https://i0.hdslb.com/bfs/album/684818e55ffb553b7e892c4da0c9241a9c9635aa.png)
+![image-20221031124548096](](https://gitlab.com/apzs/image/-/raw/master/image/684818e55ffb553b7e892c4da0c9241a9c9635aa.png)
 
 ### 3.2 将 Slice Reducers 添加到 Store 中
 
@@ -2087,7 +2087,7 @@ export default function App() {
 }
 ```
 
-![image-20221031125215129](https://i0.hdslb.com/bfs/album/826b0650e7680a37377945d4af438e5781653601.png)
+![image-20221031125215129](](https://gitlab.com/apzs/image/-/raw/master/image/826b0650e7680a37377945d4af438e5781653601.png)
 
 现在，每当你点击”递增“和“递减”按钮。
 
@@ -2287,7 +2287,7 @@ export default counterSlice.reducer
 
 `incrementByAmount`的`action`参数
 
-![image-20221031135743580](https://i0.hdslb.com/bfs/album/8922872833364c0a58fce00b9f48b1673497c582.png)
+![image-20221031135743580](](https://gitlab.com/apzs/image/-/raw/master/image/8922872833364c0a58fce00b9f48b1673497c582.png)
 
 ### 5.2 传递参数
 
@@ -2314,7 +2314,7 @@ export default function App() {
 }
 ```
 
-![image-20221031135809294](https://i0.hdslb.com/bfs/album/0532fd6d2997236a9cd9785fbb4c570ca14294cd.png)
+![image-20221031135809294](](https://gitlab.com/apzs/image/-/raw/master/image/0532fd6d2997236a9cd9785fbb4c570ca14294cd.png)
 
 注意这里reducer的action中如果要传入参数，只能是一个payload，如果是多个参数的情况，那就需要封装成一个payload的对象。
 
@@ -2440,9 +2440,9 @@ export const todoSlice = createSlice({
 })
 ```
 
-![image-20221031151023678](https://i0.hdslb.com/bfs/album/14de82a82d9aafe1d596aba45868e51ea1aca5e6.png)
+![image-20221031151023678](](https://gitlab.com/apzs/image/-/raw/master/image/14de82a82d9aafe1d596aba45868e51ea1aca5e6.png)
 
-![image-20221031151138719](https://i0.hdslb.com/bfs/album/1ff5eeaa69ef4cc93cce72f5b48f0650c02929e5.png)
+![image-20221031151138719](](https://gitlab.com/apzs/image/-/raw/master/image/1ff5eeaa69ef4cc93cce72f5b48f0650c02929e5.png)
 
 ## 6.异步逻辑与数据请求
 
@@ -2551,7 +2551,7 @@ export default function App() {
 }
 ```
 
-![image-20221031171739218](https://i0.hdslb.com/bfs/album/0d1821f7e40c5806f0de11044594080898978abb.png)
+![image-20221031171739218](](https://gitlab.com/apzs/image/-/raw/master/image/0d1821f7e40c5806f0de11044594080898978abb.png)
 
 ### 6.4 编写异步 Thunks
 
@@ -2643,13 +2643,13 @@ Payload creator 通常会进行某种 AJAX 调用，并且可以直接从 AJAX �
 
 当调用 `dispatch(getMovieData())` 的时候，`getMovieData` 这个 thunk 会首先 dispatch 一个 action 类型为`'movie/getMovie/pending'`：
 
-![image-20221031180756586](https://i0.hdslb.com/bfs/album/9be6ef4c8ae21c2620a5e397d99cfe7f4d2865c2.png)
+![image-20221031180756586](](https://gitlab.com/apzs/image/-/raw/master/image/9be6ef4c8ae21c2620a5e397d99cfe7f4d2865c2.png)
 
 我们可以在我们的 reducer 中监听这个 action 并将请求状态标记为 “loading 正在加载”。
 
 一旦 `Promise` 成功，`getMovieData` thunk 会接受我们从回调中返回的 `response.data` ，并 dispatch 一个 action，action 的 payload 为 接口返回的数据（`response.data` ），action 的 类型为 `'movie/getMovie/fulfilled'`。
 
-![image-20221031180934282](https://i0.hdslb.com/bfs/album/159df9d98522a45641396216dba60a03baec4a71.png)
+![image-20221031180934282](](https://gitlab.com/apzs/image/-/raw/master/image/159df9d98522a45641396216dba60a03baec4a71.png)
 
 ### 6.6 使用 extraReducers
 
@@ -2762,7 +2762,7 @@ function Movie() {
 export default Movie
 ```
 
-![image-20221031182248330](https://i0.hdslb.com/bfs/album/84d47a7b89855f8182268804f9dfdfcf232fc632.png)
+![image-20221031182248330](](https://gitlab.com/apzs/image/-/raw/master/image/84d47a7b89855f8182268804f9dfdfcf232fc632.png)
 
 `createAsyncThunk `可以写在任何一个slice的`extraReducers`中，它接收2个参数，
 
@@ -2861,7 +2861,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 最终效果：
 
-![image-20221105211826950](https://i0.hdslb.com/bfs/album/97d4bbd5610cc930365efd8ecfb63a83174a9ce4.png)
+![image-20221105211826950](](https://gitlab.com/apzs/image/-/raw/master/image/97d4bbd5610cc930365efd8ecfb63a83174a9ce4.png)
 
 ### 7.3 让每一个仓库单独存储
 
@@ -2927,5 +2927,5 @@ export const persistor = persistStore(store)
 
 效果：
 
-![image-20221105212117068](https://i0.hdslb.com/bfs/album/4825fcc8afd830b4099bd1e772c76e4266c529d1.png)
+![image-20221105212117068](](https://gitlab.com/apzs/image/-/raw/master/image/4825fcc8afd830b4099bd1e772c76e4266c529d1.png)
 

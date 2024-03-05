@@ -16,7 +16,7 @@ this.setState({
 
 这里我们做一个案例，点我加 1，一个按钮一个值，我要在控制台输出每次的 `count` 的值
 
-![image-20221027095114944](https://i0.hdslb.com/bfs/album/b1ad03d5936d35f609b52f853a640e207e6a0048.png)
+![image-20221027095114944](https://gitlab.com/apzs/image/-/raw/master/image/b1ad03d5936d35f609b52f853a640e207e6a0048.png)
 
 那我们需要在控制台输出，要如何实现呢？
 
@@ -34,7 +34,7 @@ add = () => {
 
 因此可能会写出这样的代码，看起来很合理，在调用完 `setState` 之后，输出 `count`
 
-![image-20221027095134650](https://i0.hdslb.com/bfs/album/a4746c99b4345fa4e08eec081fcc0d9fb7a7553b.png)
+![image-20221027095134650](https://gitlab.com/apzs/image/-/raw/master/image/a4746c99b4345fa4e08eec081fcc0d9fb7a7553b.png)
 
 我们发现显示的 `count` 和我们控制台输出的 `count` 值是不一样的
 
@@ -64,7 +64,7 @@ add = () => {
 
 我们将 `setState` 填上第二个参数，输出更新后的 `count` 值
 
-![image-20221027173513180](https://i0.hdslb.com/bfs/album/1c7c4bf62e9cbb2e581f9e5ff2552901cde64074.png)
+![image-20221027173513180](https://gitlab.com/apzs/image/-/raw/master/image/1c7c4bf62e9cbb2e581f9e5ff2552901cde64074.png)
 
 这样我们就能成功的获取到最新的数据了，如果有这个需求我们可以在第二个参数输出噢~
 
@@ -96,7 +96,7 @@ add = () => {
 }
 ```
 
-![image-20221027173515460](https://i0.hdslb.com/bfs/album/1c7c4bf62e9cbb2e581f9e5ff2552901cde64074.png)
+![image-20221027173515460](https://gitlab.com/apzs/image/-/raw/master/image/1c7c4bf62e9cbb2e581f9e5ff2552901cde64074.png)
 
 我们也成功的实现了
 
@@ -495,7 +495,7 @@ export default App;
 
 点击按钮后即可展示抛出异常时，应该渲染的降级UI：
 
-![image-20221027094444543](https://i0.hdslb.com/bfs/album/3269915e4f64c035ae9e3ce91a8bc1af11881fbd.png)
+![image-20221027094444543](https://gitlab.com/apzs/image/-/raw/master/image/3269915e4f64c035ae9e3ce91a8bc1af11881fbd.png)
 
 ### 3.3 让子组件不影响父组件正常显示案例
 
@@ -549,7 +549,7 @@ class B extends Component {
 }
 ```
 
-<img src="https://i0.hdslb.com/bfs/album/b79f78aeb57461debfea87d644ea5c8e4baec625.png" alt="image-20221027190233518"  />
+<img src="https://gitlab.com/apzs/image/-/raw/master/image/b79f78aeb57461debfea87d644ea5c8e4baec625.png" alt="image-20221027190233518"  />
 
 ### 3.4 使用错误边界需要注意什么
 
@@ -567,7 +567,7 @@ class B extends Component {
 
 懒加载在 React 中用的最多的就是路由组件了，页面刷新时，所有的页面都会重新加载，这并不是我们想要的，我们想要实现点击哪个路由链接再加载即可，这样避免了不必要的加载
 
-![image-20221027095740307](https://i0.hdslb.com/bfs/album/ab202fe40dbd0d4437efa829614f5f366d1da52b.png)
+![image-20221027095740307](https://gitlab.com/apzs/image/-/raw/master/image/ab202fe40dbd0d4437efa829614f5f366d1da52b.png)
 
 我们可以发现，我们页面一加载时，所有的路由组件都会被加载
 
@@ -591,7 +591,7 @@ const About = lazy(() => import('./About'))
 
 采用 `lazy` 函数包裹
 
-![image-20221027095800440](https://i0.hdslb.com/bfs/album/956ae433c7a0f17a76ea7e5665e8f2e94ab3b925.png)
+![image-20221027095800440](https://gitlab.com/apzs/image/-/raw/master/image/956ae433c7a0f17a76ea7e5665e8f2e94ab3b925.png)
 
 我们会遇到这样的错误，提示我们用一个标签包裹
 
@@ -610,11 +610,11 @@ const About = lazy(() => import('./About'))
 
 初次登录页面的时候
 
-![image-20221027100147592](https://i0.hdslb.com/bfs/album/97dbf644b51f4a7e39ea6b28f99dc498ec08ecb1.png)
+![image-20221027100147592](https://gitlab.com/apzs/image/-/raw/master/image/97dbf644b51f4a7e39ea6b28f99dc498ec08ecb1.png)
 
 注意噢，这些文件都不是路由组件，当我们点击了对应组件之后才会加载
 
-![68747470733a2f2f6c6a63696d672e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f696d672f72656163742d657874656e73696f6e2d6c617a796c6f61642d332e676966](https://i0.hdslb.com/bfs/album/b03697901855aaabe2ca5aab01a20dfcbead7cd5.gif)
+![68747470733a2f2f6c6a63696d672e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f696d672f72656163742d657874656e73696f6e2d6c617a796c6f61642d332e676966](https://gitlab.com/apzs/image/-/raw/master/image/b03697901855aaabe2ca5aab01a20dfcbead7cd5.gif)
 
 从上图我们可以看出，每次点击时，才会去请求 `chunk` 文件
 
@@ -626,7 +626,7 @@ const About = lazy(() => import('./About'))
 
 我们编写组件的时候每次都需要采用一个 `div` 标签包裹，才能让它正常的编译，但是这样会引发什么问题呢？我们打开控制台看看它的层级
 
-![image-20221027100328758](https://i0.hdslb.com/bfs/album/2971587bd1dbd9d07893218a1c5a86381692b3bf.png)
+![image-20221027100328758](https://gitlab.com/apzs/image/-/raw/master/image/2971587bd1dbd9d07893218a1c5a86381692b3bf.png)
 
 它包裹了几层无意义的 div 标签，我们可以采用 `Fragment` 来解决这个问题
 
@@ -801,7 +801,7 @@ class B extends PureComponent{
 
 点击按钮后不会有任何变化，render函数也没有调用
 
-![image-20221027191454468](https://i0.hdslb.com/bfs/album/fb16728a87c04da136da2a965d4980bd70580234.png)
+![image-20221027191454468](https://gitlab.com/apzs/image/-/raw/master/image/fb16728a87c04da136da2a965d4980bd70580234.png)
 
 修改代码
 
@@ -815,7 +815,7 @@ handleClick = () => {
 
 点击按钮后只有`A`组件的`render`函数会调用
 
-![image-20221027192124322](https://i0.hdslb.com/bfs/album/f0022ed007d420efc7b284799314e5f2bfa944db.png)
+![image-20221027192124322](https://gitlab.com/apzs/image/-/raw/master/image/f0022ed007d420efc7b284799314e5f2bfa944db.png)
 
 修改代码
 
@@ -827,7 +827,7 @@ handleClick = () => {
 }
 ```
 
-![image-20221027192253591](https://i0.hdslb.com/bfs/album/8cb94c97d7c461cc870ad0e5cb3a1e370d33f95c.png)
+![image-20221027192253591](https://gitlab.com/apzs/image/-/raw/master/image/8cb94c97d7c461cc870ad0e5cb3a1e370d33f95c.png)
 
 点击后不会有任何变化，`render`函数没有调用，这个时候其实是`shouldComponentUpdate`返回的`false`。
 
@@ -992,7 +992,7 @@ const App = () => {
 
 现在三个组件的关系是，绿色Box是橙色Box的兄弟元素，Backdrop是绿色Box的子元素。如果Box组件没有开启定位，遮罩层可以正常显示覆盖整个页面。
 
-![image-20221029232123087](https://i0.hdslb.com/bfs/album/24f29c3777968ed6c976c7144938653880f7b9fc.png)
+![image-20221029232123087](https://gitlab.com/apzs/image/-/raw/master/image/24f29c3777968ed6c976c7144938653880f7b9fc.png)
 
 Backdrop能够盖住页面
 
@@ -1019,7 +1019,7 @@ const Box = props => {
 
 现在修改Box组件，开启相对定位，并设置了z-index为1，结果页面变成了这个样子：
 
-![image-20221029232209420](https://i0.hdslb.com/bfs/album/949222a13cb1e7048d3e5982e8631431b3922ab2.png)
+![image-20221029232209420](https://gitlab.com/apzs/image/-/raw/master/image/949222a13cb1e7048d3e5982e8631431b3922ab2.png)
 
 和上图对比，显然橙色的box没有被盖住，这是为什么呢？首先我们来看看他们的结构：
 
@@ -1177,11 +1177,11 @@ const root = ReactDOM.createRoot(appRoot);
 root.render(<Parent />);
 ```
 
-![image-20221029233009114](https://i0.hdslb.com/bfs/album/05f650b10fafb40e1a7a4d1ac26072afa414afa2.png)
+![image-20221029233009114](https://gitlab.com/apzs/image/-/raw/master/image/05f650b10fafb40e1a7a4d1ac26072afa414afa2.png)
 
 点击click后,可以发现数字从0变成1了
 
-![image-20221029233124852](https://i0.hdslb.com/bfs/album/a64a35bc5b691c67fc361986e4770c75fd9bf4df.png)
+![image-20221029233124852](https://gitlab.com/apzs/image/-/raw/master/image/a64a35bc5b691c67fc361986e4770c75fd9bf4df.png)
 
 子组件`Child`的点击事件能冒泡到父组件`Parent `,触发父元素的点击事件
 
