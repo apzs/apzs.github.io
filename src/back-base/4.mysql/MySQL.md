@@ -1,3 +1,15 @@
+---
+title: mysql
+icon: gears
+order: 1
+category:
+  - 后端
+tag:
+  - java
+  - 后端
+  - mysql
+---
+
 # 基础篇
 
 ## 通用语法及分类

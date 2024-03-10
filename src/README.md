@@ -4,45 +4,29 @@ layout: BlogHome
 icon: home
 title: 博客主页
 heroImage: /logo.svg
-heroText: 你博客的名称
+heroText: 个人日常学习笔记、踩坑 记录
 heroFullScreen: true
-tagline: 你可以在这里放置你的口号与标语
+tagline: 越努力，越幸运
 projects:
-  - icon: project
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
-
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: 博客搭建教程
+    desc: 基于vuepress的博客搭建教程
+    link: /front-project/个人博客搭建教程/
 
-  - icon: book
-    name: 书籍名称
-    desc: 书籍详细描述
-    link: https://你的书籍链接
+  - icon: project
+    name: 博客源码
+    desc: 我的博客源码
+    link: https://github.com/apzs/apzs.github.io
 
-  - icon: article
-    name: 文章名称
-    desc: 文章详细描述
-    link: https://你的文章链接
+  - icon: project
+    name: 谷粒商城后端
+    desc: 分布式电商项目谷粒商城
+    link: https://github.com/apzs/gulimall
 
-  - icon: friend
-    name: 伙伴名称
-    desc: 伙伴详细介绍
-    link: https://你的伙伴链接
+  - icon: project
+    name: 谷粒商城前端
+    desc: 商城内部管理系统
+    link: https://github.com/apzs/gulimall-vue
 
-  - icon: /logo.svg
-    name: 自定义项目
-    desc: 自定义详细介绍
-    link: https://你的自定义链接
-
-footer: 自定义你的页脚文字
+footer: 本项目有部分内容在其他博客上进行了二次修改，如侵权请联系本人
 ---
-
-这是一个博客主页的案例。
-
-要使用此布局，你应该在页面前端设置 `layout: BlogHome` 和 `home: true`。
-
-相关配置文档请见 [博客主页](https://theme-hope.vuejs.press/zh/guide/blog/home/)。

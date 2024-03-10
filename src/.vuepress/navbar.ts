@@ -93,10 +93,10 @@ export default navbar([
     {
         text: "前端项目",
         icon: "pen-to-square",
-        prefix: "front-project/",
+        prefix: "/front-project/",
         children: [
-            {text: "小兔鲜PC (Vue3+Pinia+js)", icon: "pen-to-square", link: "小兔鲜PC%20(Vue3_Pinia_js)"},
-            {text: "小兔鲜儿uni-app (Vue3+ts)", icon: "pen-to-square", link: "小兔鲜儿uni-app%20(Vue3_ts)"},
+            {text: "小兔鲜PC (Vue3+Pinia+js)", icon: "pen-to-square", link: "小兔鲜PC (Vue3_Pinia_js)/"},
+            {text: "小兔鲜儿uni-app (Vue3+ts)", icon: "pen-to-square", link: "小兔鲜儿uni-app (Vue3_ts)/"},
             {text: "尚品汇 (Vue2+js)", icon: "pen-to-square", link: "尚品汇 (Vue2+js)/README"},
             {text: "硅谷甄选 (Vue3+ts)", icon: "pen-to-square", link: "硅谷甄选 (Vue3+ts)/README"},
             {text: "个人博客搭建教程", icon: "pen-to-square", link: "个人博客搭建教程/README"},
@@ -105,7 +105,7 @@ export default navbar([
     {
         text: "后端基础",
         icon: "pen-to-square",
-        prefix: "back-base/",
+        prefix: "/back-base/",
         children: [
             {text: "Java基础语法", icon: "pen-to-square", link: "1.Java基础语法/README"},
             {text: "Java核心", icon: "pen-to-square", link: "2.Java核心"},
@@ -116,7 +116,7 @@ export default navbar([
     {
         text: "后端进阶",
         icon: "pen-to-square",
-        prefix: "back-advance/",
+        prefix: "/back-advance/",
         children: [
             {text: "SSM", icon: "pen-to-square", link: "5.SSM/SSM笔记"},
             {text: "redis", icon: "pen-to-square", link: "6.redis/README"},
@@ -128,7 +128,7 @@ export default navbar([
     {
         text: "后端高级",
         icon: "pen-to-square",
-        prefix: "back-senior/",
+        prefix: "/back-senior/",
         children: [
             {text: "docker", icon: "pen-to-square", link: "11.docker/README"},
             {text: "gitlab+jeckins", icon: "pen-to-square", link: "12.gitlab+jeckins/README"},
@@ -142,7 +142,7 @@ export default navbar([
     {
         text: '谷粒商城',
         icon: "pen-to-square",
-        prefix: "gulimall/",
+        prefix: "/gulimall/",
         children: [
             {
                 text: '基础篇',
@@ -173,7 +173,7 @@ export default navbar([
     },
     {
         text: '常用功能',
-        prefix: "CommonFunctions/",
+        prefix: "/CommonFunctions/",
         children: [
             { text: 'SpringBoot相关', link: '1.SpringBoot' },
             { text: 'mysql相关', link: '2.mysql' },
@@ -186,7 +186,7 @@ export default navbar([
     },
     {
         text: '阅读源码',
-        prefix: "sourceCode/",
+        prefix: "/sourceCode/",
         children: [
             {
                 text: 'Spring',
