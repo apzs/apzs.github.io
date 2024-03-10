@@ -2,13 +2,13 @@
 
 ![image-20230601104404720](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601104404720.png)
 
-# 1、gitlab简单使用
+## 1、gitlab简单使用
 
-## 1、安装gitlab
+### 1、安装gitlab
 
-### 1、手动安装（不推荐）
+#### 1、手动安装（不推荐）
 
-#### 1. 安装和配置必须的依赖项
+##### 1. 安装和配置必须的依赖项
 
 在 CentOS 7上，下面的命令也会在系统防火墙中打开 HTTP、HTTPS 和 SSH 访问。这是一个可选步骤，如果您打算仅从本地网络访问极狐GitLab，则可以跳过它。
 
@@ -31,7 +31,7 @@ sudo systemctl start postfix
 
 在安装 Postfix 的过程中可能会出现一个配置界面，在该界面中选择“Internet Site”并按下回车。把“mail name”设置为您服务器的外部 DNS 域名并按下回车。如果还有其它配置界面出现，继续按下回车以接受默认配置。
 
-#### 2. 下载/安装极狐GitLab
+##### 2. 下载/安装极狐GitLab
 
 配置极狐GitLab 软件源镜像。
 
@@ -79,7 +79,7 @@ sudo EXTERNAL_URL="https://gitlab.example.com" yum install -y gitlab-jh
 > gitlab-ctl restart
 > ```
 
-#### 3. 访问极狐GitLab 实例并登录
+##### 3. 访问极狐GitLab 实例并登录
 
 ```
 Notes:
@@ -110,7 +110,7 @@ Password: eoEPtKv4Sh1I1uYN1Mslp2kVgFU1tbqutXZYJj/2KOI=
 
 ![image-20230514160606167](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514160606167.png)
 
-#### 4、常用命令
+##### 4、常用命令
 
 ```bash
 gitlab-ctl start     #启动所有gitlab组件;
@@ -122,7 +122,7 @@ vi /etc/gitlab/gitlab.rb   #修改默认的配置文件:
 gitlab-ctl tail      #查看日志;
 ```
 
-### 2、docker安装（推荐）
+#### 2、docker安装（推荐）
 
 可以执行如下命令，指定gatlab家目录的位置
 
@@ -364,13 +364,13 @@ sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 > 密码文件将在 24 小时后的第一次重新配置运行中自动删除。
 
-## 2、修改语言
+### 2、修改语言
 
 登录成功后，可以在`Preferences`的`Localization`里修改语言
 
 ![image-20230514162004930](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514162004930.png)
 
-## 3、修改密码
+### 3、修改密码
 
 可以点击`三个横杠`  -> `管理员`  `用户`  -> `Administrator`  -> `编辑`里修改密码
 
@@ -380,7 +380,7 @@ apzs20001118
 
 ![GIF 2023-5-14 16-26-09](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-5-14%2016-26-09.gif)
 
-## 4、修改头像
+### 4、修改头像
 
 头像无法显示是因为被墙了，执行如下命令修改`/var/opt/gitlab/gitlab-rails/etc/gitlab.yml`文件
 
@@ -413,9 +413,9 @@ gitlab-ctl reconfigure
 gitlab-ctl restart
 ```
 
-## 5、提交代码
+### 5、提交代码
 
-### 1、生成密钥
+#### 1、生成密钥
 
 可以使用如下命令生成一个ssh密钥，这个密钥在`C:\Users\[用户名]\.ssh`下，`-C`参数为你的邮箱
 
@@ -465,7 +465,7 @@ pbcopy < ~/.ssh/id_rsa.pub  #mac os系统
 
 ![image-20230520214929834](https://gitlab.com/apzs/image/-/raw/master/image/image-20230520214929834.png)
 
-### 2、测试连接
+#### 2、测试连接
 
 可以使用如下命令测试连接
 
@@ -497,7 +497,7 @@ $ ssh -T -i ~/.ssh/gitlab_id_rsa -p 2222 git@192.168.56.10
 Welcome to GitLab, @root!
 ```
 
-### 3、创建项目
+#### 3、创建项目
 
 然后新建一个空白项目
 
@@ -565,9 +565,9 @@ Welcome to GitLab, @root!
 
 ![image-20230530220459587](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530220459587.png)
 
-# 2、安装其他软件
+## 2、安装其他软件
 
-## 1、安装jenkins
+### 1、安装jenkins
 
 > 官方中文文档：https://www.jenkins.io/zh/doc/
 
@@ -661,7 +661,7 @@ java -jar jenkins.war --httpPort=8888
 
 ![image-20230528112402776](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528112402776.png)
 
-## 2、安装maven
+### 2、安装maven
 
 由于jenkins需要使用maven，因此我们还有安装maven，在[官网](https://maven.apache.org/download.cgi)下载最新的`tar.gz`格式的压缩包，然后放到运行jenkins的机器上
 
@@ -698,7 +698,7 @@ cd /usr/local/maven/bin
 
 
 
-## 3、下载插件
+### 3、下载插件
 
 由于默认不能构建maven项目，因此我们需要下载一个maven插件。
 
@@ -714,9 +714,9 @@ cd /usr/local/maven/bin
 
 ![image-20230528114806411](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528114806411.png)
 
-# 3、新建maven项目任务
+## 3、新建maven项目任务
 
-## 1、新建任务
+### 1、新建任务
 
 点击`新建任务`
 
@@ -726,7 +726,7 @@ cd /usr/local/maven/bin
 
 ![image-20230531202125253](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531202125253.png)
 
-## 2、配置git
+### 2、配置git
 
 然后需要添加git仓库，由于需要使用git,因此我们需要在安装jenkins的机器上安装git
 
@@ -794,7 +794,7 @@ Welcome to GitLab, @apzs!
 
 ![image-20230531203627289](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531203627289.png)
 
-## 3、配置maven
+### 3、配置maven
 
 接着我们需要修改maven
 
@@ -818,7 +818,7 @@ Welcome to GitLab, @apzs!
 
 ![image-20230531214048397](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214048397.png)
 
-## 4、构建任务
+### 4、构建任务
 
 我们返回`Dashboard`，点击这个名称右边的运行按钮，就可以在左下角的`构建执行状态`里看到构建任务，点击这个构建任务
 
@@ -907,7 +907,7 @@ java -jar demo-0.0.1-SNAPSHOT.jar --server.port=8088
 
 ![image-20230601104107373](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601104107373.png)
 
-## 4、修改配置
+### 4、修改配置
 
 如果需要修改配置，需要返回到`Dashboard`，点击这个名称
 
@@ -921,9 +921,9 @@ java -jar demo-0.0.1-SNAPSHOT.jar --server.port=8088
 
 ![image-20230531214214192](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214214192.png)
 
-# 4、运行到测试服务器
+## 4、运行到测试服务器
 
-## 1、添加测试服务器
+### 1、添加测试服务器
 
 我们可以安装一个`Publish Over SSH`插件
 
@@ -951,7 +951,7 @@ java -jar demo-0.0.1-SNAPSHOT.jar --server.port=8088
 
 ![image-20230601110545258](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601110545258.png)
 
-## 2、修改配置
+### 2、修改配置
 
 修改`first`的`Add post-build step`为`Send files or execute commands over SSH`
 
@@ -1146,9 +1146,9 @@ udp6       0      0 ::1:323                 :::*                                
 
 ![image-20230601120911765](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601120911765.png)
 
-## 3、优化配置
+### 3、优化配置
 
-### 1、防止后台运行卡住
+#### 1、防止后台运行卡住
 
 如果测试服务器已经以后台运行的方式运行过这个jar包了，不管以前的jar包是否在运行再次执行都会卡住（卡住用于提示我们日志输出在默认的`nohup.out`文件，需要再次敲一下回车才会进入到命令输入状态），而执行如下命令指定输出的文件可以让程序不会被卡住
 
@@ -1171,7 +1171,7 @@ nohup java -jar /root/mydata/demo*.jar &>mylog.log &
 
 ![image-20230601141046408](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601141046408.png)
 
-### 2、清理以前的文件
+#### 2、清理以前的文件
 
 我们在执行构建之前还需要清理以前的文件，并把之前运行的程序停掉，因此我们需要使用shell脚本来完成这个功能
 
@@ -1283,7 +1283,7 @@ demo pid:23693 is stop
 
 ![image-20230604165231604](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604165231604.png)
 
-## 4、提交代码后自动构建
+### 4、提交代码后自动构建
 
 我们这个任务的构建触发器里勾选`触发远程构建`，然后配置身份验证令牌，然后浏览器访问`JENKINS_URL/job/first/build?token=TOKEN_NAME`（也就是   http://121.40.49.203:8888/job/first/build?token=123123  ）
 
@@ -1337,7 +1337,7 @@ demo pid:23693 is stop
 
 ![image-20230601224257012](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601224257012.png)
 
-## 5、其他自动化构建方式
+### 5、其他自动化构建方式
 
 - `Build whenever a SNAPSHOT dependency is built`：当依赖的快照版本库被构建时，构建此任务
 
@@ -1426,7 +1426,7 @@ demo pid:23693 is stop
 - NOV：代表November（十一月）
 - DEC：代表December（十二月）
 
-### 定时任务
+#### 定时任务
 
 jenkins支持的corn有五个参数：`<分> <小时> <日> <月> <星期>`
 
@@ -1474,11 +1474,11 @@ Cron特殊字符解释
 9.【#】：用于确定每个月第几个星期几，只能出现在{日期}域。例如在4#2，表示某月的第二个星期四。
 
 
-# 5、邮箱通知
+## 5、邮箱通知
 
 目标：使用网易邮箱的SMTP服务，给qq邮箱发送消息
 
-## 1、开启SMTP服务
+### 1、开启SMTP服务
 
 点击网易邮箱的设置里的`POP3/SMTP/IMAP`，开启`POP3/SMTP服务`
 
@@ -1504,13 +1504,13 @@ BBCAQKAKUXWTQDVD
 
 ![image-20230603111604842](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603111604842.png)
 
-## 2、配置管理员邮箱
+### 2、配置管理员邮箱
 
 在jenkins的系统管理 -> 系统配置里的`Jenkins Location`里输入自己的系统管理员邮件地址
 
 ![image-20230603112038438](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603112038438.png)
 
-## 3、添加自定义邮件服务
+### 3、添加自定义邮件服务
 
 然后在**Extended E-mail Notification**里添加smtp服务器地址，这里添加的是自定义的邮箱通知
 
@@ -1548,7 +1548,7 @@ SMTP服务器地址在邮件服务商的`POP3/SMTP/IMAP`的相关位置都会写
 
 ![image-20230603114550984](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603114550984.png)
 
-## 4、添加系统级邮件服务
+### 4、添加系统级邮件服务
 
 在邮件通知里俗人SMTP服务器，然后点击`高级`
 
@@ -1616,7 +1616,7 @@ Caused: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 
 >
 > 需要注意的是，在实际应用中，端口的使用可能会受到网络环境、防火墙策略等因素的影响。请根据实际情况选择合适的端口。
 
-## 5、添加任务构建后操作
+### 5、添加任务构建后操作
 
 然后修改我们的first任务，在`构建后操作`里，点击`增加构建后操作步骤`，选择`Editable Email Notihcation`
 
@@ -1634,7 +1634,7 @@ Caused: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 
 
 ![image-20230603212042053](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603212042053.png)
 
-## 6、测试
+### 6、测试
 
 然后我们构建first项目，在控制台可以看到已经将构建的信息发送邮箱了，这个邮箱就是最开始初始化jenkins时配置的邮箱
 
@@ -1652,7 +1652,7 @@ Caused: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 
 
 ![image-20230603213011284](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603213011284.png)
 
-# 6、使用docker
+## 6、使用docker
 
 一般使用jenkins自动化运行到docker有3种方式
 
@@ -1662,11 +1662,11 @@ Caused: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 
 
 第三种（大厂）：使用jenkins推送`dockerfile`和`jar包`，然后制作镜像，将镜像推送到harbor私服里，然后再使用k8s构建docker集群
 
-## 方式一
+### 方式一
 
-### 1、挂载目录
+#### 1、挂载目录
 
-#### 方式一（推荐）
+##### 方式一（推荐）
 
 > 我们需要在测试服务器上安装好docker，然后运行一个docker容器
 >
@@ -1712,7 +1712,7 @@ docker run -d --name demo -p 8080:8080 -v /root/mydata:/root demo
 docker ps -a
 ```
 
-#### 方式二（不推荐）
+##### 方式二（不推荐）
 
 我们可以使用如下命令直接启动一个容器，而不需要镜像，这样的缺点就是当我们变更版本后，需要在jenkins里修改这个命令
 
@@ -1720,7 +1720,7 @@ docker ps -a
 docker run -d --name demo -p 8080:8080 -v /root/mydata/demo-0.0.1-SNAPSHOT.jar:/app.jar openjdk:11 java -jar app.jar
 ```
 
-### 2、修改jenkins任务
+#### 2、修改jenkins任务
 
 修改first任务的Pre Steps的`Exec command`，先停止容器，然后移除`/root/mydata`里的文件
 
@@ -1748,7 +1748,7 @@ docker start demo
 
 ![image-20230604155059562](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604155059562.png)
 
-### 3、修改版本
+#### 3、修改版本
 
 我们可以再我们的项目里修改一下版本
 
@@ -1803,7 +1803,7 @@ demo-0.0.1-SNAPSHOT.jar.original  generated-sources                 maven-status
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230604180958491.png" alt="image-20230604180958491" style="zoom:50%;" />
 
-### 4、测试
+#### 4、测试
 
 修改版本前：
 
@@ -1838,7 +1838,7 @@ f3b80165733e        demo                "sh -c 'java -jar ..."   27 minutes ago 
 
 
 
-## 方式二
+### 方式二
 
 
 
@@ -2039,7 +2039,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 ![image-20230605222220917](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605222220917.png)
 
-# 7、集群
+## 7、集群
 
 
 
@@ -2157,7 +2157,7 @@ jenkins-02  || jenkins-03
 
 
 
-# mypipeline
+## mypipeline
 
 
 
@@ -2243,7 +2243,7 @@ post
 - unstable只有当流水线或者阶段状态为"unstable"运行。例如:测试失败。
 - aborted 只有当流水线或者阶段状态为"aborted "运行。例如:手动取消。
 
-## 2、
+### 2、
 
 
 
@@ -2457,7 +2457,7 @@ pipeline {
 
 ![image-20230609120300259](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609120300259.png)
 
-# 9、多分支job
+## 9、多分支job
 
 ![image-20230605203731556](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605203731556.png)
 

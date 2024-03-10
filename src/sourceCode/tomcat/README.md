@@ -1,6 +1,6 @@
-# 一、tomcat源码运行
+## 一、tomcat源码运行
 
-### 1. 下载源码
+#### 1. 下载源码
 
 官方下载地址：http://archive.apache.org/dist/tomcat/
 
@@ -10,7 +10,7 @@
 
 > 下载源代码点击`src/`，如果不需要源码可以点击`bin/`，然后根据对应的文件后缀来下载对应的文件
 
-### 2. 添加pom文件
+#### 2. 添加pom文件
 
 在根目录下添加`pom.xml`文件
 
@@ -117,19 +117,19 @@
 
 ![image-20220929200303924](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929200303924.png)
 
-### 3. 解决报错
+#### 3. 解决报错
 
 报了3个`找不到符号`的错误
 
 ![image-20220929190217661](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929190217661.png)
 
-#### 方案一：
+##### 方案一：
 
 可以把所有`VERSION_15`改为`VERSION_1_8`
 
 ![image-20220929190413492](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929190413492.png)
 
-#### 方案二：
+##### 方案二：
 
 查看`CompilerOptions`类的源码可用看到到`VERSION`到`14`就没有了，所以就报了`找不到符号`的错误
 
@@ -173,9 +173,9 @@
 
 ![image-20220929192804962](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929192804962.png)
 
-### 4. 运行项目
+#### 4. 运行项目
 
-#### 1.  运行启动类
+##### 1.  运行启动类
 
 非源码运行`tomcat`，在`Windows`系统下运行的是`startup.bat`，在`linux`系统下运行的是`startup.sh`
 
@@ -231,7 +231,7 @@ java: 方法不会覆盖或实现超类型的方法
 
 ![image-20220929195119586](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929195119586.png)
 
-#### 2. 修改java版本
+##### 2. 修改java版本
 
 按`ctrl`点击`registry`，发现我用的java是`17`，在`File` -> `Project Structure... Ctrl+ Alt+ Shift+S`的`Project`里将`SDK:`和`Language level: `都改为`1.8`版本 （这`tomcat`好奇怪，`install`之前我还特意检查了一下版本都是`1.8`，而且我环境变量也是`1.8`，都不知道他从哪检测到`java 17`的）
 
@@ -241,7 +241,7 @@ java: 方法不会覆盖或实现超类型的方法
 
 ![image-20220929195853445](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929195853445.png)
 
-#### 3. 修改jar包版本
+##### 3. 修改jar包版本
 
 然后启动报了这个错，这个错一般就是jar包版本不对
 
@@ -309,7 +309,7 @@ java.lang.ClassNotFoundException: listeners.ContextListener
 
 
 
-#### 完整`pom`文件
+##### 完整`pom`文件
 
 <a href="#添加pom文件" name="完整`pom`文件">点击跳转到`添加pom文件`</a>
 
@@ -422,7 +422,7 @@ java.lang.ClassNotFoundException: listeners.ContextListener
 </project>
 ```
 
-### 5 修改启动参数
+#### 5 修改启动参数
 
 添加启动类的运行参数，设置字符编码
 
@@ -439,7 +439,7 @@ java.lang.ClassNotFoundException: listeners.ContextListener
 
 ![image-20220929203043109](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929203043109.png)
 
-# 二、tomcat总体架构
+## 二、tomcat总体架构
 
 关系：`Server` -> `Service` -> `Connector` -> `Engine` -> `Host` -> `Context` -> `Wrapper` -> `Servlet`
 
@@ -453,7 +453,7 @@ host：虚拟主机，用于进行请求的映射处理。每个虚拟主机可�
 realm：用于配置安全管理角色，通常读取tomcat-uesrs.xml进行验证。
 context：上下文，对应于web应用。
 
-### 1. server.xml文件
+#### 1. server.xml文件
 
 要想知道`tomcat`有什么，需要先看`conf/server.xml`文件
 
@@ -528,7 +528,7 @@ context：上下文，对应于web应用。
 
 ![image-20220929210248640](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929210248640.png)
 
-### 2. `Server`接口
+#### 2. `Server`接口
 
 `Server`接口主要指定Tomcat能干什么
 
@@ -573,7 +573,7 @@ public interface Server extends Lifecycle {
 
 ![image-20220929210536919](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929210536919.png)
 
-### 3. `Service`接口
+#### 3. `Service`接口
 
 `Service`接口指定该功能怎么做
 
@@ -628,7 +628,7 @@ public interface Service extends Lifecycle {
 
 ![image-20220929211316820](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929211316820.png)
 
-### 4. `Connector`类
+#### 4. `Connector`类
 
 每一个`Connector`可以监听一个不同的端口
 
@@ -826,7 +826,7 @@ public class Connector extends LifecycleMBeanBase  {
 
 ![image-20220930085223433](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930085223433.png)
 
-### 5. `Engine`接口
+#### 5. `Engine`接口
 
 `Engine`引擎控制整个的处理逻辑
 
@@ -849,7 +849,7 @@ public interface Engine extends Container {
 
 ![image-20220930084657547](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930084657547.png)
 
-### 6. `Host`接口
+#### 6. `Host`接口
 
 `Host`：主机。一个引擎可以有多个`Host`，每一个Host代表一个虚拟域名映射系统，根据Host可以进行虚拟主机隔离。
 
@@ -894,7 +894,7 @@ public class StandardHost extends ContainerBase implements Host {
 
 
 
-### 7. `Context`接口
+#### 7. `Context`接口
 
 一个web应用就是一个context，一个web应用有很多个 servlet、Filter、listener
 
@@ -948,7 +948,7 @@ public class StandardContext extends ContainerBase
 
 
 
-### 8. `Wrapper`接口
+#### 8. `Wrapper`接口
 
 该接口其中一个实现类`StandardWrapper`有一个`addChild`方法，里面就什么都不能加了
 
@@ -976,9 +976,9 @@ public class StandardWrapper extends ContainerBase
 
 ![image-20220929222830331](https://gitlab.com/apzs/image/-/raw/master/image/image-20220929222830331.png)
 
-# 三、tomcat核心组件生命周期
+## 三、tomcat核心组件生命周期
 
-## 1. `Lifecycle`生命周期
+### 1. `Lifecycle`生命周期
 
 关系：`Server` -> `Service` -> `Connector` -> `Engine` -> `Host` -> `Context` -> `Wrapper` -> `Servlet`
 
@@ -1167,7 +1167,7 @@ public interface Lifecycle {
 
 
 
-### 1. `Listener`
+#### 1. `Listener`
 
 各个生命周期都可以添加、获取、移除一些监听器
 
@@ -1195,9 +1195,9 @@ public void removeLifecycleListener(LifecycleListener listener);
 
 ![image-20220930091957192](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930091957192.png)
 
-### 2. 生命周期
+#### 2. 生命周期
 
-#### 1. `init`
+##### 1. `init`
 
 `init`方法会对组件进行初始化
 
@@ -1249,7 +1249,7 @@ protected abstract void initInternal() throws LifecycleException;
 
 ![image-20220930143855362](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930143855362.png)
 
-#### 2. `start`
+##### 2. `start`
 
 `start`方法会启动组件
 
@@ -1358,7 +1358,7 @@ protected abstract void startInternal() throws LifecycleException;
 
 ![image-20220930143104695](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930143104695.png)
 
-#### 3. `stop`
+##### 3. `stop`
 
 `stop`方法会停止组件的运行
 
@@ -1470,7 +1470,7 @@ protected abstract void stopInternal() throws LifecycleException;
 
 ![image-20220930144112583](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930144112583.png)
 
-#### 4. `destroy`
+##### 4. `destroy`
 
  `destroy`方法会销毁组件
 
@@ -1546,7 +1546,7 @@ protected abstract void destroyInternal() throws LifecycleException;
 
 ![image-20220930144326592](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930144326592.png)
 
-### 3. 获取组件状态
+#### 3. 获取组件状态
 
 ```java
 /**
@@ -1570,13 +1570,13 @@ public String getStateName();
 
 ![image-20220930093655756](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930093655756.png)
 
-## 2. `Container`容器
+### 2. `Container`容器
 
 `Container`的继承关系
 
 ![image-20220930094459417](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930094459417.png)
 
-### 1. `addChild`
+#### 1. `addChild`
 
 容器可以添加子容器
 
@@ -1603,7 +1603,7 @@ public void addChild(Container child);
 
 ![image-20220930095356068](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930095356068.png)
 
-### 2. `getParent`
+#### 2. `getParent`
 
 容器有父容器
 
@@ -1620,7 +1620,7 @@ public Container getParent();
 
 ![image-20220930100618122](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930100618122.png)
 
-### 3. `Pipeline`
+#### 3. `Pipeline`
 
 容器中还有管道
 
@@ -1636,9 +1636,9 @@ public Pipeline getPipeline();
 
 ![image-20220930100740533](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930100740533.png)
 
-### 4. `Valve`
+#### 4. `Valve`
 
-#### 阀门
+##### 阀门
 
 每一个容器里面都有管道，管道里面有很多的Valve (阀门)，阀门可以预处理请求
 
@@ -1744,7 +1744,7 @@ public interface Pipeline extends Contained {
 
 ![image-20220930102317782](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930102317782.png)
 
-#### 阀门的方法
+##### 阀门的方法
 
 阀门是一个责任链，可以执行该阀门，也可以获取、修改下一个阀门
 
@@ -1788,7 +1788,7 @@ public interface Valve {
 
 
 
-#### 访问日志阀门
+##### 访问日志阀门
 
 在`server.xml`里配置了一个`AccessLogValve`，访问日志阀门
 
@@ -1854,9 +1854,9 @@ public void log(CharArrayWriter message) {
 
 ![image-20220930103045789](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930103045789.png)
 
-# 四、tomcat启动的初始化流程
+## 四、tomcat启动的初始化流程
 
-### 1.创建`Bootstrap`对象
+#### 1.创建`Bootstrap`对象
 
 首先**加锁**创建一个`Bootstrap`对象，然后调用其`init`方法
 
@@ -1888,9 +1888,9 @@ public static void main(String args[]) {
 
 ![image-20220930145025410](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930145025410.png)
 
-### 2. 调用`bootstrap.init()`
+#### 2. 调用`bootstrap.init()`
 
-#### 1. 初始化三个类加载器
+##### 1. 初始化三个类加载器
 
 该方法首先会调用`initClassLoaders()`，初始化类加载器
 
@@ -1929,7 +1929,7 @@ public void init() throws Exception {
 
 其会加载`tomcat`其中三个类加载器：`commonLoader`、`catalinaLoader`、`sharedLoader`
 
-##### 2. `commonLoader`
+###### 2. `commonLoader`
 
 是位于Tomcat 应用服务器顶层的公用类加载器,默认是加载`${catalina.base}/lib`下的`jar`包
 
@@ -2073,21 +2073,21 @@ public class CatalinaProperties {
 ```properties
 #
 #
-# List of comma-separated paths defining the contents of the "common"
-# classloader. Prefixes should be used to define what is the repository type.
-# Path may be relative to the CATALINA_HOME or CATALINA_BASE path or absolute.
-# If left as blank,the JVM system loader will be used as Catalina's "common"
-# loader.
-# Examples:
-#     "foo": Add this folder as a class repository
-#     "foo/*.jar": Add all the JARs of the specified folder as class
-#                  repositories
-#     "foo/bar.jar": Add bar.jar as a class repository
+## List of comma-separated paths defining the contents of the "common"
+## classloader. Prefixes should be used to define what is the repository type.
+## Path may be relative to the CATALINA_HOME or CATALINA_BASE path or absolute.
+## If left as blank,the JVM system loader will be used as Catalina's "common"
+## loader.
+## Examples:
+##     "foo": Add this folder as a class repository
+##     "foo/*.jar": Add all the JARs of the specified folder as class
+##                  repositories
+##     "foo/bar.jar": Add bar.jar as a class repository
 #
-# Note: Values are enclosed in double quotes ("...") in case either the
-#       ${catalina.base} path or the ${catalina.home} path contains a comma.
-#       Because double quotes are used for quoting, the double quote character
-#       may not appear in a path.
+## Note: Values are enclosed in double quotes ("...") in case either the
+##       ${catalina.base} path or the ${catalina.home} path contains a comma.
+##       Because double quotes are used for quoting, the double quote character
+##       may not appear in a path.
 common.loader="${catalina.base}/lib","${catalina.base}/lib/*.jar","${catalina.home}/lib","${catalina.home}/lib/*.jar"
 
 server.loader=
@@ -2187,7 +2187,7 @@ protected String replace(String str) {
 
 ![image-20220930155702526](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930155702526.png)
 
-##### 3. `catalinaLoader`
+###### 3. `catalinaLoader`
 
 `catalinaLoader`直接返回其父加载器`commonLoader`
 
@@ -2208,7 +2208,7 @@ private ClassLoader createClassLoader(String name, ClassLoader parent)
 
 ![image-20220930161812291](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930161812291.png)
 
-##### 4. `sharedLoader`
+###### 4. `sharedLoader`
 
 `sharedLoader`也是直接返回其父加载器`commonLoader`
 
@@ -2216,7 +2216,7 @@ private ClassLoader createClassLoader(String name, ClassLoader parent)
 
 ![image-20220930162027230](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930162027230.png)
 
-#### 2. 创建`Catalina`对象
+##### 2. 创建`Catalina`对象
 
 加载完类加载器后，将当前线程的类加载器设置为`catalinaLoader`，然后使用`catalinaLoader`类加载器创建`Catalina`对象
 
@@ -2257,9 +2257,9 @@ private ClassLoader createClassLoader(String name, ClassLoader parent)
 
 ![image-20220930163923441](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930163923441.png)
 
-### 3. 加载命令行参数
+#### 3. 加载命令行参数
 
-#### 1. 调用`daemon.load(args)`方法
+##### 1. 调用`daemon.load(args)`方法
 
 ```java
 public static void main(String args[]) {
@@ -2336,7 +2336,7 @@ public static void main(String args[]) {
 
 ![image-20220930165354321](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930165354321.png)
 
-#### 2. 利用反射执行`catalinaDaemon.load()`
+##### 2. 利用反射执行`catalinaDaemon.load()`
 
 利用反射执行`catalinaDaemon`的`load()`方法
 
@@ -2367,7 +2367,7 @@ private void load(String[] arguments) throws Exception {
 
 ![image-20220930170107930](https://gitlab.com/apzs/image/-/raw/master/image/image-20220930170107930.png)
 
-#### 3. 解析 server.xml
+##### 3. 解析 server.xml
 
 ```java
 public void load() {
@@ -2680,7 +2680,7 @@ xml解析到J哪些标签就创建出对象，然后都层级封装到Catalina�
 
 
 
-#### 4. 解析标签
+##### 4. 解析标签
 
 在`StandardService`类里添加无参构造，给该无参构造打上断点
 
@@ -2824,9 +2824,9 @@ public class ObjectCreateRule extends Rule {
 
 ![image-20221001213645756](https://gitlab.com/apzs/image/-/raw/master/image/image-20221001213645756.png)
 
-## 4. 服务器初始化
+### 4. 服务器初始化
 
-### 1. `StandardServer`初始化
+#### 1. `StandardServer`初始化
 
 解析为`server.xml`文件后，调用`getServer().init();`方法，对服务器进行初始化
 
@@ -2946,7 +2946,7 @@ protected void initInternal() throws LifecycleException {
 
 ![image-20221001220026088](https://gitlab.com/apzs/image/-/raw/master/image/image-20221001220026088.png)
 
-### 2. `StandardService`初始化
+#### 2. `StandardService`初始化
 
 `service.init()`方法跳到了`StandardService`类的父类`LifecycleBase`的`init()`方法。然后其调用` initInternal();`，调用子类的该方法，执行初始化核心逻辑。
 
@@ -3005,7 +3005,7 @@ protected void initInternal() throws LifecycleException {
 
 
 
-#### 1. `StandardEngine`引擎初始化
+##### 1. `StandardEngine`引擎初始化
 
 ```java
 @Override
@@ -3070,7 +3070,7 @@ protected void initInternal() throws LifecycleException {
 
 ![image-20221001221641869](https://gitlab.com/apzs/image/-/raw/master/image/image-20221001221641869.png)
 
-#### 2. `MapperListener`监听器初始化
+##### 2. `MapperListener`监听器初始化
 
 监听器的初始化，这里面什么都初始化
 
@@ -3101,7 +3101,7 @@ protected void initInternal() throws LifecycleException {
 
 
 
-#### 3. `Connector`连接器初始化
+##### 3. `Connector`连接器初始化
 
 ![image-20221001222449799](https://gitlab.com/apzs/image/-/raw/master/image/image-20221001222449799.png)
 
@@ -3162,7 +3162,7 @@ protected void initInternal() throws LifecycleException {
 
 
 
-#####  `AbstractHttp11Protocol`协议初始化
+######  `AbstractHttp11Protocol`协议初始化
 
 ```java
 @Override
@@ -3222,7 +3222,7 @@ public void init() throws Exception {
 
 ![image-20221001223344086](https://gitlab.com/apzs/image/-/raw/master/image/image-20221001223344086.png)
 
-###### 端点（端口）初始化
+####### 端点（端口）初始化
 
 ```java
 public final void init() throws Exception {
@@ -3269,7 +3269,7 @@ private void bindWithCleanup() throws Exception {
 
 
 
-###### `ServerSocket`初始化
+####### `ServerSocket`初始化
 
 ```java
 @Override
@@ -3369,9 +3369,9 @@ public void bind() throws Exception {
 
 然后`端口初始化`结束，`协议初始化`结束，`连接器初始化`结束，`service`初始化结束，`server`初始化结束
 
-# 五、服务器启动
+## 五、服务器启动
 
-## 1. `StandardServer`启动
+### 1. `StandardServer`启动
 
 主类调用`daemon.start();`
 
@@ -3551,7 +3551,7 @@ protected void startInternal() throws LifecycleException {
 
 ![image-20221003105959252](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003105959252.png)
 
-## 2. `StandardService`启动
+### 2. `StandardService`启动
 
 调用`StandardService`的父类`LifecycleMBeanBase`的`start()`方法
 
@@ -3598,7 +3598,7 @@ protected void startInternal() throws LifecycleException {
 
 ![image-20221003112939238](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003112939238.png)
 
-### 1. `StandardEngine`引擎启动
+#### 1. `StandardEngine`引擎启动
 
 ![image-20221003113033279](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003113033279.png)
 
@@ -3686,7 +3686,7 @@ public <T> Future<T> submit(Callable<T> task) {
 
 ![image-20221003130619091](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003130619091.png)
 
-#### 子容器`StandardHost`异步启动
+##### 子容器`StandardHost`异步启动
 
 子容器启动调用`command.run();`方法，新开了一个线程
 
@@ -3778,13 +3778,13 @@ protected synchronized void startInternal() throws LifecycleException {
 
 ![image-20221003134045277](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003134045277.png)
 
-##### 子容器的子容器异步启动
+###### 子容器的子容器异步启动
 
 该子容器没有子容器。根据栈轨迹可以直到，这是另一个线程，该子容器线程调用的`super.startInternal();`方法，因此与父容器的线程一样，执行了同一个`ContainerBase`类的`startInternal()`方法（根据栈轨迹也可以看出父容器线程此时停在了`ContainerBase`类的`startInternal()`方法的`results.add(startStopExecutor.submit(new StartChild(child)));`这一行，新建一个线程，执行子容器的`start()`方法）
 
 ![image-20221003143956940](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003143956940.png)
 
-##### 子容器的管道启动
+###### 子容器的管道启动
 
 子容器的子容器异步启动后，遍历子容器返回的结果，查看执行是否有异常。(我们的子容器没有子容器，因此`results`为空，因此增强for里面的语句根本就不会执行)
 
@@ -3881,7 +3881,7 @@ protected synchronized void startInternal() throws LifecycleException {
 
 ![image-20221003141411607](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003141411607.png)
 
-##### 子容器的阀门启动
+###### 子容器的阀门启动
 
 ```java
 @Override
@@ -3915,7 +3915,7 @@ protected synchronized void startInternal() throws LifecycleException {
 
 ![image-20221003141714004](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003141714004.png)
 
-##### 子容器启动`StandardContext`
+###### 子容器启动`StandardContext`
 
 给`StandardContext`类的`startInternal()`方法的这样行打个断点，使其运行到这一行
 
@@ -3941,7 +3941,7 @@ results.add(es.submit(new DeployDirectory(this, cn, dir)));
 
 ![image-20221003155146821](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003155146821.png)
 
-##### 子容器启动`StandardWrapper`
+###### 子容器启动`StandardWrapper`
 
 给`StandardWrapper`类的`startInternal()`方法的`super.startInternal();`这一行打上断点
 
@@ -3959,7 +3959,7 @@ fireLifecycleEvent(Lifecycle.CONFIGURE_START_EVENT, null);
 
 ![StandardContext与StandardWrapper栈轨迹对比图](https://gitlab.com/apzs/image/-/raw/master/image/StandardContext与StandardWrapper栈轨迹对比图.png)
 
-#### 管道启动
+##### 管道启动
 
 由于启动很多个线程都会调用`ContainerBase`类的`startInternal()`方法，不好回到主线程调用的这个方法，因此可以在`MultiThrowable multiThrowable = null;`这里打一个条件为`children.length>0`的断点(子容器的线程`children.length`都为`0`)，让其回到主线程（注意查看栈轨迹，判断其是否只有一个`Main`线程，当然自带的线程不算）
 
@@ -3981,7 +3981,7 @@ fireLifecycleEvent(Lifecycle.CONFIGURE_START_EVENT, null);
 
 ![image-20221003163800852](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003163800852.png)
 
-### 2. `MapperListener`监听器启动
+#### 2. `MapperListener`监听器启动
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20221003164155441.png" alt="image-20221003164155441" style="zoom:67%;" />
 
@@ -4078,7 +4078,7 @@ public void startInternal() throws LifecycleException {
 
 ![image-20221003183752106](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003183752106.png)
 
-### 3. `Connector`连接器启动
+#### 3. `Connector`连接器启动
 
 ![image-20221003184247601](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003184247601.png)
 
@@ -4086,7 +4086,7 @@ public void startInternal() throws LifecycleException {
 
 ![image-20221003110923197](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003110923197.png)
 
-#### 协议处理器启动
+##### 协议处理器启动
 
 ```java
 @Override
@@ -4112,7 +4112,7 @@ protected void startInternal() throws LifecycleException {
 
 ![image-20221003111153083](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003111153083.png)
 
-##### 端点启动
+###### 端点启动
 
 ```java
 @Override
@@ -4150,9 +4150,9 @@ public final void start() throws Exception {
 
 ![image-20221003112302612](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003112302612.png)
 
-### 处理请求核心
+#### 处理请求核心
 
-#### 创建10个`worker`集合
+##### 创建10个`worker`集合
 
 `worker`就是真正干活的，这里创建了十个`worker`
 
@@ -4212,7 +4212,7 @@ public void createExecutor() {
 
 ![image-20221003185409784](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003185409784.png)
 
-##### 进行连接限制
+###### 进行连接限制
 
 ![image-20221003185806412](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003185806412.png)
 
@@ -4230,7 +4230,7 @@ protected LimitLatch initializeConnectionLatch() {
 
 ![image-20221003190142775](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003190142775.png)
 
-#### 创建一个`Poller`
+##### 创建一个`Poller`
 
 创建一个`Poller`，然后单线程启动`poller` （拉取者），`8080`端口
 
@@ -4301,7 +4301,7 @@ public void run() {
 }
 ```
 
-#### 创建一个`Acceptor`
+##### 创建一个`Acceptor`
 
 然后调用`startAcceptorThread();`启动一个接受者线程，在后台接收数据。
 
@@ -4386,7 +4386,7 @@ public void run() {
 }
 ```
 
-#### 监听给服务器发送的命令
+##### 监听给服务器发送的命令
 
 切换到`Catalina`类的`start()`方法的`getServer().start(); `这个栈，在后面的`await();`方法上打个断点
 
@@ -4450,7 +4450,7 @@ public void await() {
 
 此处服务器就启动完成了
 
-# 六、`Accepor`、`Poller` 、`Worker`关系
+## 六、`Accepor`、`Poller` 、`Worker`关系
 
 ![image-20221003210201765](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003210201765.png)
 
@@ -4467,7 +4467,7 @@ public void await() {
 4、`SocketProcessorBase`会被线程池的一个线程进行处理，最终会被`ConnectorHandler.process`进行处理。交给`Http11Processor.process`进行处理
 5、`Http11Processor.service`会接手这个`Socket`
 
-### 1. `Acceptor`接收数据
+#### 1. `Acceptor`接收数据
 
 给`Acceptor<U>`类的`run()`方法的`socket = endpoint.serverSocketAccept();`和`if (!endpoint.setSocketOptions(socket)) {`打上断点
 
@@ -4481,7 +4481,7 @@ public void await() {
 
 ![image-20221003212433493](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003212433493.png)
 
-#### 接收到的数据放到事件队列
+##### 接收到的数据放到事件队列
 
 ```java
 public void register(final NioSocketWrapper socketWrapper) {
@@ -4534,7 +4534,7 @@ public synchronized boolean offer(T t) {
 
 ![image-20221003213603166](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003213603166.png)
 
-### `Poller`获取事件队列
+#### `Poller`获取事件队列
 
 然后给`Poller`类的内部类`Poller`的`events();`方法打个断点，该方法会循环监听事件
 
@@ -4602,7 +4602,7 @@ public boolean events() {
 
 ![image-20221003215454922](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003215454922.png)
 
-#### 封装数据，交给`worker`
+##### 封装数据，交给`worker`
 
 判断到有事件后，调用`processKey(sk, socketWrapper);`方法读通道里的数据，处理事件
 
@@ -4679,7 +4679,7 @@ public boolean processSocket(SocketWrapperBase<S> socketWrapper,
 
 ![image-20221003221220635](https://gitlab.com/apzs/image/-/raw/master/image/image-20221003221220635.png)
 
-### `worker`处理数据
+#### `worker`处理数据
 
 给`SocketProcessorBase<S>`类的`run()`方法的第一行打上断点，然后执行下一个断点就来到了这
 
@@ -5007,7 +5007,7 @@ public void service(org.apache.coyote.Request req, org.apache.coyote.Response re
 
 ![image-20221004112931783](https://gitlab.com/apzs/image/-/raw/master/image/image-20221004112931783.png)
 
-# 七、请求处理流程
+## 七、请求处理流程
 
 这些方法的执行顺序
 
@@ -5015,7 +5015,7 @@ public void service(org.apache.coyote.Request req, org.apache.coyote.Response re
 
 ![请求执行顺序](https://gitlab.com/apzs/image/-/raw/master/image/请求执行顺序.png)
 
-## `CoyoteAdapter`的`service()`获取 `Engine`引擎的第一个`Valve`阀门
+### `CoyoteAdapter`的`service()`获取 `Engine`引擎的第一个`Valve`阀门
 
 `getService()`获取`Service`，`getContainer()`获取`Engine`，`getPipeline()`获取管道，`getFirst()`获取第一个`Valve`阀门，执行第一个阀门
 
@@ -5089,7 +5089,7 @@ public Valve getFirst() {
 
 ![image-20221004094845912](https://gitlab.com/apzs/image/-/raw/master/image/image-20221004094845912.png)
 
-### `StandardEngineValve`
+#### `StandardEngineValve`
 
 引擎里的管道的第一个阀门会获取`Host`主机，然后执行主机里的管道的第一个阀门
 
@@ -5120,7 +5120,7 @@ public final void invoke(Request request, Response response)
 
 ![image-20221004095932119](https://gitlab.com/apzs/image/-/raw/master/image/image-20221004095932119.png)
 
-#### `AccessLogValve`
+##### `AccessLogValve`
 
 将请求放到`CachedElement`里缓存着，然后执行下一个阀门 （`AccessLogValve`访问日志阀门）
 
@@ -5151,7 +5151,7 @@ public void invoke(Request request, Response response) throws IOException,
 
 
 
-#### `ErrorReportValve`
+##### `ErrorReportValve`
 
 `ErrorReportValve`阀门先让下一个阀门执行，执行完后再判断有没有出错
 
@@ -5223,7 +5223,7 @@ public void invoke(Request request, Response response) throws IOException, Servl
 
 
 
-#### `StandardHostValve`标准主机阀门
+##### `StandardHostValve`标准主机阀门
 
 `Host`的`StandardHostValve`阀门又会主动调用`Context`管道里的第一个阀门
 
@@ -5276,13 +5276,13 @@ public final void invoke(Request request, Response response)
 
 
 
-##### `NonLoginAuthenticator`
+###### `NonLoginAuthenticator`
 
 这个阀门主要是做身份相关的
 
 ![image-20221004105123068](https://gitlab.com/apzs/image/-/raw/master/image/image-20221004105123068.png)
 
-##### `StandardContextValve`
+###### `StandardContextValve`
 
 判断如果请求是"/META-INF"或"/WEB-INF/"下的直接发送错误，因此这些路径下的资源是受保护的
 
@@ -5330,7 +5330,7 @@ public final void invoke(Request request, Response response)
 
 ![image-20221004105954863](https://gitlab.com/apzs/image/-/raw/master/image/image-20221004105954863.png)
 
-###### `StandardWrapperValve`
+####### `StandardWrapperValve`
 
 在`StandardWrapperValve`类的`invoke(Request request, Response response)`方法里调用`wrapper.allocate()`创建一个`javax.servlet.Servlet`对象 （每个请求都会调用`wrapper.allocate()`，但只会创建一个同类型的Servlet，即没有才会创建）
 
@@ -5338,7 +5338,7 @@ public final void invoke(Request request, Response response)
 
  
 
-###### 调试遇到的问题：`instance`不为`null`
+####### 调试遇到的问题：`instance`不为`null`
 
 ```java
 @Override
@@ -5505,7 +5505,7 @@ protected void deployApps() {
 
 
 
-###### 解决方法
+####### 解决方法
 
 点击`instance`弹出框的左下角的`Set value`重新将其设为`null`
 

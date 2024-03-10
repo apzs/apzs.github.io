@@ -1,9 +1,9 @@
-# 八、react-Hook （上）
+## 八、react-Hook （上）
 *Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
-## 1.准备
+### 1.准备
 
-### 1.1  什么是 Hook 
+#### 1.1  什么是 Hook 
 
 Hooks 译为钩子，Hooks 就是在函数组件内，负责钩进外部功能的函数。
 
@@ -11,7 +11,7 @@ React 提供了一些常用钩子，React 也支持自定义钩子，这些钩�
 
 当我们在组件中，需要引入外部功能时，就可以使用 React 提供的钩子，或者自定义钩子。
 
-### 1.2 动机
+#### 1.2 动机
 
 **在组件之间复用状态逻辑很难**
 React 没有提供将可复用性行为“附加”到组件的途径（例如，把组件连接到 store）。
@@ -25,7 +25,7 @@ Hook 将组件中相互关联的部分拆分成更小的函数（比如设置订
 class 不能很好的压缩，并且会使热重载出现不稳定的情况。因此，我们想提供一个使代码更易于优化的 API。
 为了解决这些问题，Hook 使你在非 class 的情况下可以使用更多的 React 特性。 从概念上讲，React 组件一直更像是函数。而 Hook 则拥抱了函数，同时也没有牺牲 React 的精神原则。Hook 提供了问题的解决方案，无需学习复杂的函数式或响应式编程技术。
 
-### 1.3 Hook API
+#### 1.3 Hook API
 
 - [基础 Hook](https://zh-hans.reactjs.org/docs/hooks-reference.html#basic-hooks)
   - [`useState`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usestate)
@@ -46,7 +46,7 @@ class 不能很好的压缩，并且会使热重载出现不稳定的情况。�
   - [`useSyncExternalStore`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usesyncexternalstore)
   - [`useInsertionEffect`](https://zh-hans.reactjs.org/docs/hooks-reference.html#useinsertioneffect)
 
-### 1.4 什么时候会用 Hook
+#### 1.4 什么时候会用 Hook
 
 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其转化为 class。现在你可以在现有的函数组件中使用 Hook。
 
@@ -54,9 +54,9 @@ class 不能很好的压缩，并且会使热重载出现不稳定的情况。�
 
 在组件中有些特殊的规则，规定什么地方能使用 Hook，什么地方不能使用。我们将在 [Hook 规则](https://zh-hans.reactjs.org/docs/hooks-rules.html)中学习它们。
 
-## 2.使用 State Hook
+### 2.使用 State Hook
 
-### 2.1 声明 State 变量
+#### 2.1 声明 State 变量
 
 > 首先我们需要明确一点，函数式组件**没有**自己的 `this`
 >
@@ -103,7 +103,7 @@ function App() {
 
 既然我们知道了 `useState` 的作用，我们的示例应该更容易理解了：
 
-### 2.2 读取 State
+#### 2.2 读取 State
 
 当我们想在类式组件中显示当前的 count，我们可以使用 `this.state.count`：
 
@@ -117,7 +117,7 @@ function App() {
 <h2>当前求和为：{count}</h2>
 ```
 
-### 2.3 更新 State
+#### 2.3 更新 State
 
 在类式组件中，我们需要调用 `this.setState()` 来更新 `count` 值：
 
@@ -134,7 +134,7 @@ function App() {
 <button onClick={()=>setCount(count=>count+1)}>点我+1</button>
 ```
 
-### 2.4 使用多个 state 变量
+#### 2.4 使用多个 state 变量
 
 将 state 变量声明为一对 `[something, setSomething]` 也很方便，因为如果我们想使用多个 state 变量，它允许我们给不同的 state 变量取不同的名称：
 
@@ -156,7 +156,7 @@ function handleOrangeClick() {
 
 你**不必**使用多个 state 变量。State 变量可以很好地存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像 class 中的 `this.setState`，使用State Hook更新 state 变量总是*替换*它而不是合并它。
 
-### 2.5 总结
+#### 2.5 总结
 
 现在让我们来**仔细回顾一下学到的知识**，看下我们是否真正理解了。
 
@@ -181,15 +181,15 @@ function handleOrangeClick() {
 
 乍一看这似乎有点太多了。不要急于求成！如果你有不理解的地方，请再次查看以上代码并从头到尾阅读。我们保证一旦你试着”忘记” class 里面 state 是如何工作的，并用新的眼光看这段代码，就容易理解了。
 
-## 3.使用 Effect Hook
+### 3.使用 Effect Hook
 
-### 3.1 副作用
+#### 3.1 副作用
 
 React组件有部分逻辑都可以直接编写到组件的函数体中的，像是对数组调用filter、map等方法，像是判断某个组件是否显示等。但是有一部分逻辑如果直接写在函数体中，会影响到组件的渲染，这部分会产生“副作用”的代码，是一定不能直接写在函数体中。
 
 例如，如果直接将修改state的逻辑编写到了组件之中，就会导致组件不断的循环渲染，直至调用次数过多内存溢出。
 
-### 3.3 Effect 基本使用
+#### 3.3 Effect 基本使用
 
 在类式组件中，提供了一些声明周期钩子给我们使用，我们可以在组件的特殊时期执行特定的事情，例如 `componentDidMount` ，能够在组件挂载完成后执行一些东西。在 React 的 class 组件中，`render` 函数是不应该有任何副作用的。一般来说，在这里执行操作太早了，我们基本上都希望在 React 更新 DOM 之后才执行我们的操作。
 
@@ -257,7 +257,7 @@ export default function App() {
 
 在 React 组件中有两种常见副作用操作：需要清除的和不需要清除的。我们来更仔细地看一下他们之间的区别。
 
-### 3.4 关注指定的状态
+#### 3.4 关注指定的状态
 
 我们可以给`useEffect`函数指定第二个参数，指定后，只有第二个参数里的状态改变后才会重新执行`useEffect`函数，而其他的状态改变后不会执行`useEffect`函数。
 
@@ -295,7 +295,7 @@ export default function App() {
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2015-38-54.gif" alt="GIF 2023-8-27 15-38-54" style="zoom:50%;" />
 
-### 3.5 组件销毁时执行
+#### 3.5 组件销毁时执行
 
 我们可以给`useEffect`函数的第一个参数一个返回值，返回值是一个高阶函数，相当于类式组件的`componentWillUnmount`，即在组件将要卸载时执行。
 
@@ -364,7 +364,7 @@ root.render(
 export default root
 ```
 
-## 4.useRef
+### 4.useRef
 
 ```js
 const myRef = useRef(initialValue);
@@ -390,7 +390,7 @@ export default function App(){
 
 ![GIF 2023-8-27 16-48-35](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2016-48-35.gif)
 
-## 完整代码
+### 完整代码
 
 下面是函数式组件使用**组件实例的三大属性 `state` `props` `refs`**的例子
 
@@ -502,7 +502,7 @@ function Demo(props) {
 
 ![GIF 2023-8-27 17-10-01](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-8-27%2017-10-01.gif)
 
-## 5 React.StrictMode 严格模式
+### 5 React.StrictMode 严格模式
 
 编写React组件时，我们要极力的避免组件中出现那些会产生“副作用”的代码。同时，如果你的React使用了严格模式，也就是在React中使用了`React.StrictMode`标签，那么React会非常“智能”的去检查你的组件中是否写有副作用的代码，当然这个智能是加了引号的。
 
@@ -533,9 +533,9 @@ root.render(
 
 如果你无法通过浏览器正常安装[React Developer Tools](https://my-wp.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/05/20220512111133423.zip)可以通过点击这里下载。
 
-## 5.useReducer
+### 5.useReducer
 
-### 5.1 基本使用
+#### 5.1 基本使用
 
 为了解决复杂`State`带来的不便，`React`为我们提供了一个新的使用`State`的方式。`Reducer`横空出世，reduce单词中文意味减少，而reducer我觉得可以翻译为“当你的state的过于复杂时，你就可以使用的可以对state进行整合的工具”。当然这是个玩笑话，个人认为`Reducer`可以翻译为“整合器”，它的作用就是将那些和同一个`state`相关的所有函数都整合到一起，方便在组件中进行调用。
 
@@ -596,7 +596,7 @@ function Counter() {
 }
 ```
 
-### 5.2 state初始化的两种方式
+#### 5.2 state初始化的两种方式
 
 **指定初始 state**
 
@@ -658,7 +658,7 @@ function Counter({initialCount}) {
 
 ![image-20221030143937094](https://gitlab.com/apzs/image/-/raw/master/image/08a8b739d946a92c01ec286bfce8b81771a42e71.png)
 
-### 5.3 跳过 dispatch
+#### 5.3 跳过 dispatch
 
 如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
@@ -667,11 +667,11 @@ function Counter({initialCount}) {
 需要注意的是，React 可能仍需要在跳过渲染前再次渲染该组件。不过由于 React 不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
 
 
-# 15【react-Hook （下）】
+## 15【react-Hook （下）】
 
-## 1.React.memo
+### 1.React.memo
 
-### 1.1 基本介绍
+#### 1.1 基本介绍
 
 > 这是一个高阶组件，用来做性能优化的，这个本来应该是写在`React高级指引`中的，但是这个案例会和后面的`useCallback`联合起来，所以就写在这里了
 
@@ -680,7 +680,7 @@ function Counter({initialCount}) {
     *   包装过的新组件就会具有缓存功能，这意味着在这种情况下，React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。
     *   包装过后，只有组件的props发生变化，才会触发组件的重新的渲染，否则总是返回缓存中结果。如果函数组件被 `React.memo` 包裹，且其实现中拥有 [`useState`](https://zh-hans.reactjs.org/docs/hooks-state.html)，[`useReducer`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usereducer) 或 [`useContext`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecontext) 的 Hook，当 state 或 context 发生变化时，它仍会重新渲染。
 
-### 1.2 问题的引出
+#### 1.2 问题的引出
 
 React组件会在两种情况下发生重新渲染。第一种，当组件自身的state发生变化时。第二种，当组件的父组件重新渲染时。第一种情况下的重新渲染无可厚非，state都变了，组件自然应该重新进行渲染。但是第二种情况似乎并不是总那么的必要。
 
@@ -721,7 +721,7 @@ function A() {
 
 为了减少像A组件这样组件的渲染，React为我们提供了一个方法`React.memo()`。该方法是一个高阶函数，可以用来根据组件的props对组件进行缓存，当一个组件的父组件发生重新渲染，而子组件的props没有发生变化时，它会直接将缓存中的组件渲染结果返回而不是再次触发子组件的重新渲染，这样一来就大大的降低了子组件重新渲染的次数。
 
-### 1.3 使用React.memo
+#### 1.3 使用React.memo
 
 使用`React.memo`包裹`A组件`
 
@@ -807,12 +807,12 @@ const A = React.memo(props => {
 
 ![image-20221030173754653](https://gitlab.com/apzs/image/-/raw/master/image/0f5ff4c127b4d404f1207ccbf497a5cd271d4651.png)
 
-### 1.4 使用注意
+#### 1.4 使用注意
 
 1. 此方法仅作为**[性能优化](https://zh-hans.reactjs.org/docs/optimizing-performance.html)**的方式而存在。但请不要依赖它来“阻止”渲染，因为这会产生 bug。
 2. 与 class 组件中 [`shouldComponentUpdate()`](https://zh-hans.reactjs.org/docs/react-component.html#shouldcomponentupdate) 方法不同的是，如果 props 相等，`areEqual` 会返回 `true`；如果 props 不相等，则返回 `false`。这与 `shouldComponentUpdate` 方法的返回值相反。
 
-### 1.5 容易出错的情况
+#### 1.5 容易出错的情况
 
 先回到这个案例的初始代码，在这之上进行修改
 
@@ -858,9 +858,9 @@ const A = React.memo(props => {
 
 这个问题可以用`useCallback`解决。
 
-## 2.useCallback
+### 2.useCallback
 
-### 2.1 基本介绍
+#### 2.1 基本介绍
 
 ```js
 const memoizedCallback = useCallback(
@@ -918,7 +918,7 @@ function Foo() {
 
 而 React 给出的方案是`useCallback` Hook。在依赖不变的情况下 (在我们的例子中是 count )，它会返回相同的引用，避免子组件进行无意义的重复渲染
 
-### 2.2 解决1.5遗留的问题
+#### 2.2 解决1.5遗留的问题
 
 ```javascript
 /*
@@ -984,7 +984,7 @@ const A = React.memo(props => {
 })
 ```
 
-### 2.3 第二个参数的使用
+#### 2.3 第二个参数的使用
 
 继续改造上面的代码
 
@@ -1047,7 +1047,7 @@ const clickHandler = useCallback(() => {
 
 点击了两次增加后，count变成了预期值4。
 
-## 3.useMemo
+### 3.useMemo
 
 useMemo和useCallback十分相似，useCallback用来缓存函数对象，useMemo用来缓存函数的执行结果。在组件中，会有一些函数具有十分的复杂的逻辑，执行速度比较慢。闭了避免这些执行速度慢的函数返回执行，可以通过useMemo来缓存它们的执行结果，像是这样：
 
@@ -1059,7 +1059,7 @@ const result = useMemo(()=>{
 
 useMemo中的函数会在依赖项发生变化时执行，注意！是执行，这点和useCallback不同，useCallback是创建。执行后返回执行结果，如果依赖项不发生变化，则一直会返回上次的结果，不会再执行函数。这样一来就避免复杂逻辑的重复执行。
 
-### 3.1 问题的引出
+#### 3.1 问题的引出
 
 `App.jsx`
 
@@ -1132,7 +1132,7 @@ export default App
 
 这个时候因为`sum`函数要3秒才能执行完，导致下面数字显示也变慢了3秒。
 
-### 3.2 使用 useMemo 解决上面的问题
+#### 3.2 使用 useMemo 解决上面的问题
 
 `App.jsx`
 
@@ -1146,7 +1146,7 @@ export default App
 
 第一次加载慢是不可避免的，但是这个钩子函数将`sum`函数的返回值缓存起来，这样我们模板重新渲染时就没有再去执行`sum`函数，而是直接使用上一次的返回值。
 
-### 3.3 第二个参数的使用
+#### 3.3 第二个参数的使用
 
 继续改造上面的代码，把`Sum`单独抽离成一个组件
 
@@ -1206,7 +1206,7 @@ const result = useMemo(() => <Sum a={a} b={b} />, [a])
 
 ![image-20221107145403725](https://gitlab.com/apzs/image/-/raw/master/image/931d55fbd9ffca98894a4b8178c8da9751231923.png)
 
-## 4.React.forwardRef
+### 4.React.forwardRef
 
 > 这是一个高阶组件，用来做性能优化的，这个本来应该是写在`React高级指引`中的，但是这个案例会和后面的`useImperativeHandle`联合起来，所以就写在这里了
 
@@ -1268,7 +1268,7 @@ export default function App() {
 
 我们可以直接在`App`组件操作`Child`组件的内容，但是这样并不好，我们希望`Child`组件的内容只由`Child`组件自己去操作，所以引出了`useImperativeHandle`
 
-## 5.useImperativeHandle
+### 5.useImperativeHandle
 
 ```js
 useImperativeHandle(ref, createHandle, [deps])

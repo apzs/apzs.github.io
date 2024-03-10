@@ -13,9 +13,8 @@ export default navbar([
                 icon: "pen-to-square",
                 prefix: "html&css/",
                 children: [
-                    {text: "html基础", icon: "pen-to-square", link: "1.html.html"},
-                    {text: "css基础", icon: "pen-to-square", link: "2.css"},
-                    {text: "移动端布局", icon: "pen-to-square", link: "3.mobile"},
+                    {text: "html&css基础", icon: "pen-to-square", link: "1.html&css"},
+                    {text: "移动端布局", icon: "pen-to-square", link: "2.mobile"},
                 ]
             },
             {
@@ -50,7 +49,7 @@ export default navbar([
                     {
                         text: "scss",
                         icon: "pen-to-square",
-                        link: "scss/1.scss基础"
+                        link: "scss/README"
                     },
                 ]
             },

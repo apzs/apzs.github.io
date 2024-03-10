@@ -1,7 +1,7 @@
-# 1.Spring的IOC和依赖注入(DI)
+## 1.Spring的IOC和依赖注入(DI)
 > 官方文档：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html
 
-## 1.1. Spring简介
+### 1.1. Spring简介
 
 Spring是分层的 Java SE/EE应用 full-stack 轻量级开源框架，以 **IoC**（Inverse Of Control：反转控制）和 **AOP**（Aspect Oriented Programming：面向切面编程）为内核。
 提供了**展现层 SpringMVC** 和**持久层 Spring JDBCTemplate** 以及**业务层事务管理**等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的Java EE 企业应用开源框架。
@@ -18,7 +18,7 @@ Spring是分层的 Java SE/EE应用 full-stack 轻量级开源框架，以 **IoC
 >
 > Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提供的底层服务包括组件的生命周期管理、配置和组装服务、AOP支持，以及建立在AOP基础上的声明式事务服务等。
 
-## 1.2. Spring快速入门
+### 1.2. Spring快速入门
 
 传统方式在Service中调用Dao层的方法，需要在Service中创建一个Dao对象。
 
@@ -103,9 +103,9 @@ userDao.save();
 ```
 
 
-## 1.3. Spring配置文件
+### 1.3. Spring配置文件
 
-### 1.3.1 Bean标签基本配置
+#### 1.3.1 Bean标签基本配置
 
 用于配置对象交由Spring来创建。
 
@@ -116,7 +116,7 @@ userDao.save();
 - id: Bean实例在Spring容器中的唯一标识
 - class：Bean的全限定名称
 
-### 1.3.2 Bean标签范围配置
+#### 1.3.2 Bean标签范围配置
 
 scope: 指对象的作用范围
 
@@ -156,12 +156,12 @@ Bean的实例化时机：当调用`getBean()`方法时实例化Bean
 - 对象运行：只要对象在使用中，就一直活着
 - 对象销毁：当对象长时间不用时，被 Java 的垃圾回收器回收了
 
-### 1.3.3 Bean生命周期配置 
+#### 1.3.3 Bean生命周期配置 
 
 init-method：指定类中的初始化方法名称
 destroy-method：指定类中销毁方法名称
 
-### 1.3.4 Bean实例化三种方式
+#### 1.3.4 Bean实例化三种方式
 
 **1）用构造函数实例化**
 
@@ -267,7 +267,7 @@ public class DefaultServiceLocator {
 }
 ```
 
-### 1.3.5 Bean的依赖注入
+#### 1.3.5 Bean的依赖注入
 
 创建 UserService，我们希望UserService 在内部调用 UserDao的`save()` 方法。
 
@@ -371,7 +371,7 @@ public class DefaultServiceLocator {
 - 引用数据类型
 - 集合数据类型
 
-#### 普通数据类型和集合数据类型的注入
+##### 普通数据类型和集合数据类型的注入
 
 **1）直值(Primitives，字符串等)**
 
@@ -477,7 +477,7 @@ Map, Set, Properties注入如下：
 </bean>
 ```
 
-### 1.3.6 引入其他配置文件（分模块开发） 
+#### 1.3.6 引入其他配置文件（分模块开发） 
 
 实际开发中，Spring的配置内容非常多，这就导致Spring配置很繁杂且体积很大，所以，可以将部分配置拆解到其他配置文件中，而在Spring主配置文件通过import标签进行加载`<import resource="applicationContext-xxx.xml"/>`
 
@@ -499,7 +499,7 @@ Map, Set, Properties注入如下：
 <import>标签:导入其他的Spring的分文件
 ```
 
-## 1.4. Spring相关API
+### 1.4. Spring相关API
 
 **ApplicationContext的继承体系** 
 
@@ -551,7 +551,7 @@ IoC全称Inversion of Control，直译为控制反转，是指对象的创建和
 
 ![](https://gitlab.com/apzs/image/-/raw/master/image/v2-ee924f8693cff51785ad6637ac5b21c1_720w.jpg?source=1940ef5c)
 
-## 1.5. 依赖倒置原则
+### 1.5. 依赖倒置原则
 
 **依赖倒置原则**——把原本的高层建筑依赖底层建筑“倒置”过来，变成底层建筑依赖高层建筑。高层建筑决定需要什么，底层去实现这样的需求，但是高层并不用管底层是怎么实现的。
 
@@ -569,7 +569,7 @@ IoC全称Inversion of Control，直译为控制反转，是指对象的创建和
 
 这时候，上司再说要改动轮子的设计，我们就只需要改动轮子的设计，而不需要动底盘，车身，汽车的设计了。
 
-## 1.6. 传统的三层架构
+### 1.6. 传统的三层架构
 
 回到代码中，三层架构是经典的开发模式，我们一般将视图控制、业务逻辑和数据库操作分别抽离出来单独形成一个类，这样各个职责就非常清晰且易于复用和维护。
 
@@ -666,7 +666,7 @@ public class UserDaoImpl implements UserDao{
 - 更换实现类需要改动多个地方；
 - 创建和配置组件工作繁杂，给组件调用方带来极大不便。
 
-## 1.7. IoC
+### 1.7. IoC
 
 如果一个系统有大量的组件，其生命周期和相互之间的依赖关系如果由组件自身来维护，不但大大增加了系统的复杂度，而且会导致组件之间极为紧密的耦合，继而给测试和维护带来了极大的困难。
 
@@ -701,11 +701,11 @@ public class OtherUserServiceImpl implements UserService{
 
 共享一个组件也非常简单。
 
-## 1.8. 依赖注入
+### 1.8. 依赖注入
 
 在IoC模式下，控制权发生了反转，即从应用程序转移到了IoC容器，所有组件不再由应用程序自己创建和配置，而是由IoC容器负责，这样，应用程序只需要直接使用已经创建好并且配置好的组件。为了能让组件在IoC容器中被“装配”出来，需要某种“注入”机制。
 
-### 1.8.1 依赖注入的原理
+#### 1.8.1 依赖注入的原理
 
 
 
@@ -737,13 +737,13 @@ IoC Container在进行这个工作的时候是反过来的，它先从最上层�
 
 IoC Container的第二个好处是：**我们在创建实例的时候不需要了解其中的细节。**
 
-### 1.8.2 Spring中的依赖注入方式
+#### 1.8.2 Spring中的依赖注入方式
 
 Spring的IoC容器同时支持属性注入和构造方法注入，并允许混合使用。
 
 这里不再展开。
 
-## 1.9. 无侵入容器
+### 1.9. 无侵入容器
 
 在设计上，Spring的IoC容器是一个高度可扩展的**无侵入容器**。
 
@@ -754,8 +754,8 @@ Spring的IoC容器同时支持属性注入和构造方法注入，并允许混�
 1. 应用程序组件既可以在Spring的IoC容器中运行，也可以自己编写代码自行组装配置；
 2. 测试的时候并不依赖Spring容器，可单独进行测试，大大提高了开发效率。
 
-# 2.IoC和DI注解开发
-## 2.1. Spring配置数据源
+## 2.IoC和DI注解开发
+### 2.1. Spring配置数据源
 
 **数据源（连接池）的作用**
 
@@ -776,7 +776,7 @@ Spring的IoC容器同时支持属性注入和构造方法注入，并允许混�
 
 4、使用数据源获取连接资源和归还连接资源
 
-### 2.1.2 数据源的手动创建
+#### 2.1.2 数据源的手动创建
 
 1）在 pom.xml 中导入mysql数据库驱动坐标
 
@@ -872,7 +872,7 @@ public void test3() throws Exception {
 
 
 
-### 2.1.3 Spring配置数据源
+#### 2.1.3 Spring配置数据源
 
 ```java
 @Test
@@ -901,7 +901,7 @@ name对应set方法
 
 
 
-### 2.1.4 抽取jdbc配置文件
+#### 2.1.4 抽取jdbc配置文件
 
 applicationContext.xml加载jdbc.properties配置文件获得连接信息。 
 
@@ -925,9 +925,9 @@ applicationContext.xml加载jdbc.properties配置文件获得连接信息。
 </bean>
 ```
 
-## 2.2. Spring注解开发
+### 2.2. Spring注解开发
 
-### 2.2.1 Spring原始注解
+#### 2.2.1 Spring原始注解
 
 Spring是轻代码而重配置的框架，配置比较繁重，影响开发效率，所以注解开发是一种趋势，注解代替xml配置文件可以简化配置，提高开发效率。
 
@@ -1056,7 +1056,7 @@ public class UserServiceImpl implements UserService {
 
 
 
-### 2.2.2 Spring新注解
+#### 2.2.2 Spring新注解
 
 | 注解              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
@@ -1133,7 +1133,7 @@ public void testAnnoConfiguration() throws Exception {
 
 
 
-## 2.3. Spring整合Junit
+### 2.3. Spring整合Junit
 
 **原始Junit测试Spring的问题** 
 
@@ -1188,14 +1188,14 @@ public class SpringJunitTest {
 }
 ```
 
-# 3.SpringMVC入门
+## 3.SpringMVC入门
 > **环境配置：**
 >
 > [IntelliJ IDEA创建maven web项目（IDEA新手适用）](https://blog.csdn.net/czc9309/article/details/80304074)
 >
 > [解决Idea创建maven-archetype-webapp项目无java目录的问题](https://www.cnblogs.com/hafiz/p/5854693.html)
 
-## 3.1.Spring与Web环境集成
+### 3.1.Spring与Web环境集成
 
 **ApplicationContext应用上下文获取方式**
 
@@ -1257,7 +1257,7 @@ UserService userService = app.getBean(UserService.class);
 
 
 
-## 3.2. SpringMVC简介
+### 3.2. SpringMVC简介
 
 **SpringMVC概述**
 
@@ -1394,9 +1394,9 @@ SpringMVC流程图示
 
 ![](https://gitlab.com/apzs/image/-/raw/master/image/202203220918939.png)
 
-## 3.3. SpringMVC组件解析
+### 3.3. SpringMVC组件解析
 
-### 3.3.1 SpringMVC的执行流程
+#### 3.3.1 SpringMVC的执行流程
 
 ![image-20220322092531826](https://gitlab.com/apzs/image/-/raw/master/image/202203220925903.png)
 
@@ -1422,7 +1422,7 @@ SpringMVC流程图示
 
 
 
-### 3.3.2 SpringMVC组件解析
+#### 3.3.2 SpringMVC组件解析
 
 **前端控制器：DispatcherServlet** 
 
@@ -1448,7 +1448,7 @@ View Resolver 负责将处理结果生成 View 视图，View Resolver 首先根�
 
 SpringMVC 框架提供了很多的 View 视图类型的支持，包括：jstlView、freemarkerView、pdfView等。最常用的视图就是 jsp。一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。
 
-### 3.3.3 SpringMVC注解解析
+#### 3.3.3 SpringMVC注解解析
 
 `@RequestMapping`
 
@@ -1489,7 +1489,7 @@ SpringMVC基于Spring容器，所以在进行SpringMVC操作时，需要将Contr
 
 
 
-### 3.3.4 SpringMVC的XML配置解析
+#### 3.3.4 SpringMVC的XML配置解析
 
 **视图解析器** 
 
@@ -1525,15 +1525,15 @@ https://www.runoob.com/schema/schema-intro.html
 
 https://developer.aliyun.com/article/40353
 
-## 3.4. XML 命名空间（XML Namespaces）
+### 3.4. XML 命名空间（XML Namespaces）
 
 **XML 命名空间提供避免元素命名冲突的方法。**
 
-### 命名冲突
+#### 命名冲突
 
 在 XML 中，元素名称是由开发者定义的，当两个不同的文档使用相同的元素名时，就会发生命名冲突。
 
-### 使用前缀来避免命名冲突
+#### 使用前缀来避免命名冲突
 
 此文档带有某个表格中的信息：
 
@@ -1560,7 +1560,7 @@ https://developer.aliyun.com/article/40353
 
 通过使用前缀，我们创建了两种不同类型的 `<table> `元素。
 
-### 使用命名空间（Namespaces）
+#### 使用命名空间（Namespaces）
 
 这个 XML 文档携带着某个表格中的信息：
 
@@ -1585,7 +1585,7 @@ https://developer.aliyun.com/article/40353
 
 与仅仅使用前缀不同，我们为 `<table> `标签添加了一个 xmlns 属性，这样就为前缀==赋予了一个与某个命名空间相关联的限定名称==。
 
-### XML Namespace (xmlns) 属性
+#### XML Namespace (xmlns) 属性
 
 XML 命名空间属性被放置于元素的开始标签之中，并使用以下的语法：
 
@@ -1597,7 +1597,7 @@ xmlns:namespace-prefix="namespaceURI"
 
 **注释：**用于标示命名空间的地址不会被解析器用于查找信息。其惟一的作用是赋予命名空间一个惟一的名称。不过，很多公司常常会作为指针来使用命名空间指向实际存在的网页，这个网页包含关于命名空间的信息。
 
-### 默认的命名空间（Default Namespaces）
+#### 默认的命名空间（Default Namespaces）
 
 为元素定义默认的命名空间可以让我们省去在所有的子元素中使用前缀的工作。
 
@@ -1609,7 +1609,7 @@ xmlns="namespaceURI"
 
 
 
-## 3.5. XML Schema (简单了解)
+### 3.5. XML Schema (简单了解)
 
 XML Schema 是基于 XML 的 DTD 替代者。
 
@@ -1621,7 +1621,7 @@ XML Schema 语言也可作为 XSD（XML Schema Definition）来引用。
 
 编写了一个XML Schema约束文档后，通常需要把这个文件中声明的元素绑定到一个URI地址上，在XML Schema技术中有一个专业术语来描述这个过程，即把XML Schema文档声明的元素绑定到一个命名空间上，以后XML文件就可以通过这个URI（即命名空间）来告诉解析引擎，XML文档中编写的元素来自哪里，被谁约束。为了在一个XML文档中声明它所遵循的Schema文件具体位置，通常需要在XML文档中的根节点中使用schemaLocation属性来指定。
 
-### 对 XML Schema 的引用
+#### 对 XML Schema 的引用
 
 此文件包含对 XML Schema 的引用：
 
@@ -1671,7 +1671,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
 后一个值指代 【XSD location URI】 , 这个值指示了前一个命名空间所对应的 XSD 文件的位置， xml parser 可以利用这个信息获取到 XSD 文件， 从而通过 XSD 文件对所有属于 命名空间 `http://maven.apache.org/POM/4.0.0` 的元素结构进行校验， 因此这个值必然是可以访问的， 且访问到的内容是一个 XSD 文件的内容。
 
-## 3.6. Spring中的配置
+### 3.6. Spring中的配置
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1731,8 +1731,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/context"
 
 这里表示Namespace为`http://www.springframework.org/schema/context`的Schema的位置为`http://www.springframework.org/schema/context/spring-context.xsd`。
 
-# 4.SpringMVC的请求和响应
-## 4.1. SpringMVC的数据响应
+## 4.SpringMVC的请求和响应
+### 4.1. SpringMVC的数据响应
 
 **SpringMVC的数据响应方式** 
 
@@ -1746,11 +1746,11 @@ xsi:schemaLocation="http://www.springframework.org/schema/context"
 - 直接返回字符串
 - 返回对象或集合
 
-### 4.1.1 页面跳转
+#### 4.1.1 页面跳转
 
 代码继承自课程03，前置的配置参考之。
 
-#### 4.1）返回字符串形式
+##### 4.1）返回字符串形式
 
 直接返回字符串：此种方式会将返回的字符串与视图解析器的前后缀拼接后跳转。
 
@@ -1775,7 +1775,7 @@ public String save() {
 
 
 
-#### 4.2）返回ModelAndView对象
+##### 4.2）返回ModelAndView对象
 
 使用ModelAndView类用来存储处理完后的结果数据，以及显示该数据的视图。业务处理器调用模型层处理完用户请求后，把结果数据存储在该类的model属性中，把要返回的视图信息存储在该类的view属性中，然后让该ModelAndView返回该Spring MVC框架。框架通过调用配置文件中定义的视图解析器，对该对象进行解析，最后把结果数据显示在指定的页面上。
 
@@ -1805,7 +1805,7 @@ public ModelAndView save3(ModelAndView modelAndView) {
 }
 ```
 
-#### 4.3）向request域存储数据 
+##### 4.3）向request域存储数据 
 
 在进行转发时，往往要向request域中存储数据，在jsp页面中显示，那么Controller中怎样向request 域中存储数据呢？
 
@@ -1839,9 +1839,9 @@ public ModelAndView save5_2(){
 
 
 
-### 4.1.2 回写数据
+#### 4.1.2 回写数据
 
-#### 4.1）直接返回字符串 
+##### 4.1）直接返回字符串 
 
 Web基础阶段，客户端访问服务器端，如果想直接回写字符串作为响应体返回的话，只需要使用
 
@@ -1919,7 +1919,7 @@ public String save9() throws IOException {
 
 
 
-#### 4.2）返回对象或集合
+##### 4.2）返回对象或集合
 
 通过SpringMVC帮助我们对对象或集合进行json字符串的转换并回写，为处理器适配器配置消息转换参数， 指定使用jackson进行对象或集合的转换，因此需要在 **spring-mvc.xml** 中进行如下配置：
 
@@ -1956,11 +1956,11 @@ public User save10() throws IOException {
 在 SpringMVC的各个组件中，处理器映射器、处理器适配器、视图解析器称为 SpringMVC 的三大组件。 使用`<mvc:annotation-driven>`自动加载 RequestMappingHandlerMapping（处理映射器）和 RequestMappingHandlerAdapter（处理适配器），可用在Spring-mvc.xml配置文件中使用 `<mvc:annotation-driven>`替代注解处理器和适配器的配置。
 同时使用`<mvc:annotation-driven>`默认底层就会集成jackson进行对象或集合的json格式字符串的转换。
 
-## 4.2. SpringMVC获得请求数据
+### 4.2. SpringMVC获得请求数据
 
 客户端请求参数的格式是：`name=value&name=value…`
 
-### 4.2.1 获得基本类型参数
+#### 4.2.1 获得基本类型参数
 
 Controller中的业务方法的参数名称要与请求参数的name一致，参数值会自动映射匹配。
 
@@ -1979,7 +1979,7 @@ public void save11(String username, int age) throws IOException {
 
 
 
-### 4.2.2 获得POJO类型参数
+#### 4.2.2 获得POJO类型参数
 
 Controller中的业务方法的POJO参数的属性名与请求参数的name一致，参数值会自动映射匹配。
 
@@ -2005,7 +2005,7 @@ User{username='zhangsan', age=12}
 
 
 
-### 4.2.3 获得数组类型参数
+#### 4.2.3 获得数组类型参数
 
 Controller中的业务方法数组名称与请求参数的name一致，参数值会自动映射匹配。
 
@@ -2031,7 +2031,7 @@ out:
 
 
 
-### 4.2.4 获得集合类型参数
+#### 4.2.4 获得集合类型参数
 
 获得集合参数时，要将集合参数包装到一个POJO中才可以。
 
@@ -2144,7 +2144,7 @@ SpringMVC的前端控制器 DispatcherServlet的url-pattern配置的是/，代�
 <mvc:default-servlet-handler/>
 ```
 
-### 4.2.5 请求数据乱码问题
+#### 4.2.5 请求数据乱码问题
 
 当post请求时，数据会出现乱码，我们可以设置一个过滤器来进行编码的过滤。
 
@@ -2168,7 +2168,7 @@ SpringMVC的前端控制器 DispatcherServlet的url-pattern配置的是/，代�
 
 
 
-### 4.2.6 参数绑定注解@requestParam
+#### 4.2.6 参数绑定注解@requestParam
 
 当请求的参数名称与Controller的业务方法参数名称不一致时，就需要通过@RequestParam注解显示的绑定。
 
@@ -2190,7 +2190,7 @@ public void save16(@RequestParam(value = "name", required = false, defaultValue 
 }
 ```
 
-### 4.2.7 获得Restful风格的参数
+#### 4.2.7 获得Restful风格的参数
 
 在SpringMVC中可以使用占位符进行参数绑定。地址`/user/1`可以写成 `/user/{id}`，占位符`{id}`对应的就是1的值。在业务方法中我们可以使用`@PathVariable`注解进行占位符的匹配获取工作。
 
@@ -2208,7 +2208,7 @@ public void save17(@PathVariable(value = "name") String username) throws IOExcep
 }
 ```
 
-### 4.2.8 自定义类型转换器
+#### 4.2.8 自定义类型转换器
 
 SpringMVC 默认已经提供了一些常用的类型转换器，例如客户端提交的字符串转换成int型进行参数设置。 但是不是所有的数据类型都提供了转换器，没有提供的就需要自定义转换器，例如：日期类型的数据就需要自定义转换器。
 
@@ -2269,7 +2269,7 @@ public void save18(Date date) throws IOException {
 
 
 
-### 4.2.9 获得Servlet相关API
+#### 4.2.9 获得Servlet相关API
 
 SpringMVC支持使用原始ServletAPI对象作为控制器方法的参数进行注入，常用的对象如下： 
 
@@ -2295,7 +2295,7 @@ org.apache.catalina.connector.ResponseFacade@38379a33
 org.apache.catalina.session.StandardSessionFacade@3c0819ed
 ```
 
-### 4.2.10 获得请求头
+#### 4.2.10 获得请求头
 
 **1）@RequestHeader**
 
@@ -2341,7 +2341,7 @@ public void save21(@CookieValue(value = "JSESSIONID") String jsessionId) throws 
 
 
 
-### 4.2.11 文件上传
+#### 4.2.11 文件上传
 
 **文件上传客户端三要素**
 
@@ -2363,7 +2363,7 @@ public void save21(@CookieValue(value = "JSESSIONID") String jsessionId) throws 
 
 
 
-### 4.2.12 单文件上传
+#### 4.2.12 单文件上传
 
 ① 导入fileupload和io坐标 
 
@@ -2446,12 +2446,12 @@ public void save23(String username, MultipartFile[] uploadFiles) throws IOExcept
 }
 ```
 
-# 5.JDBC模板
-## JdbcTemplate基本使用
+## 5.JDBC模板
+### JdbcTemplate基本使用
 
 参考资料：[使用 JDBC 进行数据访问](https://www.docs4dev.com/docs/zh/spring-framework/4.3.21.RELEASE/reference/jdbc.html)
 
-### JdbcTemplate概述 
+#### JdbcTemplate概述 
 
 它是spring框架中提供的一个对象，是对原始繁琐的Jdbc API对象的简单封装。spring框架为我们提供了很多的操作模板类。例如：操作关系型数据的JdbcTemplate和HibernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。
 
@@ -2472,7 +2472,7 @@ public void save23(String username, MultipartFile[] uploadFiles) throws IOExcept
 
 
 
-### JdbcTemplate开发步骤 
+#### JdbcTemplate开发步骤 
 
 **① 导入spring-jdbc和spring-tx坐标** 
 
@@ -2525,7 +2525,7 @@ public void test1() throws PropertyVetoException {
 
 
 
-### Spring产生JdbcTemplate对象
+#### Spring产生JdbcTemplate对象
 
 可以将JdbcTemplate的创建权交给Spring，将数据源DataSource的创建权也交给Spring，在Spring容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：
 
@@ -2566,7 +2566,7 @@ public void test2() throws PropertyVetoException {
 
 
 
-### JdbcTemplate的常用操作
+#### JdbcTemplate的常用操作
 
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -2612,8 +2612,8 @@ public class JdbcTemplateCRUDTest {
 
 
 
-# 6.练习
-## 6.1. Spring环境搭建步骤
+## 6.练习
+### 6.1. Spring环境搭建步骤
 
 ① 创建工程（Project&Module） 
 
@@ -2643,7 +2643,7 @@ public class JdbcTemplateCRUDTest {
 
 
 
-## 6.2. 项目整体结构
+### 6.2. 项目整体结构
 
 ```
 --controller 根据请求，调用servive，返回视图
@@ -2660,7 +2660,7 @@ public class JdbcTemplateCRUDTest {
 
 - [ ] 将service层和dao层也改为注解配置
 
-## 6.3. 表结构与domain层的设计
+### 6.3. 表结构与domain层的设计
 
 sys_user：用户数据表
 
@@ -2713,7 +2713,7 @@ public class Role {
 }
 ```
 
-## 6.4. DAO层
+### 6.4. DAO层
 
 **RoleDao 接口设计：**
 
@@ -2749,7 +2749,7 @@ public interface UserDao {
 
 
 
-## 6.5. Service层
+### 6.5. Service层
 
 **RoleService 接口设计**
 
@@ -2843,18 +2843,18 @@ public class UserServiceImpl implements UserService {
 
 
 
-## 6.6. Controller层
+### 6.6. Controller层
 
 User相关接口：
 
 ```http
-## 查询user list
+### 查询user list
 GET http://localhost:8080/user/list  
-## 查询role list，返回视图user-add.jsp
+### 查询role list，返回视图user-add.jsp
 GET http://localhost:8080/user/saveUI
-## 增加一条user数据，重定向到user list视图
+### 增加一条user数据，重定向到user list视图
 POST http://localhost:8080/user/save
-## 删除一条user数据，重定向到user list视图
+### 删除一条user数据，重定向到user list视图
 GET http://localhost:8080/user/del/{userID}
 ```
 
@@ -2864,8 +2864,8 @@ Role相关接口：
 
 
 
-# 7.SpringMVC拦截器
-## 7.1. 拦截器的作用
+## 7.SpringMVC拦截器
+### 7.1. 拦截器的作用
 
 Spring MVC 的拦截器类似于 Servlet 开发中的过滤器 Filter，用于对处理器进行预处理和后处理。 
 
@@ -2873,7 +2873,7 @@ Spring MVC 的拦截器类似于 Servlet 开发中的过滤器 Filter，用于�
 
 
 
-## 7.2. 拦截器和过滤器区别
+### 7.2. 拦截器和过滤器区别
 
 | 区别 | 过滤器（Filter） |  拦截器（Interceptor）   |
 | ---- | ------ | ---- |
@@ -2891,7 +2891,7 @@ Spring MVC 的拦截器类似于 Servlet 开发中的过滤器 Filter，用于�
 
 
 
-## 7.3. 拦截器快速入门
+### 7.3. 拦截器快速入门
 
 **1、创建拦截器类实现`HandlerInterceptor`接口。**
 
@@ -2952,7 +2952,7 @@ public class MyInterceptor1 implements HandlerInterceptor {
 
 
 
-## 7.4. 案例-用户登录权限控制
+### 7.4. 案例-用户登录权限控制
 
 在[D:\learning-area\SSM\代码\6_itheima_spring_test](D:\learning-area\SSM\代码\6_itheima_spring_test)的基础上进行修改，使用拦截器实现根据session的登陆验证。
 
@@ -3080,8 +3080,8 @@ public User login(String username, String password) {
 ```
 
 
-# 8.异常处理机制
-## 异常处理的思路
+## 8.异常处理机制
+### 异常处理的思路
 
 系统中异常包括两类：**预期异常**和**运行时异常RuntimeException**，前者通过捕获异常从而获取异常信息，后者主要通过规范代码开发、测试等手段减少运行时异常的发生。
 系统的Dao、Service、Controller出现都通过throws Exception向上抛出，最后由SpringMVC前端控制器交
@@ -3089,12 +3089,12 @@ public User login(String username, String password) {
 
 ![image-20220324170254529](https://gitlab.com/apzs/image/-/raw/master/image/202203241702575.png)
 
-## 异常处理两种方式
+### 异常处理两种方式
 
 - 使用Spring MVC提供的简单异常处理器 `SimpleMappingExceptionResolver`
 - 实现Spring的异常处理接口 `HandlerExceptionResolver` 自定义自己的异常处理器
 
-## 简单异常处理器 SimpleMappingExceptionResolver 
+### 简单异常处理器 SimpleMappingExceptionResolver 
 
 SpringMVC已经定义好了该类型转换器，在使用时可以根据项目情况进行相应异常与视图的映射配置。
 
@@ -3113,7 +3113,7 @@ public class MyException extends Exception {
 
 
 
-## 自定义异常处理步骤
+### 自定义异常处理步骤
 
 1、创建异常处理器类实现 `HandlerExceptionResolver`
 
@@ -3163,10 +3163,10 @@ public void quickMethod22() throws IOException, ParseException {
 
 即在Controller层抛出异常，让异常处理器进行处理。
 
-# 9.AOP
-## 9.1. Spring的AOP简介
+## 9.AOP
+### 9.1. Spring的AOP简介
 
-### 9.1.1 什么是AOP?
+#### 9.1.1 什么是AOP?
 
 AOP 为 Aspect Oriented Programming 的缩写，意思为面向切面编程，是通过预编译方式和运行期动态代理 实现程序功能的统一维护的一种技术。
 AOP 是 OOP 的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
@@ -3179,19 +3179,19 @@ AOP 是 OOP 的延续，是软件开发中的一个热点，也是Spring框架�
 
 这一条条横线仿佛切开了 OOP 的树状结构，犹如一个大蛋糕被切开多层，每一层都会执行相同的辅助逻辑，所以大家将这些辅助逻辑称为层面或者切面。
 
-### 9.1.2 AOP 的作用及其优势
+#### 9.1.2 AOP 的作用及其优势
 
 作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强
 
 优势：减少重复代码，提高开发效率，并且便于维护
 
-### 9.1.3 AOP 的底层实现
+#### 9.1.3 AOP 的底层实现
 
 AOP 的底层是通过 Spring 提供的的动态代理技术实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成功能的增强。
 
 > 关于动态代理，见：[09_补充：代理模式](D:\BaiduNetdiskWorkspace\Md笔记\Java后端开发\Java框架\SSM\09_补充：代理模式.md)
 
-### 9.1.4 AOP的动态代理技术
+#### 9.1.4 AOP的动态代理技术
 
 常用的动态代理技术 
 
@@ -3202,7 +3202,7 @@ AOP 的底层是通过 Spring 提供的的动态代理技术实现的。在运�
 
 ![image-20220325155728208](https://gitlab.com/apzs/image/-/raw/master/image/202203251557269.png)
 
-### 9.1.5 JDK的动态代理
+#### 9.1.5 JDK的动态代理
 
 1）目标类接口
 
@@ -3266,7 +3266,7 @@ proxy.save();
 
 
 
-### 9.1.6 cglib 的动态代理（原理未学习）
+#### 9.1.6 cglib 的动态代理（原理未学习）
 
 1）目标类
 
@@ -3329,7 +3329,7 @@ public class ProxyTest {
 }
 ```
 
-### 9.1.7 AOP的相关概念
+#### 9.1.7 AOP的相关概念
 
 Spring 的 AOP 实现底层就是对上面的动态代理的代码进行了封装，封装后我们只需要对需要关注的部分进行代码编 写，并通过配置的方式完成指定目标的方法增强。
 AOP 常用的相关术语如下：
@@ -3342,7 +3342,7 @@ AOP 常用的相关术语如下：
 - **Aspect（切面）**：是切入点和通知（引介）的结合 
 - **Weaving（织入）**：是指把增强应用到目标对象来创建新的代理对象的过程。spring采用动态代理织入，而AspectJ采用编译期织入和类装载期织入
 
-### 9.1.8 AOP 开发明确的事项 
+#### 9.1.8 AOP 开发明确的事项 
 
 1. 需要编写的内容
 - 编写核心业务代码（目标类的目标方法） 
@@ -3355,9 +3355,9 @@ Spring 框架监控切入点方法的执行。一旦监控到切入点方法被�
 3. AOP 底层使用哪种代理方式
 在 spring 中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。
 
-## 9.2. 基于XML的AOP开发
+### 9.2. 基于XML的AOP开发
 
-### 9.2.1 快速入门
+#### 9.2.1 快速入门
 
 **步骤：**
 
@@ -3500,9 +3500,9 @@ public class AopTest {
 }
 ```
 
-### 9.2.2 XML 配置 AOP 详解
+#### 9.2.2 XML 配置 AOP 详解
 
-#### 9.1）切点表达式的写法
+##### 9.1）切点表达式的写法
 
  表达式语法：
 
@@ -3516,17 +3516,17 @@ execution([修饰符] 返回值类型 包名.类名.方法名(参数))
 - 参数列表可以使用两个点 `..` 表示任意个数，任意类型的参数列表
 
 ```shell
-## 全
+### 全
 execution(public void com.itheima.aop.Target.method()) 
-## 任意方法任意参数
+### 任意方法任意参数
 execution(void com.itheima.aop.Target.*(..)) 
-## 任意返回值com.itheima.aop包下任意类任意方法任意参数
+### 任意返回值com.itheima.aop包下任意类任意方法任意参数
 execution(* com.itheima.aop.*.*(..)) 
-## 你故意找茬是吧
+### 你故意找茬是吧
 execution(* *..*.*(..))
 ```
 
-#### 9.2）通知的类型
+##### 9.2）通知的类型
 
 通知的配置语法：
 
@@ -3544,7 +3544,7 @@ execution(* *..*.*(..))
 | 异常抛出通知 | `<aop:throwing>`        |   用用于配置异常抛出通知。指定增强的方法在出现异常时执行                                                           |
 | 最终通知     | `<aop:after>`           | 用于配置最终通知。无论增强方式执行是否有异常都会执行 |
 
-#### 9.3）切点表达式的抽取
+##### 9.3）切点表达式的抽取
 
 当多个增强的切点表达式相同时，可以将切点表达式进行抽取，在增强中使用 `pointcut-ref` 属性代替 `pointcut` 属性来引用抽取后的切点表达式。
 
@@ -3562,9 +3562,9 @@ execution(* *..*.*(..))
 
 通知方法存在于切面类中，根据切点表达式，对切点增强。
 
-## 9.3. 基于注解的AOP开发
+### 9.3. 基于注解的AOP开发
 
-### 9.3.1 快速入门 
+#### 9.3.1 快速入门 
 
 **步骤：** 
 1、创建目标接口和目标类（内部有切点） 
@@ -3648,9 +3648,9 @@ public class AnnoTest {
 }
 ```
 
-### 9.3.2 注解配置 AOP 详解
+#### 9.3.2 注解配置 AOP 详解
 
-#### 9.1）注解通知的类型
+##### 9.1）注解通知的类型
 
 通知的配置语法：`@通知注解("切点表达式")`
 
@@ -3662,7 +3662,7 @@ public class AnnoTest {
 | 异常抛出通知 | `@AfterThrowing`  | 用于配置异常抛出通知。指定增强的方法在出现异常时执行         |
 | 最终通知     | `@After`          | 用于配置最终通知。无论增强方式执行是否有异常都会执行         |
 
-#### 9.2）切点表达式的抽取
+##### 9.2）切点表达式的抽取
 
 通xml 配置 aop 一样，我们可以将切点表达式抽取。**抽取方式是在切面内定义方法**，在该方法上使用`@Pointcut` 注解定义切点表达式，然后在在增强注解中进行引用。具体如下：
 
@@ -3702,7 +3702,7 @@ public class MyAspect {
 
 **疑问：**关于`@After("MyAspect.pointcut()")`一定会抛出的问题，如何解决？
 
-# 9.补充：代理模式
+## 9.补充：代理模式
 **参考资料：**
 
 [代理详解！静态代理+JDK/CGLIB 动态代理实战](https://javaguide.cn/java/basis/proxy.html)
@@ -3715,7 +3715,7 @@ public class MyAspect {
 
 
 
-## 静态代理
+### 静态代理
 
 为现有的每一个类都编写一个**对应的**代理类，并且让它实现和目标类相同的接口
 
@@ -3735,7 +3735,7 @@ public class MyAspect {
 
 
 
-## 动态代理
+### 动态代理
 
 ![preview](https://gitlab.com/apzs/image/-/raw/master/image/202203242117140.jpeg)
 
@@ -3753,7 +3753,7 @@ Proxy有个静态方法：`getProxyClass(ClassLoader, interfaces)`，只要你�
 
 
 
-### 基于JDK的动态代理
+#### 基于JDK的动态代理
 
 ```java
 public class ProxyTest {
@@ -3811,10 +3811,10 @@ private static Object getProxy(final Object target) throws Exception {
 
 
 
-# 10.声明式事务控制
-## 10.1. 编程式事务控制相关对象（只需要了解）
+## 10.声明式事务控制
+### 10.1. 编程式事务控制相关对象（只需要了解）
 
-### 10.1.1 PlatformTransactionManager
+#### 10.1.1 PlatformTransactionManager
 
 `PlatformTransactionManager` 接口是spring 的事务管理器，它里面提供了我们常用的操作事务的方法。
 
@@ -3831,7 +3831,7 @@ PlatformTransactionManager 是接口类型，不同的 Dao 层技术则有不同
 Dao 层技术是 jdbc 或 mybatis 时：`org.springframework.jdbc.datasource.DataSourceTransactionManager`
 Dao 层技术是 hibernate 时：`org.springframework.orm.hibernate5.HibernateTransactionManager`
 
-### 10.1.2 TransactionDefinition
+#### 10.1.2 TransactionDefinition
 
 TransactionDefinition 是事务的定义信息对象，里面有如下方法： 
 
@@ -3876,7 +3876,7 @@ TransactionDefinition 是事务的定义信息对象，里面有如下方法：
 
 - 是否只读：建议查询时设置为只读
 
-### 10.1.3 TransactionStatus
+#### 10.1.3 TransactionStatus
 
 TransactionStatus 接口提供的是事务具体的运行状态，方法介绍如下：
 
@@ -3889,9 +3889,9 @@ TransactionStatus 接口提供的是事务具体的运行状态，方法介绍�
 
 
 
-## 10.2. 基于 XML 的声明式事务控制
+### 10.2. 基于 XML 的声明式事务控制
 
-### 10.2.1 什么是声明式事务控制
+#### 10.2.1 什么是声明式事务控制
 
 Spring 的声明式事务顾名思义就是采用声明的方式来处理事务。这里所说的声明，就是指在配置文件中声明 ，用在 Spring 配置文件中声明式的处理事务来代替代码式的处理事务。
 
@@ -3904,7 +3904,7 @@ Spring 的声明式事务顾名思义就是采用声明的方式来处理事务�
 
 
 
-### 10.2.2 声明式事务控制的实现
+#### 10.2.2 声明式事务控制的实现
 
 声明式事务控制明确事项： 
 
@@ -3981,7 +3981,7 @@ public class AccountServiceImpl implements AccountService {
 
 
 
-### 10.2.3 切点方法的事务参数的配置
+#### 10.2.3 切点方法的事务参数的配置
 
 ```xml
 <!--事务增强配置-->
@@ -4011,7 +4011,7 @@ public class AccountServiceImpl implements AccountService {
 - timeout：超时时间
 - read-only：是否只读
 
-## 10.3. 基于注解的声明式事务控制
+### 10.3. 基于注解的声明式事务控制
 
 **1、首先在`applicationContext。xml`中进行组件扫描：**
 
@@ -4076,10 +4076,10 @@ public class AccountServiceImpl implements AccountService {
 <tx:annotation-driven/>
 ```
 
-# 11.MyBatis入门操作
-## 11.1. MyBatis的简介 
+## 11.MyBatis入门操作
+### 11.1. MyBatis的简介 
 
-###  原始jdbc操作的分析
+####  原始jdbc操作的分析
 
 **原始jdbc开发存在的问题如下：**
 
@@ -4093,7 +4093,7 @@ public class AccountServiceImpl implements AccountService {
 2、将sql语句抽取到xml配置文件中
 3、使用反射、内省等底层技术，自动将实体与表进行属性与字段的自动映射
 
-### 什么是MyBatis？
+#### 什么是MyBatis？
 
 - MyBatis是一个优秀的基于java的持久层框架，它内部封装了 jdbc，使开发者只需要关注sql语句本身，而不需要花费精力去处理加载驱动、创建连接、创建statement等繁杂的过程。
 - MyBatis通过xml或注解的方式将要执行的各种 statement配置起来，并通过java对象和statement中sql的动态参数进行映射生成最终执行的sql语句。
@@ -4101,7 +4101,7 @@ public class AccountServiceImpl implements AccountService {
 
 > MyBatis参考文档：https://mybatis.org/mybatis-3/zh/index.html
 
-## 11.2. MyBatis的快速入门 
+### 11.2. MyBatis的快速入门 
 
 **MyBatis开发步骤：** 
 
@@ -4112,7 +4112,7 @@ public class AccountServiceImpl implements AccountService {
 5）编写核心文件SqlMapConfig.xml
 6）编写测试类
 
-### 环境搭建
+#### 环境搭建
 
 **1、导入MyBatis的坐标和其他相关坐标**
 
@@ -4201,7 +4201,7 @@ public class User {
 
 
 
-### 编写测试代码
+#### 编写测试代码
 
 以测试查询list为例：
 
@@ -4220,13 +4220,13 @@ System.out.println(userList);
 sqlSession.close();
 ```
 
-## 11.3. MyBatis的映射文件概述 
+### 11.3. MyBatis的映射文件概述 
 
 ![image-20220328153847489](https://gitlab.com/apzs/image/-/raw/master/image/202203281538556.png)
 
-## 11.4. MyBatis的增删改查操作 
+### 11.4. MyBatis的增删改查操作 
 
-### 插入操作
+#### 插入操作
 
 **编写UserMapper.xml**
 
@@ -4281,7 +4281,7 @@ public void test2() throws IOException {
 
 - 插入操作涉及数据库数据变化，所以要使用sqlSession对象显示的提交事务，即`sqlSession.commit()`
 
-### 删除操作
+#### 删除操作
 
 **编写UserMapper.xml**
 
@@ -4313,7 +4313,7 @@ public void test4() throws IOException {
 - Sql语句中使用#{任意字符串}方式引用传递的单个参数
 - 删除操作使用的API是`sqlSession.delete(“命名空间.id”,Object);`
 
-### 查询操作
+#### 查询操作
 
 **编写UserMapper.xml**
 
@@ -4355,7 +4355,7 @@ public void test1() throws IOException {
 }
 ```
 
-### 修改操作
+#### 修改操作
 
 ```xml-dtd
 <!--修改操作-->
@@ -4390,9 +4390,9 @@ public void test3() throws IOException {
 - 修改语句使用update标签
 - 修改操作使用的API是`sqlSession.update(“命名空间.id”,实体对象);`
 
-## 11.5. MyBatis的核心配置文件概述
+### 11.5. MyBatis的核心配置文件概述
 
-### MyBatis核心配置文件层级关系
+#### MyBatis核心配置文件层级关系
 
 MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息。 配置文档的顶层结构如下：
 
@@ -4410,9 +4410,9 @@ MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性
   - [databaseIdProvider（数据库厂商标识）](https://mybatis.org/mybatis-3/zh/configuration.html#databaseIdProvider)
   - [mappers（映射器）](https://mybatis.org/mybatis-3/zh/configuration.html#mappers)
 
-### MyBatis常用配置解析
+#### MyBatis常用配置解析
 
-#### 11.1) environments标签
+##### 11.1) environments标签
 
 ![image-20220328161136702](https://gitlab.com/apzs/image/-/raw/master/image/202203281611764.png)
 
@@ -4440,7 +4440,7 @@ MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性
 
 
 
-#### 11.2）mapper标签 
+##### 11.2）mapper标签 
 
 该标签的作用是加载映射的，需要告诉 MyBatis 到哪里去找到这些sql语句。
 
@@ -4453,13 +4453,13 @@ MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性
 
 
 
-#### 11.3）properties标签
+##### 11.3）properties标签
 
 ![image-20220328161922306](https://gitlab.com/apzs/image/-/raw/master/image/202203281619376.png)
 
 
 
-#### 11.4）typeAliases标签
+##### 11.4）typeAliases标签
 
 ![image-20220328162349123](https://gitlab.com/apzs/image/-/raw/master/image/202203281623188.png)
 
@@ -4495,9 +4495,9 @@ MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性
 | collection | Collection |
 | iterator   | Iterator   |
 
-## 11.6. MyBatis的相应API
+### 11.6. MyBatis的相应API
 
-### SqlSession工厂构建器SqlSessionFactoryBuilder
+#### SqlSession工厂构建器SqlSessionFactoryBuilder
 
 常用API：`SqlSessionFactory build(InputStream inputStream) `
 
@@ -4511,7 +4511,7 @@ SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(input
 
 其中， Resources 工具类，这个类在 `org.apache.ibatis.io` 包中。Resources 类帮助你从类路径下、文件系统或 一个 web URL 中加载资源文件。
 
-### SqlSession工厂对象SqlSessionFactory
+#### SqlSession工厂对象SqlSessionFactory
 
 ```java
 SqlSession openSession()
@@ -4525,11 +4525,11 @@ SqlSession openSession(boolean autoCommit) // 参数为是否自动提交，如�
 - 事务隔离级别将会使用驱动或数据源的默认设置。
 - 预处理语句不会被复用，也不会批量处理更新。
 
-### SqlSession会话对象
+#### SqlSession会话对象
 
 SqlSession 在 MyBatis 中是非常强大的一个类。它包含了所有执行语句、提交或回滚事务以及获取映射器实例的方法。
 
-#### 语句执行方法
+##### 语句执行方法
 
 这些方法被用来执行定义在 SQL 映射 XML 文件中的 SELECT、INSERT、UPDATE 和 DELETE 语句。你可以通过名字快速了解它们的作用，每一方法都接受语句的 ID 以及参数对象，参数可以是原始类型（支持自动装箱或包装类）、JavaBean、POJO 或 Map。
 
@@ -4545,7 +4545,7 @@ int delete(String statement, Object parameter)
 
 selectOne 和 selectList 的不同仅仅是 selectOne 必须返回一个对象或 null 值。如果返回值多于一个，就会抛出异常。如果你不知道返回对象会有多少，请使用 selectList。如果需要查看某个对象是否存在，最好的办法是查询一个 count 值（0 或 1）。selectMap 稍微特殊一点，它会将返回对象的其中一个属性作为 key 值，将对象作为 value 值，从而将多个结果集转为 Map 类型值。由于并不是所有语句都需要参数，所以这些方法都具有一个不需要参数的重载形式。
 
-#### 事务控制方法
+##### 事务控制方法
 
 有四个方法用来控制事务作用域。当然，如果你已经设置了自动提交或你使用了外部事务管理器，这些方法就没什么作用了。然而，如果你正在使用由 Connection 实例控制的 JDBC 事务管理器，那么这四个方法就会派上用场：
 
@@ -4558,7 +4558,7 @@ void rollback(boolean force)
 
 默认情况下 MyBatis 不会自动提交事务，除非它侦测到调用了插入、更新或删除方法改变了数据库。如果你没有使用这些方法提交修改，那么你可以在 commit 和 rollback 方法参数中传入 true 值，来保证事务被正常提交（注意，在自动提交模式或者使用了外部事务管理器的情况下，设置 force 值对 session 无效）。大部分情况下你无需调用 rollback()，因为 MyBatis 会在你没有调用 commit 时替你完成回滚操作。不过，当你要在一个可能多次提交或回滚的 session 中详细控制事务，回滚操作就派上用场了。
 
-#### 确保 SqlSession 被关闭
+##### 确保 SqlSession 被关闭
 
 ```java
 void close()
@@ -4577,8 +4577,8 @@ try (SqlSession session = sqlSessionFactory.openSession()) {
 }
 ```
 
-# 12.MyBatis的Dao层实现方式
-## 代理开发方式介绍 
+## 12.MyBatis的Dao层实现方式
+### 代理开发方式介绍 
 
 采用Mybatis 的代理开发方式实现 DAO 层的开发，这种方式是我们后面进入企业的主流。 
 
@@ -4634,8 +4634,8 @@ public class ServiceDemo {
 }
 ```
 
-# 13.MyBatis映射文件深入（动态SQL）
-## 13.1. 动态SQL语句
+## 13.MyBatis映射文件深入（动态SQL）
+### 13.1. 动态SQL语句
 
 动态 SQL 是 MyBatis 的强大特性之一。如果你使用过 JDBC 或其它类似的框架，你应该能理解根据不同条件拼接 SQL 语句有多痛苦，例如拼接时要确保不能忘记添加必要的空格，还要注意去掉列表最后一个列名的逗号。利用动态 SQL，可以彻底摆脱这种痛苦。
 
@@ -4643,7 +4643,7 @@ public class ServiceDemo {
 
 如果你之前用过 JSTL 或任何基于类 XML 语言的文本处理器，你对动态 SQL 元素可能会感觉似曾相识。在 MyBatis 之前的版本中，需要花时间了解大量的元素。借助功能强大的基于 OGNL 的表达式，MyBatis 3 替换了之前的大部分元素，大大精简了元素种类，现在要学习的元素种类比原来的一半还要少。
 
-### if
+#### if
 
 使用动态 SQL 最常见情景是根据条件包含 where 子句的一部分。比如：
 
@@ -4675,7 +4675,7 @@ public class ServiceDemo {
 </select>
 ```
 
-### foreach
+#### foreach
 
 动态 SQL 的另一个常见使用场景是对集合进行遍历（**尤其是在构建 IN 条件语句的时候**）。
 
@@ -4735,7 +4735,7 @@ foreach标签的属性含义如下：
 
 
 
-## 13.2. SQL语句抽取
+### 13.2. SQL语句抽取
 
 可将重复的 sql 提取出来，使用时用 `<include>` 引用即可，最终达到 sql 重用的目的
 
@@ -4774,8 +4774,8 @@ foreach标签的属性含义如下：
 
 
 
-# 14.MyBatis核心配置文件深入
-## 类型处理器（typeHandlers）
+## 14.MyBatis核心配置文件深入
+### 类型处理器（typeHandlers）
 
 > 官方文档：https://mybatis.org/mybatis-3/zh/configuration.html#typeHandlers
 
@@ -4900,7 +4900,7 @@ user中的birthday：Mon Mar 28 22:07:51 HKT 2022
 
 疑问：在表的设计中，birthday字段采用varchar和bigint都顺利完成了转换，为什么呢？
 
-## plugins标签（使用分页助手PageHelper）
+### plugins标签（使用分页助手PageHelper）
 
 MyBatis可以使用第三方的插件来对功能进行扩展，分页助手**PageHelper**是将分页的复杂操作进行封装，使用简单的方式即 可获得分页的相关数据 
 
@@ -4977,8 +4977,8 @@ public void test3() throws IOException {
 }
 ```
 
-# 15.MyBatis的多表操作
-## 15.1. 一对一查询
+## 15.MyBatis的多表操作
+### 15.1. 一对一查询
 
 **一对一查询的模型**
 
@@ -5106,7 +5106,7 @@ Order{id=3, ordertime=Sat Jan 01 00:00:00 HKT 2022, total=10000.0, user=User{id=
 Order{id=4, ordertime=Wed Feb 02 00:00:00 HKT 2022, total=100.0, user=User{id=3, username='lucy', password='123', birthday=null, roleList=null}}
 ```
 
-## 15.2. 一对多查询
+### 15.2. 一对多查询
 
 用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户 
 
@@ -5199,7 +5199,7 @@ lucy
 Order{id=4, ordertime=Wed Feb 02 00:00:00 HKT 2022, total=100.0, user=null}
 ```
 
-## 15.3. 多对多查询
+### 15.3. 多对多查询
 
 **多对多查询的模型** 
 
@@ -5297,8 +5297,8 @@ User{id=2, username='jerry', password='123456', birthday=null, orderList=null,
 - 一对多配置：使用`<resultMap>`+`<collection>`做配置
 - 多对多配置：使用`<resultMap>`+`<collection>`做配置
 
-# 16.MyBatis注解开发
-## MyBatis的常用注解
+## 16.MyBatis注解开发
+### MyBatis的常用注解
 
 `@Insert`：实现新增 
 `@Update`：实现更新 
@@ -5311,7 +5311,7 @@ User{id=2, username='jerry', password='123456', birthday=null, orderList=null,
 
 
 
-## MyBatis的增删改查
+### MyBatis的增删改查
 
 不使用注解的操作见：[12_MyBatis入门操作](./12_MyBatis入门操作.md)
 
@@ -5418,7 +5418,7 @@ public interface UserMapper {
 
 
 
-## MyBatis的注解实现复杂映射开发
+### MyBatis的注解实现复杂映射开发
 
 实现复杂关系映射之前我们可以在映射文件中通过配置`<resultMap>`来实现，使用注解开发后，可以使用@Results注解 ，@Result注解，@One注解，@Many注解组合完成复杂关系的配置
 
@@ -5433,7 +5433,7 @@ public interface UserMapper {
 
 查询逻辑和 [15_MyBatis的多表操作](./15_MyBatis的多表操作.md) 中的完全相同，不再赘述。
 
-### 一对一查询
+#### 一对一查询
 
 查询一个订单，与此同时查询出该订单所属的用户
 
@@ -5489,7 +5489,7 @@ public List<Order> findAll();
 
 
 
-### 一对多查询
+#### 一对多查询
 
 一对多查询的需求：查询一个用户，与此同时查询出该用户具有的订单
 
@@ -5522,7 +5522,7 @@ public List<User> findUserAndOrderAll();
 
 ![image-20220329204846253](https://gitlab.com/apzs/image/-/raw/master/image/202203292049849.png)
 
-### 多对多查询
+#### 多对多查询
 
 多对多查询的需求：查询用户同时查询出该用户的所有角色
 
@@ -5562,10 +5562,10 @@ public List<User> findUserAndRoleAll();
 
 ![image-20220329210529679](https://gitlab.com/apzs/image/-/raw/master/image/202203292105760.png)
 
-# 17.SSM整合
+## 17.SSM整合
 这一章的内容主要是对已学习内容和复习，并在此基础上进行优化。
 
-## 17.1. 原始方式整合
+### 17.1. 原始方式整合
 
 创建数据库和表
 
@@ -5767,7 +5767,7 @@ web.xml文件
 
 
 
-## 17.2. Spring整合MyBatis
+### 17.2. Spring整合MyBatis
 
 **整合思路：**
 

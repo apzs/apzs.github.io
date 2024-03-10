@@ -2,18 +2,18 @@
 
 [黑马程序员Redis入门到实战教程，深度透析redis底层原理+redis分布式锁+企业解决方案+黑马点评实战项目_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1cr4y1671t/?vd_source=18a82f96e03508099420ab5613d9d940)
 
-# 初始Redis
+## 初始Redis
 
 Redis是一种键值型的NoSQL数据库，这里有两个关键字
 
 - **键值型**：指Redis中存储的数据都是以Key-Value键值对的形式存储，而Value的形式多种多样，可以使字符串、数值甚至Json
 - **NoSQL** ：相对于传统关系型数据库而言，有很大差异的一种数据库
 
-## 认识NoSQL
+### 认识NoSQL
 
 `NoSql`可以翻译做Not Only Sql（不仅仅是SQL），或者是No Sql（非Sql的）数据库。是相对于传统关系型数据库而言，有很大差异的一种特殊的数据库，因此也称之为`非关系型数据库`。
 
-### 结构化与非结构化
+#### 结构化与非结构化
 
 传统关系型数据库是结构化数据，每张表在创建的时候都有严格的约束信息，如字段名、字段数据类型、字段约束等，插入的数据必须遵循这些约束
 
@@ -21,7 +21,7 @@ Redis是一种键值型的NoSQL数据库，这里有两个关键字
 
 ![image-20230309154525986](https://gitlab.com/apzs/image/-/raw/master/image/image-20230309154525986.png)
 
-### 关联与非关联
+#### 关联与非关联
 
 传统数据库的表与表之间往往存在关联，例如外键约束
 而非关系型数据库不存在关联关系，要维护关系要么靠代码中的业务逻辑，要么靠数据之间的耦合
@@ -51,7 +51,7 @@ Redis是一种键值型的NoSQL数据库，这里有两个关键字
 
 ![image-20230309154903011](https://gitlab.com/apzs/image/-/raw/master/image/image-20230309154903011.png)
 
-### 查询方式
+#### 查询方式
 
 传统关系型数据库会基于Sql语句做查询，语法有统一的标准
 
@@ -70,12 +70,12 @@ elasticsearch:  GET http://localhost:9200/users/1
 
 ![image-20230309155047999](https://gitlab.com/apzs/image/-/raw/master/image/image-20230309155047999.png)
 
-### 事务
+#### 事务
 
 传统关系型数据库能满足事务的ACID原则(原子性、一致性、独立性及持久性)
 而非关系型数据库往往不支持事务，或者不能要个保证ACID的特性，只能实现计本的一致性（`BASE`理论：基本可用、软状态、最终一致性）
 
-### 总结
+#### 总结
 
 |          |                          SQL                           |                           NoSQL                            |
 | :------: | :----------------------------------------------------: | :--------------------------------------------------------: |
@@ -96,7 +96,7 @@ elasticsearch:  GET http://localhost:9200/users/1
   - 非关系型数据库可以将数据拆分，存储在不同机器上，可以保存海量数据，解决内存大小有限的问题。称为水平扩展。
   - 关系型数据库因为表之间存在关联关系，如果做水平扩展会给数据查询带来很多麻烦
 
-## 认识Redis
+### 认识Redis
 
 Redis诞生于2009年，全称是Remote Dictionary Server远程词典服务器，是一个基于内存的键值型NoSQL数据库。
 
@@ -113,7 +113,7 @@ Redis诞生于2009年，全称是Remote Dictionary Server远程词典服务器�
 
 Redis官网：[Redis](https://redis.io/)
 
-## 安装Redis
+### 安装Redis
 
 需要在系统中添加 EPEL（Extra Packages for Enterprise Linux）软件源，然后安装 Redis。以下是具体步骤：
 
@@ -173,7 +173,7 @@ yamlCopy code● redis.service - Redis persistent key-value database
 
 点击查看完整[redis安装完整过程](https://gitlab.com/apzs/image/-/raw/master/image/redis安装完整过程.png)
 
-## 修改配置
+### 修改配置
 
 查看`redis.conf`文件位置
 
@@ -185,26 +185,26 @@ yamlCopy code● redis.service - Redis persistent key-value database
 修改redis.conf文件中的一些配置：
 
 ```properties
-# 允许访问的地址，默认是127.0.0.1，会导致只能在本地访问。修改为0.0.0.0则可以在任意IP访问，生产环境不要设置为0.0.0.0
+## 允许访问的地址，默认是127.0.0.1，会导致只能在本地访问。修改为0.0.0.0则可以在任意IP访问，生产环境不要设置为0.0.0.0
 bind 0.0.0.0
-# 守护进程，修改为yes后即可后台运行
+## 守护进程，修改为yes后即可后台运行
 daemonize yes
-# 密码，设置后访问Redis必须输入密码
+## 密码，设置后访问Redis必须输入密码
 requirepass 123321
 ```
 
 Redis的其它常见配置：
 
 ```properties
-# 监听的端口
+## 监听的端口
 port 6379
-# 工作目录，默认是当前目录，也就是运行redis-server时的命令，日志、持久化等文件会保存在这个目录
+## 工作目录，默认是当前目录，也就是运行redis-server时的命令，日志、持久化等文件会保存在这个目录
 dir .
-# 数据库数量，设置为1，代表只使用1个库，默认有16个库，编号0~15
+## 数据库数量，设置为1，代表只使用1个库，默认有16个库，编号0~15
 databases 1
-# 设置redis能够使用的最大内存
+## 设置redis能够使用的最大内存
 maxmemory 512mb
-# 日志文件，默认为空，不记录日志，可以指定日志文件名
+## 日志文件，默认为空，不记录日志，可以指定日志文件名
 logfile "redis.log"
 ```
 
@@ -217,12 +217,12 @@ redis-server redis.conf
 停止服务：
 
 ```bash
-# 利用redis-cli来执行 shutdown 命令，即可停止 Redis 服务，
-# 因为之前配置了密码，因此需要通过 -u 来指定密码
+## 利用redis-cli来执行 shutdown 命令，即可停止 Redis 服务，
+## 因为之前配置了密码，因此需要通过 -u 来指定密码
 redis-cli -u 123321 shutdown
 ```
 
-## Redis桌面客户端
+### Redis桌面客户端
 
 安装完成Redis，我们就可以操作Redis，实现数据的CRUD了。这需要用到Redis客户端，包括：
 
@@ -230,7 +230,7 @@ redis-cli -u 123321 shutdown
 - 图形化桌面客户端
 - 编程客户端
 
-### Redis命令行客户端
+#### Redis命令行客户端
 
 Redis安装完成后就自带了命令行客户端：redis-cli，使用方式如下：
 
@@ -265,7 +265,7 @@ auth 123321
 
 
 
-### 图形化桌面客户端
+#### 图形化桌面客户端
 
 安装包：[Releases · lework/RedisDesktopManager-Windows (github.com)](https://github.com/lework/RedisDesktopManager-Windows/releases)
 
@@ -274,7 +274,7 @@ Redis默认有16个仓库，编号从0至15. 通过配置文件可以设置仓�
 如果是基于redis-cli连接Redis服务，我们可以使用`select index`来更改使用的库（默认使用`0`号库）
 
 ```bash
-# 选择0号数据库
+## 选择0号数据库
 select 0
 ```
 
@@ -304,12 +304,12 @@ OK
 "jerry"
 ```
 
-# Redis常用命令
+## Redis常用命令
 
 Redis是典型的key-value数据库，key一般是字符串，而value包含很多不同的数据类型
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/63527eb616f2c2beb12beb85.jpg)](https://pic1.imgdb.cn/item/63527eb616f2c2beb12beb85.jpg)
 
-## Redis通用命令
+### Redis通用命令
 
 常用的通用命令有以下几个
 
@@ -334,7 +334,7 @@ Redis是典型的key-value数据库，key一般是字符串，而value包含很�
 >
 > 如果不知道某个命令的作用，可以使用`help <command>`（输入`help`+`空格` +`命令`）快捷键可以查看对应命令的帮助文档
 
-## String类型
+### String类型
 
 String类型，也就是字符串类型，是Redis中最简单的存储类型
 其value是字符串，不过根据字符串的格式不同，又可以分为3类
@@ -344,7 +344,7 @@ String类型，也就是字符串类型，是Redis中最简单的存储类型
 - `float`：浮点类型，可以做自增、自减操作
   不管是哪种格式，底层都是字节数组形式存储，只不过是编码方式不同，字符串类型的最大空间不能超过512M
 
-### String的常用命令
+#### String的常用命令
 
 String的常用命令有
 
@@ -382,7 +382,7 @@ String的常见命令有：
 
 - SETEX：添加一个String类型的键值对，并且指定有效期
 
-### Key结构
+#### Key结构
 
 - Redis没有类似MySQL中Table的概念，那么我们该如何区分不同类型的Key呢？
 
@@ -412,7 +412,7 @@ String的常见命令有：
 
 - 并且在Redis的桌面客户端中，也会以相同前缀作为层次结构，让数据看起来层次分明，关系清晰
 
-## Hash类型
+### Hash类型
 
 - Hash类型，也叫散列，其中value是一个无序字典，类似于Java中的HashMap结构
 - String结构是将对象序列化为JSON字符串后存储，当我们要修改对象的某个属性值的时候很不方便，必须全部替换
@@ -467,7 +467,7 @@ String的常见命令有：
 |       hincrby key field increment        |           让一个hash类型key的字段值自增并指定步长            | 返回自增后的值，如果`key`不存在或对应的`field`不存在则会创建并赋值为`0`，再增加`increment`，最终返回 | `hincrby test:user:3 age 2`：让`key`为`test:user:3`的`field`为`age`的`value`自增2；`hincrby test:user:3 age -2`:自减2 |
 |          hsetnx key field value          | 添加一个hash类型的key的field值，前提是这个field不存在，否则不执行 | `key`不存在或对应的`field`不存在返回`1`（新增成功），`key`存在且对应的`field`也存在返回`0`（新增失败） | `hsetnx test:user:3 name tom`                                |
 
-## List类型
+### List类型
 
 - Redis中的List类型与Java中的LinkedList类似，可以看做是一个双向链表结构。既可以支持正向检索和也可以支持反向检索。
 - 特征也与LinkedList类似：
@@ -490,7 +490,7 @@ String的常见命令有：
 
 ![image-20230310100436263](https://gitlab.com/apzs/image/-/raw/master/image/image-20230310100436263.png)
 
-## Set类型
+### Set类型
 
 - Redis的Set结构与Java中的HashSet类似，可以看做是一个value为null的HashMap。因为也是一个hash表，因此具备与HashSet类似的特征：
   - 无序
@@ -584,7 +584,7 @@ String的常见命令有：
   (integer) 1
   ```
 
-## SortedSet类型
+### SortedSet类型
 
 - Redis的SortedSet是一个可排序的set集合，与Java中的TreeSet有些类似，但底层数据结构却差别很大。SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层的实现是一个跳表（SkipList）加 hash表。
 - SortedSet具备下列特性：
@@ -681,15 +681,15 @@ String的常见命令有：
     2) "Jerry"
     ```
 
-# Redis的Java客户端
+## Redis的Java客户端
 
 目前主流的Redis的Java客户端有三种
 - Jedis和Lettuce：这两个主要是提供了Redis命令对应的API，方便我们操作Redis，而SpringDataRedis又对这两种做了抽象和封装，因此我们后期会直接以SpringDataRedis来学习。
 - Redisson：是在Redis基础上实现了分布式的可伸缩的java数据结构，例如Map、Queue等，而且支持跨进程的同步机制：Lock、Semaphore等待，比较适合用来实现特殊的功能需求。
 
-## Jedis客户端
+### Jedis客户端
 
-### 快速入门
+#### 快速入门
 
 使用Jedis的步骤
 
@@ -761,7 +761,7 @@ String的常见命令有：
    }
    ```
 
-### 连接池
+#### 连接池
 
 - `Jedis`本身是线程不安全的，并且频繁的创建和销毁连接会有性能损耗，因此我们推荐大家使用Jedis连接池代替Jedis的直连方式。
 
@@ -831,7 +831,7 @@ String的常见命令有：
   }
   ```
 
-## SpringDataRedis客户端
+### SpringDataRedis客户端
 
 SpringData是Spring中数据操作的模块，包含对各种数据库的集成，其中对Redis的集成模块就叫做SpringDataRedis
 
@@ -855,7 +855,7 @@ SpringData是Spring中数据操作的模块，包含对各种数据库的集成�
 | redisTemplate.opsForzSet()  | ZSetOperations  | 操作SortedSet类型数据 |
 |        redisTemplate        |                 |      通用的命令       |
 
-### 快速入门
+#### 快速入门
 
 SpringBoot已经提供了对SpringDataRedis的支持，使用起来非常简单
 
@@ -925,7 +925,7 @@ SpringBoot已经提供了对SpringDataRedis的支持，使用起来非常简单
    }
    ```
 
-### 自定义序列化
+#### 自定义序列化
 
 - RedisTemplate可以接收任意Object作为值写入Redis
 
@@ -997,7 +997,7 @@ SpringBoot已经提供了对SpringDataRedis的支持，使用起来非常简单
 
 - 整体可读性有了很大提升，并且能将Java对象自动的序列化为JSON字符串，并且查询时能自动把JSON反序列化为Java对象。不过，其中记录了序列化时对应的class名称，目的是为了查询时实现自动反序列化。这会带来额外的内存开销。
 
-### StringRedisTemplate
+#### StringRedisTemplate
 
 - 为了节省内存空间，我们可以不使用JSON序列化器来处理value，而是统一使用String序列化器，要求只能存储String类型的key和value。当需要存储Java对象时，手动完成对象的序列化和反序列化。
 
@@ -1059,7 +1059,7 @@ void testHash(){
 }
 ```
 
-# 内容概述
+## 内容概述
 
 - `短信登录`
   - 这部分会使用Redis共享session来实现
@@ -1079,13 +1079,13 @@ void testHash(){
 - `达人探店`
   - 基于List来完成点赞列表的操作，同时基于SortedSet来完成点赞的排行榜功能
 
-# 短信登录
+## 短信登录
 
-## 导入项目
+### 导入项目
 
 在实现功能之前，我们先来导入项目，让项目跑起来
 
-### 导入SQL
+#### 导入SQL
 
 黑马已经在资料中提供好了SQL文件，这里简单分析一下提供的表
 
@@ -1100,7 +1100,7 @@ void testHash(){
 |    tb_voucher    |         优惠券表          |
 | tb_voucher_order |      优惠券的订单表       |
 
-### 有关当前模型
+#### 有关当前模型
 
 - 该项目采用的是前后端分离开发模式
 - 手机或者app端发起请求，请求我们的Nginx服务器，Nginx基于七层模型走的事HTTP协议，可以实现基于Lua直接绕开Tomcat访问Redis，也可以作为静态资源服务器，轻松扛下上万并发， 负载均衡到下游Tomcat服务器，打散流量，我们都知道一台4核8G的Tomcat，在优化和处理简单业务的加持下，大不了就处理1000左右的并发， 经过Nginx的负载均衡分流后，利用集群支撑起整个项目，同时Nginx在部署了前端项目后，更是可以做到动静分离，进一步降低Tomcat服务的压力，这些功能都得靠Nginx起作用，所以Nginx是整个项目中重要的一环。
@@ -1108,13 +1108,13 @@ void testHash(){
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/6353709216f2c2beb134e44b.jpg)](https://pic1.imgdb.cn/item/6353709216f2c2beb134e44b.jpg)
 
-### 导入后端项目
+#### 导入后端项目
 
 - 黑马已经提供好了后端项目源码压缩包，我们将其解压之后，放到自己的workspace里
 - 然后修改MySQL和Reids的连接要素为自己的，随后启动项目
 - 访问http://localhost:8081/shop-type/list， 如果可以看到JSON数据，则说明导入成功
 
-### 导入前端工程
+#### 导入前端工程
 
 - 黑马已经提供好了前端项目源码压缩包，我们将其解压之后，放到自己的workSpace里
 
@@ -1127,7 +1127,7 @@ void testHash(){
 - 访问http://localhost:8080/， 打开开发者模式，可以看到页面
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6353775b16f2c2beb140da1d.jpg)](https://pic1.imgdb.cn/item/6353775b16f2c2beb140da1d.jpg)
 
-## 基于Session实现登录流程
+### 基于Session实现登录流程
 
 1. 发送验证码
    用户在提交手机号后，会校验手机号是否合法，如果不合法，则要求用户重新输入手机号
@@ -1137,7 +1137,7 @@ void testHash(){
 3. 校验登录状态
    用户在请求的时候，会从cookie中携带JsessionId到后台，后台通过JsessionId从session中拿到用户信息，如果没有session信息，则进行拦截，如果有session信息，则将用户信息保存到threadLocal中，并放行
 
-## 实现发送短信验证码功能
+### 实现发送短信验证码功能
 
 - 输入手机号，点击发送验证码按钮，查看发送的请求
 
@@ -1379,7 +1379,7 @@ public Result login(@RequestBody LoginFormDTO loginForm, HttpSession session) {
 
 
 
-## 实现登录拦截功能
+### 实现登录拦截功能
 
 - 这部分需要用到拦截器的知识，我在前面的SSM整合篇做过详细介绍
 
@@ -1431,7 +1431,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   }
   ```
 
-## 隐藏用户敏感信息
+### 隐藏用户敏感信息
 
 - 我们通过浏览器观察到此时用户的全部信息都在，这样极为不靠谱，所以我们应当在返回用户信息之前，将用户的敏感信息进行隐藏，采用的核心思路就是书写一个UserDto对象，这个UserDto对象就没有敏感信息了，我们在返回前，将有用户敏感信息的User对象转化成没有敏感信息的UserDto对象，那么就能够避免这个尴尬的问题了
 
@@ -1557,7 +1557,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   }
   ```
 
-## session共享问题
+### session共享问题
 
 - 每个tomcat中都有一份属于自己的session,假设用户第一次访问第一台tomcat，并且把自己的信息存放到第一台服务器的session中，但是第二次这个用户访问到了第二台tomcat，那么在第二台服务器上，肯定没有第一台服务器存放的session，所以此时 整个登录拦截功能就会出现问题，我们能如何解决这个问题呢？早期的方案是session拷贝，就是说虽然每个tomcat上都有不同的session，但是每当任意一台服务器的session修改时，都会同步给其他的Tomcat服务器的session，这样的话，就可以实现session的共享了
 - 但是这种方案具有两个大问题
@@ -1565,9 +1565,9 @@ public class LoginInterceptor implements HandlerInterceptor {
   2. session拷贝数据时，可能会出现延迟
 - 所以我们后面都是基于Redis来完成，我们把session换成Redis，Redis数据本身就是共享的，就可以避免session共享的问题了
 
-## Redis替代session的业务流程
+### Redis替代session的业务流程
 
-### 设计key结构
+#### 设计key结构
 
 - 首先我们来思考一下该用什么数据结构来存储数据
 - 由于存入的数据比较简单，我们可以使用String或者Hash
@@ -1575,7 +1575,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   - 如果使用Hash，则它的value中只会存储数据本身
 - 如果不是特别在意内存，直接使用String就好了
 
-### 设计key的具体细节
+#### 设计key的具体细节
 
 - 我们这里就采用的是简单的K-V键值对方式
 - 但是对于key的处理，不能像session一样用phone或code来当做key
@@ -1585,7 +1585,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   2. key要方便携带
 - 所以我们在后台随机生成一个token，然后让前端带着这个token就能完成我们的业务逻辑了
 
-### 整体访问流程
+#### 整体访问流程
 
 - 当注册完成后，用户去登录，然后校验用户提交的手机号/邮箱和验证码是否一致
   - 如果一致，则根据手机号查询用户信息，不存在则新建，最后将用户数据保存到Redis，并生成一个token作为Redis的key
@@ -1593,7 +1593,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   - 如果不存在，则拦截
   - 如果存在，则将其用户信息(userDto)保存到threadLocal中，并放行
 
-## 基于Redis实现短信登录
+### 基于Redis实现短信登录
 
 - 由于前面已经分析过业务逻辑了，所以这里我们直接开始写代码，在此之前我们要在UserController中注入
 
@@ -1691,9 +1691,9 @@ public class LoginInterceptor implements HandlerInterceptor {
   
 
 
-## 解决状态登录刷新问题
+### 解决状态登录刷新问题
 
-### 初始方案
+#### 初始方案
 
 - 我们可以通过拦截器拦截到的请求，来证明用户是否在操作，如果用户没有任何操作30分钟，则token会消失，用户需要重新登录
 
@@ -1735,7 +1735,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/6353edd016f2c2beb1f967f0.jpg)](https://pic1.imgdb.cn/item/6353edd016f2c2beb1f967f0.jpg)
 
-### 优化方案
+#### 优化方案
 
 - 既然之前的拦截器无法对不需要拦截的路径生效，那么我们可以添加一个拦截器，在第一个拦截器中拦截所有的路径，把第二个拦截器做的事情放入到第一个拦截器中，同时刷新令牌，因为第一个拦截器有了threadLocal的数据，所以此时第二个拦截器只需要判断拦截器中的user对象是否存在即可，完成整体刷新功能。
 
@@ -1836,9 +1836,9 @@ public class LoginInterceptor implements HandlerInterceptor {
   
 - 那么至此，大功告成，我们重启服务器，登录，然后去Redis的图形化界面查看token的ttl，如果每次切换界面之后，ttl都会重置，那么说明我们的代码没有问题
 
-# 商户查询缓存
+## 商户查询缓存
 
-## 什么是缓存
+### 什么是缓存
 
 - 什么是缓存？
 
@@ -1864,7 +1864,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 - 由于其被`static`修饰，所以随着类的加载而加载到内存之中，作为本地缓存，由于其又被`final`修饰，所以其引用之间的关系是固定的，不能改变，因此不用担心复制导致缓存失败
 
-### 为什么要使用缓存
+#### 为什么要使用缓存
 
 - 言简意赅：速度快，好用
 
@@ -1883,7 +1883,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   2. 代码维护成本
   3. 运维成本（一般采用服务器集群，需要多加机器，机器就是钱）
 
-### 如何使用缓存
+#### 如何使用缓存
 
 - 实际开发中，会构筑多级缓存来时系统运行速度进一步提升，例如：本地缓存与Redis中的缓存并发使用
 - `浏览器缓存：`主要是存在于浏览器端的缓存
@@ -1891,7 +1891,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 - `数据库缓存：`在数据库中有一片空间是buffer pool，增改查数据都会先加载到mysql的缓存中
 - `CPU缓存：`当代计算机最大的问题就是CPU性能提升了，但是内存读写速度没有跟上，所以为了适应当下的情况，增加了CPU的L1，L2，L3级的缓存
 
-## 添加商户缓存
+### 添加商户缓存
 
 - 我们先启动前端和后端的项目，登陆之后随便访问一个商户，查看浏览器发送的请求
 
@@ -1918,12 +1918,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354a19216f2c2beb1b095dd.jpg)](https://pic1.imgdb.cn/item/6354a19216f2c2beb1b095dd.jpg)
 
-### 缓存模型和思路
+#### 缓存模型和思路
 
 - 标准的操作方式就是查询数据库之前先查询缓存，如果缓存数据存在，则直接从缓存中返回，如果缓存数据不存在，再查询数据库，然后将数据存入Redis。
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354a1aa16f2c2beb1b0aa83.jpg)](https://pic1.imgdb.cn/item/6354a1aa16f2c2beb1b0aa83.jpg)
 
-### 代码实现
+#### 代码实现
 
 代码思路：如果Redis缓存里有数据，那么直接返回，如果缓存中没有，则去查询数据库，然后存入Redis
 
@@ -1942,7 +1942,7 @@ public Result queryShopById(@PathVariable("id") Long id) {
 
 重启服务器，访问商户信息，观察控制台日志输出，后续刷新页面，不会出现SQL语句查询商户信息，去Redis图形化界面中查看，可以看到缓存的商户信息数据
 
-### 趁热打铁
+#### 趁热打铁
 
 完成了商户数据缓存之后，我们尝试做一下商户类型数据缓存
 
@@ -1960,7 +1960,7 @@ public Result queryTypeList() {
 ```
 
 
-## 缓存更新策略
+### 缓存更新策略
 
 缓存更新是Redis为了节约内存而设计出来的一个东西，主要是因为内存数据宝贵，当我们想Redis插入太多数据，此时就可能会导致缓存中数据过多，所以Redis会对部分数据进行更新，或者把它成为淘汰更合适
 
@@ -1978,7 +1978,7 @@ public Result queryTypeList() {
 - 低一致性需求：使用内存淘汰机制，例如店铺类型的查询缓存（因为这个很长一段时间都不需要更新）
 - 高一致性需求：主动更新，并以超时剔除作为兜底方案，例如店铺详情查询的缓存
 
-### 数据库和缓存不一致解决方案
+#### 数据库和缓存不一致解决方案
 
 由于我们的缓存数据源来自数据库，而数据库的数据是会发生变化的，因此，如果当数据库中数据发生变化，而缓存却没有同步，此时就会有一致性问题存在，其后果是用户使用缓存中的过时数据，就会产生类似多线程数据安全问题，从而影响业务，产品口碑等
 
@@ -1987,7 +1987,7 @@ public Result queryTypeList() {
 2. Read/Write Through Pattern：缓存与数据库整合为一个服务，由服务来维护一致性。调用者调用该服务，无需关心缓存一致性问题。但是维护这样一个服务很复杂，市面上也不容易找到这样的一个现成的服务，开发成本高
 3. Write Behind Caching Pattern：调用者只操作缓存，其他线程去异步处理数据库，最终实现一致性。但是维护这样的一个异步的任务很复杂，需要实时监控缓存中的数据更新，其他线程去异步更新数据库也可能不太及时，而且缓存服务器如果宕机，那么缓存的数据也就丢失了
 
-### 数据库和缓存不一致采用什么方案
+#### 数据库和缓存不一致采用什么方案
 
 - 综上所述，在企业的实际应用中，还是方案一最可靠，但是方案一的调用者该如何处理呢？
 - 如果采用方案一，假设我们每次操作完数据库之后，都去更新一下缓存，但是如果中间并没有人查询数据，那么这个更新动作只有最后一次是有效的，中间的更新动作意义不大，所以我们可以把缓存直接删除，等到有人再次查询时，再将缓存中的数据加载出来
@@ -2006,7 +2006,7 @@ public Result queryTypeList() {
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354be5316f2c2beb1d130c0.jpg)](https://pic1.imgdb.cn/item/6354be5316f2c2beb1d130c0.jpg)
 - 虽然这二者都存在线程安全问题，但是相对来说，后者出现线程安全问题的概率相对较低，所以我们最终采用后者`先操作数据库，再删除缓存`的方案
 
-## 实现商铺缓存与数据库双写一致
+### 实现商铺缓存与数据库双写一致
 
 - 核心思路如下
 
@@ -2087,7 +2087,7 @@ public Result queryTypeList() {
 
 - 那么现在功能就实现完毕了，只有当我们刷新页面的时候，才会重新查询数据库，并将数据缓存到Redis，中途无论修改多少次，只要不刷新页面访问，Redis中都不会更新数据
 
-## 缓存穿透问题的解决思路
+### 缓存穿透问题的解决思路
 
 - `缓存穿透`：缓存穿透是指客户端请求的数据在缓存中和数据库中都不存在，这样缓存永远都不会生效（只有数据库查到了，才会让redis缓存，但现在的问题是查不到），会频繁的去访问数据库。
 - 常见的结局方案有两种
@@ -2100,7 +2100,7 @@ public Result queryTypeList() {
 - `缓存空对象`思路分析：当我们客户端访问不存在的数据时，会先请求redis，但是此时redis中也没有数据，就会直接访问数据库，但是数据库里也没有数据，那么这个数据就穿透了缓存，直击数据库。但是数据库能承载的并发不如redis这么高，所以如果大量的请求同时都来访问这个不存在的数据，那么这些请求就会访问到数据库，简单的解决方案就是哪怕这个数据在数据库里不存在，我们也把这个这个数据存在redis中去（这就是为啥说会有`额外的内存消耗`），这样下次用户过来访问这个不存在的数据时，redis缓存中也能找到这个数据，不用去查数据库。可能造成的`短期不一致`是指在空对象的存活期间，我们更新了数据库，把这个空对象变成了正常的可以访问的数据，但由于空对象的TTL还没过，所以当用户来查询的时候，查询到的还是空对象，等TTL过了之后，才能访问到正确的数据，不过这种情况很少见罢了
 - `布隆过滤`思路分析：布隆过滤器其实采用的是哈希思想来解决这个问题，通过一个庞大的二进制数组，根据哈希思想去判断当前这个要查询的数据是否存在，如果布隆过滤器判断存在，则放行，这个请求会去访问redis，哪怕此时redis中的数据过期了，但是数据库里一定会存在这个数据，从数据库中查询到数据之后，再将其放到redis中。如果布隆过滤器判断这个数据不存在，则直接返回。这种思想的优点在于节约内存空间，但存在误判，误判的原因在于：布隆过滤器使用的是哈希思想，只要是哈希思想，都可能存在哈希冲突
 
-## 编码解决商品查询的缓存穿透问题
+### 编码解决商品查询的缓存穿透问题
 
 - 核心思路如下
 
@@ -2176,7 +2176,7 @@ public Result queryTypeList() {
   - 加强用户权限校验
   - 做好热点参数的限流
 
-## 缓存雪崩问题及解决思路
+### 缓存雪崩问题及解决思路
 
 - 缓存雪崩是指在同一时间段，大量缓存的key同时失效，或者Redis服务宕机，导致大量请求到达数据库，带来巨大压力
 - 解决方案
@@ -2185,7 +2185,7 @@ public Result queryTypeList() {
   - 给缓存业务添加降级限流策略
   - 给业务添加多级缓存（浏览器访问静态资源时，优先读取浏览器本地缓存；访问非静态资源（ajax查询数据）时，访问服务端；请求到达Nginx后，优先读取Nginx本地缓存；如果Nginx本地缓存未命中，则去直接查询Redis（不经过Tomcat）；如果Redis查询未命中，则查询Tomcat；请求进入Tomcat后，优先查询JVM进程缓存；如果JVM进程缓存未命中，则查询数据库）
 
-## 缓存击穿问题及解决思路
+### 缓存击穿问题及解决思路
 
 - 缓存击穿也叫热点Key问题，就是一个被`高并发访问`并且`缓存重建业务较复杂`的key突然失效了，那么无数请求访问就会在瞬间给数据库带来巨大的冲击
 - 举个不太恰当的例子：一件秒杀中的商品的key突然失效了，大家都在疯狂抢购，那么这个瞬间就会有无数的请求访问去直接抵达数据库，从而造成缓存击穿
@@ -2206,7 +2206,7 @@ public Result queryTypeList() {
 - 这种方案巧妙在于，异步构建缓存数据，缺点是在重建完缓存数据之前，返回的都是脏数据
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354f97716f2c2beb124e950.jpg)](https://pic1.imgdb.cn/item/6354f97716f2c2beb124e950.jpg)
 
-## 对比互斥锁与逻辑删除
+### 对比互斥锁与逻辑删除
 
 - `互斥锁方案`：由于保证了互斥性，所以数据一致，且实现简单，只是加了一把锁而已，也没有其他的事情需要操心，所以没有额外的内存消耗，缺点在于有锁的情况，就可能死锁，所以只能串行执行，性能会受到影响
 - `逻辑过期方案`：线程读取过程中不需要等待，性能好，有一个额外的线程持有锁去进行重构缓存数据，但是在重构数据完成之前，其他线程只能返回脏数据，且实现起来比较麻烦
@@ -2216,7 +2216,7 @@ public Result queryTypeList() {
 |  互斥锁  | 没有额外的内存消耗 保证一致性 实现简单 | 线程需要等待，性能受影响 可能有死锁风险 |
 | 逻辑过期 |         线程无需等待，性能较好         |  不保证一致性 有额外内存消耗 实现复杂   |
 
-## 利用互斥锁解决缓存击穿问题
+### 利用互斥锁解决缓存击穿问题
 
 - `核心思路`：相较于原来从缓存中查询不到数据后直接查询数据库而言，现在的方案是，进行查询之后，如果没有从缓存中查询到数据，则进行互斥锁的获取，获取互斥锁之后，判断是否获取到了锁，如果没获取到，则休眠一段时间，过一会儿再去尝试，知道获取到锁为止，才能进行查询
 
@@ -2347,7 +2347,7 @@ public Result queryTypeList() {
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/6356424916f2c2beb1a493ea.jpg)](https://pic1.imgdb.cn/item/6356424916f2c2beb1a493ea.jpg)
 
-## 利用逻辑过期解决缓存击穿问题
+### 利用逻辑过期解决缓存击穿问题
 
 需求：根据id查询商铺的业务，基于逻辑过期方式来解决缓存击穿问题
 
@@ -2501,7 +2501,7 @@ public Result queryTypeList() {
   - 测试结果如下，同样是开了100个线程去访问逻辑过期数据，前面的用户只能看到脏数据，后面的用户看到的才是新数据
     [![img](https://gitlab.com/apzs/image/-/raw/master/image/6356558116f2c2beb1d8a832.jpg)](https://pic1.imgdb.cn/item/6356558116f2c2beb1d8a832.jpg)
 
-## 封装Redis工具类
+### 封装Redis工具类
 
 - 基于StringRedisTemplate封装一个缓存工具类，需满足下列要求
 
@@ -2803,9 +2803,9 @@ public Result queryTypeList() {
   }
   ```
 
-# 优惠券秒杀
+## 优惠券秒杀
 
-## Redis实现全局唯一ID
+### Redis实现全局唯一ID
 
 - 在各类购物App中，都会遇到商家发放的优惠券
 
@@ -2878,7 +2878,7 @@ public Result queryTypeList() {
   }
   ```
 
-## 添加优惠券
+### 添加优惠券
 
 - 每个店铺度可以发布优惠券，分为平价券和特价券，平价券可以任意购买，而特价券需要秒杀抢购
 - tb_voucher：优惠券的基本信息，优惠金额、使用规则等
@@ -2959,7 +2959,7 @@ public Result queryTypeList() {
 - 效果如下
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6358bbb316f2c2beb1b7967c.jpg)](https://pic1.imgdb.cn/item/6358bbb316f2c2beb1b7967c.jpg)
 
-## 实现秒杀下单
+### 实现秒杀下单
 
 - 我们点击`限时抢购`，然后查看发送的请求
 
@@ -3020,7 +3020,7 @@ public Result queryTypeList() {
   
 
 
-## 超卖问题
+### 超卖问题
 
 - 我们之前的代码其实是有问题的，当遇到高并发场景时，会出现超卖现象，我们可以用Jmeter开200个线程来模拟抢优惠券的场景，URL为 localhost:8081/voucher-order/seckill/13，请求方式为POST
 
@@ -3176,7 +3176,7 @@ public Result queryTypeList() {
   
 - 重启服务器，继续使用Jmeter进行测试，这次就能顺利将优惠券刚好抢空了
 
-## 一人一单
+### 一人一单
 
 - 需求：修改秒杀业务，要求同一个优惠券，一个用户只能抢一张
 
@@ -3400,7 +3400,7 @@ public Result queryTypeList() {
   
 - 重启服务器，再次使用Jmeter测试，200个线程并发，但是只能抢到一张优惠券，目的达成
 
-## 集群环境下的并发问题
+### 集群环境下的并发问题
 
 - 通过加锁可以解决在单机情况下的一人一单安全问题，但是在集群模式下就不行了
   1. 我们将服务启动两份，端口分别为8081和8082
@@ -3410,9 +3410,9 @@ public Result queryTypeList() {
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/635a5e3e16f2c2beb1289579.jpg)](https://pic1.imgdb.cn/item/635a5e3e16f2c2beb1289579.jpg)
 - 这就是集群环境下，syn锁失效的原因，在这种情况下，我们需要使用分布式锁来解决这个问题，让锁不存在于每个jvm的内部，而是让所有jvm公用外部的一把锁（Redis）
 
-# 分布式锁
+## 分布式锁
 
-## 基本原理和实现方式对比
+### 基本原理和实现方式对比
 
 - 分布式锁：满足分布式系统或集群模式下多线程课件并且可以互斥的锁
 
@@ -3446,7 +3446,7 @@ public Result queryTypeList() {
 | 高性能 |           一般            |            好            |               一般               |
 | 安全性 |   断开连接，自动释放锁    | 利用锁超时时间，到期释放 |    临时节点，断开连接自动释放    |
 
-## Redis分布式锁的实现核心思路
+### Redis分布式锁的实现核心思路
 
 - 实现分布式锁时需要实现两个基本方法
 
@@ -3474,7 +3474,7 @@ public Result queryTypeList() {
 
   - 我们利用redis的`SETNX`方法，当有多个线程进入时，我们就利用该方法来获取锁。第一个线程进入时，redis 中就有这个key了，返回了1，如果结果是1，则表示他抢到了锁，那么他去执行业务，然后再删除锁，退出锁逻辑，没有抢到锁（返回了0）的线程，等待一定时间之后重试
 
-## 实现分布式锁
+### 实现分布式锁
 
 - 锁的基本接口
 
@@ -3572,7 +3572,7 @@ public Result queryTypeList() {
   
 - 使用Jmeter进行压力测试，请求头中携带登录用户的token，最终只能抢到一张优惠券
 
-## Redis分布式锁误删情况说明
+### Redis分布式锁误删情况说明
 
 - 逻辑说明
   - 持有锁的线程1在锁的内部出现了阻塞，导致他的锁TTL到期，自动释放
@@ -3585,7 +3585,7 @@ public Result queryTypeList() {
   - 假设还是上面的情况，线程1阻塞，锁自动释放，线程2进入到锁的内部执行逻辑，此时线程1阻塞完了，继续往下执行，开始删除锁，但是线程1发现这把锁不是自己的，所以不进行删除锁的逻辑，当线程2执行到删除锁的逻辑时，如果TTL还未到期，则判断当前这把锁是自己的，于是删除这把锁
     [![img](https://gitlab.com/apzs/image/-/raw/master/image/635aa1b016f2c2beb1e68e4f.jpg)](https://pic1.imgdb.cn/item/635aa1b016f2c2beb1e68e4f.jpg)
 
-## 解决Redis分布式锁误删问题
+### 解决Redis分布式锁误删问题
 
 - 需求：修改之前的分布式锁实现
 
@@ -3626,7 +3626,7 @@ public Result queryTypeList() {
   }
   ```
 
-## 分布式锁的原子性问题
+### 分布式锁的原子性问题
 
 - 更为极端的误删逻辑说明
 - 假设线程1已经获取了锁，在判断标识一致之后，准备释放锁的时候，又出现了阻塞（例如JVM垃圾回收机制）
@@ -3640,7 +3640,7 @@ public Result queryTypeList() {
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/635c85c916f2c2beb1236040.jpg)](https://pic1.imgdb.cn/item/635c85c916f2c2beb1236040.jpg)
 
-## Lua脚本解决多条命令原子性问题
+### Lua脚本解决多条命令原子性问题
 
 - Redis提供了Lua脚本功能，在一个脚本中编写多条Redis命令，确保多条命令执行时的原子性。
 
@@ -3736,7 +3736,7 @@ public void unlock() {
 }
 ```
 
-## 利用Java代码调用Lua脚本改造分布式锁
+### 利用Java代码调用Lua脚本改造分布式锁
 
 - 在RedisTemplate中，可以利用execute方法去执行lua脚本
 
@@ -3779,7 +3779,7 @@ public void unlock() {
       - 利用SET EX保证故障时依然能释放锁，避免死锁，提高安全性
       - 利用Redis集群保证高可用和高并发特性
 
-# 分布式锁-Redisson
+## 分布式锁-Redisson
 
 - 基于SETNX实现的分布式锁存在以下问题
   1. 重入问题
@@ -3802,7 +3802,7 @@ public void unlock() {
   7. 可过期性信号量(PermitExpirableSemaphore)
   8. 闭锁(CountDownLatch)
 
-## Redisson入门
+### Redisson入门
 
 1. 导入依赖
 
@@ -3912,7 +3912,7 @@ public void unlock() {
 
 - 使用Jmeter进行压力测试，依旧是只能抢到一张优惠券，满足我们的需求
 
-## Redisson可重入锁原理
+### Redisson可重入锁原理
 
 - 在Lock锁中，他是借助于等曾的一个voaltile的一个state变量来记录重入的状态的
 
@@ -4051,7 +4051,7 @@ public void unlock() {
   }
   ```
 
-## Redisson锁重试和WatchDog机制
+### Redisson锁重试和WatchDog机制
 
 - 前面我们分析的是空参的tryLock方法，现在我们来分析一下这个带参数的
 
@@ -4266,7 +4266,7 @@ public void unlock() {
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/635d046816f2c2beb1293315.jpg)](https://pic1.imgdb.cn/item/635d046816f2c2beb1293315.jpg)
 
-## Redisson锁的MutiLock原理
+### Redisson锁的MutiLock原理
 
 - 为了提高Redis的可用性，我们会搭建集群或者主从，现在以主从为例
 
@@ -4493,7 +4493,7 @@ public void unlock() {
   }
   ```
 
-## 小结
+### 小结
 
 1. 不可重入Redis分布式锁
    - 原理：利用SETNX的互斥性；利用EX避免死锁；释放锁时判断线程标识
@@ -4504,9 +4504,9 @@ public void unlock() {
 3. Redisson的multiLock
    - 原理：多个独立的Redis节点，必须在所有节点都获取重入锁，才算获取锁成功
 
-# 秒杀优化
+## 秒杀优化
 
-## 异步秒杀思路
+### 异步秒杀思路
 
 - 我们先来回顾一下下单流程
 - 当用户发起请求，此时会先请求Nginx，Nginx反向代理到Tomcat，而Tomcat中的程序，会进行串行操作，分为如下几个步骤
@@ -4528,7 +4528,7 @@ public void unlock() {
 
 [![img](https://gitlab.com/apzs/image/-/raw/master/image/635df17d16f2c2beb1cf02be.jpg)](https://pic1.imgdb.cn/item/635df17d16f2c2beb1cf02be.jpg)
 
-## Redis完成秒杀资格判断
+### Redis完成秒杀资格判断
 
 - 需求：
 
@@ -4631,7 +4631,7 @@ public void unlock() {
   
 - 现在我们是用PostMan发送请求，redis中的数据会变动，而且不能重复下单，但是数据库中的数据并没有变化
 
-## 基于阻塞队列实现秒杀优化
+### 基于阻塞队列实现秒杀优化
 
 - 修改下单的操作，我们在下单时，是通过Lua表达式去原子执行判断逻辑，如果判断结果不为0，返回错误信息，如果判断结果为0，则将下单的逻辑保存到队列中去，然后异步执行
 
@@ -4931,7 +4931,7 @@ public void unlock() {
   }
   ```
 
-## 小结
+### 小结
 
 - 秒杀业务的优化思路是什么？
   1. 先利用Redis完成库存容量、一人一单的判断，完成抢单业务
@@ -4942,9 +4942,9 @@ public void unlock() {
   2. 数据安全问题：
      - 经典服务器宕机了，用户明明下单了，但是数据库里没看到
 
-# Redis消息队列
+## Redis消息队列
 
-## 认识消息队列
+### 认识消息队列
 
 - 什么是消息队列？字面意思就是存放消息的队列，最简单的消息队列模型包括3个角色
   1. 消息队列：存储和管理消息，也被称为消息代理（Message Broker）
@@ -4954,7 +4954,7 @@ public void unlock() {
 - 那么在这种场景下我们的秒杀就变成了：在我们下单之后，利用Redis去进行校验下单的结果，然后在通过队列把消息发送出去，然后在启动一个线程去拿到这个消息，完成解耦，同时也加快我们的响应速度
 - 这里我们可以直接使用一些现成的(MQ)消息队列，如kafka，rabbitmq等，但是如果没有安装MQ，我们也可以使用Redis提供的MQ方案(学完Redis我就去学微服务)
 
-## 基于List实现消息队列
+### 基于List实现消息队列
 
 - 基于List结构模拟消息队列
 - 消息队列(Message Queue)，字面意思就是存放消息的队列，而Redis的list数据结构是一个双向链表，很容易模拟出队列的效果
@@ -4969,7 +4969,7 @@ public void unlock() {
     1. 无法避免消息丢失(经典服务器宕机)
     2. 只支持单消费者(一个消费者把消息拿走了，其他消费者就看不到这条消息了)
 
-## 基于PubSub的消息队列
+### 基于PubSub的消息队列
 
 - PubSub(发布订阅)是Redis2.0版本引入的消息传递模型。顾名思义，消费和可以订阅一个或多个channel，生产者向对应channel发送消息后，所有订阅者都能收到相关消息
 
@@ -4997,7 +4997,7 @@ public void unlock() {
     2. 无法避免消息丢失（如果向频道发送了消息，却没有人订阅该频道，那发送的这条消息就丢失了）
     3. 消息堆积有上限，超出时数据丢失（消费者拿到数据的时候处理的太慢，而发送消息发的太快）
 
-## 基于Stream的消息队列
+### 基于Stream的消息队列
 
 - Stream是Redis 5.0引入的一种新数据类型，可以时间一个功能非常完善的消息队列
 
@@ -5082,7 +5082,7 @@ public void unlock() {
   3. 可以阻塞读取
   4. 有漏读消息的风险
 
-## 基于Stream的消息队列—消费者组
+### 基于Stream的消息队列—消费者组
 
 - 消费者组(Consumer Group)：将多个消费者划分到一个组中，监听同一个队列，具备以下特点
 
@@ -5201,7 +5201,7 @@ public void unlock() {
 | 消息确认机制 |                  不支持                   |       不支持       |                          支持                           |
 |   消息回溯   |                  不支持                   |       不支持       |                          支持                           |
 
-## Stream消息队列实现异步秒杀下单
+### Stream消息队列实现异步秒杀下单
 
 - 需求：
 
@@ -5318,9 +5318,9 @@ public void unlock() {
   ```
   
 
-# 达人探店
+## 达人探店
 
-## 发布探店笔记
+### 发布探店笔记
 
 这部分代码已经提供好了，我们来看看对应的数据表
 
@@ -5469,7 +5469,7 @@ public void unlock() {
 
 注意：这里我们需要修改`SystemConstants.IMAGE_UPLOAD_DIR` 为自己图片所在的地址，在实际开发中图片一般会放在nginx上或者是云存储上。
 
-## 查看探店笔记
+### 查看探店笔记
 
 - 需求：点击首页的探店笔记，会进入详情页面，我们现在需要实现页面的查询接口
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/635f908616f2c2beb16ba05d.jpg)](https://pic1.imgdb.cn/item/635f908616f2c2beb16ba05d.jpg)
@@ -5551,7 +5551,7 @@ public void unlock() {
   
 
 
-## 点赞功能
+### 点赞功能
 
 - 点击点赞按钮，查看发送的请求
 
@@ -5645,7 +5645,7 @@ public void unlock() {
   }
   ```
 
-## 点赞排行榜
+### 点赞排行榜
 
 - 当我们点击探店笔记详情页面时，应该按点赞顺序展示点赞用户，比如显示最早点赞的TOP5，形成点赞排行榜，就跟QQ空间发的说说一样，可以看到有哪些人点了赞
 - 之前的点赞是放到Set集合中，但是Set集合又不能排序，所以这个时候，我们就可以改用SortedSet(Zset)
@@ -5751,9 +5751,9 @@ public void unlock() {
 - 重启服务器，查看效果
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/636328b216f2c2beb10e3c08.jpg)](https://pic1.imgdb.cn/item/636328b216f2c2beb10e3c08.jpg)
 
-# 好友关注
+## 好友关注
 
-## 关注和取消关注
+### 关注和取消关注
 
 - 当我们进入到笔记详情页面时，会发送一个请求，判断当前登录用户是否关注了笔记博主
 
@@ -5872,7 +5872,7 @@ public void unlock() {
 - 测试效果如下
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/63633ca816f2c2beb12b772e.jpg)](https://pic1.imgdb.cn/item/63633ca816f2c2beb12b772e.jpg)
 
-## 共同关注
+### 共同关注
 
 - 点击用户头像，进入到用户详情页，可以查看用户发布的笔记，和共同关注列表
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/63635de616f2c2beb15b17cb.jpg)](https://pic1.imgdb.cn/item/63635de616f2c2beb15b17cb.jpg)
@@ -6009,7 +6009,7 @@ public Result followCommons(@PathVariable Long id){
 - 最终效果如下
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363737716f2c2beb17fae7b.jpg)](https://pic1.imgdb.cn/item/6363737716f2c2beb17fae7b.jpg)
 
-## Feed流实现方案
+### Feed流实现方案
 
 - 当我们关注了用户之后，这个用户发布了动态，那我们应该把这些数据推送给用户，这个需求，我们又称其为Feed流，关注推送也叫作Feed流，直译为投喂，为用户提供沉浸式体验，通过无限下拉刷新获取新的信息，
 
@@ -6050,7 +6050,7 @@ public Result followCommons(@PathVariable Long id){
   - 推拉模式是一个折中的方案，站在发件人这一边，如果是普通人，那么我们采用写扩散的方式，直接把数据写入到他的粉丝收件箱中，因为普通人的粉丝数量较少，所以这样不会产生太大压力。但如果是大V，那么他是直接将数据写入一份到发件箱中去，在直接写一份到活跃粉丝的收件箱中，站在收件人这边来看，如果是活跃粉丝，那么大V和普通人发的都会写到自己的收件箱里，但如果是普通粉丝，由于上线不是很频繁，所以等他们上线的时候，再从发件箱中去拉取信息。
     [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363841b16f2c2beb1a1e1e3.jpg)](https://pic1.imgdb.cn/item/6363841b16f2c2beb1a1e1e3.jpg)
 
-## 推送到粉丝收件箱
+### 推送到粉丝收件箱
 
 - 需求：
 
@@ -6098,7 +6098,7 @@ public Result followCommons(@PathVariable Long id){
   }
   ```
 
-## 实现分页查询收件箱
+### 实现分页查询收件箱
 
 - 需求：在个人主页的`关注栏`中，查询并展示推送的Blog信息
 - 具体步骤如下
@@ -6139,9 +6139,9 @@ public Result followCommons(@PathVariable Long id){
 - 最终效果如下，在最上方显示的都是我们最新发布的动态
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363a7da16f2c2beb1e17702.jpg)](https://pic1.imgdb.cn/item/6363a7da16f2c2beb1e17702.jpg)
 
-# 附近商户
+## 附近商户
 
-## GEO数据结构的基本用法
+### GEO数据结构的基本用法
 
 - GEO就是Geolocation的简写形式，代表地理坐标。Redis在3.2版本中加入了对GEO的支持，允许存储地理坐标信息，帮助我们根据经纬度来检索数据，常见的命令有
 
@@ -6364,7 +6364,7 @@ public Result followCommons(@PathVariable Long id){
       2) "beijing"
       ```
 
-## 导入店铺数据到GEO
+### 导入店铺数据到GEO
 
 - 具体场景说明，例如美团/饿了么这种外卖App，你是可以看到商家离你有多远的，那我们现在也要实现这个功能。
 - 我们可以使用GEO来实现该功能，以当前坐标为圆心，同时绑定相同的店家类型type，以及分页信息，把这几个条件插入后台，后台查询出对应的数据再返回
@@ -6426,7 +6426,7 @@ public Result followCommons(@PathVariable Long id){
   
 - 代码编写完毕，我们启动测试方法，然后去Redis图形化界面中查看是否有对应的数据
 
-## 实现附近商户功能
+### 实现附近商户功能
 
 - SpringDataRedis的2.3.9版本并不支持Redis 6.2提供的GEOSEARCH命令，因此我们需要提示其版本，修改自己的pom.xml文件
 
@@ -6532,9 +6532,9 @@ public Result followCommons(@PathVariable Long id){
 - 最终效果如下，可以显示出距离
   [![img](https://gitlab.com/apzs/image/-/raw/master/image/6364c8c216f2c2beb16eb996.jpg)](https://pic1.imgdb.cn/item/6364c8c216f2c2beb16eb996.jpg)
 
-# 用户签到
+## 用户签到
 
-## BitMap功能延迟
+### BitMap功能延迟
 
 - 我们针对签到功能完全可以通过MySQL来完成，例如下面这张表
 
@@ -6560,7 +6560,7 @@ public Result followCommons(@PathVariable Long id){
   - BITOP：将多个BitMap的结果做位运算（与、或、异或）
   - BITPOS：查找bit数组中指定范围内第一个0或1出现的位置
 
-## 实现签到功能
+### 实现签到功能
 
 - 需求：实现签到接口，将当前用户当天签到信息保存到Redis中
 
@@ -6608,7 +6608,7 @@ public Result followCommons(@PathVariable Long id){
 
 - 发送成功之后，在Redis图形化界面中是可以看到的
 
-## 签到统计
+### 签到统计
 
 - 如何获取本月到今天为止的所有签到数据？
 
@@ -6687,9 +6687,9 @@ public Result followCommons(@PathVariable Long id){
   
 - 使用PostMan发送请求，可以手动修改redis中的签到数据多次测试，发请求的时候还是要注意携带登录用户的token
 
-# UV统计
+## UV统计
 
-## HyperLogLog
+### HyperLogLog
 
 - UV：全称Unique Visitor，也叫独立访客量，是指通过互联网访问、浏览这个网页的自然人。1天内同一个用户多次访问该网站，只记录1次。
 
@@ -6718,7 +6718,7 @@ public Result followCommons(@PathVariable Long id){
   lnternal commands for debugging HyperLogLog values
   ```
 
-## 测试百万数据的统计
+### 测试百万数据的统计
 
 - 使用单元测试，向HyperLogLog中添加100万条数据，看看内存占用是否真的那么低，以及统计误差如何
 

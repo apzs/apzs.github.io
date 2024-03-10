@@ -1,4 +1,4 @@
-# MongoDB快速上手 
+## MongoDB快速上手 
 
 MongoDB用起来 - 快速上手&集群和安全系列
 
@@ -8,7 +8,7 @@ MongoDB用起来 - 快速上手&集群和安全系列
 
 ![image-20230228163108844](https://gitlab.com/apzs/image/-/raw/master/image/image-20230228163108844.png)
 
-# 课程目标 
+## 课程目标 
 
 - 理解MongoDB的业务场景、熟悉MongoDB的简介、特点和体系结构、数据类型等。
 
@@ -18,9 +18,9 @@ MongoDB用起来 - 快速上手&集群和安全系列
 
 - 使用Spring Data MongoDB完成文章评论业务的开发
 
-# 1 MongoDB相关概念 
+## 1 MongoDB相关概念 
 
-## 1.1 业务应用场景 
+### 1.1 业务应用场景 
 
 传统的关系型数据库（如MySQL），在数据操作的"三高"需求以及应对Web2.0的网站需求面前，显得力不从心。
 
@@ -81,7 +81,7 @@ MongoDB用起来 - 快速上手&集群和安全系列
 
 答：相对MySQL，可以以更低的成本解决问题（包括学习、开发、运维等成本）
 
-## 1.2 MongoDB简介 
+### 1.2 MongoDB简介 
 
 MongoDB是一个开源、高性能、无模式的文档型数据库，当初的设计就是用于简化开发和方便扩展，是NoSQL数据库产品中的一种。是像关系型数据库（MySQL）的非关系型数据库。
 
@@ -89,7 +89,7 @@ MongoDB是一个开源、高性能、无模式的文档型数据库，当初的�
 
 MongoDB中的记录是一个文档，它是一个由字段和值对（field:value）组成的数据结构MongoDB文档类似于JSON对象，即一个文档认为就是一个对象。字段的数据类型是字符型，它的值除了使用基本的一些类型外，还可以包括其他文档、普通数组和文档数组。
 
-## 1.3 体系结构 
+### 1.3 体系结构 
 
 MySQL和MongoDB对比
 
@@ -106,7 +106,7 @@ MySQL和MongoDB对比
 |              | 嵌入文档         | MongoDB通过嵌入式文档来替代多表连接 |
 | primary  key | primary key      | 主键,MongoDB自动将_id字段设置为主键 |
 
-## 1.4 数据模型 
+### 1.4 数据模型 
 
 MongoDB的小存储单位就是文档(document)对象。文档(document)对象对应于关系型数据库的行。数据在MongoDB中以BSON（Binary-JSON）文档的格式存储在磁盘上。
 
@@ -140,7 +140,7 @@ BSON数据类型参考列表：
 > shell默认使用64位浮点型数值。{"x"：3.14}或{"x"：3}。对于整型值，可以使用NumberInt（4字节符号整数）或NumberLong（8字节符号整数），{"x":NumberInt("3")}{"x":NumberLong("3")}
 >
 
-## 1.5 MongoDB的特点 
+### 1.5 MongoDB的特点 
 
 MongoDB主要有如下特点：
 
@@ -174,9 +174,9 @@ MongoDB支持丰富的查询语言，支持读和写操作(CRUD)，比如数据�
 
 **(5) 其他特点：**如无模式（动态模式）、灵活的文档模型、
 
-# 2 单机部署 
+## 2 单机部署 
 
-## 2.1 Windows系统中的安装启动 
+### 2.1 Windows系统中的安装启动 
 
 **第一步：下载安装包**
 
@@ -248,7 +248,7 @@ b. 如果路径中没有空格，则无需加引号。
 
 ```bash
 mongod -f ../config/mongod.conf
-# 或
+## 或
 mongod --config ../config/mongod.conf
 ```
 
@@ -272,7 +272,7 @@ setParameter:
    enableLocalhostAuthBypass: false
 ```
 
-## 2.2 Shell连接(mongo命令) 
+### 2.2 Shell连接(mongo命令) 
 
 新版的需要下载`MongoDB Shell`
 
@@ -309,7 +309,7 @@ mongosh --host mongodb0.example.com --port 28015
 
 ```bash
 mongo
-# 或
+## 或
 mongo --host=127.0.0.1 --port=27017
 ```
 
@@ -335,7 +335,7 @@ mongo --help
 >
 > MongoDB javascript shell是一个基于javascript的解释器，故是支持js程序的。
 
-## 2.3 Compass-图形化界面客户端 
+### 2.3 Compass-图形化界面客户端 
 
 到MongoDB官网下载MongoDB Compass，（新版的不用下载）
 
@@ -349,7 +349,7 @@ mongo --help
 
 ![image-20230227104752344](https://gitlab.com/apzs/image/-/raw/master/image/image-20230227104752344.png)
 
-## 2.4 Linux系统中的安装启动和连接 
+### 2.4 Linux系统中的安装启动和连接 
 
 目标：在Linux中部署一个单机的MongoDB，作为生产环境下使用。
 
@@ -494,9 +494,9 @@ use admin
 db.shutdownServer()
 ```
 
-# 3 基本常用命令 
+## 3 基本常用命令 
 
-## 3.1 案例需求 
+### 3.1 案例需求 
 
 存放文章评论的数据存放到MongoDB中，数据结构参考如下：
 
@@ -516,9 +516,9 @@ db.shutdownServer()
 | state          | 状态           | String           | 0：不可见；1：可见；      |
 | parentid       | 上级ID         | String           | 如果为0表示文章的顶级评论 |
 
-## 3.2 数据库操作
+### 3.2 数据库操作
 
-### 3.2.1 选择和创建数据库
+#### 3.2.1 选择和创建数据库
 
 选择和创建数据库的语法格式：
 
@@ -536,7 +536,7 @@ use articledb
 
 ```bash
 show dbs
-# 或
+## 或
 show databases
 ```
 
@@ -570,7 +570,7 @@ MongoDB 中默认的数据库为 test，如果你没有选择数据库，集合�
 
 - **config**: 当Mongo用于分片设置时，config数据库在内部使用，用于保存分片的相关信息。
 
-### 3.2.2 数据库的删除 
+#### 3.2.2 数据库的删除 
 
 MongoDB 删除数据库的语法格式如下：
 
@@ -580,13 +580,13 @@ db.dropDatabase()
 
 提示：主要用来删除已经持久化的数据库
 
-## 3.3 集合操作 
+### 3.3 集合操作 
 
 集合，类似关系型数据库中的表。
 
 可以显示的创建，也可以隐式的创建。
 
-### 3.3.1 集合的显式创建（了解） 
+#### 3.3.1 集合的显式创建（了解） 
 
 基本语法格式：
 
@@ -608,7 +608,7 @@ db.createCollection("mycollection")
 
 ```bash
 show collections
-# 或
+## 或
 show tables
 ```
 
@@ -622,7 +622,7 @@ show tables
 
 - 用户创建的集合名字不能含有保留字符。有些驱动程序的确支持在集合名里面包含，这是因为某些系统生成的集合中包含该字符。除非你要访问这种系统创建的集合，否则千万不要在名字里出现\$。
 
-### 3.3.2 集合的隐式创建 
+#### 3.3.2 集合的隐式创建 
 
 当向一个集合中插入一个文档的时候，如果集合不存在，则会自动创建集合。
 
@@ -630,13 +630,13 @@ show tables
 
 提示：通常我们使用隐式创建文档即可。
 
-### 3.3.3 集合的删除
+#### 3.3.3 集合的删除
 
 集合删除语法格式如下：
 
 ```bash
 db.collection.drop()
-# 或
+## 或
 db.集合.drop()
 ```
 
@@ -650,13 +650,13 @@ db.集合.drop()
 db.mycollection.drop()
 ```
 
-## 3.4 文档基本CRUD 
+### 3.4 文档基本CRUD 
 
 文档（document）的数据结构和 JSON 基本一样。
 
 所有存储在集合中的数据都是 BSON 格式。
 
-### 3.4.1 文档的插入 
+#### 3.4.1 文档的插入 
 
 （1）单个文档插入
 
@@ -798,7 +798,7 @@ MongoBulkWriteError: E11000 duplicate key error collection: articledb.comment in
   code: 11000,
 ```
 
-### 3.4.2 文档的基本查询 
+#### 3.4.2 文档的基本查询 
 
 查询数据的语法格式如下：
 
@@ -821,7 +821,7 @@ db.collection.find(<query>, [projection])
 
 ```bash
 db.comment.find()
-# 或
+## 或
 db.comment.find({})
 ```
 
@@ -869,7 +869,7 @@ db.comment.findOne({userid:'1003'})
 >db.comment.find({},{userid:1,nickname:1})
 ```
 
-### 3.4.3 文档的更新
+#### 3.4.3 文档的更新
 
 新版本的使用`update`命令会提示该方法被弃用了，应该使用`updateOne`, `updateMany`, or `bulkWrite`
 
@@ -1042,7 +1042,7 @@ db.comment.update({userid:"1003"},{$set:{nickname:"凯撒大帝"}}
 db.comment.update({_id:"3"},{$inc:{likenum:NumberInt(1)}})
 ```
 
-### 3.4.4 删除文档
+#### 3.4.4 删除文档
 
 新版本的使用`remove`命令会提示该方法被弃用了，应该使用`deleteOne`, `deleteMany`，`findOneAndDelete`, or `bulkWrite`
 
@@ -1060,7 +1060,7 @@ DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany
 - `bulkWrite()`：在单个命令中执行多个写操作。
 
 ```bash
-# 如果存在则删除文档并返回这个文档
+## 如果存在则删除文档并返回这个文档
 articledb> db.comment.findOneAndDelete({_id:"2"})
 {
   _id: '2',
@@ -1072,7 +1072,7 @@ articledb> db.comment.findOneAndDelete({_id:"2"})
   likenum: 888,
   state: '1'
 }
-# 如果不存在则返回null
+## 如果不存在则返回null
 articledb> db.comment.findOneAndDelete({_id:"2"})
 null
 ```
@@ -1097,9 +1097,9 @@ db.comment.remove({})
 db.comment.remove({_id:"1"})
 ```
 
-## 3.5 文档的分页查询
+### 3.5 文档的分页查询
 
-### 3.5.1 统计查询
+#### 3.5.1 统计查询
 
 新版本的使用`count`命令会提示该方法准备弃用了，应该使用`countDocuments`  or `estimatedDocumentCount`
 
@@ -1152,7 +1152,7 @@ db.comment.count({userid:"1003"})
 
 默认情况下 `count()` 方法返回符合条件的全部记录条数。
 
-### 3.5.2 分页列表查询
+#### 3.5.2 分页列表查询
 
 可以使用limit()方法来读取指定数量的数据，使用skip()方法来跳过指定数量的数据。
 
@@ -1185,7 +1185,7 @@ db.comment.find().skip(2).limit(2)
 db.comment.find().skip(4).limit(2)
 ```
 
-### 3.5.3 排序查询 
+#### 3.5.3 排序查询 
 
 sort() 方法对数据进行排序，sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而 -1 是用于降序排列。
 
@@ -1207,9 +1207,9 @@ db.comment.find().sort({userid:-1,likenum:1})
 
 > `skip()`, `limilt()`, `sort()`三个放在一起执行的时候，执行的顺序是先`sort()`, 然后是 `skip()`， 后是显示的 `limit()`，和命令编写顺序无关。
 
-## 3.6 文档的更多查询 
+### 3.6 文档的更多查询 
 
-### 3.6.1 正则的复杂条件查询 
+#### 3.6.1 正则的复杂条件查询 
 
 MongoDB的模糊查询是通过**正则表达式**的方式实现的。格式为：
 
@@ -1233,7 +1233,7 @@ db.comment.find({content:/开水/})
 db.comment.find({content:/^专家/})
 ```
 
-### 3.6.2 比较查询 
+#### 3.6.2 比较查询 
 
 \<, \<=, \>, \>= 这个操作符也是很常用的，格式如下:
 
@@ -1251,7 +1251,7 @@ db.集合名称.find({ "field" : { $ne: value }}) // 不等于: field != value
 db.comment.find({likenum:{$gt:NumberInt(700)}})
 ```
 
-### 3.6.3 包含查询 
+#### 3.6.3 包含查询 
 
 包含使用\$in操作符。
 示例：查询评论的集合中userid字段包含1003或1004的文档
@@ -1267,7 +1267,7 @@ db.comment.find({userid:{$in:["1003","1004"]}})
 db.comment.find({userid:{$nin:["1003","1004"]}})
 ```
 
-### 3.6.4 条件连接查询 
+#### 3.6.4 条件连接查询 
 
 我们如果需要查询同时满足两个以上条件，需要使用\$and操作符将条件进行关联。（相当于SQL的and） 格式为：
 
@@ -1293,7 +1293,7 @@ $or:[ { },{ },{ } ]
 db.comment.find({$or:[ {userid:"1003"} ,{likenum:{$lt:1000} }]})
 ```
 
-## 3.7 常用命令小结 
+### 3.7 常用命令小结 
 
 ```js
 选择切换数据库：use articledb
@@ -1313,9 +1313,9 @@ db.comment.find({$or:[ {userid:"1003"} ,{likenum:{$lt:1000} }]})
 条件连接查询：db.comment.find({$and:[{条件1},{条件2}]}
 ```
 
-# 4 索引-Index 
+## 4 索引-Index 
 
-## 4.1 概述 
+### 4.1 概述 
 
 索引支持在MongoDB中高效地执行查询。如果没有索引，MongoDB必须执行全集合扫描，即扫描集合中的每个文档，以选择与查询语句匹配的文档。这种扫描全集合的查询效率是非常低的，特别在处理大量的数据时，查询可以要花费几十秒甚至几分钟，这对网站的性能是非常致命的。
 
@@ -1326,9 +1326,9 @@ db.comment.find({$or:[ {userid:"1003"} ,{likenum:{$lt:1000} }]})
 官网文档：[Indexes — MongoDB Manual](https://www.mongodb.com/docs/manual/indexes/)
 了解：MongoDB索引使用B树数据结构（确切的说是B-Tree，MySQL是B+Tree）
 
-## 4.2 索引的类型 
+### 4.2 索引的类型 
 
-### 4.2.1 单字段索引 
+#### 4.2.1 单字段索引 
 
 MongoDB支持在文档的单个字段上创建用户定义的升序/降序索引，称为单字段索引（Single Field Index）。
 
@@ -1336,7 +1336,7 @@ MongoDB支持在文档的单个字段上创建用户定义的升序/降序索引
 
 ![index-ascending.bakedsvg](https://gitlab.com/apzs/image/-/raw/master/image/index-ascending.bakedsvg.svg)
 
-### 4.2.2 复合索引
+#### 4.2.2 复合索引
 
 MongoDB还支持多个字段的用户定义索引，即复合索引（Compound Index）。
 
@@ -1344,7 +1344,7 @@ MongoDB还支持多个字段的用户定义索引，即复合索引（Compound I
 
 ![index-compound-key.bakedsvg](https://gitlab.com/apzs/image/-/raw/master/image/index-compound-key.bakedsvg.svg)
 
-### 4.2.3 其他索引
+#### 4.2.3 其他索引
 
 地理空间索引（Geospatial Index）、文本索引（Text Indexes）、哈希索引（Hashed Indexes）。
 
@@ -1360,9 +1360,9 @@ MongoDB提供了一种文本索引类型，支持在集合中搜索字符串内�
 
 为了支持基于散列的分片，MongoDB提供了散列索引类型，它对字段值的散列进行索引。这些索引在其范围内的值分布更加随机，但只支持相等匹配，不支持基于范围的查询。
 
-## 4.3 索引的管理操作 
+### 4.3 索引的管理操作 
 
-### 4.3.1 索引的查看 
+#### 4.3.1 索引的查看 
 
 说明：
 
@@ -1402,7 +1402,7 @@ MongoDB在创建集合的过程中，在 `_id` 字段上创建一个唯一的索
 
 注意：该索引是唯一索引，因此值不能重复，即`_id`值不能重复的。在分片集群中，通常使用`_id`作为片键。
 
-### 4.3.2 索引的创建 
+#### 4.3.2 索引的创建 
 
 说明：
 
@@ -1535,7 +1535,7 @@ compass中：
 
 ![image-20230301220405211](https://gitlab.com/apzs/image/-/raw/master/image/image-20230301220405211.png)
 
-### 4.3.3 索引的移除 
+#### 4.3.3 索引的移除 
 
 说明：可以移除指定的索引，或移除所有索引
 
@@ -1588,9 +1588,9 @@ db.collection.dropIndexes()
 > 提示： `_id` 的字段的索引是无法删除的，只能删除非 `_id` 字段的索引。
 >
 
-## 4.4 索引的使用 
+### 4.4 索引的使用 
 
-### 4.4.1 执行计划 
+#### 4.4.1 执行计划 
 
 分析查询性能（Analyze Query Performance）通常使用执行计划（解释计划、Explain Plan）来查看查询的情况，如查询耗费的时间、是否基于索引查询等。
 
@@ -1711,7 +1711,7 @@ compass查看：
 
 ![image-20230301221457190](https://gitlab.com/apzs/image/-/raw/master/image/image-20230301221457190.png)
 
-### 4.4.2 涵盖的查询 
+#### 4.4.2 涵盖的查询 
 
 涵盖查询（Covered Queries）：当查询条件和查询的投影仅包含索引字段时，MongoDB直接从索引返回结果，而不扫描任何文档或将文档带入内存。这些覆盖的查询可以非常有效。
 
@@ -1780,9 +1780,9 @@ Compass中：
 
 ![image-20230302095437984](https://gitlab.com/apzs/image/-/raw/master/image/image-20230302095437984.png)
 
-# 5 文章评论 
+## 5 文章评论 
 
-## 5.1 需求分析 
+### 5.1 需求分析 
 
 某头条的文章评论业务如下：
 
@@ -1797,7 +1797,7 @@ Compass中：
 
 3.  评论点赞
 
-## 5.2 表结构分析 
+### 5.2 表结构分析 
 
 数据库：articledb
 
@@ -1815,16 +1815,16 @@ Compass中：
 | state          | 状态           | String           | 0：不可见；1：可见；      |
 | parentid       | 上级ID         | String           | 如果为0表示文章的顶级评论 |
 
-## 5.3 技术选型 
+### 5.3 技术选型 
 
-### 5.3.1 mongodb-driver（了解） 
+#### 5.3.1 mongodb-driver（了解） 
 
 mongodb-driver是mongo官方推出的java连接mongoDB的驱动包，相当于JDBC驱动。我们通过一个入门的案例来了解mongodb-driver的基本使用。
 
 官方驱动说明和下载：[MongoDB Java Drivers](http://mongodb.github.io/mongo-java-driver/)
 官方驱动示例文档：   [Quick Start (mongodb.github.io)](http://mongodb.github.io/mongo-java-driver/3.8/driver/getting-started/quick-start/)
 
-### 5.3.2 SpringDataMongoDB 
+#### 5.3.2 SpringDataMongoDB 
 
 SpringData家族成员之一，用于操作MongoDB的持久层框架，封装了底层的mongodb-driver。
 
@@ -1832,7 +1832,7 @@ SpringData家族成员之一，用于操作MongoDB的持久层框架，封装了
 
 官方文档：[Spring Data MongoDB - Reference Documentation](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.core-concepts)
 
-## 5.4 文章微服务模块搭建 
+### 5.4 文章微服务模块搭建 
 
 （1）搭建项目工程article，pom.xml引入依赖：
 
@@ -1903,7 +1903,7 @@ public class ArticleApplication {
 
 （4）启动项目，看是否能正常启动，控制台没有错误。
 
-## 5.5 文章评论实体类的编写 
+### 5.5 文章评论实体类的编写 
 
 创建实体类 创建包cn.itcast.article，包下建包po用于存放实体类，创建实体类`cn.itcast.article.po.Comment`
 
@@ -2052,7 +2052,7 @@ Mongo命令参考：
 db.comment.createIndex({"userid":1,"nickname":-1})
 ```
 
-## 5.6 文章评论的基本增删改查 
+### 5.6 文章评论的基本增删改查 
 
 （1）创建数据访问接口 cn.itcast.article包下创建dao包，包下创建接口cn.itcast.article.dao.CommentRepository
 
@@ -2218,7 +2218,7 @@ public class CommentServiceTest {
 
 ![image-20230302105649383](https://gitlab.com/apzs/image/-/raw/master/image/image-20230302105649383.png)
 
-## 5.7 根据上级ID查询文章评论的分页列表
+### 5.7 根据上级ID查询文章评论的分页列表
 
 （1）CommentRepository新增方法定义
 
@@ -2284,7 +2284,7 @@ public void testFindCommentListPageByParentid(){
 ----当前页数据：[Comment{id='640014693aa80868c450ac50', content='测试添加父节点为3的数据', publishtime=null, userid='1003', nickname='凯撒', createdatetime=null, likenum=null, replynum=null, state='null', parentid='3', articleid='100001'}]
 ```
 
-## 5.8 MongoTemplate实现评论点赞 
+### 5.8 MongoTemplate实现评论点赞 
 
 我们看一下以下点赞的临时示例代码： CommentService 新增updateThumbup方法
 
@@ -2349,9 +2349,9 @@ public void testUpdateCommentLikenum(){
 
 ![image-20230302112838296](https://gitlab.com/apzs/image/-/raw/master/image/image-20230302112838296.png)
 
-# MongoDB集群和安全
+## MongoDB集群和安全
 
-# 课程目标
+## 课程目标
 
 - MongoDB的副本集：操作、主要概念、故障转移、选举规则
 
@@ -2359,9 +2359,9 @@ public void testUpdateCommentLikenum(){
 
 - MongoDB的安全认证
 
-# 1. 副本集-Replica Sets 
+## 1. 副本集-Replica Sets 
 
-## 1.1 简介 
+### 1.1 简介 
 
 MongoDB中的副本集（Replica Set）是一组维护相同数据集的mongod服务。副本集可提供冗余和高可用性，是所有生产部署的基础。
 
@@ -2389,7 +2389,7 @@ MongoDB中的副本集（Replica Set）是一组维护相同数据集的mongod�
 
 主从集群和副本集最大的区别就是副本集没有固定的"主节点"；整个集群会选出一个"主节点"，当其挂掉后，又在剩下的从节点中选中其他节点为"主节点"，副本集总有一个活跃点(主、primary)和一个或多个备份节点(从、secondary)。
 
-## 1.2 副本集的三个角色 
+### 1.2 副本集的三个角色 
 
 副本集有两种类型三种角色
 
@@ -2421,15 +2421,15 @@ MongoDB中的副本集（Replica Set）是一组维护相同数据集的mongod�
 
 如果你的副本+主节点的个数是奇数，可以不加仲裁者。
 
-## 1.3 副本集架构目标
+### 1.3 副本集架构目标
 
 一主一副本一仲裁
 
 ![image-20230228105508095](https://gitlab.com/apzs/image/-/raw/master/image/image-20230228105508095.png)
 
-## 1.4 副本集的创建 
+### 1.4 副本集的创建 
 
-### 1.4.1 第一步：创建主节点
+#### 1.4.1 第一步：创建主节点
 
 建立存放数据和日志的目录
 
@@ -2490,7 +2490,7 @@ forked process: 54257
 child process started successfully, parent exiting
 ```
 
-### 1.4.2 第二步：创建副本节点 
+#### 1.4.2 第二步：创建副本节点 
 
 建立存放数据和日志的目录
 
@@ -2551,7 +2551,7 @@ forked process: 54361
 child process started successfully, parent exiting
 ```
 
-### 1.4.3 第三步：创建仲裁节点 
+#### 1.4.3 第三步：创建仲裁节点 
 
 建立存放数据和日志的目录
 
@@ -2614,7 +2614,7 @@ forked process: 54410
 child process started successfully, parent exiting
 ```
 
-### 1.4.5 第四步：初始化配置副本集和主节点 
+#### 1.4.5 第四步：初始化配置副本集和主节点 
 
 使用客户端命令连接任意一个节点，但这里尽量要连接主节点(27017节点)：
 
@@ -2671,7 +2671,7 @@ myrs:PRIMARY>
 
 2）命令行提示符发生变化，变成了一个从节点角色，此时默认不能读写。稍等片刻，回车，变成主节点。
 
-### 1.4.6 第五步：查看副本集的配置内容 
+#### 1.4.6 第五步：查看副本集的配置内容 
 
 说明：
 
@@ -2765,7 +2765,7 @@ false, "priority" : 1, "tags" : { }, "slaveDelay" : NumberLong(0), "votes" : 1
 myrs:PRIMARY>
 ```
 
-### 1.4.7 第六步：查看副本集状态 
+#### 1.4.7 第六步：查看副本集状态 
 
 检查副本集状态。
 
@@ -2853,7 +2853,7 @@ myrs:PRIMARY> rs.status()
 
 3） `"members"` ：副本集成员数组，此时只有一个： `"name" : "180.76.159.126:27017"` ，该成员的 角色是 `"stateStr" : "PRIMARY"`, 该节点是健康的： `"health" : 1` 。
 
-### 1.4.8 第四步：添加副本从节点 
+#### 1.4.8 第四步：添加副本从节点 
 
 在主节点添加从节点，将其他成员加入到副本集
 
@@ -3009,7 +3009,7 @@ myrs: PRIMARY > rs.status()
 
 1） `"name" : "180.76.159.126:27018"` 是第二个节点的名字，其角色是 `"stateStr" : "SECONDARY"`
 
-### 1.4.9 第五步：添加仲裁从节点 
+#### 1.4.9 第五步：添加仲裁从节点 
 
 添加一个仲裁节点到副本集
 
@@ -3156,7 +3156,7 @@ myrs: PRIMARY > rs.status()
 
 1） `"name" : "180.76.159.126:27019"` 是第二个节点的名字，其角色是 `"stateStr" : "ARBITER"`
 
-## 1.5 副本集的数据读写操作 
+### 1.5 副本集的数据读写操作 
 
 目标：测试三个不同角色的节点的数据读写情况。
 
@@ -3315,7 +3315,7 @@ myrs:ARBITER>
 
 发现，只存放副本集配置等数据。
 
-## 1.6 主节点的选举原则 
+### 1.6 主节点的选举原则 
 
 MongoDB在副本集中，会自动进行主节点的选举，主节点选举的触发条件：
 
@@ -3434,9 +3434,9 @@ myrs:SECONDARY> rs.reconfig(cfg)
 
 稍等片刻会重新开始选举。
 
-## 1.7 故障测试 
+### 1.7 故障测试 
 
-### 1.7.1 副本节点故障测试 
+#### 1.7.1 副本节点故障测试 
 
 关闭27018副本节点：
 
@@ -3451,7 +3451,7 @@ db.comment.insert({"_id":"1","articleid":"100001","content":"我们不应该把�
 
 再启动从节点，会发现，主节点写入的数据，会自动同步给从节点。
 
-### 1.7.2主节点故障测试 
+#### 1.7.2主节点故障测试 
 
 关闭27017节点
 
@@ -3476,7 +3476,7 @@ db.comment.insert({"_id":"2","articleid":"100001","content":"我夏天空腹喝�
 
 从而实现了高可用。
 
-### 1.7.3 仲裁节点和主节点故障 
+#### 1.7.3 仲裁节点和主节点故障 
 
 先关掉仲裁节点27019，关掉现在的主节点27018
 
@@ -3488,7 +3488,7 @@ db.comment.insert({"_id":"2","articleid":"100001","content":"我夏天空腹喝�
 
 - 如果只加入27018节点，会发起选举。因为27017和27018都是两票，则按照谁数据新，谁当主节点。
 
-### 1.7.4 仲裁节点和从节点故障 
+#### 1.7.4 仲裁节点和从节点故障 
 
 先关掉仲裁节点27019，
 
@@ -3498,7 +3498,7 @@ db.comment.insert({"_id":"2","articleid":"100001","content":"我夏天空腹喝�
 
 副本集不可写数据了，已经故障了。
 
-## 1.8 Compass连接副本集 
+### 1.8 Compass连接副本集 
 
 如果使用云服务器需要修改配置中的主节点ip
 
@@ -3513,7 +3513,7 @@ compass连接：
 
 ![image-20230228202856031](https://gitlab.com/apzs/image/-/raw/master/image/image-20230228202856031.png)
 
-## 1.9 SpringDataMongoDB连接副本集 
+### 1.9 SpringDataMongoDB连接副本集 
 
 副本集语法：
 
@@ -3640,9 +3640,9 @@ mongodb://[username:password@]host1[:port1][,host2[:port2],..[,hostN[:portN]]][/
 | connectTimeoutMS=ms | 可以打开连接的时间。                                         |
 | socketTimeoutMS=ms  | 发送和接受sockets的时间。                                    |
 
-# 2. 分片集群-Sharded Cluster 
+## 2. 分片集群-Sharded Cluster 
 
-## 2.1 分片概念 
+### 2.1 分片概念 
 
 分片（sharding）是一种跨多台机器分布数据的方法，MongoDB使用分片来支持具有非常大的数据集和高吞吐量操作的部署。
 
@@ -3660,7 +3660,7 @@ mongodb://[username:password@]host1[:port1][,host2[:port2],..[,hostN[:portN]]][/
 
 MongoDB支持通过分片进行水平扩展。
 
-## 2.2 分片集群包含的组件 
+### 2.2 分片集群包含的组件 
 
 MongoDB分片群集包含以下组件：
 
@@ -3680,17 +3680,17 @@ MongoDB在集合级别对数据进行分片，将集合数据分布在集群中�
 
 `27019. if mongod is a config server member`
 
-## 2.3 分片集群架构目标 
+### 2.3 分片集群架构目标 
 
 两个分片节点副本集（3+3）+一个配置节点副本集（3）+两个路由节点（2），共11个服务节点。
 
 ![image-20230228203944095](https://gitlab.com/apzs/image/-/raw/master/image/image-20230228203944095.png)
 
-## 2.4 分片（存储）节点副本集的创建
+### 2.4 分片（存储）节点副本集的创建
 
 所有的的配置文件都直接放到 `sharded_cluster` 的相应的子目录下面，默认配置文件名字：`mongod.conf`
 
-### 2.4.1 第一套副本集
+#### 2.4.1 第一套副本集
 
 准备存放数据和日志的目录：
 
@@ -4024,7 +4024,7 @@ myshardrs01: PRIMARY > rs.conf()
 }
 ```
 
-### 2.4.2 第二套副本集 
+#### 2.4.2 第二套副本集 
 
 准备存放数据和日志的目录：
 
@@ -4368,7 +4368,7 @@ myshardrs02: PRIMARY > rs.status()
 }
 ```
 
-## 2.5 配置节点副本集的创建 
+### 2.5 配置节点副本集的创建 
 
 第一步：准备存放数据和日志的目录：
 
@@ -4595,9 +4595,9 @@ myshardrs01:PRIMARY> rs.conf()
 myshardrs01:PRIMARY> rs.status()
 ```
 
-## 2.6 路由节点的创建和操作 
+### 2.6 路由节点的创建和操作 
 
-### 2.6.1 第一个路由节点的创建和连接 
+#### 2.6.1 第一个路由节点的创建和连接 
 
 第一步：准备存放数据和日志的目录：
 
@@ -4697,7 +4697,7 @@ fork=true
 configdb=myconfigrs/180.76.159.126:27019,180.76.159.126:27119,180.76.159.126:27219
 ```
 
-### 2.6.2 在路由节点上进行分片配置操作 
+#### 2.6.2 在路由节点上进行分片配置操作 
 
 使用命令添加分片：
 
@@ -5032,7 +5032,7 @@ mongos> sh.getBalancerState()
 true
 ```
 
-### 2.6.3 分片后插入数据测试
+#### 2.6.3 分片后插入数据测试
 
 测试一（哈希规则）：登录mongs后，向comment循环插入1000条数据做测试：
 
@@ -5133,7 +5133,7 @@ db.settings.save( { _id:"chunksize", value: 64 } )
 
 注意：要先改小，再设置分片。为了测试，可以先删除集合，重新建立集合的分片策略，再插入数据测试即可。
 
-### 2.6.4 再增加一个路由节点
+#### 2.6.4 再增加一个路由节点
 
 文件夹：
 
@@ -5188,7 +5188,7 @@ child process started successfully, parent exiting
 
 使用mongo客户端登录27117，发现，第二个路由无需配置，因为分片配置都保存到了配置服务器中了。
 
-## 2.7 Compass连接分片集群 
+### 2.7 Compass连接分片集群 
 
 compass连接：
 
@@ -5200,7 +5200,7 @@ compass连接：
 
 ![image-20230301095335877](https://gitlab.com/apzs/image/-/raw/master/image/image-20230301095335877.png)
 
-## 2.8 SpringDataMongDB连接分片集群 
+### 2.8 SpringDataMongDB连接分片集群 
 
 Java客户端常用的是SpringDataMongoDB，其连接的是mongs路由，配置和单机mongod的配置是一样的。
 
@@ -5245,7 +5245,7 @@ org.mongodb.driver.connection : Closed connection
 [connectionId{localValue:3}] to 180.76.159.126:27117 because the
 ```
 
-## 2.9 清除所有的节点数据（备用） 
+### 2.9 清除所有的节点数据（备用） 
 
 如果在搭建分片的时候有操作失败或配置有问题，需要重新来过的，可以进行如下操作：
 
@@ -5337,9 +5337,9 @@ rm -rf /mongodb/sharded_cluster/mymongos_27117/data/db/*.*
 
 第七步：mongo登录mongos，在其上进行相关操作。
 
-# 3. 安全认证 
+## 3. 安全认证 
 
-## 3.1 MongoDB的用户和角色权限简介 
+### 3.1 MongoDB的用户和角色权限简介 
 
 默认情况下，MongoDB实例启动运行时是没有启用用户访问权限控制的，也就是说，在实例本机服务器上都可以随意连接到实例进行各种操作，MongoDB不会对连接客户端进行用户验证，这是非常危险的。
 
@@ -5571,12 +5571,12 @@ MongoDB使用的是基于角色的访问控制(Role-Based Access Control,RBAC)�
 | restore              | 从备份文件中还原恢复MongoDB数据(除了system.profile集合)的权限。 |
 | root                 | 超级账号，超级权限                                           |
 
-## 3.2 单实例环境 
+### 3.2 单实例环境 
 
 目标：对单实例的MongoDB服务开启安全认证，这里的单实例指的是未开启副本集或分片的MongoDB
 实例。
 
-### 3.2.1 关闭已开启的服务（可选） 
+#### 3.2.1 关闭已开启的服务（可选） 
 
 增加mongod的单实例的安全认证功能，可以在服务搭建的时候直接添加，也可以在之前搭建好的服务上添加。
 
@@ -5624,7 +5624,7 @@ use admin
 db.shutdownServer()
 ```
 
-### 3.2.2 添加用户和权限 
+#### 3.2.2 添加用户和权限 
 
 （1）先按照普通无授权认证的配置，来配置服务端的配置文件`/mongodb/single/mongod.conf`：（参考，复用之前课程的）
 
@@ -5772,7 +5772,7 @@ Successfully added user: {
 
 如果开启了认证后，登录的客户端的用户必须使用admin库的角色，如拥有root角色的myadmin用户，再通过myadmin用户去创建其他角色的用户
 
-### 3.2.3 服务端开启认证和客户端连接登录 
+#### 3.2.3 服务端开启认证和客户端连接登录 
 
 （1）关闭已经启动的服务
 
@@ -5987,7 +5987,7 @@ switched to db articledb
 - `-p` ：密码 
 - `--authenticationDatabase` ：指定连接到哪个库。当登录是指定用户名密码时，必须指定对应的 数据库！
 
-### 3.2.4 SpringDataMongoDB连接认证 
+#### 3.2.4 SpringDataMongoDB连接认证 
 
 使用用户名和密码连接到 MongoDB 服务器，你必须使用`'username:password@hostname/dbname'`
 格式，`'username'`为用户名，`'password'` 为密码。
@@ -6017,9 +6017,9 @@ spring:
 
 提示：分别测试用户名密码正确以及不正确的情况。
 
-## 3.3 副本集环境 
+### 3.3 副本集环境 
 
-### 3.3.1 前言 
+#### 3.3.1 前言 
 
 对于搭建好的mongodb副本集，为了安全，启动安全认证，使用账号密码登录。
 
@@ -6035,7 +6035,7 @@ spring:
 
 在keyfile身份验证中，副本集中的每个mongod实例都使用keyfile的内容作为共享密码，只有具有正确密钥文件的mongod或者mongos实例可以连接到副本集。密钥文件的内容必须在6到1024个字符之间，并且在unix/linux系统中文件所有者必须有对文件至少有读的权限。
 
-### 3.3.2 关闭已开启的副本集服务（可选） 
+#### 3.3.2 关闭已开启的副本集服务（可选） 
 
 增加副本集的安全认证和服务鉴权功能，可以在副本集搭建的时候直接添加，也可以在之前搭建好的副本集服务上添加。
 
@@ -6094,7 +6094,7 @@ use admin
 db.shutdownServer()
 ```
 
-### 3.3.3 通过主节点添加一个管理员帐号 
+#### 3.3.3 通过主节点添加一个管理员帐号 
 
 只需要在主节点上添加用户，副本集会自动同步。
 
@@ -6115,7 +6115,7 @@ Successfully added user: { "user" : "myroot", "roles" : [ "root" ] }
 
 后续再创建其他用户，都可以使用该超管用户创建。
 
-### 3.3.4 创建副本集认证的key文件 
+#### 3.3.4 创建副本集认证的key文件 
 
 第一步：生成一个key文件到当前文件夹中。
 
@@ -6140,7 +6140,7 @@ Successfully added user: { "user" : "myroot", "roles" : [ "root" ] }
 [root@bobohost ~]# cp mongo.keyfile /mongodb/replica_sets/myrs_27019
 ```
 
-### 3.3.5 修改配置文件指定keyfile 
+#### 3.3.5 修改配置文件指定keyfile 
 
 分别编辑几个服务的mongod.conf文件，添加相关内容：
 
@@ -6174,7 +6174,7 @@ security:
 	authorization: enabled
 ```
 
-### 3.3.6 重新启动副本集 
+#### 3.3.6 重新启动副本集 
 
 如果副本集是开启状态，则先分别关闭关闭复本集中的每个mongod，从次节点开始。直到副本集的所有成员都离线，包括任何仲裁者。主节点必须是最后一个成员关闭以避免潜在的回滚。
 
@@ -6203,7 +6203,7 @@ root 62567 1 11 14:43 ? 00:00:01 /usr/local/mongodb/bin/mongod
 -f /mongodb/replica_sets/myrs_27019/mongod.conf
 ```
 
-### 3.3.7 在主节点上添加普通账号
+#### 3.3.7 在主节点上添加普通账号
 
 ```bash
 #先用管理员账号登录
@@ -6221,7 +6221,7 @@ db.createUser({user: "bobo", pwd: "123456", roles: ["readWrite"]})
 
 注意：也要使用rs.status()命令查看副本集是否健康。
 
-### 3.3.8 SpringDataMongoDB连接副本集 
+#### 3.3.8 SpringDataMongoDB连接副本集 
 
 使用用户名和密码连接到 MongoDB 服务器，你必须使用`'username:password@hostname/dbname'`
 格式，`'username'`为用户名，`'password'` 为密码。
@@ -6240,9 +6240,9 @@ spring:
 7019/articledb?connect=replicaSet&slaveOk=true&replicaSet=myrs
 ```
 
-## 3.4 分片集群环境(扩展) 
+### 3.4 分片集群环境(扩展) 
 
-### 3.3.1 关闭已开启的集群服务（可选） 
+#### 3.3.1 关闭已开启的集群服务（可选） 
 
 分片集群环境下的安全认证和副本集环境下基本上一样。
 
@@ -6349,7 +6349,7 @@ use admin
 db.shutdownServer()
 ```
 
-### 3.3.2 创建副本集认证的key文件 
+#### 3.3.2 创建副本集认证的key文件 
 
 第一步：生成一个key文件到当前文件夹中。
 
@@ -6385,7 +6385,7 @@ echo '/mongodb/sharded_cluster/myshardrs01_27018/mongo.keyfile
 /root/mongo.keyfile
 ```
 
-### 3.3.3 修改配置文件指定keyfile 
+#### 3.3.3 修改配置文件指定keyfile 
 
 分别编辑几个服务的mongod.conf文件，添加相关内容：
 
@@ -6501,7 +6501,7 @@ mongos比mongod少了authorization：enabled的配置。原因是，副本集加
 然而对于所有的mongod，才是真正的保存数据的分片。mongos只做路由，不保存数据。所以所有的
 mongod开启访问数据的授权authorization:enabled。这样用户只有账号密码正确才能访问到数据。
 
-### 3.3.4 重新启动节点 
+#### 3.3.4 重新启动节点 
 
 必须依次启动配置节点、分片节点、路由节点：
 
@@ -6542,7 +6542,7 @@ about to fork child process, waiting until server is ready for connections
 
 这也许是个bug。原因未知。
 
-### 3.3.5 创建帐号和认证
+#### 3.3.5 创建帐号和认证
 
 客户端mongo，通过localhost登录任意一个mongos路由，
 
@@ -6622,7 +6622,7 @@ mongos> db.comment.count()
 10001
 ```
 
-### 3.3.6 SpringDataMongoDB连接认证 
+#### 3.3.6 SpringDataMongoDB连接认证 
 
 使用用户名和密码连接到 MongoDB 服务器，你必须使用`'username:password@hostname/dbname'`
 格式，`'username'`为用户名，`'password'` 为密码。

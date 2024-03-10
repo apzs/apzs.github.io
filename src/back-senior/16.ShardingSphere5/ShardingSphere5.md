@@ -1,4 +1,4 @@
-# 尚硅谷ShardingSphere5实战教程
+## 尚硅谷ShardingSphere5实战教程
 
 ` Mycat`与` Sharding-JDBC`、` Sharding-Proxy`、`Sharding-Sidecar`对比图
 
@@ -38,11 +38,11 @@
 
 ------
 
-# 第01章 高性能架构模式
+## 第01章 高性能架构模式
 
 互联网业务兴起之后，海量用户加上海量数据的特点，单个数据库服务器已经难以满足业务需要，必须考虑数据库集群的方式来提升性能。高性能数据库集群的`第一种方式是“读写分离”`，`第二种方式是“数据库分片”`。
 
-## 1、读写分离架构
+### 1、读写分离架构
 
 **读写分离原理：**读写分离的基本原理是将数据库读写操作分散到不同的节点上，下面是其基本架构图：
 
@@ -105,7 +105,7 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 
 
-## 2、数据库分片架构
+### 2、数据库分片架构
 
 **读写分离的问题：**
 
@@ -117,7 +117,7 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 
 
-### 2.1、垂直分片
+#### 2.1、垂直分片
 
 **垂直分库：**
 
@@ -149,7 +149,7 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 
 
-### 2.2、水平分片
+#### 2.2、水平分片
 
 `水平分片又称为横向拆分。` 相对于垂直分片，它不再将数据根据业务逻辑分类，而是通过某个字段（或某几个字段），根据某种规则将数据分散至多个库或表中，每个分片仅包含数据的一部分。 例如：根据主键分片，偶数主键的记录放入 0 库（或表），奇数主键的记录放入 1 库（或表），如下图所示。
 
@@ -171,7 +171,7 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 
 
-## 3、读写分离和数据分片架构
+### 3、读写分离和数据分片架构
 
  下图展现了将数据分片与读写分离一同使用时，应用程序与数据库集群之间的复杂拓扑关系。
 
@@ -179,13 +179,13 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 
 
-## 4、实现方式
+### 4、实现方式
 
 读写分离和数据分片具体的实现方式一般有两种：  `程序代码封装`和`中间件封装`。
 
 
 
-### 4.1、程序代码封装
+#### 4.1、程序代码封装
 
 程序代码封装指在代码中抽象一个`数据访问层（或中间层封装）`，实现读写操作分离和数据库服务器连接的管理。
 
@@ -193,7 +193,7 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 ![img](https://gitlab.com/apzs/image/-/raw/master/image/f8d538f9201e3ebee37dfdcd1922e9df.jpg)
 
-### 4.2、中间件封装
+#### 4.2、中间件封装
 
 中间件封装指的是`独立一套系统出来`，实现读写操作分离和数据库服务器连接的管理。对于业务服务器来说，访问中间件和访问数据库没有区别，在业务服务器看来，中间件就是一个数据库服务器。
 
@@ -203,7 +203,7 @@ CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），�
 
 
 
-### 4.3、常用解决方案
+#### 4.3、常用解决方案
 
 Apache ShardingSphere（程序级别和中间件级别）
 
@@ -211,9 +211,9 @@ MyCat（数据库中间件）
 
 
 
-# 第02章 ShardingSphere
+## 第02章 ShardingSphere
 
-## 1、简介
+### 1、简介
 
 官网：https://shardingsphere.apache.org/index_zh.html
 
@@ -223,7 +223,7 @@ Apache ShardingSphere 由 JDBC、Proxy 和 Sidecar（规划中）这 3 款既能
 
 
 
-## 2、ShardingSphere-JDBC
+### 2、ShardingSphere-JDBC
 
 **程序代码封装**
 
@@ -231,7 +231,7 @@ Apache ShardingSphere 由 JDBC、Proxy 和 Sidecar（规划中）这 3 款既能
 
 ![image-20220804195402870](https://gitlab.com/apzs/image/-/raw/master/image/image-20220804195402870.png)
 
-## 3、ShardingSphere-Proxy
+### 3、ShardingSphere-Proxy
 
 **中间件封装**
 
@@ -241,9 +241,9 @@ Apache ShardingSphere 由 JDBC、Proxy 和 Sidecar（规划中）这 3 款既能
 
 
 
-# 第03章 MySQL主从同步
+## 第03章 MySQL主从同步
 
-## 1、MySQL主从同步原理
+### 1、MySQL主从同步原理
 
 ![img](https://gitlab.com/apzs/image/-/raw/master/image/image-20220714133617856.png)
 
@@ -261,7 +261,7 @@ slave会从master读取binlog来进行数据同步
 
 
 
-## 2、一主多从配置
+### 2、一主多从配置
 
 服务器规划：使用`docker`方式创建，`主从服务器IP一致，端口号不一致`
 
@@ -284,7 +284,7 @@ systemctl start docker
 
 
 
-### 2.1、准备主服务器
+#### 2.1、准备主服务器
 
 - **step1：在docker中创建并启动MySQL主服务器：**`端口3306`
 
@@ -322,15 +322,15 @@ vim /atguigu/mysql/master/conf/my.cnf
 
 ```properties
 [mysqld]
-# 服务器唯一id，默认值1
+## 服务器唯一id，默认值1
 server-id=1
-# 设置日志格式，默认值ROW
+## 设置日志格式，默认值ROW
 binlog_format=STATEMENT
-# 二进制日志名，默认binlog
-# log-bin=binlog
-# 设置需要复制的数据库，默认复制全部数据库
+## 二进制日志名，默认binlog
+## log-bin=binlog
+## 设置需要复制的数据库，默认复制全部数据库
 #binlog-do-db=mytestdb
-# 设置不需要复制的数据库
+## 设置不需要复制的数据库
 #binlog-ignore-db=mysql
 #binlog-ignore-db=infomation_schema
 ```
@@ -405,9 +405,9 @@ SHOW MASTER STATUS;
 
 从服务器会根据binlog文件和指定的位置读取日志。
 
-### 2.2、准备从服务器
+#### 2.2、准备从服务器
 
-#### slave1
+##### slave1
 
 可以配置多台从机slave1、slave2...，这里以配置slave1为例
 
@@ -437,9 +437,9 @@ vi /atguigu/mysql/slave1/conf/my.cnf
 
 ```properties
 [mysqld]
-# 服务器唯一id，每台服务器的id必须不同，如果配置其他从机，注意修改id
+## 服务器唯一id，每台服务器的id必须不同，如果配置其他从机，注意修改id
 server-id=2
-# 中继日志名，默认xxxxxxxxxxxx-relay-bin
+## 中继日志名，默认xxxxxxxxxxxx-relay-bin
 #relay-log=relay-bin
 ```
 
@@ -474,7 +474,7 @@ MASTER_USER='atguigu_slave',MASTER_PASSWORD='123456', MASTER_PORT=3306,
 MASTER_LOG_FILE='binlog.000003',MASTER_LOG_POS=1357; 
 ```
 
-#### slave2
+##### slave2
 
 ```bash
 docker run -d \
@@ -496,9 +496,9 @@ vi /atguigu/mysql/slave2/conf/my.cnf
 
 ```bash
 [mysqld]
-# 服务器唯一id，每台服务器的id必须不同，如果配置其他从机，注意修改id
+## 服务器唯一id，每台服务器的id必须不同，如果配置其他从机，注意修改id
 server-id=3
-# 中继日志名，默认xxxxxxxxxxxx-relay-bin
+## 中继日志名，默认xxxxxxxxxxxx-relay-bin
 #relay-log=relay-bin
 ```
 
@@ -539,7 +539,7 @@ MASTER_LOG_FILE='binlog.000003',MASTER_LOG_POS=1357;
 
 
 
-### 2.3、启动主从同步
+#### 2.3、启动主从同步
 
 启动从机的复制功能
 
@@ -557,7 +557,7 @@ SHOW SLAVE STATUS\G
 
 
 
-### 2.4、实现主从同步
+#### 2.4、实现主从同步
 
 在主机中执行以下SQL，在从机中查看数据库、表和数据是否已经被同步
 
@@ -585,7 +585,7 @@ select * from t_user;
 
 可以看到`t_user`表里`uname`里插入的`@@hostname`不一致，这是因为我们前面在主服务器添加了`binlog_format=STATEMENT`配置，`STATEMENT`模式会导致主从这种数据不一致
 
-### 2.5、停止和重置
+#### 2.5、停止和重置
 
 需要的时候，可以使用如下SQL语句
 
@@ -601,9 +601,9 @@ reset slave;
 reset master;
 ```
 
-### **2.6、常见问题**
+#### **2.6、常见问题**
 
-#### 问题1
+##### 问题1
 
 启动主从同步后，常见错误是`Slave_IO_Running： No 或者 Connecting` 的情况，此时查看下方的 `Last_IO_ERROR`错误日志，根据日志中显示的错误信息在网上搜索解决方案即可
 
@@ -626,7 +626,7 @@ SHOW MASTER STATUS;
 -- 修改从机连接主机的SQL，并重新连接即可
 ```
 
-#### 问题2
+##### 问题2
 
 启动docker容器后提示 `WARNING: IPv4 forwarding is disabled. Networking will not work.`
 
@@ -649,11 +649,11 @@ net.ipv4.ip_forward=1
 systemctl restart network
 ```
 
-# 第04章 ShardingSphere-JDBC读写分离
+## 第04章 ShardingSphere-JDBC读写分离
 
-## 1、创建SpringBoot程序
+### 1、创建SpringBoot程序
 
-### 1.1、创建项目
+#### 1.1、创建项目
 
 项目类型：Spring Initializr
 
@@ -663,7 +663,7 @@ SpringBoot脚手架：http://start.aliyun.com
 
 SpringBoot版本：2.3.7.RELEASE
 
-### 1.2、添加依赖
+#### 1.2、添加依赖
 
 ```xml
 <dependencies>
@@ -712,7 +712,7 @@ SpringBoot版本：2.3.7.RELEASE
 
 
 
-### 1.3、创建实体类
+#### 1.3、创建实体类
 
 ```java
 package com.atguigu.shardingjdbcdemo.entity;
@@ -728,7 +728,7 @@ public class User {
 
 
 
-### 1.4、创建Mapper
+#### 1.4、创建Mapper
 
 ```java
 package com.atguigu.shardingjdbcdemo.mapper;
@@ -740,63 +740,63 @@ public interface UserMapper extends BaseMapper<User> {
 
 
 
-### 1.5、配置读写分离
+#### 1.5、配置读写分离
 
 application.properties：
 
 ```properties
-# 应用名称
+## 应用名称
 spring.application.name=sharging-jdbc-demo
-# 开发环境设置
+## 开发环境设置
 spring.profiles.active=dev
-# 内存模式
+## 内存模式
 spring.shardingsphere.mode.type=Memory
 
-# 配置真实数据源
+## 配置真实数据源
 spring.shardingsphere.datasource.names=master,slave1,slave2
 
-# 配置第 1 个数据源
+## 配置第 1 个数据源
 spring.shardingsphere.datasource.master.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.master.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.master.jdbc-url=jdbc:mysql://192.168.100.201:3306/db_user
 spring.shardingsphere.datasource.master.username=root
 spring.shardingsphere.datasource.master.password=123456
 
-# 配置第 2 个数据源
+## 配置第 2 个数据源
 spring.shardingsphere.datasource.slave1.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.slave1.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.slave1.jdbc-url=jdbc:mysql://192.168.100.201:3307/db_user
 spring.shardingsphere.datasource.slave1.username=root
 spring.shardingsphere.datasource.slave1.password=123456
 
-# 配置第 3 个数据源
+## 配置第 3 个数据源
 spring.shardingsphere.datasource.slave2.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.slave2.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.slave2.jdbc-url=jdbc:mysql://192.168.100.201:3308/db_user
 spring.shardingsphere.datasource.slave2.username=root
 spring.shardingsphere.datasource.slave2.password=123456
 
-# 读写分离类型，如: Static，Dynamic
+## 读写分离类型，如: Static，Dynamic
 spring.shardingsphere.rules.readwrite-splitting.data-sources.myds.type=Static
-# 写数据源名称
+## 写数据源名称
 spring.shardingsphere.rules.readwrite-splitting.data-sources.myds.props.write-data-source-name=master
-# 读数据源名称，多个从数据源用逗号分隔
+## 读数据源名称，多个从数据源用逗号分隔
 spring.shardingsphere.rules.readwrite-splitting.data-sources.myds.props.read-data-source-names=slave1,slave2
 
-# 负载均衡算法名称（我们可以修改名称为下面配置的`负载均衡算法配置名称`即可改变负载均衡算法）
-# 比如我们改为alg_round即为ROUND_ROBIN轮询算法，alg_random即为RANDOM随机访问算法，alg_weight为WEIGHT按权重进行访问算法
+## 负载均衡算法名称（我们可以修改名称为下面配置的`负载均衡算法配置名称`即可改变负载均衡算法）
+## 比如我们改为alg_round即为ROUND_ROBIN轮询算法，alg_random即为RANDOM随机访问算法，alg_weight为WEIGHT按权重进行访问算法
 spring.shardingsphere.rules.readwrite-splitting.data-sources.myds.load-balancer-name=alg_round
 
-# 负载均衡算法配置（alg_round、alg_random、alg_weight可以随便起，但最好见名知意）
-# 负载均衡算法类型
+## 负载均衡算法配置（alg_round、alg_random、alg_weight可以随便起，但最好见名知意）
+## 负载均衡算法类型
 spring.shardingsphere.rules.readwrite-splitting.load-balancers.alg_round.type=ROUND_ROBIN
 spring.shardingsphere.rules.readwrite-splitting.load-balancers.alg_random.type=RANDOM
-# 按权重进行访问算法必须为每个从节点配置权重，权重可以有小数
+## 按权重进行访问算法必须为每个从节点配置权重，权重可以有小数
 spring.shardingsphere.rules.readwrite-splitting.load-balancers.alg_weight.type=WEIGHT
 spring.shardingsphere.rules.readwrite-splitting.load-balancers.alg_weight.props.slave1=1.0
 spring.shardingsphere.rules.readwrite-splitting.load-balancers.alg_weight.props.slave2=2.0
 
-# 打印SQl
+## 打印SQl
 spring.shardingsphere.props.sql-show=true
 ```
 
@@ -807,9 +807,9 @@ spring.shardingsphere.props.sql-show=true
 - 读写分离规则：[读写分离 :: ShardingSphere (apache.org)](https://shardingsphere.apache.org/document/5.1.1/cn/user-manual/shardingsphere-jdbc/spring-boot-starter/rules/readwrite-splitting/)
 - 负载均衡算法：[负载均衡算法 :: ShardingSphere (apache.org)](https://shardingsphere.apache.org/document/5.1.1/cn/user-manual/shardingsphere-jdbc/builtin-algorithm/load-balance/)
 
-## 2、测试
+### 2、测试
 
-### 2.1、读写分离测试
+#### 2.1、读写分离测试
 
 ```java
 package com.atguigu.shardingjdbcdemo;
@@ -838,7 +838,7 @@ class ReadwriteTest {
 }
 ```
 
-### 2.2、事务测试
+#### 2.2、事务测试
 
 为了保证主从库间的事务一致性，避免跨服务的分布式事务，ShardingSphere-JDBC的`主从模型中，事务中的数据读写均用主库`。
 
@@ -865,7 +865,7 @@ public void testTrans(){
 }
 ```
 
-### 2.3、负载均衡测试
+#### 2.3、负载均衡测试
 
 可以看到`slave1`和`slave2`是轮询进行查找
 
@@ -910,9 +910,9 @@ public class UserController {
 }
 ```
 
-# 第05章 ShardingSphere-JDBC垂直分片
+## 第05章 ShardingSphere-JDBC垂直分片
 
-## 1、准备服务器
+### 1、准备服务器
 
 服务器规划：使用`docker`方式创建如下容器（使用`server-user`、`server-order`这两个数据库）
 
@@ -933,7 +933,7 @@ public class UserController {
 - 服务器：容器名`server-order`，端口`3302`
 
 
-### 1.1、创建server-user容器
+#### 1.1、创建server-user容器
 
 - **step1：创建容器：**
 
@@ -970,7 +970,7 @@ CREATE TABLE t_user (
 );
 ```
 
-### 1.2、创建server-order容器
+#### 1.2、创建server-order容器
 
 - **step1：创建容器：**
 
@@ -1015,9 +1015,9 @@ CREATE TABLE t_order (
 
 
 
-## 2、程序实现
+### 2、程序实现
 
-### 2.1、创建实体类
+#### 2.1、创建实体类
 
 ```java
 package com.atguigu.shardingjdbcdemo.entity;
@@ -1033,7 +1033,7 @@ public class Order {
 }
 ```
 
-### 2.2、创建Mapper
+#### 2.2、创建Mapper
 
 ```java
 package com.atguigu.shardingjdbcdemo.mapper;
@@ -1043,49 +1043,49 @@ public interface OrderMapper extends BaseMapper<Order> {
 }
 ```
 
-### 2.3、配置垂直分片
+#### 2.3、配置垂直分片
 
 ```properties
-# 应用名称
+## 应用名称
 spring.application.name=sharding-jdbc-demo
-# 环境设置
+## 环境设置
 spring.profiles.active=dev
 
-# 配置真实数据源
+## 配置真实数据源
 spring.shardingsphere.datasource.names=server-user,server-order
 
-# 配置第 1 个数据源
+## 配置第 1 个数据源
 spring.shardingsphere.datasource.server-user.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.server-user.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.server-user.jdbc-url=jdbc:mysql://192.168.100.201:3301/db_user
 spring.shardingsphere.datasource.server-user.username=root
 spring.shardingsphere.datasource.server-user.password=123456
 
-# 配置第 2 个数据源
+## 配置第 2 个数据源
 spring.shardingsphere.datasource.server-order.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.server-order.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.server-order.jdbc-url=jdbc:mysql://192.168.100.201:3302/db_order
 spring.shardingsphere.datasource.server-order.username=root
 spring.shardingsphere.datasource.server-order.password=123456
 
-# 标准分片表配置（数据节点）
-# spring.shardingsphere.rules.sharding.tables.<table-name>.actual-data-nodes=值
-# 值由数据源名 + 表名组成，以小数点分隔。
-# <table-name>：逻辑表名
-# 代码中对 t_user 表的操作自动映射到 server-user.t_user 表
+## 标准分片表配置（数据节点）
+## spring.shardingsphere.rules.sharding.tables.<table-name>.actual-data-nodes=值
+## 值由数据源名 + 表名组成，以小数点分隔。
+## <table-name>：逻辑表名
+## 代码中对 t_user 表的操作自动映射到 server-user.t_user 表
 spring.shardingsphere.rules.sharding.tables.t_user.actual-data-nodes=server-user.t_user
-# 代码中对 t_order 表的操作自动映射到 server-order.t_order 表
+## 代码中对 t_order 表的操作自动映射到 server-order.t_order 表
 spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes=server-order.t_order
 
 
-# 打印SQL
+## 打印SQL
 spring.shardingsphere.props.sql-show=true
 
 ```
 
 
 
-## 3、测试垂直分片
+### 3、测试垂直分片
 
 ```java
 package com.atguigu.shardingjdbcdemo;
@@ -1131,7 +1131,7 @@ public class ShardingTest {
 
 
 
-### 常见错误
+#### 常见错误
 
 ![image-20220810163534068](https://gitlab.com/apzs/image/-/raw/master/image/image-20220810163534068.png)
 
@@ -1143,9 +1143,9 @@ ShardingSphere-JDBC远程连接的方式默认的密码加密规则是：mysql_n
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 ```
 
-# 第06章 ShardingSphere-JDBC水平分片
+## 第06章 ShardingSphere-JDBC水平分片
 
-## 1、准备服务器
+### 1、准备服务器
 
 服务器规划：使用`docker`方式创建如下容器（使用`server-user`、`server-order0`、`server-order1`这三个数据库）
 
@@ -1162,7 +1162,7 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 - 服务器：容器名`server-order1`，端口`3311`
 
 
-### 1.1、创建server-order0容器
+#### 1.1、创建server-order0容器
 
 - **step1：创建容器：**
 
@@ -1210,7 +1210,7 @@ CREATE TABLE t_order1 (
 );
 ```
 
-### 1.2、创建server-order1容器
+#### 1.2、创建server-order1容器
 
 - **step1：创建容器：**
 
@@ -1258,46 +1258,46 @@ CREATE TABLE t_order1 (
 );
 ```
 
-## 2、基本水平分片
+### 2、基本水平分片
 
-### 2.1、基本配置
+#### 2.1、基本配置
 
 ```properties
 #========================基本配置
-# 应用名称
+## 应用名称
 spring.application.name=sharging-jdbc-demo
-# 开发环境设置
+## 开发环境设置
 spring.profiles.active=dev
-# 内存模式
+## 内存模式
 spring.shardingsphere.mode.type=Memory
-# 打印SQl
+## 打印SQl
 spring.shardingsphere.props.sql-show=true
 ```
 
 
 
-### 2.2、数据源配置
+#### 2.2、数据源配置
 
 ```properties
 #========================数据源配置
-# 配置真实数据源
+## 配置真实数据源
 spring.shardingsphere.datasource.names=server-user,server-order0,server-order1
 
-# 配置第 1 个数据源
+## 配置第 1 个数据源
 spring.shardingsphere.datasource.server-user.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.server-user.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.server-user.jdbc-url=jdbc:mysql://192.168.100.201:3301/db_user
 spring.shardingsphere.datasource.server-user.username=root
 spring.shardingsphere.datasource.server-user.password=123456
 
-# 配置第 2 个数据源
+## 配置第 2 个数据源
 spring.shardingsphere.datasource.server-order.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.server-order.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.server-order.jdbc-url=jdbc:mysql://192.168.100.201:3310/db_order
 spring.shardingsphere.datasource.server-order.username=root
 spring.shardingsphere.datasource.server-order.password=123456
 
-# 配置第 3 个数据源
+## 配置第 3 个数据源
 spring.shardingsphere.datasource.server-order.type=com.zaxxer.hikari.HikariDataSource
 spring.shardingsphere.datasource.server-order.driver-class-name=com.mysql.jdbc.Driver
 spring.shardingsphere.datasource.server-order.jdbc-url=jdbc:mysql://192.168.100.201:3311/db_order
@@ -1305,16 +1305,16 @@ spring.shardingsphere.datasource.server-order.username=root
 spring.shardingsphere.datasource.server-order.password=123456
 ```
 
-### 2.3、标椎分片表配置
+#### 2.3、标椎分片表配置
 
 ```properties
 #========================标准分片表配置（数据节点配置）
-# spring.shardingsphere.rules.sharding.tables.<table-name>.actual-data-nodes=值
-# 值由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持 inline 表达式。
-# <table-name>：逻辑表名
-# 代码中对 t_user 表的操作自动映射到 server-user.t_user 表
+## spring.shardingsphere.rules.sharding.tables.<table-name>.actual-data-nodes=值
+## 值由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持 inline 表达式。
+## <table-name>：逻辑表名
+## 代码中对 t_user 表的操作自动映射到 server-user.t_user 表
 spring.shardingsphere.rules.sharding.tables.t_user.actual-data-nodes=server-user.t_user
-# 代码中对 t_order 表的操作自动映射到 "server-order0.t_order0"、"server-order0.t-order1"、"server-order1.t_order0"、"server-order1.t_order1" 这两个数据库各两张表，共4张表
+## 代码中对 t_order 表的操作自动映射到 "server-order0.t_order0"、"server-order0.t-order1"、"server-order1.t_order0"、"server-order1.t_order1" 这两个数据库各两张表，共4张表
 spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes=server-order0.t_order0,server-order0.t_order1,server-order1.t_order0,server-order1.t_order1
 ```
 
@@ -1355,22 +1355,22 @@ public void testInsertOrder(){
 }
 ```
 
-### 2.4、行（inline）表达式
+#### 2.4、行（inline）表达式
 
 优化上一步的分片表配置   [行表达式 :: ShardingSphere (apache.org)](https://shardingsphere.apache.org/document/5.1.1/cn/features/sharding/concept/inline-expression/)
 
 ```properties
 #========================标准分片表配置（数据节点配置）
-# spring.shardingsphere.rules.sharding.tables.<table-name>.actual-data-nodes=值
-# 值由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持 inline 表达式。
-# <table-name>：逻辑表名
-# 代码中对 t_user 表的操作自动映射到 server-user.t_user 表
+## spring.shardingsphere.rules.sharding.tables.<table-name>.actual-data-nodes=值
+## 值由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持 inline 表达式。
+## <table-name>：逻辑表名
+## 代码中对 t_user 表的操作自动映射到 server-user.t_user 表
 spring.shardingsphere.rules.sharding.tables.t_user.actual-data-nodes=server-user.t_user
-# 代码中对 t_order 表的操作自动映射到 "server-order0.t_order0"、"server-order0.t-order1"、"server-order1.t_order0"、"server-order1.t_order1" 这两个数据库各两张表，共4张表
+## 代码中对 t_order 表的操作自动映射到 "server-order0.t_order0"、"server-order0.t-order1"、"server-order1.t_order0"、"server-order1.t_order1" 这两个数据库各两张表，共4张表
 spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes=server-order$->{0..1}.t_order$->{0..1}
 ```
 
-### 2.5、分片算法配置
+#### 2.5、分片算法配置
 
 **水平分库：**
 
@@ -1378,23 +1378,23 @@ spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes=server-ord
 
 ```properties
 #------------------------分库策略
-# 对t_order表的user_id字段使用INLINE算法，决定路由到哪个数据库中
-# 分片列名称
+## 对t_order表的user_id字段使用INLINE算法，决定路由到哪个数据库中
+## 分片列名称
 spring.shardingsphere.rules.sharding.tables.t_order.database-strategy.standard.sharding-column=user_id
-# 分片算法名称（接下来我们需要为名为alg_inline_userid的sharding-algorithms配置type、props等）
+## 分片算法名称（接下来我们需要为名为alg_inline_userid的sharding-algorithms配置type、props等）
 spring.shardingsphere.rules.sharding.tables.t_order.database-strategy.standard.sharding-algorithm-name=alg_inline_userid
 
 #------------------------分片算法配置
-# 行表达式分片算法
-# 分片算法类型（为为alg_inline_userid配置type）
+## 行表达式分片算法
+## 分片算法类型（为为alg_inline_userid配置type）
 spring.shardingsphere.rules.sharding.sharding-algorithms.alg_inline_userid.type=INLINE
-# 分片算法属性配置（为alg_inline_userid配置props）
+## 分片算法属性配置（为alg_inline_userid配置props）
 spring.shardingsphere.rules.sharding.sharding-algorithms.alg_inline_userid.props.algorithm-expression=server-order$->{user_id % 2}
 
-# 取模分片算法
-# 分片算法类型
+## 取模分片算法
+## 分片算法类型
 spring.shardingsphere.rules.sharding.sharding-algorithms.alg_mod.type=MOD
-# 分片算法属性配置
+## 分片算法属性配置
 spring.shardingsphere.rules.sharding.sharding-algorithms.alg_mod.props.sharding-count=2
 ```
 
@@ -1442,18 +1442,18 @@ public void testInsertOrderDatabaseStrategy(){
 
 ```properties
 #------------------------分表策略
-# 对t_order表的order_no字段使用HASH_MOD算法，决定将这行数据插入到哪个数据表中
-# 分片列名称
+## 对t_order表的order_no字段使用HASH_MOD算法，决定将这行数据插入到哪个数据表中
+## 分片列名称
 spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.standard.sharding-column=order_no
-# 分片算法名称(接下来我们需要为名为alg_hash_mod的sharding-algorithms配置type、props等)
+## 分片算法名称(接下来我们需要为名为alg_hash_mod的sharding-algorithms配置type、props等)
 spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.standard.sharding-algorithm-name=alg_hash_mod
 
 
 #------------------------分片算法配置
-# 哈希取模分片算法
-# 分片算法类型(为alg_hash_mod配置type)
+## 哈希取模分片算法
+## 分片算法类型(为alg_hash_mod配置type)
 spring.shardingsphere.rules.sharding.sharding-algorithms.alg_hash_mod.type=HASH_MOD
-# 分片算法属性配置(为alg_hash_mod配置props)
+## 分片算法属性配置(为alg_hash_mod配置props)
 spring.shardingsphere.rules.sharding.sharding-algorithms.alg_hash_mod.props.sharding-count=2
 
 ```
@@ -1532,7 +1532,7 @@ public void testShardingSelectByUserId(){
 }
 ```
 
-### 2.6、分布式序列(id)算法
+#### 2.6、分布式序列(id)算法
 
 **雪花算法：**[分布式主键 :: ShardingSphere (apache.org)](https://shardingsphere.apache.org/document/5.1.1/cn/features/sharding/concept/key-generator/)
 
@@ -1551,16 +1551,16 @@ private Long id;
 
 ```properties
 #------------------------分布式序列策略配置
-# 对t_order表的id字段使用alg_snowflake算法（雪花算法）自动为该id字段填充值
-# 分布式序列列名称
+## 对t_order表的id字段使用alg_snowflake算法（雪花算法）自动为该id字段填充值
+## 分布式序列列名称
 spring.shardingsphere.rules.sharding.tables.t_order.key-generate-strategy.column=id
-# 分布式序列算法名称（接下来我们需要为名为alg_snowflake的key-generators配置type、props等）
+## 分布式序列算法名称（接下来我们需要为名为alg_snowflake的key-generators配置type、props等）
 spring.shardingsphere.rules.sharding.tables.t_order.key-generate-strategy.key-generator-name=alg_snowflake
 
-# 分布式序列算法配置
-# 分布式序列算法类型(为alg_snowflake配置type)
+## 分布式序列算法配置
+## 分布式序列算法类型(为alg_snowflake配置type)
 spring.shardingsphere.rules.sharding.key-generators.alg_snowflake.type=SNOWFLAKE
-# 分布式序列算法属性配置
+## 分布式序列算法属性配置
 #spring.shardingsphere.rules.sharding.key-generators.alg_snowflake.props.xxx=
 ```
 
@@ -1572,9 +1572,9 @@ spring.shardingsphere.rules.sharding.key-generators.alg_snowflake.type=SNOWFLAKE
 @TableId(type = IdType.AUTO)
 ```
 
-## 3、多表关联
+### 3、多表关联
 
-### 3.1、创建关联表
+#### 3.1、创建关联表
 
 在`server-order0、server-order1`服务器中分别创建两张订单详情表`t_order_item0、t_order_item1`，共4张表
 
@@ -1602,7 +1602,7 @@ CREATE TABLE t_order_item1(
 );
 ```
 
-### 3.2、创建实体类
+#### 3.2、创建实体类
 
 ```java
 package com.atguigu.shardingjdbcdemo.entity;
@@ -1620,7 +1620,7 @@ public class OrderItem {
 }
 ```
 
-### 3.3、创建Mapper
+#### 3.3、创建Mapper
 
 ```java
 package com.atguigu.shargingjdbcdemo.mapper;
@@ -1631,7 +1631,7 @@ public interface OrderItemMapper extends BaseMapper<OrderItem> {
 }
 ```
 
-### 3.4、配置关联表
+#### 3.4、配置关联表
 
 t_order_item的分片表、分片策略、分布式序列策略和t_order一致
 
@@ -1640,25 +1640,25 @@ t_order_item的分片表、分片策略、分布式序列策略和t_order一致
 spring.shardingsphere.rules.sharding.tables.t_order_item.actual-data-nodes=server-order$->{0..1}.t_order_item$->{0..1}
 
 #------------------------分库策略
-# 分片列名称
+## 分片列名称
 spring.shardingsphere.rules.sharding.tables.t_order_item.database-strategy.standard.sharding-column=user_id
-# 分片算法名称
+## 分片算法名称
 spring.shardingsphere.rules.sharding.tables.t_order_item.database-strategy.standard.sharding-algorithm-name=alg_mod
 
 #------------------------分表策略
-# 分片列名称
+## 分片列名称
 spring.shardingsphere.rules.sharding.tables.t_order_item.table-strategy.standard.sharding-column=order_no
-# 分片算法名称
+## 分片算法名称
 spring.shardingsphere.rules.sharding.tables.t_order_item.table-strategy.standard.sharding-algorithm-name=alg_hash_mod
 
 #------------------------分布式序列策略配置
-# 分布式序列列名称
+## 分布式序列列名称
 spring.shardingsphere.rules.sharding.tables.t_order_item.key-generate-strategy.column=id
-# 分布式序列算法名称
+## 分布式序列算法名称
 spring.shardingsphere.rules.sharding.tables.t_order_item.key-generate-strategy.key-generator-name=alg_snowflake
 ```
 
-### 3.5、测试插入数据
+#### 3.5、测试插入数据
 
 同一个用户的订单表和订单详情表中的数据都在同一个数据源中，避免跨库关联
 
@@ -1706,11 +1706,11 @@ public void testInsertOrderAndOrderItem(){
 }
 ```
 
-## 4、绑定表
+### 4、绑定表
 
 **需求：**查询每个订单的订单号和总订单金额
 
-### 4.1、创建VO对象
+#### 4.1、创建VO对象
 
 ```java
 package com.atguigu.shardingjdbcdemo.entity;
@@ -1722,7 +1722,7 @@ public class OrderVo {
 }
 ```
 
-### 4.2、添加Mapper方法
+#### 4.2、添加Mapper方法
 
 ```java
 package com.atguigu.shardingjdbcdemo.mapper;
@@ -1738,7 +1738,7 @@ public interface OrderMapper extends BaseMapper<Order> {
 }
 ```
 
-### 4.3、测试关联查询
+#### 4.3、测试关联查询
 
 ```java
 /**
@@ -1752,7 +1752,7 @@ public void testGetOrderAmount(){
 }
 ```
 
-### 4.4、配置绑定表
+#### 4.4、配置绑定表
 
 在原来水平分片配置的基础上添加如下配置：[数据分片 :: ShardingSphere (apache.org)](https://shardingsphere.apache.org/document/5.1.1/cn/user-manual/shardingsphere-jdbc/spring-boot-starter/rules/sharding/)
 
@@ -1769,9 +1769,9 @@ spring.shardingsphere.rules.sharding.binding-tables[0]=t_order,t_order_item
 
 `绑定表：`指分片规则一致的一组分片表。 使用绑定表进行多表关联查询时，必须使用分片键进行关联，否则会出现笛卡尔积关联或跨库关联，从而影响查询效率。
 
-## 5、广播表
+### 5、广播表
 
-### 4.1、什么是广播表
+#### 4.1、什么是广播表
 
 指所有的分片数据源中都存在的表，表结构及其数据在每个数据库中均完全一致。 适用于数据量不大且需要与海量数据的表进行关联查询的场景，例如：字典表（省份、民族、部门、科室、学院 等比较固定，很少去改变的表）。
 
@@ -1783,7 +1783,7 @@ spring.shardingsphere.rules.sharding.binding-tables[0]=t_order,t_order_item
 
 （3）可以跟任何一个表进行 JOIN 操作
 
-### 4.2、创建广播表
+#### 4.2、创建广播表
 
 在server-order0、server-order1和server-user服务器中分别创建t_dict表
 
@@ -1795,9 +1795,9 @@ CREATE TABLE t_dict(
 );
 ```
 
-### 4.3、程序实现
+#### 4.3、程序实现
 
-#### 4.3.1、创建实体类
+##### 4.3.1、创建实体类
 
 ```java
 package com.atguigu.shardingjdbcdemo.entity;
@@ -1812,7 +1812,7 @@ public class Dict {
 }
 ```
 
-#### 4.3.2、创建Mapper
+##### 4.3.2、创建Mapper
 
 ```java
 package com.atguigu.shardingjdbcdemo.mapper;
@@ -1822,17 +1822,17 @@ public interface DictMapper extends BaseMapper<Dict> {
 }
 ```
 
-#### 4.3.3、配置广播表
+##### 4.3.3、配置广播表
 
 ```properties
 #数据节点可不配置，默认情况下，向所有数据源广播
 spring.shardingsphere.rules.sharding.tables.t_dict.actual-data-nodes=server-user.t_dict,server-order$->{0..1}.t_dict
 
-# 广播表
+## 广播表
 spring.shardingsphere.rules.sharding.broadcast-tables[0]=t_dict
 ```
 
-### 4.4、测试广播表
+#### 4.4、测试广播表
 
 > 注意：如果某个数据库的插入操作执行失败，其他数据库不会回滚，从而导致数据不一致
 
@@ -1863,9 +1863,9 @@ public void testSelectBroadcast(){
 }
 ```
 
-# 第07章 启动ShardingSphere-Proxy
+## 第07章 启动ShardingSphere-Proxy
 
-## 1、获取
+### 1、获取
 
 目前 ShardingSphere-Proxy 提供了 3 种获取方式：
 
@@ -1875,7 +1875,7 @@ public void testSelectBroadcast(){
 
 
 
-## 2、使用二进制发布包安装
+### 2、使用二进制发布包安装
 
 二进制包既可以Linux系统运行，又可以在windows系统运行
 
@@ -1939,7 +1939,7 @@ show databases;
 
 
 
-## 3、使用Docker安装
+### 3、使用Docker安装
 
 **step1：启动Docker容器**
 
@@ -2019,9 +2019,9 @@ tail stdout.log
 -e ES_JAVA_OPTS="-Xmx256m -Xms256m -Xmn128m"
 ```
 
-# 第08章 ShardingSphere-Proxy读写分离
+## 第08章 ShardingSphere-Proxy读写分离
 
-## 1、修改配置文件
+### 1、修改配置文件
 
 **修改配置config-readwrite-splitting.yaml** 或者直接使用`vi /atguigu/server/proxy-a/conf/config-readwrite-splitting.yaml`创建
 
@@ -2087,7 +2087,7 @@ docker restart server-proxy-a
 >
 > 最终确保`server-proxy-a`、`atguigu-mysql-master`、`atguigu-mysql-slave1`、`atguigu-mysql-slave2`这4个容器在运行，由于`server-proxy-a`需要连接这3台真实的mysql数据库，所以最好让`server-proxy-a`最后再重启一次，保证其能连的上
 
-## 2、实时查看日志
+### 2、实时查看日志
 
 可以通过这种方式查看服务器中输出的SQL语句
 
@@ -2096,7 +2096,7 @@ docker exec -it server-proxy-a env LANG=C.UTF-8 /bin/bash
 tail -f /opt/shardingsphere-proxy/logs/stdout.log 
 ```
 
-## 3、远程访问测试
+### 3、远程访问测试
 
 在自己电脑上使用如下命令操作容器里的代理数据库，即可在docker容器中实时看到输出日志
 
@@ -2109,9 +2109,9 @@ mysql> select * from t_user;
 mysql> insert into t_user(uname) values('wang5');
 ```
 
-## 4、应用程序访问Proxy
+### 4、应用程序访问Proxy
 
-### 4.1、创建项目
+#### 4.1、创建项目
 
 项目类型：Spring Initializr
 
@@ -2121,7 +2121,7 @@ SpringBoot脚手架：http://start.aliyun.com
 
 SpringBoot版本：2.3.7.RELEASE
 
-### 4.2、添加依赖
+#### 4.2、添加依赖
 
 ```xml
 <dependencies>
@@ -2162,7 +2162,7 @@ SpringBoot版本：2.3.7.RELEASE
 </dependencies>
 ```
 
-### 4.3、创建实体类
+#### 4.3、创建实体类
 
 ```java
 package com.atguigu.shardingproxydemo.entity;
@@ -2177,7 +2177,7 @@ public class User {
 
 ```
 
-### 4.4、创建Mapper
+#### 4.4、创建Mapper
 
 ```java
 package com.atguigu.shardingproxydemo.mapper;
@@ -2187,12 +2187,12 @@ public interface UserMapper extends BaseMapper<User> {
 }
 ```
 
-### 4.5、配置数据源
+#### 4.5、配置数据源
 
 ```properties
-# 应用名称
+## 应用名称
 spring.application.name=sharding-proxy-demo
-# 开发环境设置
+## 开发环境设置
 spring.profiles.active=dev
 
 #mysql数据库连接（连接的是proxy）
@@ -2205,7 +2205,7 @@ spring.datasource.password=root
 mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
 ```
 
-### 4.6、测试
+#### 4.6、测试
 
 ```java
 package com.atguigu.shardingproxydemo;
@@ -2227,9 +2227,9 @@ class ShardingProxyDemoApplicationTests {
 }
 ```
 
-# 第09章 ShardingSphere-Proxy垂直分片
+## 第09章 ShardingSphere-Proxy垂直分片
 
-## 1、修改配置文件
+### 1、修改配置文件
 
 **修改配置config-sharding.yaml**
 
@@ -2275,7 +2275,7 @@ docker restart server-proxy-a
 
 保证`server-proxy-a`能连上其他两台真实的mysql数据库
 
-## 2、实时查看日志
+### 2、实时查看日志
 
 可以通过这种方式查看服务器中输出的SQL语句
 
@@ -2284,7 +2284,7 @@ docker exec -it server-proxy-a env LANG=C.UTF-8 /bin/bash
 tail -f /opt/shardingsphere-proxy/logs/stdout.log 
 ```
 
-## 3、远程访问测试
+### 3、远程访问测试
 
 ```sql
 mysql> show databases;
@@ -2294,9 +2294,9 @@ mysql> select * from t_order;
 mysql> select * from t_user;
 ```
 
-# 第10章 ShardingSphere-Proxy水平分片
+## 第10章 ShardingSphere-Proxy水平分片
 
-## 1、修改配置文件
+### 1、修改配置文件
 
 **修改配置config-sharding.yaml**
 
@@ -2402,7 +2402,7 @@ docker restart server-proxy-a
 
 保证`server-proxy-a`能连上其他两台真实的mysql数据库
 
-## 2、实时查看日志
+### 2、实时查看日志
 
 可以通过这种方式查看服务器中输出的SQL语句
 
@@ -2411,7 +2411,7 @@ docker exec -it server-proxy-a env LANG=C.UTF-8 /bin/bash
 tail -f /opt/shardingsphere-proxy/logs/stdout.log 
 ```
 
-## 3、远程访问测试
+### 3、远程访问测试
 
 ```sql
 mysql> show databases;

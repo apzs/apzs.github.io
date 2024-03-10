@@ -1,6 +1,6 @@
-# 认证
+## 认证
 
-# 一
+## 一
 
 以往，我们使用继承`WebSecurityConfigurerAdapter`抽象接口的方式，修改自己的配置，但是至Spring Security5.7后，该方式就不被推荐了（注意将配置类加入至容器）
 
@@ -81,7 +81,7 @@ public class SecurityConfig {
 
 ![image-20230101163516128](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101163516128.png)
 
-## `HttpSecurity`的结构（构建SecurityFilterChain）
+### `HttpSecurity`的结构（构建SecurityFilterChain）
 
 `HttpSecurity`继承自`AbstractConfiguredSecurityBuilder`抽象类，而`AbstractConfiguredSecurityBuilder`继承自`AbstractSecurityBuilder`抽象类，而`AbstractSecurityBuilder`抽象类实现了`SecurityBuilder`接口
 
@@ -128,7 +128,7 @@ public interface SecurityFilterChain {
 
 ![image-20230101144705029](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101144705029.png)
 
-## `WebSecurity`的结构（构建Filter）
+### `WebSecurity`的结构（构建Filter）
 
 可以看到`WebSecurity`也继承自`AbstractConfiguredSecurityBuilder`抽象类，而`AbstractConfiguredSecurityBuilder`继承自`AbstractSecurityBuilder`抽象类，而`AbstractSecurityBuilder`抽象类实现了`SecurityBuilder`接口
 
@@ -147,7 +147,7 @@ public final class WebSecurity extends AbstractConfiguredSecurityBuilder<Filter,
 
 > `HttpSecurity`和`WebSecurity`结构非常相似，只不过`HttpSecurity`要构建的是`DefaultSecurityFilterChain`对象，而`WebSecurity`要构建的是`Filter`对象
 
-## 构建对象
+### 构建对象
 
 `HttpSecurity`和`WebSecurity`在哪里构建的对象呢？
 
@@ -250,7 +250,7 @@ public abstract class AbstractConfiguredSecurityBuilder<O, B extends SecurityBui
 
 ![image-20230101150626554](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101150626554.png)
 
-### HttpSecurity构建DefaultSecurityFilterChain
+#### HttpSecurity构建DefaultSecurityFilterChain
 
 点击`AbstractConfiguredSecurityBuilder`抽象类`performBuild()`方法的`下箭头接口`图标，选择`HttpSecurity`，`HttpSecurity`返回的是`DefaultSecurityFilterChain`对象
 
@@ -275,7 +275,7 @@ protected DefaultSecurityFilterChain performBuild() {
 
 ![image-20230101152532151](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101152532151.png)
 
-### WebSecurity构建FilterChainProxy
+#### WebSecurity构建FilterChainProxy
 
 点击`AbstractConfiguredSecurityBuilder`抽象类`performBuild()`方法的`下箭头接口`图标，选择`WebSecurity`，`WebSecurity`返回的是`FilterChainProxy`对象
 
@@ -442,9 +442,9 @@ public class FilterChainProxy extends GenericFilterBean {
 
 ![image-20230101160045307](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101160045307.png)
 
-# 二
+## 二
 
-## 1、AbstractConfiguredSecurityBuilder
+### 1、AbstractConfiguredSecurityBuilder
 
 接着我们查看`AbstractConfiguredSecurityBuilder`的`add(C configurer)`方法，这个方法用于添加配置，再配置Spring Security时都直接或间接调用了该方法
 
@@ -483,7 +483,7 @@ private <C extends SecurityConfigurer<O, B>> void add(C configurer) {
 
 ![image-20230101201241080](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101201241080.png)
 
-## 2、SecurityConfigurer
+### 2、SecurityConfigurer
 
 前面我们说到，`AbstractConfiguredSecurityBuilder`抽象类的`doBuild`方法在初始换之前调用`beforeInit();`方法，在配置之前调用`beforeConfigure();`方法，最后调用`performBuild();`方法构建对象。而初始化的`init`方法里会调用所有`SecurityConfigurer<O, B>`接口的`configurer.init((B) this);`方法，而进行配置的`configure`方法里会调用所有`SecurityConfigurer<O, B>`接口的`configurer.configure((B) this);`方法
 
@@ -679,9 +679,9 @@ public HttpSecurity requestMatcher(RequestMatcher requestMatcher) {
 
 ![image-20230101213230307](https://gitlab.com/apzs/image/-/raw/master/image/image-20230101213230307.png)
 
-# 三
+## 三
 
-## AuthenticationManager
+### AuthenticationManager
 
 `AuthenticationManager`有一个`authenticate`方法，对传来的`Authentication`做认证，如果账号被禁用了抛出`DisabledException`异常，账号被锁住了抛出`LockedException`异常，密码输错了抛出`BadCredentialsException`异常
 
@@ -693,7 +693,7 @@ public interface AuthenticationManager {
 
 ![image-20230102092537227](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102092537227.png)
 
-## AuthenticationManagerBuilder
+### AuthenticationManagerBuilder
 
 ![image-20230102093131724](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102093131724.png)
 
@@ -757,7 +757,7 @@ public interface ObjectPostProcessor<T> {
 
 ![image-20230102094657680](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102094657680.png)
 
-## ProviderManager
+### ProviderManager
 
 而`ProviderManager`实现了`AuthenticationManager`接口
 
@@ -784,7 +784,7 @@ public ProviderManager(List<AuthenticationProvider> providers, AuthenticationMan
 
 ![image-20230102095602776](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102095602776.png)
 
-## AuthenticationProvider
+### AuthenticationProvider
 
 `AuthenticationProvider`接口有两个方法`authenticate`和`supports`。这个`authenticate`方法和前面说的`AuthenticationManager`接口的`authenticate`方法简直一模一样；`supports`方法就是判断支不支持传过来的`authentication`
 
@@ -800,7 +800,7 @@ public interface AuthenticationProvider {
 
 ![image-20230102095840728](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102095840728.png)
 
-## Authentication
+### Authentication
 
 `Authentication`接口有如下几个接口
 
@@ -944,9 +944,9 @@ public interface AuthenticationEventPublisher {
 
 ![image-20230102104105892](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102104105892.png)
 
-# 四、
+## 四、
 
-## DaoAuthenticationProvider
+### DaoAuthenticationProvider
 
 我们看`DaoAuthenticationProvider`，他继承于`AbstractUserDetailsAuthenticationProvider`
 
@@ -1097,7 +1097,7 @@ public class UsernamePasswordAuthenticationToken extends AbstractAuthenticationT
 
 ![image-20230108183834658](https://gitlab.com/apzs/image/-/raw/master/image/image-20230108183834658.png)
 
-### retrieveUser
+#### retrieveUser
 
  查看`DaoAuthenticationProvider`类实现的`AbstractUserDetailsAuthenticationProvider`抽象类的`retrieveUser`抽象方法（检索用户，获取用户信息）该方法非常简单，调用`UserDetailsService`的`loadUserByUsername`方法，返回`UserDetails`，并且返回的不能为空，否则抛出`内部认证服务异常`（UserDetailsService 返回 null，这是一个违反锲约的接口）
 
@@ -1187,7 +1187,7 @@ private void mitigateAgainstTimingAttack(UsernamePasswordAuthenticationToken aut
 
 ![image-20230102210418341](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102210418341.png)
 
-### additionalAuthenticationChecks
+#### additionalAuthenticationChecks
 
 查看`DaoAuthenticationProvider`类实现的`AbstractUserDetailsAuthenticationProvider`抽象类的`additionalAuthenticationChecks`抽象方法（额外的认证检查，判断用户输入的密码和真实的密码是否正确）
 
@@ -1253,7 +1253,7 @@ protected Authentication createSuccessAuthentication(Object principal, Authentic
 
 ![image-20230102211930471](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102211930471.png)
 
-## UsernamePasswordAuthenticationFilter
+### UsernamePasswordAuthenticationFilter
 
 `UsernamePasswordAuthenticationFilter`继承自`AbstractAuthenticationProcessingFilter`
 
@@ -1385,7 +1385,7 @@ protected String obtainUsername(HttpServletRequest request) {
 
 ![image-20230102215131873](https://gitlab.com/apzs/image/-/raw/master/image/image-20230102215131873.png)
 
-## FormLoginConfigurer
+### FormLoginConfigurer
 
 这个方法主要用于配置表单登录
 
@@ -1638,7 +1638,7 @@ public static class User {
 
 
 
-# 源码调试
+## 源码调试
 
 ```java
 @Override
@@ -1726,9 +1726,9 @@ public Authentication attemptAuthentication(HttpServletRequest request, HttpServ
 
 ![image-20230103200544040](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103200544040.png)
 
-# 五、
+## 五、
 
-## SecurityContext
+### SecurityContext
 
 SecurityContext接口提供了与当前线程相关联的最小化安全信息，其方法也比较简单，一个是获取`Authentication`，一个是设置`Authentication`
 
@@ -1819,13 +1819,13 @@ public class SecurityContextImpl implements SecurityContext {
 
 ![image-20230103204042981](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103204042981.png)
 
-## SecurityContextHolder
+### SecurityContextHolder
 
 `SecurityContextHolder`维护一个`SecurityContext`，提供了增删查改方法，不过该类也不真正实现，全部委托给`SecurityContextHolderStrategy`安全上下文拥有者策略去实现
 
 ![image-20230103202430076](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103202430076.png)
 
-## SecurityContextHolderStrategy
+### SecurityContextHolderStrategy
 
 在`SecurityContextHolderStrategy`接口里主要定义了获取、修改、删除`SecurityContext`的方法
 
@@ -1958,7 +1958,7 @@ public class SecurityContextHolder {
 
 ![image-20230103204531604](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103204531604.png)
 
-## SecurityContextRepository
+### SecurityContextRepository
 
 用于持久化存储`SecurityContext`的策略，让用户第一次请求登陆后，下次请求不用再次登录
 
@@ -1983,7 +1983,7 @@ public interface SecurityContextRepository {
 
 ![image-20230103210504362](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103210504362.png)
 
-## SecurityContextPersistenceFilter
+### SecurityContextPersistenceFilter
 
 `SecurityContextPersistenceFilter`：安全上下文持久化过滤器，根据`SecurityContextRepository`的信息填充`SecurityContextHolder`，这个类已经被弃用了，推荐使用`SecurityContextHolderFilter`
 
@@ -2069,7 +2069,7 @@ public class SecurityContextPersistenceFilter extends GenericFilterBean {
 
 ![image-20230103211815527](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103211815527.png)
 
-## SecurityContextHolderFilter
+### SecurityContextHolderFilter
 
 `SecurityContextPersistenceFilter`类被弃用，推荐使用`SecurityContextHolderFilter`类
 
@@ -2123,7 +2123,7 @@ public class SecurityContextHolderFilter extends OncePerRequestFilter {
 
 ![image-20230103213205884](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103213205884.png)
 
-## SecurityContextConfigurer
+### SecurityContextConfigurer
 
 这个类主要就是用来配置`SecurityContextHolderFilter`和`SecurityContextPersistenceFilter`的
 
@@ -2159,7 +2159,7 @@ public void configure(H http) {
 
 ![image-20230103213901854](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103213901854.png)
 
-## FilterChainProxy
+### FilterChainProxy
 
 Spring Security的核心就是`FilterChainProxy`，里面维护了一堆的`SecurityFilterChain`
 
@@ -2246,9 +2246,9 @@ protected Filter performBuild() throws Exception {
 
 ![image-20230103215058677](https://gitlab.com/apzs/image/-/raw/master/image/image-20230103215058677.png)
 
-# 六.
+## 六.
 
-## RememberMeAuthenticationFilter
+### RememberMeAuthenticationFilter
 
 ```java
 private void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -2307,7 +2307,7 @@ private void doFilter(HttpServletRequest request, HttpServletResponse response, 
 
 ![image-20230104203745475](https://gitlab.com/apzs/image/-/raw/master/image/image-20230104203745475.png)
 
-## RememberMeServices
+### RememberMeServices
 
 `RememberMeServices`接口有`3`个方法，`autoLogin`方法用于构造一个`Authentication`（这个`Authentication`必须要`AuthenticationManager`和`AuthenticationProvider`所接受，推荐使用`RememberMeAuthenticationToken`），然后拿着`Authentication`尝试调用`authenticationManager.authenticate(Authentication authentication)`去登录，`loginFail`就是登录失败的处理，`loginSuccess`就是登录成功的处理
 
@@ -2339,7 +2339,7 @@ public interface RememberMeServices {
 
 ![image-20230104204536982](https://gitlab.com/apzs/image/-/raw/master/image/image-20230104204536982.png)
 
-## RememberMeAuthenticationToken
+### RememberMeAuthenticationToken
 
 `RememberMeAuthenticationToken`继承自`AbstractAuthenticationToken`（`UsernamePasswordAuthenticationToken`也继承自`AbstractAuthenticationToken`）
 
@@ -2405,7 +2405,7 @@ public abstract class AbstractAuthenticationToken implements Authentication, Cre
 
 ![image-20230104205421786](https://gitlab.com/apzs/image/-/raw/master/image/image-20230104205421786.png)
 
-## RememberMeAuthenticationProvider
+### RememberMeAuthenticationProvider
 
 `AuthenticationProvider`接口有一个实现类叫`RememberMeAuthenticationProvider`，因此`RememberMeAuthenticationToken`的这个`Authentication`肯定能被`AuthenticationProvider`接口的实现类`RememberMeAuthenticationProvider`所接受。
 
@@ -2458,7 +2458,7 @@ public class RememberMeAuthenticationProvider implements AuthenticationProvider,
 
 ![image-20230104211344976](https://gitlab.com/apzs/image/-/raw/master/image/image-20230104211344976.png)
 
-## AbstractRememberMeServices
+### AbstractRememberMeServices
 
 `AbstractRememberMeServices`抽象类实现了`RememberMeServices`接口，`AbstractRememberMeServices`抽象类的实现类有两个，分别是`PersistentTokenBasedRememberMeServices`（持久化的）和`TokenBasedRememberMeServices` （非持久化的）
 
@@ -2602,7 +2602,7 @@ public abstract class AbstractRememberMeServices
 
 ![image-20230105195802217](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105195802217.png)
 
-### TokenBasedRememberMeServices
+#### TokenBasedRememberMeServices
 
 ```java
 public class TokenBasedRememberMeServices extends AbstractRememberMeServices {
@@ -2681,7 +2681,7 @@ public class TokenBasedRememberMeServices extends AbstractRememberMeServices {
 
 ![image-20230105195846642](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105195846642.png)
 
-### PersistentTokenBasedRememberMeServices
+#### PersistentTokenBasedRememberMeServices
 
 `PersistentTokenBasedRememberMeServices`和`TokenBasedRememberMeServices`很类似，只不过`PersistentTokenBasedRememberMeServices`可以持久化，`TokenBasedRememberMeServices`不可以持久化；`PersistentTokenBasedRememberMeServices`的`cookieTokens`长度为`2`，`TokenBasedRememberMeServices`的`cookieTokens`长度为`3`。核心代码都是调用`UserDetailsService`类的`loadUserByUsername`方法，根据用户名查询`UserDetails`
 
@@ -2738,7 +2738,7 @@ public class PersistentTokenBasedRememberMeServices extends AbstractRememberMeSe
 }
 ```
 
-## RememberMeConfigurer
+### RememberMeConfigurer
 
 ![image-20230105200836312](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105200836312.png)
 
@@ -2782,9 +2782,9 @@ public final class RememberMeConfigurer<H extends HttpSecurityBuilder<H>>
 
 ![image-20230105201515809](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105201515809.png)
 
-# 六..
+## 六..
 
-## SessionManagementFilter
+### SessionManagementFilter
 
 ![image-20230105202222504](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105202222504.png)
 
@@ -2875,7 +2875,7 @@ public class SessionManagementFilter extends GenericFilterBean {
 }
 ```
 
-## SessionAuthenticationStrategy
+### SessionAuthenticationStrategy
 
 `onAuthentication`方法尝试认证，如果认证失败就抛`SessionAuthenticationException`异常
 
@@ -2897,7 +2897,7 @@ public interface SessionAuthenticationStrategy {
 
 ![image-20230105203327894](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105203327894.png)
 
-### RegisterSessionAuthenticationStrategy
+#### RegisterSessionAuthenticationStrategy
 
 `SessionAuthenticationStrategy`接口有一个实现类是`RegisterSessionAuthenticationStrategy`，该类是用于在身份验证成功后向 `SessionRegistry` 注册用户的策略类。
 
@@ -2932,7 +2932,7 @@ public class RegisterSessionAuthenticationStrategy implements SessionAuthenticat
 
 ![image-20230105205209651](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105205209651.png)
 
-### ConcurrentSessionControlAuthenticationStrategy
+#### ConcurrentSessionControlAuthenticationStrategy
 
 `SessionAuthenticationStrategy`接口有一个实现类叫`ConcurrentSessionControlAuthenticationStrategy`（并发会话控制认证策略），该类是用作控制并发session的
 
@@ -3048,7 +3048,7 @@ public class ConcurrentSessionControlAuthenticationStrategy
 
 ![image-20230105213922175](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105213922175.png)
 
-### CompositeSessionAuthenticationStrategy
+#### CompositeSessionAuthenticationStrategy
 
 `SessionAuthenticationStrategy`接口有一个实现类叫`CompositeSessionAuthenticationStrategy`，`CompositeSessionAuthenticationStrategy`类（组合的session认证策略）维护了一堆的`SessionAuthenticationStrategy`，比如说你即想要`RegisterSessionAuthenticationStrategy`策略又想要`ConcurrentSessionControlAuthenticationStrategy`策略捷克语使用该类。该类就是遍历`SessionAuthenticationStrategy`，调其`onAuthentication`方法。
 
@@ -3091,7 +3091,7 @@ public class CompositeSessionAuthenticationStrategy implements SessionAuthentica
 
 ![image-20230105214243787](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105214243787.png)
 
-### AbstractSessionFixationProtectionStrategy
+#### AbstractSessionFixationProtectionStrategy
 
 `SessionAuthenticationStrategy`接口有一个实现类是`RegisterSessionAuthenticationStrategy`，该类为抽象类，用于防止session的固定会话攻击（即如果sessionId不变的话，容易被截取到，然后黑客使用截取的sessionId做一些非法的操作），主要通过生成一个新的sessionId来防止。
 
@@ -3143,7 +3143,7 @@ public abstract class AbstractSessionFixationProtectionStrategy
 
 ![image-20230105215257048](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105215257048.png)
 
-#### ChangeSessionIdAuthenticationStrategy
+##### ChangeSessionIdAuthenticationStrategy
 
 `AbstractSessionFixationProtectionStrategy`抽象类的实现类有两个，一个是`ChangeSessionIdAuthenticationStrategy`，一个是`SessionFixationProtectionStrategy`。
 
@@ -3163,7 +3163,7 @@ public final class ChangeSessionIdAuthenticationStrategy extends AbstractSession
 
 ![image-20230105215453689](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105215453689.png)
 
-#### SessionFixationProtectionStrategy
+##### SessionFixationProtectionStrategy
 
 `AbstractSessionFixationProtectionStrategy`抽象类的实现类有两个，一个是`ChangeSessionIdAuthenticationStrategy`，一个是`SessionFixationProtectionStrategy`。
 
@@ -3195,7 +3195,7 @@ final HttpSession applySessionFixation(HttpServletRequest request) {
 
 ![image-20230105215941205](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105215941205.png)
 
-## SessionRegistry
+### SessionRegistry
 
 SessionRegistry： 维护`SessionInformation`实例的注册表。
 
@@ -3248,7 +3248,7 @@ public class SessionRegistryImpl implements SessionRegistry, ApplicationListener
 
 ![image-20230105204858723](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105204858723.png)
 
-## ConcurrentSessionFilter
+### ConcurrentSessionFilter
 
 ```java
 public class ConcurrentSessionFilter extends GenericFilterBean {
@@ -3292,7 +3292,7 @@ public class ConcurrentSessionFilter extends GenericFilterBean {
 
 ![image-20230105220723140](https://gitlab.com/apzs/image/-/raw/master/image/image-20230105220723140.png)
 
-## SessionManagementConfigurer
+### SessionManagementConfigurer
 
 `SessionManagementConfigurer`和前面的`xxxConfigurer`差不多
 
@@ -3379,9 +3379,9 @@ public final class SessionManagementConfigurer<H extends HttpSecurityBuilder<H>>
 }
 ```
 
-# 七
+## 七
 
-## 1、默认配置的过滤器
+### 1、默认配置的过滤器
 
 在`return http.build();`这一行上打个断点，然后以`debug`方式运行项目，断点停在该行上后，点击`Step Over`步过按钮，运行到下一行。
 
@@ -3391,7 +3391,7 @@ public final class SessionManagementConfigurer<H extends HttpSecurityBuilder<H>>
 
 ![image-20230106203830977](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106203830977.png)
 
-### DisableEncodeUrlFilter
+#### DisableEncodeUrlFilter
 
 该类是防止`sessionId`泄露的
 
@@ -3427,7 +3427,7 @@ public class DisableEncodeUrlFilter extends OncePerRequestFilter {
 
 ![image-20230106205324407](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106205324407.png)
 
-### WebAsyncManagerIntegrationFilter
+#### WebAsyncManagerIntegrationFilter
 
 默认执行方法是同步的，访问的策略是`ThreadLocalSecurityContextHolderStrategy`，即同一个线程共享`SecurityContext`信息。如果开启异步后，访问方法是会再开一个线程，这样线程之间就不能共享`SecurityContext`信息了。该类就是解决这个问题，本质就是通过过滤器将老的线程的`SecurityContext`信息设置到新开的线程里。
 
@@ -3483,7 +3483,7 @@ public final class SecurityContextCallableProcessingInterceptor extends Callable
 
 ![image-20230106210542362](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106210542362.png)
 
-### HeaderWriterFilter
+#### HeaderWriterFilter
 
 顾名思义，就是向`Header`写东西的，该类维护了一个`HeaderWriter`列表
 
@@ -3526,7 +3526,7 @@ protected DefaultSecurityFilterChain securityFilterChain(HttpSecurity http) thro
 
 ![image-20230106211934452](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106211934452.png)
 
-### CsrfFilter
+#### CsrfFilter
 
 `CsrfFilter`是做防止跨站脚本攻击的，其默认使用`HttpSession`存储，使用模板引擎时可以直接拿到`session`里的数据，然后在表单里设置个隐藏的`name`，值为`token`，提交表单时会带上这个`token`，然后与存储的`token`做比较。前后端分离后`CsrfFilter`就很少使用了。
 
@@ -3577,7 +3577,7 @@ public final class CsrfFilter extends OncePerRequestFilter {
 
 ![image-20230106212933296](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106212933296.png)
 
-### LogoutFilter
+#### LogoutFilter
 
 退出登录的过滤器
 
@@ -3617,7 +3617,7 @@ public class LogoutFilter extends GenericFilterBean {
 
 ![image-20230106213207654](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106213207654.png)
 
-### RequestCacheAwareFilter
+#### RequestCacheAwareFilter
 
 该类的功能是没有登陆了跳转到登录页，登陆成功后访问最开的那个请求的，现在前后端分离的项目用不到了。该类主要就是将请求的所有信息保存起来，登录成功后在复原登录之前访问的那个请求。（最常使用的`RequestCache`接口的实现类还是`HttpSessionRequestCache`）
 
@@ -3648,7 +3648,7 @@ public class RequestCacheAwareFilter extends GenericFilterBean {
 
 ![image-20230106214056361](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106214056361.png)
 
-### SecurityContextHolderAwareRequestFilter
+#### SecurityContextHolderAwareRequestFilter
 
 `xxxAware`就是用来感知`xxx`的，比如说`ApplicationContextAware`就是用来感知`ApplicationContext`的，同理`SecurityContextHolderAwareRequestFilter`就是用来感知`SecurityContextHolder`的（`aware`是`意识到`、`注意到`、`察觉`的意思）
 
@@ -3795,7 +3795,7 @@ public class HttpServletRequestWrapper extends ServletRequestWrapper implements
 
 ![image-20230106221005384](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106221005384.png)
 
-### AnonymousAuthenticationFilter
+#### AnonymousAuthenticationFilter
 
 匿名的认证过滤器，如果没有权限就创建一个匿名的AuthenticationToken（如果用户没有登录，他就是匿名的；如果登录了又分为两种，一种是认证的，一种是完全认证的，通过记住我登录的是认证的，而通过用户名密码登录的是完全认证的）
 
@@ -3845,7 +3845,7 @@ public class AnonymousAuthenticationFilter extends GenericFilterBean implements 
 
 ![image-20230106222610599](https://gitlab.com/apzs/image/-/raw/master/image/image-20230106222610599.png)
 
-### ExceptionTranslationFilter
+#### ExceptionTranslationFilter
 
 转换异常的过滤器，该类先执行`chain.doFilter(request, response);`，如果抛出异常了就进行处理
 
@@ -4000,7 +4000,7 @@ public class ThrowableAnalyzer {
 
 ![image-20230107104742234](https://gitlab.com/apzs/image/-/raw/master/image/image-20230107104742234.png)
 
-## 2、加载过程
+### 2、加载过程
 
 这一整条链到底如何装配起来了，HttpSecurity到底做 了什么? SpringSecurity 顶层流程:
 **DelegatingFilterProxy -> FilterChainProxy -> SecurityFilterChain ->具体的Filter**
@@ -4008,7 +4008,7 @@ HttpSecurityConfiguration配置了基础的HttpSecurity 对象以供我们注入
 WebSecurityConfiguration注入了我们自己的SecurityFilterChain Bean然后 添加到WebSecurity中
 最终由WebSecurity 构建出FilterChainProxy 来执行SpringSecurity的过滤逻辑
 
-### HttpSecurityConfiguration
+#### HttpSecurityConfiguration
 
 ```java
 @Configuration(proxyBeanMethods = false)
@@ -4110,7 +4110,7 @@ class HttpSecurityConfiguration {
 
 那这些配置在哪用到呢？
 
-### WebSecurityConfiguration
+#### WebSecurityConfiguration
 
 在`WebSecurityConfiguration`类的`springSecurityFilterChain`方法里
 
@@ -4163,7 +4163,7 @@ public class WebSecurityConfiguration implements ImportAware, BeanClassLoaderAwa
 
 这些`Filter`又在哪用到呢？
 
-### DelegatingFilterProxy
+#### DelegatingFilterProxy
 
 在`org.springframework.web.filter.DelegatingFilterProxy`类的`doFilter`方法里（该类是`web`模块的）
 
@@ -4251,13 +4251,13 @@ public class DelegatingFilterProxy extends GenericFilterBean {
 
 ![image-20230107111656995](https://gitlab.com/apzs/image/-/raw/master/image/image-20230107111656995.png)
 
-# 授权
+## 授权
 
-# AuthorizeHttpRequestsConfigurer
+## AuthorizeHttpRequestsConfigurer
 
 ![image-20230113211130577](https://gitlab.com/apzs/image/-/raw/master/image/image-20230113211130577.png)
 
-## AuthorizationFilter
+### AuthorizationFilter
 
 AuthorizationManager：授权过滤器
 
@@ -4318,7 +4318,7 @@ public class AuthorizationFilter extends GenericFilterBean {
 
 ![image-20230110210423380](https://gitlab.com/apzs/image/-/raw/master/image/image-20230110210423380.png)
 
-## AuthorizationManager
+### AuthorizationManager
 
 AuthorizationManager：一个授权管理器，它可以确定一个认证是否可以访问特定对象。
 
@@ -4433,7 +4433,7 @@ public interface Supplier<T> {
 > }
 > ```
 
-## AuthorizationDecision
+### AuthorizationDecision
 
 `AuthorizationDecision`类非常简单，就一个`boolean`类型的`granted`
 
@@ -4460,7 +4460,7 @@ public class AuthorizationDecision {
 
 ![image-20230110213857079](https://gitlab.com/apzs/image/-/raw/master/image/image-20230110213857079.png)
 
-## AuthorizeHttpRequestsConfigurer
+### AuthorizeHttpRequestsConfigurer
 
 接下来，我们看`AuthorizeHttpRequestsConfigurer`，下图是其继承关系
 
@@ -4500,13 +4500,13 @@ public final class AuthorizeHttpRequestsConfigurer<H extends HttpSecurityBuilder
 
 ![image-20230110215625697](https://gitlab.com/apzs/image/-/raw/master/image/image-20230110215625697.png)
 
-## AuthorizationManagerRequestMatcherRegistry
+### AuthorizationManagerRequestMatcherRegistry
 
 `AuthorizationManagerRequestMatcherRegistry`类是`AuthorizeHttpRequestsConfigurer`类的内部类，其继承自`AbstractRequestMatcherRegistry`
 
 ![image-20230110215747805](https://gitlab.com/apzs/image/-/raw/master/image/image-20230110215747805.png)
 
-### AbstractRequestMatcherRegistry
+#### AbstractRequestMatcherRegistry
 
 `AuthorizationManagerRequestMatcherRegistry`类继承自`AbstractRequestMatcherRegistry`，`AbstractRequestMatcherRegistry`用于注册 RequestMatcher 的基类。 例如，它可能允许指定哪个 RequestMatcher 需要特定级别的授权。
 
@@ -4555,7 +4555,7 @@ public abstract class AbstractRequestMatcherRegistry<C> {
 
 ![image-20230110220401669](https://gitlab.com/apzs/image/-/raw/master/image/image-20230110220401669.png)
 
-### AuthorizationManagerRequestMatcherRegistry
+#### AuthorizationManagerRequestMatcherRegistry
 
 `AuthorizationManagerRequestMatcherRegistry`类是`AuthorizeHttpRequestsConfigurer`类的内部类，其实现了`AbstractRequestMatcherRegistry`抽象类的`chainRequestMatchers`方法
 
@@ -4744,7 +4744,7 @@ public final class AuthorizeHttpRequestsConfigurer<H extends HttpSecurityBuilder
 }
 ```
 
-## RequestMatcherDelegatingAuthorizationManager
+### RequestMatcherDelegatingAuthorizationManager
 
 `managerBuilder`对象是`RequestMatcherDelegatingAuthorizationManager`类的内部类`Builder`，`RequestMatcherDelegatingAuthorizationManager`类的`builder`方法很简单，就创建了一个`Builder`对象。
 
@@ -4811,7 +4811,7 @@ public final class RequestMatcherDelegatingAuthorizationManager implements Autho
 
 ![image-20230111215210144](https://gitlab.com/apzs/image/-/raw/master/image/image-20230111215210144.png)
 
-## AuthorityAuthorizationManager
+### AuthorityAuthorizationManager
 
 这是实际干活的类，用于判断某个请求是否需要某些权限，该类实现了`AuthorizationManager`接口。而`RequestMatcherDelegatingAuthorizationManager`也实现了`AuthorizationManager`接口，其维护了一堆的`AuthorizationManager`，它的`check`方法根据请求匹配的结果调用其维护的`AuthorizationManager`的`check`方法
 
@@ -4837,7 +4837,7 @@ public final class AuthorityAuthorizationManager<T> implements AuthorizationMana
 
 ![image-20230113205625845](https://gitlab.com/apzs/image/-/raw/master/image/image-20230113205625845.png)
 
-## 配置过程
+### 配置过程
 
 ![image-20230113211648769](https://gitlab.com/apzs/image/-/raw/master/image/image-20230113211648769.png)
 
@@ -4868,9 +4868,9 @@ public abstract class AbstractRequestMatcherRegistry<C> {
 
 ![image-20230113213218230](https://gitlab.com/apzs/image/-/raw/master/image/image-20230113213218230.png)
 
-# --------------------分割线-----------------------------
+## --------------------分割线-----------------------------
 
-# FilterSecurityInterceptor
+## FilterSecurityInterceptor
 
 授权有两个过滤器，分别是`AuthorizationFilter`和`FilterSecurityInterceptor`，而`FilterSecurityInterceptor`是最常使用也是最复杂的过滤器。
 
@@ -4890,7 +4890,7 @@ public class FilterSecurityInterceptor extends AbstractSecurityInterceptor imple
 
 `FilterSecurityInterceptor`类的`doFilter`方法创建了一个`FilterInvocation`对象，然后调用`invoke`方法
 
-## FilterInvocation
+### FilterInvocation
 
 这个`FilterInvocation`比较简单，就维护了`FilterChain`、`HttpServletRequest`、`HttpServletResponse`三个属性
 
@@ -4919,7 +4919,7 @@ public class FilterInvocation {
 
 ![image-20230119183326572](https://gitlab.com/apzs/image/-/raw/master/image/image-20230119183326572.png)
 
-## FilterSecurityInterceptor
+### FilterSecurityInterceptor
 
 ```java
 public class FilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
@@ -4966,7 +4966,7 @@ public class FilterSecurityInterceptor extends AbstractSecurityInterceptor imple
 
 ![image-20230119184312043](https://gitlab.com/apzs/image/-/raw/master/image/image-20230119184312043.png)
 
-## AbstractSecurityInterceptor
+### AbstractSecurityInterceptor
 
 ```java
 public abstract class AbstractSecurityInterceptor
@@ -5175,7 +5175,7 @@ public SecurityMetadataSource obtainSecurityMetadataSource() {
 
 ![image-20230119194743723](https://gitlab.com/apzs/image/-/raw/master/image/image-20230119194743723.png)
 
-### InterceptorStatusToken
+#### InterceptorStatusToken
 
 ```java
 public class InterceptorStatusToken {
@@ -5205,7 +5205,7 @@ public class InterceptorStatusToken {
 
 `UrlAuthorizationConfigurer`类并没有实现`init`方法和`configure`方法，其父类`AbstractInterceptUrlConfigurer`实现了`configure`方法
 
-## AbstractInterceptUrlConfigurer
+### AbstractInterceptUrlConfigurer
 
 ```java
 public abstract class AbstractInterceptUrlConfigurer<C extends AbstractInterceptUrlConfigurer<C, H>, H extends HttpSecurityBuilder<H>>
@@ -5269,13 +5269,13 @@ public abstract class AbstractInterceptUrlConfigurer<C extends AbstractIntercept
 
 ![image-20230122162035392](https://gitlab.com/apzs/image/-/raw/master/image/image-20230122162035392.png)
 
-### UrlAuthorizationConfigurer
+#### UrlAuthorizationConfigurer
 
 `AbstractInterceptUrlConfigurer`抽象类的子类`UrlAuthorizationConfigurer`实现的`createMetadataSource`方法里返回`DefaultFilterInvocationSecurityMetadataSource`对象
 
 ![image-20230122162243872](https://gitlab.com/apzs/image/-/raw/master/image/image-20230122162243872.png)
 
-#### DefaultFilterInvocationSecurityMetadataSource
+##### DefaultFilterInvocationSecurityMetadataSource
 
 `DefaultFilterInvocationSecurityMetadataSource`里面维护了一个`requestMap`，也就是`RequestMatcher`请求匹配器需要哪些配置属性。我们可以很明显的看到其是为`FilterInvocation`服务的。
 
@@ -5326,7 +5326,7 @@ public final class UrlAuthorizationConfigurer<H extends HttpSecurityBuilder<H>>
 
 ![image-20230120190939867](https://gitlab.com/apzs/image/-/raw/master/image/image-20230120190939867.png)
 
-#### StandardInterceptUrlRegistry
+##### StandardInterceptUrlRegistry
 
 ![image-20230122162243872](https://gitlab.com/apzs/image/-/raw/master/image/image-20230122162243872.png)
 
@@ -5338,7 +5338,7 @@ public final class UrlAuthorizationConfigurer<H extends HttpSecurityBuilder<H>>
 
 ![image-20230122170537697](https://gitlab.com/apzs/image/-/raw/master/image/image-20230122170537697.png)
 
-#### AbstractRequestMatcherRegistry
+##### AbstractRequestMatcherRegistry
 
 调用的`this.registry.createRequestMap()`就是调用`StandardInterceptUrlRegistry`抽象类`AbstractRequestMatcherRegistry`的`createRequestMap`方法
 
@@ -5530,7 +5530,7 @@ private StandardInterceptUrlRegistry addMapping(Iterable<? extends RequestMatche
 }
 ```
 
-#### RoleVoter
+##### RoleVoter
 
 ```java
 public class RoleVoter implements AccessDecisionVoter<Object> {
@@ -5590,7 +5590,7 @@ public class RoleVoter implements AccessDecisionVoter<Object> {
 
 ![image-20230120192101683](https://gitlab.com/apzs/image/-/raw/master/image/image-20230120192101683.png)
 
-#### AuthenticatedVoter
+##### AuthenticatedVoter
 
 ```java
 public class AuthenticatedVoter implements AccessDecisionVoter<Object> {
@@ -5634,7 +5634,7 @@ public class AuthenticatedVoter implements AccessDecisionVoter<Object> {
 
 ![image-20230122160025836](https://gitlab.com/apzs/image/-/raw/master/image/image-20230122160025836.png)
 
-### AbstractAccessDecisionManager
+#### AbstractAccessDecisionManager
 
 `createDefaultAccessDecisionManager`方法返回一个`AccessDecisionManager`，我们先看实现了`AccessDecisionManager`接口的抽象类`AbstractAccessDecisionManager`
 
@@ -5776,7 +5776,7 @@ public class AffirmativeBased extends AbstractAccessDecisionManager {
 
 ![image-20230120185309108](https://gitlab.com/apzs/image/-/raw/master/image/image-20230120185309108.png)
 
-### ExpressionUrlAuthorizationConfigurer
+#### ExpressionUrlAuthorizationConfigurer
 
 ```groovy
 import org.springframework.expression.spel.standard.SpelExpressionParser
@@ -5809,7 +5809,7 @@ context.setRootObject(new Person("李四",28))
 println expression.getValue(context)
 ```
 
-#### createMetadataSource：
+##### createMetadataSource：
 
 `UrlAuthorizationConfigurer`和`ExpressionUrlAuthorizationConfigurer`差不多，只是`ExpressionUrlAuthorizationConfigurer`可以使用`SpEL`（`el`表达式）。`ExpressionUrlAuthorizationConfigurer`父类的`configure`方法里调用抽象的`createMetadataSource`方法，委派给其子类去实现。
 
@@ -5833,7 +5833,7 @@ private SecurityExpressionHandler<FilterInvocation> getExpressionHandler(H http)
 
 ![image-20230123141952897](https://gitlab.com/apzs/image/-/raw/master/image/image-20230123141952897.png)
 
-##### SecurityExpressionHandler
+###### SecurityExpressionHandler
 
 `SecurityExpressionHandler`接口有两个方法，一个返回`ExpressionParser`，一个返回`EvaluationContext`
 
@@ -5878,7 +5878,7 @@ public abstract class AbstractSecurityExpressionHandler<T>
 
 ![image-20230123144327379](https://gitlab.com/apzs/image/-/raw/master/image/image-20230123144327379.png)
 
-##### ExpressionBasedFilterInvocationSecurityMetadataSource
+###### ExpressionBasedFilterInvocationSecurityMetadataSource
 
 `ExpressionBasedFilterInvocationSecurityMetadataSource`类直接继承自`DefaultFilterInvocationSecurityMetadataSource`
 
@@ -6010,7 +6010,7 @@ abstract class AbstractVariableEvaluationContextPostProcessor
 
 ![image-20230123155515984](https://gitlab.com/apzs/image/-/raw/master/image/image-20230123155515984.png)
 
-#### createFilterSecurityInterceptor：
+##### createFilterSecurityInterceptor：
 
 `AbstractInterceptUrlConfigurer`类的`createFilterSecurityInterceptor`方法里就调用的`getAccessDecisionManager`方法返回的不一样
 
@@ -6118,7 +6118,7 @@ httpSecurity
 
 ![image-20230123161428856](https://gitlab.com/apzs/image/-/raw/master/image/image-20230123161428856.png)
 
-# 基于token的认证方式
+## 基于token的认证方式
 
 `SecurityContextPersistenceFilter`或`SecurityContextHolderFilter`过滤器会把信息放到`SecurityContext`里，这两个过滤器的主要区别是`SecurityContextPersistenceFilter`每次在最后都会保存`SecurityContext`（这样比较消耗性能，没有必要每次都保存，因此该类被弃用了），而`SecurityContextHolderFilter`类不会保存（需要我们每次都手动保存）
 

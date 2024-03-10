@@ -1,8 +1,8 @@
-# 一、React基础知识与概念
+## 一、React基础知识与概念
 
-## 1.React简介
+### 1.React简介
 
-### 1.1 react是什么？
+#### 1.1 react是什么？
 
 **React** 是一个用于构建用户界面的 JavaScript 库。
 
@@ -10,7 +10,7 @@
 - 它遵循基于组件的方法，有助于构建可重用的 UI 组件
 - 它用于开发复杂的交互式的 web 和移动 UI
 
-### 1.2 React 有什么特点？
+#### 1.2 React 有什么特点？
 
 1. 使用虚拟 DOM 而不是真正的 DOM
 2. 它可以用服务器渲染
@@ -18,20 +18,20 @@
 4. 高效 (优秀的Diffing算法)
 5. 声明式编码，组件化编码
 
-### 1.3 React高效的原因？
+#### 1.3 React高效的原因？
 
 1. 使用虚拟(virtual)DOM,不总是直接操作页面真实DON
 2. DOM Diffing算法,最小化页面重绘
 3. `注意`：React并不会提高渲染速度,反而可能会增加渲染时间,真正高效的原因是它能有效`减少渲染次数`
 
-### 1.4 React 的一些主要优点？
+#### 1.4 React 的一些主要优点？
 
 1. 它提高了应用的性能
 2. 可以方便在客户端和服务器端使用
 3. 由于使用 JSX，代码的可读性更好
 4. 使用React，编写 UI 测试用例变得非常容易
 
-### 1.5 为什么学？
+#### 1.5 为什么学？
 
 1.原生JS操作DOM繁琐，效率低
 
@@ -39,9 +39,9 @@
 
 3.原生JS没有组件化编码方案，代码复用低
 
-## 2. React 基础案例
+### 2. React 基础案例
 
-### 2.1 引入react 包
+#### 2.1 引入react 包
 
 - React 核心库、操作 DOM 的 react 扩展库、将 jsx 转为 js 的 babel 库
 
@@ -64,11 +64,11 @@
 
 - babel下载地址：https://unpkg.com/babel-standalone@6/babel.min.js
 
-### 2.2 创建虚拟DOM，渲染到容器中
+#### 2.2 创建虚拟DOM，渲染到容器中
 
-#### 方式一：通过jsx
+##### 方式一：通过jsx
 
-##### **最新写法（推荐）**
+###### **最新写法（推荐）**
 
 ```html
 <!DOCTYPE html>
@@ -122,7 +122,7 @@
     *   根元素中所有的内容都会被删除，被React元素所替换
     *   当重复调用render()时，React会将两次的渲染结果进行比较，确保只修改那些发生变化的元素，对DOM做最少的修改
 
-##### **已过时（不推荐）**
+###### **已过时（不推荐）**
 
 ```html
 <body>
@@ -137,7 +137,7 @@
 </body>
 ```
 
-#### 方式二：通过js
+##### 方式二：通过js
 
 ```html
 <body>
@@ -163,11 +163,11 @@
 const VDOM=React.createElement('h1',{id:'title'},React.createElement('span',{},'Hello,React'))
 ```
 
-## 3.jsx 语法
+### 3.jsx 语法
 
 JSX 是 JavaScript 的语法扩展，JSX 使得我们可以以类似于 HTML 的形式去使用 JS。JSX便是React中声明式编程的体现方式。声明式编程，简单理解就是以结果为导向的编程。使用JSX将我们所期望的网页结构编写出来，然后React再根据JSX自动生成JS代码。所以我们所编写的JSX代码，最终都会转换为以调用`React.createElement()`创建元素的代码。
 
-### 语法规则
+#### 语法规则
 
 1. 定义虚拟DOM，JSX不是字符串，不要加引号
 2. 标签中混入JS表达式的时候使用`{}`
@@ -256,7 +256,7 @@ ReactDOM.render(
 {/*自结束标签必须写"&#47;" */}
 ```
 
-### 完整示例
+#### 完整示例
 
 ```jsx
 <!DOCTYPE html>
@@ -310,7 +310,7 @@ ReactDOM.render(
 
 ![image-20230715132944336](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715132944336.png)
 
-### 根据集合数据动态生成 `<li>`
+#### 根据集合数据动态生成 `<li>`
 
 ```jsx
 <script type="text/babel">  /* 此处一定要写babel */
@@ -333,7 +333,7 @@ ReactDOM.render(
 
 ![image-20230715122652249](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715122652249.png)
 
-## 4、关于虚拟DOM
+### 4、关于虚拟DOM
 
 1. 本质是Object类型的对象（一般对象）
 
@@ -360,9 +360,9 @@ ReactDOM.render(
 
 ![image-20230804220046274](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804220046274.png)
 
-# 二、面向组件编程
+## 二、面向组件编程
 
-## 1.组件的使用
+### 1.组件的使用
 
 当应用是以多组件的方式实现，这个应用就是一个组件化的应用。React中只有两种方式的组件，分别是**函数组件**和**类式组件**。
 
@@ -380,7 +380,7 @@ ReactDOM.render(
 2. 调用`render()`得到虚拟 DOM ,并解析为真实 DOM
 3. 插入到指定的页面元素内部
 
-### 1.1 函数式组件
+#### 1.1 函数式组件
 
 定义组件最简单的方式就是编写 JavaScript 函数：
 
@@ -411,7 +411,7 @@ ReactDOM.render(
 
 React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 `Welcome`。你可以在[深入 JSX](https://zh-hans.reactjs.org/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized) 中了解更多关于此规范的原因。
 
-### 1.2 类式组件
+#### 1.2 类式组件
 
 **将函数组件转换成 class 组件**
 
@@ -490,7 +490,7 @@ s1.speak();
 
 ![image-20230715145145564](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715145145564.png)
 
-### 1.3 组合组件
+#### 1.3 组合组件
 
 组件可以在其输出中引用其他组件。这就可以让我们用同一组件来抽象出任意层次的细节。按钮，表单，对话框，甚至整个屏幕的内容：在 React 应用程序中，这些通常都会以组件的形式表示。
 
@@ -521,7 +521,7 @@ s1.speak();
 
 通常来说，每个新的 React 应用程序的顶层组件都是 `App` 组件。但是，如果你将 React 集成到现有的应用程序中，你可能需要使用像 `Button` 这样的小组件，并自下而上地将这类组件逐步应用到视图层的每一处。
 
-### 1.4 提取组件
+#### 1.4 提取组件
 
 将组件拆分为更小的组件。例如，参考如下 `Comment` 组件：
 
@@ -643,13 +643,13 @@ function Comment(props) {
 
 最初看上去，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件库是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），那么它就是一个可提取出独立组件的候选项。
 
-## 2.state
+### 2.state
 
-### 2.1 基本使用
+#### 2.1 基本使用
 
 **需求：**页面显示【今天天气很炎热】，鼠标点击文字的时候，页面更改为【今天天气很凉爽】
 
-#### 2.1.1 原生点击事件
+##### 2.1.1 原生点击事件
 
 原生点击事件有` btn1.addEventListener('click',()=>{})`、` btn2.onclick = ()=>{}`、`<button onclick="demo()">按钮</button>`这三种方式。其中前两种使用的是`()=>{}`时，不管是否开启严格模式都是指向`Window`，使用`    btn1.addEventListener('click',function(){ })`这种方式，不管是否开启严格模式，都是指向这个`dom`
 
@@ -712,7 +712,7 @@ function Comment(props) {
 
 ![image-20230715161248136](https://gitlab.com/apzs/image/-/raw/master/image/image-20230715161248136.png)
 
-#### 2.1.2 React添加点击事件
+##### 2.1.2 React添加点击事件
 
 原生的`onclick="demo()"`在引号里面写的是一段js代码，而在React中应该写`onClick={demo}`（`onClick`使用小驼峰命名法），即`{}`里传的是一个表达式，在有`click`事件时`React`会帮我们调用这个表达式
 
@@ -823,7 +823,7 @@ function Form() {
 
 使用 React 时，你一般不需要使用 `addEventListener` 为已创建的 DOM 元素添加监听器。事实上，你只需要在该元素初始渲染的时候添加监听器即可。
 
-#### 2.1.3 获取`setState`的更新后的值
+##### 2.1.3 获取`setState`的更新后的值
 
 由于`setState`是异步更新的（不绝对，原生方法里调用setState可能是同步的），所以我们可以使用`setState`方法的第二个参数，第二个参数可以指定一个回调，当state更新之后react会帮我们执行这个回调。
 
@@ -840,7 +840,7 @@ function Form() {
 
 ![image-20230804230446453](https://gitlab.com/apzs/image/-/raw/master/image/image-20230804230446453.png)
 
-#### 2.1.4 解决this指向
+##### 2.1.4 解决this指向
 
 > 不推荐使用bind解决this指向，可以使用`changeWeather = () => {}`这种箭头函数的方式解决this指向。
 
@@ -852,7 +852,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 
 简单的说就是组件的状态，也就是该组件所存储的数据
 
-##### 通过bind（不推荐）
+###### 通过bind（不推荐）
 
 > 这里不能直接使用，类中的所有方法默认都是严格模式，而调用onClick里的表达式时并不是通过Weather对象调用的，也就是在类的方法中执行`console.log(this);`结果为`undefined`，我们需要使用`bind`函数，修改别的对象调用`changeWeather`时的指向，将其指向修改为`Weather`对象，已使我们能够获取到`Weather`对象的state属性，详细解释请看[详细解释](#详细解释)
 
@@ -949,7 +949,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
    2. 推荐采用箭头函数，箭头函数的 `this` 指向
 3. state 数据不能直接修改或者更新
 
-##### 通过箭头函数（推荐）
+###### 通过箭头函数（推荐）
 
 > 由于箭头函数没有自己的this，当我们在箭头函数中输出this时，会找箭头函数外面的this，其实就是`Weather`对象
 
@@ -978,7 +978,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 
 ![image-20230805112642662](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805112642662.png)
 
-##### 通过高阶函数（推荐）
+###### 通过高阶函数（推荐）
 
 ```jsx
 <script type="text/babel">
@@ -1037,7 +1037,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 
 ![image-20230805140648589](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805140648589.png)
 
-##### <a name="详细解释">详细解释</a>
+###### <a name="详细解释">详细解释</a>
 
 **通过bind**
 
@@ -1141,7 +1141,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 
 ![image-20230805142323444](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805142323444.png)
 
-### 2.2 简化版本
+#### 2.2 简化版本
 
 1. state的赋值可以不再构造函数中进行，类似于如下代码
 
@@ -1198,7 +1198,7 @@ state是组件对象最重要的属性，值是对象（可以包含多个key-va
 
 在这两种情况下，React 的事件对象 `e` 会被作为第二个参数传递。如果通过箭头函数的方式，事件对象必须显式的进行传递，而通过 `bind` 的方式，事件对象（在方法里直接使用`event`）以及更多的参数将会被隐式的进行传递。
 
-### 2.3 setState()
+#### 2.3 setState()
 
 `this.setState()`：
 
@@ -1209,7 +1209,7 @@ this.setState(partialState, [callback]);
 - `partialState`: 需要更新的状态的部分对象
 - `callback`: 更新完状态后的回调函数
 
-#### 第一个参数
+##### 第一个参数
 
 `this.setState()`方法的第一个参数可以接收两种类型：`对象`或`函数`。
 
@@ -1236,7 +1236,7 @@ this.setState(state=>({isHot: !state.isHot}))
 - 在执行 `setState`操作后，React 会自动调用一次 `render()`
 - `render()` 的执行次数是 1+n (1 为初始化时的自动调用，n 为状态更新的次数)
 
-#### 第二个参数
+##### 第二个参数
 
 状态改变成功（修改state成功）的回调，可写可不写。主要用于更新状态成功之后做一些事情
 
@@ -1261,7 +1261,7 @@ this.setState(this.setState(state=>({isHot: !state.isHot})),()=>{
 
 ![image-20230805114853400](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805114853400.png)
 
-### 2.4 State 的更新可能是同步的
+#### 2.4 State 的更新可能是同步的
 
 ~~React控制之外的事件中调用setState是同步更新的。比如原生js绑定的事件，setTimeout/setInterval等。~~
 
@@ -1383,7 +1383,7 @@ this.setState(this.setState(state=>({isHot: !state.isHot})),()=>{
 
 **如果是同步更新，每执行一个setState就调用一个render，并且如果多次调用setState会以最后调用的为准，前面的将会作废；如果是异步更新，多个setSate会统一调用一次render
 
-### 2.5 数据是向下流动的
+#### 2.5 数据是向下流动的
 
 不管是父组件或是子组件都无法知道某个组件是有状态的还是无状态的，并且它们也并不关心它是函数组件还是 class 组件。
 
@@ -1409,9 +1409,9 @@ function FormattedDate(props) {
 
 在 React 应用中，组件是有状态组件还是无状态组件属于组件实现的细节，它可能会随着时间的推移而改变。你可以在有状态的组件中使用无状态的组件，反之亦然。
 
-## 3.props
+### 3.props
 
-### 3.1 基本使用
+#### 3.1 基本使用
 
 与`state`不同，`state`是组件自身的状态，而`props`则是外部传入的数据
 
@@ -1510,7 +1510,7 @@ console.log(p2)  //{name:"张三",age:"18",sex:"女"}
 >
 > **js中`{..p}`不可以展开对象，在react组件上能使用`{..p}`展开对象是因为babel+react的语法规则使得{..p}可以展开对象，但是只有在标签中才能使用**
 
-### 3.2 props 类型限制
+#### 3.2 props 类型限制
 
 > 自 React v15.5 起，`React.PropTypes` 已移入另一个包中。请使用 [`prop-types` 库](https://www.npmjs.com/package/prop-types) 代替。
 >
@@ -1707,7 +1707,7 @@ MyComponent.propTypes = {
 };
 ```
 
-### 3.3 简写方式
+#### 3.3 简写方式
 
 使用`static`关键字，指定这个属性是类上面的，而不是对象上面的
 
@@ -1790,7 +1790,7 @@ MyComponent.propTypes = {
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230716100119985.png" alt="image-20230716100119985" style="zoom: 67%;" />
 
-### 3.4、构造器this.props的bug
+#### 3.4、构造器this.props的bug
 
 如果在构造器中想使用`this.props`，则必须调用`super(props)`，将props传递给父类
 
@@ -1814,7 +1814,7 @@ constructor(props){
 
 ![image-20230716102026799](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716102026799.png)
 
-### 3.5 函数式组件使用props
+#### 3.5 函数式组件使用props
 
 > 函数在使用props的时候，是作为参数进行使用的(props)
 
@@ -1854,7 +1854,7 @@ constructor(props){
 2. 组件函数的参数为 `props`
 3. 对 `props`的限制和默认值同样设置在原型对象上
 
-### 3.6 props 的只读性
+#### 3.6 props 的只读性
 
 组件无论是使用[函数声明还是通过 class 声明](https://zh-hans.reactjs.org/docs/components-and-props.html#function-and-class-components)，都绝不能修改自身的 props。
 
@@ -1903,7 +1903,7 @@ console.log("getRandom",getRandom(100));
 
 ![image-20230805162158138](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805162158138.png)
 
-## 4.refs
+### 4.refs
 
 Refs 提供了一种方式，允许我们访问 DOM 节点或在 `render` 方法中创建的 React 元素。
 
@@ -1931,7 +1931,7 @@ Refs 提供了一种方式，允许我们访问 DOM 节点或在 `render` 方法
 
 你可能首先会想到使用 refs 在你的 app 中“让事情发生”。如果是这种情况，请花一点时间，认真再考虑一下 state 属性应该被安排在哪个组件层中。通常你会想明白，让更高的组件层级拥有这个 state，是更恰当的。查看 [状态提升](https://zh-hans.reactjs.org/docs/lifting-state-up.html) 以获取更多有关示例。
 
-### 4.1 字符串形式（不推荐）
+#### 4.1 字符串形式（不推荐）
 
 在想要获取到一个DOM节点，可以直接在这个节点上添加ref属性。利用该属性进行获取该节点的值。
 
@@ -1969,7 +1969,7 @@ Refs 提供了一种方式，允许我们访问 DOM 节点或在 `render` 方法
 
 如果你目前还在使用 `this.refs.textInput` 这种方式访问 refs ，我们建议用[回调函数](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html#callback-refs)或 [`createRef` API](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html#creating-refs) 的方式代替。
 
-### 4.2 回调形式
+#### 4.2 回调形式
 
 React 也支持另一种设置 refs 的方式，称为“回调 refs”。它能助你更精细地控制何时 refs 被设置和解除。
 
@@ -2110,7 +2110,7 @@ class Parent extends React.Component {
 
 在上面的例子中，`Parent` 把它的 refs 回调函数当作 `inputRef` props 传递给了 `CustomTextInput`，而且 `CustomTextInput` 把相同的函数作为特殊的 `ref` 属性传递给了 `<input>`。结果是，在 `Parent` 中的 `this.inputElement` 会被设置为与 `CustomTextInput` 中的 `input` 元素相对应的 DOM 节点。
 
-### 4.3 createRef 形式（推荐写法）
+#### 4.3 createRef 形式（推荐写法）
 
 **创建 Refs**
 
@@ -2170,7 +2170,7 @@ class Demo extends React.Component {
 
 ![image-20230716144914470](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716144914470.png)
 
-### 4.4、不要过度使用ref
+#### 4.4、不要过度使用ref
 
 > 如果发生事件的元素是想要操作的元素，则可以不使用ref，直接使用传递过来的事件对象即可
 
@@ -2194,7 +2194,7 @@ class Demo extends React.Component {
 
 ![image-20230716150546859](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716150546859.png)
 
-### 4.5 为 DOM 元素添加 ref
+#### 4.5 为 DOM 元素添加 ref
 
 以下代码使用 `ref` 去存储 DOM 节点的引用：
 
@@ -2229,7 +2229,7 @@ React 会在组件挂载时给 `current` 属性传入 DOM 元素，并在组件�
 
 注意：我们不要过度的使用 ref，如果发生时间的元素刚好是需要操作的元素，就可以使用事件对象去替代。
 
-### 4.6 为类式组件添加 Ref
+#### 4.6 为类式组件添加 Ref
 
 如果我们想包装上面的 `CustomTextInput`，来模拟它挂载之后立即被点击的操作，我们可以使用 ref 来获取这个自定义的 input 组件并手动调用它的 `focusTextInput` 方法：
 
@@ -2259,7 +2259,7 @@ class CustomTextInput extends React.Component {  // ...
 }
 ```
 
-### 4.7 Refs 与函数组件
+#### 4.7 Refs 与函数组件
 
 默认情况下，**你不能在函数组件上使用 `ref` 属性**，因为它们没有实例：
 
@@ -2304,9 +2304,9 @@ function CustomTextInput(props) {
 }
 ```
 
-# 三、事件处理与收集表单数据
+## 三、事件处理与收集表单数据
 
-## 1. 事件处理
+### 1. 事件处理
 
 >1. 通过onXxx属性指定事件处理函数(注意大小写)
 >
@@ -2316,9 +2316,9 @@ function CustomTextInput(props) {
 >
 >2. 通过event.target得到发生事件的DOM元素对象 -----不要过度使用ref
 
-## 2. 表单组件的分类
+### 2. 表单组件的分类
 
-### 2.1 受控组件
+#### 2.1 受控组件
 
 **受控组件：**使 React 的 state 成为“唯一数据源”。渲染表单的 React 组件还控制着用户输入过程中表单发生的操作。被 React 以这种方式控制取值的表单输入元素就叫做“受控组件”。
 
@@ -2360,7 +2360,7 @@ function CustomTextInput(props) {
 </script>
 ```
 
-### 2.2 非受控组件
+#### 2.2 非受控组件
 
 **非受控组件：**非受控组件其实就是表单元素的值不会更新state。输入数据都是现用现取的。
 
@@ -2390,7 +2390,7 @@ function CustomTextInput(props) {
 
 ![image-20230805171011513](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805171011513.png)
 
-## 3.  高阶函数和函数柯里化
+### 3.  高阶函数和函数柯里化
 
 **高阶函数：**如果一个函数符合下面2个规范中的任何一个，那该函数就是高阶函数。
 
@@ -2401,7 +2401,7 @@ function CustomTextInput(props) {
 
 > 需求：想写一个方法这个方法可以帮我们修改指定字段的值，这个字段需要通过参数进行传递
 
-### 3.1 方式一：
+#### 3.1 方式一：
 
 ```jsx
 <script type="text/babel">
@@ -2440,7 +2440,7 @@ function CustomTextInput(props) {
 </script>
 ```
 
-### 3.2 方式二：(推荐)
+#### 3.2 方式二：(推荐)
 
 ```jsx
 <script type="text/babel">
@@ -2477,7 +2477,7 @@ function CustomTextInput(props) {
 </script>
 ```
 
-### 3.3 详细解释
+#### 3.3 详细解释
 
 **中括号解释**
 
@@ -2590,15 +2590,15 @@ saveFormData = (dataType, value) => {
 
 ![image-20230805230621238](https://gitlab.com/apzs/image/-/raw/master/image/image-20230805230621238.png)
 
-# 四、生命周期
+## 四、生命周期
 
-## 1.  简介
+### 1.  简介
 
 组件从创建到销毁，会经过一些特定的阶段。React组件中包含一系列钩子函数{生命周期回调函数}，会在特定的时刻调用。我们在定义组件的时候，会在特定的声明周期回调函数中，做特定的工作。
 
 在 React 中为我们提供了一些生命周期钩子函数，让我们能在 React 执行的重要阶段，在钩子函数中做一些事情。那么在 React 的生命周期中，有哪些钩子函数呢，我们来总结一下
 
-### react生命周期(旧)
+#### react生命周期(旧)
 
 **1. 初始化阶段: 由ReactDOM.render()触发---初次渲染**
 
@@ -2637,7 +2637,7 @@ saveFormData = (dataType, value) => {
 
 由此可见，新版本中并不推荐持有这三个函数，取而代之的是带有UNSAFE_ 前缀的三个函数，比如: UNSAFE_componentWillMount。即便如此，其实React官方还是不推荐大家去使用，在以后版本中有可能会去除这几个函数。
 
-### react生命周期(新)
+#### react生命周期(新)
 
 **1. 初始化阶段: 由ReactDOM.render()触发一次渲染**
 
@@ -2666,9 +2666,9 @@ saveFormData = (dataType, value) => {
 
 ![image-20221023222949399](https://gitlab.com/apzs/image/-/raw/master/image/1ad3acfd13159cfdc364a487dfc4335f7a9a1a06.png)
 
-## 2. 初始化阶段（旧）
+### 2. 初始化阶段（旧）
 
-### 2.1 constructor
+#### 2.1 constructor
 
 **数据的初始化。**
 
@@ -2698,7 +2698,7 @@ class Demo extends React.Component {
 }
 ```
 
-### 2.2 componentWillMount（即将废弃）
+#### 2.2 componentWillMount（即将废弃）
 
 **该方法只在挂载的时候调用一次，表示组件将要被挂载，并且在 `render` 方法之前调用。**
 
@@ -2708,7 +2708,7 @@ class Demo extends React.Component {
 
 **这个方法在 React 18版本中将要被废弃，官方解释是在 React 异步机制下，如果滥用这个钩子可能会有 Bug**
 
-### 2.4 render
+#### 2.4 render
 
 **class组件中唯一必须实现的方法。**
 
@@ -2724,7 +2724,7 @@ class Demo extends React.Component {
 4. 字符串或数值类型：他们在dom中会被渲染为文本节点
 5. 布尔类型或者null：什么都不渲染
 
-### 2.5 componentDidMount（常用）
+#### 2.5 componentDidMount（常用）
 
 **在组件挂在后（插入到dom树中）后立即调用**
 
@@ -2734,7 +2734,7 @@ class Demo extends React.Component {
 
  可以在这里调用Ajax请求，返回的数据可以通过setState使组件重新渲染，或者添加订阅，但是要在conponentWillUnmount中取消订阅
 
-### 2.6 初始化阶段总结
+#### 2.6 初始化阶段总结
 
 执行顺序： `constructor` ->  `componentWillMount` -> `render` -> `componentDidMount`
 
@@ -2795,11 +2795,11 @@ class Demo extends React.Component {
 
 ![image-20230716203124548](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716203124548.png)
 
-## 3. 初始化阶段（新）
+### 3. 初始化阶段（新）
 
-### 2.1 constructor（不变）
+#### 2.1 constructor（不变）
 
-### 2.3 static getDerivedStateFromProps（新钩子）
+#### 2.3 static getDerivedStateFromProps（新钩子）
 
 **从props获取state。**
 
@@ -2838,11 +2838,11 @@ ReactDOM.render(<Count count="109"/>,document.querySelector('.test'))
 > 1. 在老版本的 React 中，这两件事我们都需要在 componentWillReceiveProps 中去做。
 > 2. 而在新版本中，官方将更新 state 与触发回调重新分配到了 getDerivedStateFromProps 与 componentDidUpdate 中，使得组件整体的更新逻辑更为清晰。而且在 getDerivedStateFromProps 中还禁止了组件去访问 this.props，强制让开发者去比较 nextProps 与 prevState 中的值，以确保当开发者用到 getDerivedStateFromProps 这个生命周期函数时，就是在根据当前的 props 来更新组件的 state，而不是去做其他一些让组件自身状态变得更加不可预测的事情。
 
-### 2.4 render（不变）
+#### 2.4 render（不变）
 
-### 2.5 componentDidMount（不变）
+#### 2.5 componentDidMount（不变）
 
-### 初始化阶段总结
+#### 初始化阶段总结
 
 执行顺序： `constructor` -> `static getDerivedStateFromProps`  -> `render` -> `componentDidMount`
 
@@ -2914,9 +2914,9 @@ ReactDOM.render(<Count count="109"/>,document.querySelector('.test'))
 </script>
 ```
 
-## 4. 更新阶段(旧)
+### 4. 更新阶段(旧)
 
-### 3.1 componentWillReceiveProps (即将废弃)
+#### 3.1 componentWillReceiveProps (即将废弃)
 
 **在已挂载的组件接收新的props之前调用。**
 
@@ -2990,7 +2990,7 @@ ReactDOM.render(<A />, document.getElementById('test'))
 
 ![image-20230716213708943](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716213708943.png)
 
-### 3.2 shouldComponentUpdate
+#### 3.2 shouldComponentUpdate
 
 在渲染之前被调用，默认返回为true。
 
@@ -3003,7 +3003,7 @@ ReactDOM.render(<A />, document.getElementById('test'))
 - 唯一用于控制组件重新渲染的生命周期，由于在react中，setState以后，state发生变化，组件会进入重新渲染的流程，在这里return false可以阻止组件的更新，但是不建议，建议使用 PureComponent 
 - 因为react父组件的重新渲染会导致其所有子组件的重新渲染，这个时候其实我们是不需要所有子组件都跟着重新渲染的，因此需要在子组件的该生命周期中做判断
 
-### 3.3 componentWillUpdate (即将废弃)
+#### 3.3 componentWillUpdate (即将废弃)
 
 **当组件接收到新的props和state会在渲染前调用，初始渲染不会调用该方法。**
 
@@ -3011,9 +3011,9 @@ ReactDOM.render(<A />, document.getElementById('test'))
 
 > 此方法可以替换为 `componentDidUpdate()`。如果你在此方法中读取 DOM 信息（例如，为了保存滚动位置），则可以将此逻辑移至 `getSnapshotBeforeUpdate()` 中。
 
-### 3.4 render
+#### 3.4 render
 
-### 3.6 componentDidUpdate
+#### 3.6 componentDidUpdate
 
 **组件在更新完毕后会立即被调用，首次渲染不会调用**
 
@@ -3032,7 +3032,7 @@ componentDidUpdate(prevProps,prevState,snapshotValue) {
 
 > 如果组件实现了 `getSnapshotBeforeUpdate()` 生命周期（不常用），则它的返回值将作为 `componentDidUpdate()` 的第三个参数 “snapshotValue” 参数传递。否则此参数将为 undefined。如果返回false就不会调用这个函数。
 
-### 更新阶段总结
+#### 更新阶段总结
 
 执行顺序：`componentWillReceiveProps` -> `shouldComponentUpdate` -> `componentWillUpdate`  -> `render`  -> `componentDidUpdate`
 
@@ -3112,9 +3112,9 @@ componentDidUpdate(prevProps,prevState,snapshotValue) {
 
 ![image-20230716211536227](https://gitlab.com/apzs/image/-/raw/master/image/image-20230716211536227.png)
 
-## 更新阶段（新）
+### 更新阶段（新）
 
-### 3.1 static getDerivedStateFromProps
+#### 3.1 static getDerivedStateFromProps
 
 若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps。（返回值将作为`state`，使用后setState将无效，返回null则不会影响setState的功能，很少使用）
 
@@ -3125,11 +3125,11 @@ static getDerivedStateFromProps(props,state){
 }
 ```
 
-### 3.2 shouldComponentUpdate
+#### 3.2 shouldComponentUpdate
 
-### 3.4 render
+#### 3.4 render
 
-### 3.5 getSnapshotBeforeUpdate（新钩子）
+#### 3.5 getSnapshotBeforeUpdate（新钩子）
 
 **在最近一次的渲染输出之前被提交之前调用，也就是即将挂载时调用，替换componetnWillUpdate。**
 
@@ -3236,9 +3236,9 @@ componentDidUpdate(preProps,preState,height){
 </script>
 ```
 
-### 3.6 componentDidUpdate
+#### 3.6 componentDidUpdate
 
-### 更新阶段总结
+#### 更新阶段总结
 
 执行顺序：`getDerivedStateFromProps` -> `shouldComponentUpdate` -> `render`  -> `getSnapshotBeforeUpdate` -> `componentDidUpdate`
 
@@ -3321,11 +3321,11 @@ componentDidUpdate(preProps,preState,height){
 
 ![image-20230717140138625](https://gitlab.com/apzs/image/-/raw/master/image/image-20230717140138625.png)
 
-## 5.卸载组件
+### 5.卸载组件
 
 **当组件从 DOM中移除时会调用如下方法**
 
-### 4.1 componentWillUnmount（常用）
+#### 4.1 componentWillUnmount（常用）
 
 **在组件卸载和销毁之前调用**
 
@@ -3399,7 +3399,7 @@ componentWillUnmount() {
 </script>
 ```
 
-## 6、完整生命周期（旧）
+### 6、完整生命周期（旧）
 
 ```jsx
 <script type="text/babel">
@@ -3533,7 +3533,7 @@ componentWillUnmount() {
 </script>
 ```
 
-## 7、完整生命周期（新）
+### 7、完整生命周期（新）
 
 ```jsx
 <script type="text/babel">
@@ -3617,13 +3617,13 @@ componentWillUnmount() {
 </script>
 ```
 
-# 五、条件渲染 & 列表 & Key & diff算法
+## 五、条件渲染 & 列表 & Key & diff算法
 
-## 1. 条件渲染
+### 1. 条件渲染
 
 在 React 中，你可以创建不同的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
 
-### 1.1 条件判断语句
+#### 1.1 条件判断语句
 
 React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算符 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 或者[条件运算符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)去创建元素来表现当前的状态，然后让 React 根据它们来更新 UI。
 
@@ -3691,7 +3691,7 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算�
 
 ![image-20230806151257788](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806151257788.png)
 
-### 1.2 三目运算符
+#### 1.2 三目运算符
 
 另一种内联条件渲染的方法是使用 JavaScript 中的三目运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
 
@@ -3722,7 +3722,7 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算�
 
 ![image-20230806151559512](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806151559512.png)
 
-### 1.3 与运算符&&
+#### 1.3 与运算符&&
 
 通过花括号包裹代码，你可以[在 JSX 中嵌入表达式](https://zh-hans.reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行元素的条件渲染：
 
@@ -3768,7 +3768,7 @@ render() {
 }
 ```
 
-### 1.4 元素变量
+#### 1.4 元素变量
 
 你可以使用变量来储存元素。 它可以帮助你有条件地渲染组件的一部分，而其他的渲染部分并不会因此而改变。
 
@@ -3799,7 +3799,7 @@ render() {
 
 声明一个变量并使用 `if` 语句进行条件渲染是不错的方式，但有时你可能会想使用更为简洁的语法，那就是内联条件渲染的方法与运算和三目运算符
 
-### 1.5 阻止组件渲染
+#### 1.5 阻止组件渲染
 
 在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染。若要完成此操作，你可以让 `render` 方法直接返回 `null`，而不进行任何渲染。
 
@@ -3852,7 +3852,7 @@ render() {
 
 在组件的 `render` 方法中返回 `null` 并不会影响组件的生命周期。例如，上面这个示例中，`componentDidUpdate` 依然会被调用。
 
-## 2. 列表
+### 2. 列表
 
 首先，让我们看下在 Javascript 中如何转化列表。
 
@@ -3868,7 +3868,7 @@ console.log(doubled);
 
 在 React 中，把数组转化为[元素](https://zh-hans.reactjs.org/docs/rendering-elements.html)列表的过程是相似的。
 
-### 2.1 渲染多个组件
+#### 2.1 渲染多个组件
 
 你可以通过使用 `{}` 在 JSX 内构建一个[元素集合](https://zh-hans.reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
 
@@ -3903,7 +3903,7 @@ const listItems = numbers.map((number) =>  <li>{number}</li>);
 
 ![image-20230806222903272](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806222903272.png)
 
-### 2.2 基础列表组件
+#### 2.2 基础列表组件
 
 通常你需要在一个[组件](https://zh-hans.reactjs.org/docs/components-and-props.html)中渲染列表。
 
@@ -3956,9 +3956,9 @@ const listItems = numbers.map((number) =>  <li>{number}</li>);
 
 ![image-20230806223403246](https://gitlab.com/apzs/image/-/raw/master/image/image-20230806223403246.png)
 
-## 3. key
+### 3. key
 
-### 3.1 基本使用
+#### 3.1 基本使用
 
 key 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
 
@@ -3996,7 +3996,7 @@ const todoItems = todos.map((todo, index) =>
 
 要是你有兴趣了解更多的话，这里有一篇文章[深入解析为什么 key 是必须的](https://zh-hans.reactjs.org/docs/reconciliation.html#recursing-on-children)可以参考。
 
-### 3.2 用 key 提取组件
+#### 3.2 用 key 提取组件
 
 元素的 key 只有放在就近的数组上下文中才有意义。
 
@@ -4053,7 +4053,7 @@ function NumberList(props) {
 
 一个好的经验法则是：在 `map()` 方法中的元素需要设置 key 属性。
 
-### 3.3 key 值在兄弟节点之间必须唯一
+#### 3.3 key 值在兄弟节点之间必须唯一
 
 数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值：
 
@@ -4105,7 +4105,7 @@ const content = posts.map((post) =>
 
 上面例子中，`Post` 组件可以读出 `props.id`，但是不能读出 `props.key`。
 
-### 3.4 在 JSX 中嵌入 map()
+#### 3.4 在 JSX 中嵌入 map()
 
 在上面的例子中，我们声明了一个单独的 `listItems` 变量并将其包含在 JSX 中：
 
@@ -4142,9 +4142,9 @@ function NumberList(props) {
 
 这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个 `map()` 嵌套了太多层级，那可能就是你[提取组件](https://zh-hans.reactjs.org/docs/components-and-props.html#extracting-components)的一个好时机。
 
-## 4.diff算法
+### 4.diff算法
 
-### 4.1 什么是虚拟 DOM ？
+#### 4.1 什么是虚拟 DOM ？
 
 在谈 diff 算法之前，我们需要先了解虚拟 DOM 。它是一种编程概念，在这个概念里，以一种虚拟的表现形式被保存在内存中。在 React 中，render 执行的结果得到的并不是真正的 DOM 节点，而是 JavaScript 对象
 
@@ -4180,7 +4180,7 @@ function NumberList(props) {
 
 而我们在 render 中编写的 JSX 代码就是一种虚拟 DOM 结构。
 
-### 4.2 diff 算法
+#### 4.2 diff 算法
 
 每个组件中的每个标签都会有一个key,不过有的必须显示的指定，有的可以隐藏。
 
@@ -4256,7 +4256,7 @@ key = 2 的时候 旧的虚拟DOM没有，创建新的真实DOM
 
 其实这是因为我们将新创建的对象放在了首位，如果放在最后其实是没有问题的，但是因为官方并不推荐使用Index作为key值，我们推荐使用id作为key值。从而完全避免这样的情况。
 
-### 4.3 用index作为key可能会引发的问题
+#### 4.3 用index作为key可能会引发的问题
 
 key不需要全局唯一，只需在当前列表中唯一即可。元素的key最好是固定的，这里直接举个反例，有些场景我们会使用元素的索引为key像这种：
 
@@ -4290,7 +4290,7 @@ Diff算法其实就是react生成的新虚拟DOM和以前的旧虚拟DOM的比�
 - 如果旧的虚拟DOM中没有找到了与新虚拟DOM相同的key:
   - 根据数据创建新的真实的DOM,随后渲染到页面上
 
-### 4.4 李立超老师对于虚拟DOM的解释
+#### 4.4 李立超老师对于虚拟DOM的解释
 
 当我们通过 React 操作DOM时，比如通过 `React.createElement()` 创建元素时。我们所创建的元素并不是真正的DOM对象而是React元素。这一点可以通过在控制台中打印对象来查看。React元素是React应用的最小组成部分，通过JSX也就是`React.createElement()`所创建的元素都属于React元素。与浏览器的 DOM 元素不同，React 元素就是一个普通的JS对象，且创建的开销极小。
 

@@ -1,8 +1,8 @@
 # 个人博客搭建教程
 
-# 1、准备工作
+## 1、准备工作
 
-## 1.1、新建仓库
+### 1.1、新建仓库
 
 首先新建一个仓库，仓库的名字为自己的用户名（~~我要设置的项目名为`https://github.com/`后面跟的`apzs`~~。这样的话，在github上部署时就不用带上前缀）<font style="color:red">仓库名应设置为`apzs.github.io`，需要在用户名后面添加`.github.io`，最开始搞错了</font>
 
@@ -18,7 +18,7 @@
 
 ![image-20221105212943650](https://gitlab.com/apzs/image/-/raw/master/image/image-20221105212943650.png)
 
-## 1.2、推送到远程仓库
+### 1.2、推送到远程仓库
 
 新建一个和仓库同名的文件夹，然后执行如下命名以初始化`git`
 
@@ -57,7 +57,7 @@ git push -u gitee "master" #推送到gitee的master分支上
 
 ![image-20221105215541933](https://gitlab.com/apzs/image/-/raw/master/image/image-20221105215541933.png)
 
-# 2、 快速上手
+## 2、 快速上手
 
 ~~全局安装`vuepress`(不推荐)~~
 
@@ -128,16 +128,16 @@ git push -u gitee "master" #推送到gitee的master分支上
 
 ![image-20221105222820199](https://gitlab.com/apzs/image/-/raw/master/image/image-20221105222820199.png)
 
-# 3、默认主题配置
+## 3、默认主题配置
 
-## [首页](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E9%A6%96%E9%A1%B5)
+### [首页](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E9%A6%96%E9%A1%B5)
 
 `VuePress`支持[YAML front matter](https://jekyllrb.com/docs/frontmatter/)，因此可以在`docs/README.md`里添加如下代码来进行首页配置
 
 ```yaml
 ---
 home: true
-# heroImage: /hero.png 由于我们没有这个图片所以注释掉
+## heroImage: /hero.png 由于我们没有这个图片所以注释掉
 heroText: Hero 标题
 tagline: Hero 副标题
 actionText: 快速上手 →
@@ -161,7 +161,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 
 
-## [目录结构](https://vuepress.vuejs.org/zh/guide/directory-structure.html)
+### [目录结构](https://vuepress.vuejs.org/zh/guide/directory-structure.html)
 
 VuePress 遵循 **“约定优于配置”** 的原则，推荐的目录结构如下：
 
@@ -211,7 +211,7 @@ VuePress 遵循 **“约定优于配置”** 的原则，推荐的目录结构�
 
 当你想要去自定义 `templates/ssr.html` 或 `templates/dev.html` 时，最好基于 [默认的模板文件 (opens new window)](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html)来修改，否则可能会导致构建出错。
 
-### [默认的页面路由](https://vuepress.vuejs.org/zh/guide/directory-structure.html#默认的页面路由)
+#### [默认的页面路由](https://vuepress.vuejs.org/zh/guide/directory-structure.html#默认的页面路由)
 
 此处我们把 `docs` 目录作为 `targetDir` （参考 [命令行接口](https://vuepress.vuejs.org/zh/api/cli.html#基本用法)），下面所有的“文件的相对路径”都是相对于 `docs` 目录的。在项目根目录下的 `package.json` 中添加 `scripts` ：
 
@@ -248,11 +248,11 @@ VuePress 遵循 **“约定优于配置”** 的原则，推荐的目录结构�
 
 ![image-20221105230001106](https://gitlab.com/apzs/image/-/raw/master/image/image-20221105230001106.png)
 
-## [导航栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E5%AF%BC%E8%88%AA%E6%A0%8F)
+### [导航栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E5%AF%BC%E8%88%AA%E6%A0%8F)
 
 导航栏可能包含你的页面标题、[搜索框](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#搜索框)、 [导航栏链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#导航栏链接)、[多语言切换](https://vuepress.vuejs.org/zh/guide/i18n.html)、[仓库链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#git-仓库和编辑链接)，它们均取决于你的配置。
 
-### [导航栏 Logo](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#导航栏-logo)
+#### [导航栏 Logo](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#导航栏-logo)
 
 你可以通过 `themeConfig.logo` 增加导航栏 Logo ，Logo 可以被放置在[公共文件目录](https://vuepress.vuejs.org/zh/guide/assets.html#public-files)：( 可以存放在`docs/.vuepress/public`: 静态资源目录 里，具体目录可以参见目录结构)
 
@@ -273,7 +273,7 @@ module.exports = {
 
 ![image-20221106100733160](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106100733160.png)
 
-### [导航栏链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#导航栏链接)
+#### [导航栏链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#导航栏链接)
 
 你可以通过 `themeConfig.nav` 增加一些导航栏链接:
 
@@ -347,7 +347,7 @@ module.exports = {
 
 ![image-20221106153715069](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106153715069.png)
 
-### [禁用导航栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#禁用导航栏)
+#### [禁用导航栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#禁用导航栏)
 
 你可以使用 `themeConfig.navbar` 来禁用所有页面的导航栏：
 
@@ -392,7 +392,7 @@ navbar: false
 
 ![image-20221106104642773](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106104642773.png)
 
-## [侧边栏--数组写法](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#侧边栏)
+### [侧边栏--数组写法](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#侧边栏)
 
 侧边栏的两种形式：**数组**（适合介绍页）、**对象**（适合博客）
 
@@ -432,7 +432,7 @@ sidebar: [
 
 ![image-20221106154436596](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106154436596.png)
 
-### [嵌套的标题链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#嵌套的标题链接)
+#### [嵌套的标题链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#嵌套的标题链接)
 
 默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
 
@@ -444,7 +444,7 @@ sidebarDepth: 2
 ---
 ```
 
-### [显示所有页面的标题链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#显示所有页面的标题链接)
+#### [显示所有页面的标题链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#显示所有页面的标题链接)
 
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
 
@@ -457,7 +457,7 @@ module.exports = {
 }
 ```
 
-### [活动的标题链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#活动的标题链接)
+#### [活动的标题链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#活动的标题链接)
 
 默认情况下，当用户通过滚动查看页面的不同部分时，嵌套的标题链接和 URL 中的 Hash 值会实时更新，这个行为可以通过以下的配置来禁用：
 
@@ -474,7 +474,7 @@ module.exports = {
 
 值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
 
-### [侧边栏分组](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#侧边栏分组)
+#### [侧边栏分组](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#侧边栏分组)
 
 你可以通过使用**对象**来将侧边栏划分成多个组：
 
@@ -520,11 +520,11 @@ module.exports = {
 
 ![image-20221106154728811](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106154728811.png)
 
-## [侧边栏--对象写法](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#多个侧边栏)
+### [侧边栏--对象写法](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#多个侧边栏)
 
 侧边栏的两种形式：**数组**（适合介绍页）、**对象**（适合博客）
 
-### [多个侧边栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#多个侧边栏)
+#### [多个侧边栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#多个侧边栏)
 
 如果你想为不同的页面组来显示不同的侧边栏，首先，将你的页面文件组织成下述的目录结构：
 
@@ -602,7 +602,7 @@ sidebar: {
 
 ![image-20221106161022026](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106161022026.png)
 
-### [自动生成侧栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#自动生成侧栏)
+#### [自动生成侧栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#自动生成侧栏)
 
 如果你希望自动生成一个仅仅包含了当前页面标题（headers）链接的侧边栏，你可以通过 `YAML front matter` 来实现：
 
@@ -691,7 +691,7 @@ title: 标题
 
 ![image-20221106151713732](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106151713732.png)
 
-### [禁用侧边栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#禁用侧边栏)
+#### [禁用侧边栏](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#禁用侧边栏)
 
 你可以通过 `YAML front matter` 来禁用指定页面的侧边栏：
 
@@ -707,23 +707,23 @@ sidebar: false
 
 ![image-20221106151838765](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106151838765.png)
 
-## [SEO](https://vuepress.vuejs.org/zh/config/#title)
+### [SEO](https://vuepress.vuejs.org/zh/config/#title)
 
-### [title](https://vuepress.vuejs.org/zh/config/#title)
+#### [title](https://vuepress.vuejs.org/zh/config/#title)
 
 - 类型: `string`
 - 默认值: `undefined`
 
 网站的标题，它将会被用作所有页面标题的前缀，同时，默认主题下，它将显示在导航栏（navbar）上。
 
-### [description](https://vuepress.vuejs.org/zh/config/#description)
+#### [description](https://vuepress.vuejs.org/zh/config/#description)
 
 - 类型: `string`
 - 默认值: `undefined`
 
 网站的描述，它将会以 `<meta>` 标签渲染到当前页面的 HTML 中。
 
-### [head](https://vuepress.vuejs.org/zh/config/#head)
+#### [head](https://vuepress.vuejs.org/zh/config/#head)
 
 - 类型: `Array`
 - 默认值: `[]`
@@ -760,7 +760,7 @@ module.exports = {
 
 ![image-20221106164335689](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106164335689.png)
 
-## [最后更新时间](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#最后更新时间)
+### [最后更新时间](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#最后更新时间)
 
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 
@@ -785,7 +785,7 @@ module.exports = {
 
 ------
 
-### 添加`最后更新时间`
+#### 添加`最后更新时间`
 
 在`docs\.vuepress\config.js`文件里添加如下配置：
 
@@ -801,7 +801,7 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
  
-# Editor directories and files
+## Editor directories and files
 .idea
 .vscode
 .temp
@@ -826,9 +826,9 @@ git commit -m "测试更新时间"  #提交所有暂存区文件到本地版本�
 
 ![image-20221106165904014](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106165904014.png)
 
-### [插件的书写形式](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html#%E6%8F%92%E4%BB%B6%E7%9A%84%E9%80%89%E9%A1%B9)
+#### [插件的书写形式](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html#%E6%8F%92%E4%BB%B6%E7%9A%84%E9%80%89%E9%A1%B9)
 
-#### [Babel 式](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html#babel-%E5%BC%8F)
+##### [Babel 式](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html#babel-%E5%BC%8F)
 
 插件可以通过在配置内的数组中封装名称和选项对象来指定选项：
 
@@ -845,7 +845,7 @@ module.exports = {
 
 由于这种风格和 [babeld Plugin/Preset Options (opens new window)](https://babeljs.io/docs/en/plugins#plugin-preset-options)一致，我们称之为"Babel 风格"。
 
-#### [对象式](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html#对象式)
+##### [对象式](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html#对象式)
 
 VuePress 也提供了一种更简单的方式来使用来自依赖的插件：
 
@@ -857,9 +857,9 @@ module.exports = {
 }
 ```
 
-### [调整更新时间格式](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html)
+#### [调整更新时间格式](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html)
 
-#### 安装
+##### 安装
 
 以管理员身份执行如下命令：
 
@@ -869,7 +869,7 @@ yarn add moment
 
 如果出现`error An unexpected error occurred: "EPERM: operation not permitted, unlink 'D:\\apzs\\node_modules\\.bin\\vuepress'".`错误，就是没有以管理员身份执行命令
 
-#### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html#使用)
+##### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html#使用)
 
 ```js
 module.exports = {
@@ -877,7 +877,7 @@ module.exports = {
 }
 ```
 
-### [transformer](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html#transformer)
+#### [transformer](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html#transformer)
 
 - 类型: `(timestamp: number, lang: string) => string`
 - 默认值: `undefined`
@@ -961,7 +961,7 @@ module.exports = {
 
 ![image-20221106171848120](https://gitlab.com/apzs/image/-/raw/master/image/image-20221106171848120.png)
 
-## 添加到网站收录
+### 添加到网站收录
 
 
 
@@ -969,7 +969,7 @@ module.exports = {
 
 
 
-### 谷歌
+#### 谷歌
 
 ![image-20230306103138308](https://gitlab.com/apzs/image/-/raw/master/image/image-20230306103138308.png)
 
@@ -1021,7 +1021,7 @@ https://apzs.github.io/sitemap.xml
 
 
 
-## [GitHub Pages](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages)
+### [GitHub Pages](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages)
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
 
@@ -1034,27 +1034,27 @@ https://apzs.github.io/sitemap.xml
 ```bash
 #!/usr/bin/env sh
 
-# 确保脚本抛出遇到的错误
+## 确保脚本抛出遇到的错误
 set -e
 
-# 生成静态文件
+## 生成静态文件
 npm run docs:build
 
-# 进入生成的文件夹
+## 进入生成的文件夹
 cd docs/.vuepress/dist
 
-# 如果是发布到自定义域名
-# echo 'www.example.com' > CNAME
+## 如果是发布到自定义域名
+## echo 'www.example.com' > CNAME
 
 git init
 git add -A
 git commit -m 'deploy'
 
-# 如果发布到 https://<USERNAME>.github.io
-# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+## 如果发布到 https://<USERNAME>.github.io
+## git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
-# 如果发布到 https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+## 如果发布到 https://<USERNAME>.github.io/<REPO>
+## git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
 cd -
 ```
@@ -1133,16 +1133,16 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 
 ![image-20221107085510592](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107085510592.png)
 
-## [PWA](https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html#%E5%AE%89%E8%A3%85)
+### [PWA](https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html#%E5%AE%89%E8%A3%85)
 
-###  安装
+####  安装
 
 ```bash
 yarn add -D @vuepress/plugin-pwa
-# OR npm install -D @vuepress/plugin-pwa
+## OR npm install -D @vuepress/plugin-pwa
 ```
 
-### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html#使用)
+#### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html#使用)
 
 ```javascript
 module.exports = {
@@ -1227,9 +1227,9 @@ git clone git@github.com:vuejs/vuepress.git
 
 ![image-20221107085217969](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107085217969.png)
 
-## [vssue评论](https://vssue.js.org/zh/guide/github.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-oauth-app)
+### [vssue评论](https://vssue.js.org/zh/guide/github.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-oauth-app)
 
-### 创建 GitHub OAuth App
+#### 创建 GitHub OAuth App
 
 前往 [Settings  ->  Developer Settings  ->  OAuth Apps](https://github.com/settings/developers)
 
@@ -1259,7 +1259,7 @@ git clone git@github.com:vuejs/vuepress.git
   - 要求登陆后才能浏览评论
 - 开发者参考： [官方文档](https://developer.github.com/v4)
 
-### [安装](https://vssue.js.org/zh/guide/vuepress.html#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+#### [安装](https://vssue.js.org/zh/guide/vuepress.html#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
 
 [支持的代码托管平台](https://vssue.js.org/zh/guide/supported-platforms.html#github)
 
@@ -1270,7 +1270,7 @@ yarn add @vssue/vuepress-plugin-vssue  # npm install @vssue/vuepress-plugin-vssu
 yarn add @vssue/api-github-v4          # npm install @vssue/api-github-v4
 ```
 
-### [配置插件](https://vssue.js.org/zh/guide/vuepress.html#使用插件)
+#### [配置插件](https://vssue.js.org/zh/guide/vuepress.html#使用插件)
 
 > 通过 [VuePress 官方文档](https://vuepress.vuejs.org/zh/plugin/using-a-plugin.html) 查看使用插件的详细方法
 
@@ -1314,7 +1314,7 @@ module.exports = {
 
 ![image-20221107093001880](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107093001880.png)
 
-### [使用插件](https://vssue.js.org/zh/guide/vuepress.html#%E4%BD%BF%E7%94%A8-vssue-%E7%BB%84%E4%BB%B6)
+#### [使用插件](https://vssue.js.org/zh/guide/vuepress.html#%E4%BD%BF%E7%94%A8-vssue-%E7%BB%84%E4%BB%B6)
 
 直接在想添加评论的`mackdown`后面添加`<Vssue/>`即可
 
@@ -1346,13 +1346,13 @@ module.exports = {
 
 ![image-20221107213858760](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107213858760.png)
 
-### [自动创建issue](https://vssue.js.org/zh/options/#autocreateissue)
+#### [自动创建issue](https://vssue.js.org/zh/options/#autocreateissue)
 
 添加`autoCreateIssue: true`配置后，不用点击`Click to create issue`，登陆后可以直接评论
 
 ![image-20221107111934579](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107111934579.png)
 
-### 全局添加评论
+#### 全局添加评论
 
 全局都添加评论功能需要使用 [主题的继承 | VuePress (vuejs.org)](https://vuepress.vuejs.org/zh/theme/inheritance.html#动机)
 
@@ -1464,16 +1464,16 @@ module.exports = {
 
 ![image-20221107101304167](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107101304167.png)
 
-## [回到顶部](https://vuepress.vuejs.org/zh/plugin/official/plugin-back-to-top.html#vuepress-plugin-back-to-top)
+### [回到顶部](https://vuepress.vuejs.org/zh/plugin/official/plugin-back-to-top.html#vuepress-plugin-back-to-top)
 
-### 安装
+#### 安装
 
 ```bash
 yarn add -D @vuepress/plugin-back-to-top
-# OR npm install -D @vuepress/plugin-back-to-top
+## OR npm install -D @vuepress/plugin-back-to-top
 ```
 
-### 使用
+#### 使用
 
 ```javascript
 module.exports = {
@@ -1487,9 +1487,9 @@ module.exports = {
 
 ![image-20221107170220261](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107170220261.png)
 
-## 谷歌数据分析
+### 谷歌数据分析
 
-### [~~创建媒体资源(这里创建错了)~~](https://analytics.google.com/)
+#### [~~创建媒体资源(这里创建错了)~~](https://analytics.google.com/)
 
 首先需要创建账户，然后点击设置里面的`创建媒体资源`，信息随便填
 
@@ -1625,7 +1625,7 @@ https://support.google.com/analytics/answer/10269537
 >
 > ![img](https://gitlab.com/apzs/image/-/raw/master/image/D8rCvlvNFrry5xETezTxClQbcFf8uh4mScLd.png)
 
-### [创建媒体资源](https://analytics.google.com/)
+#### [创建媒体资源](https://analytics.google.com/)
 
 首先需要创建账户，然后点击设置里面的`创建媒体资源`，一定要点击`显示高级选项`，勾选`仅创建Universal Analytics 媒体资源`
 
@@ -1635,20 +1635,20 @@ https://support.google.com/analytics/answer/10269537
 
 ![image-20221107210613543](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107210613543.png)
 
-### [谷歌分析插件](https://vuepress.vuejs.org/zh/plugin/official/plugin-google-analytics.html)
+#### [谷歌分析插件](https://vuepress.vuejs.org/zh/plugin/official/plugin-google-analytics.html)
 
-#### 安装
+##### 安装
 
 ```bash
 yarn add -D @vuepress/plugin-google-analytics
-# OR npm install -D @vuepress/plugin-google-analytics
+## OR npm install -D @vuepress/plugin-google-analytics
 ```
 
 注意
 
 如果你的项目正在使用 Google analytics 插件，推荐使用 [Yarn (opens new window)](https://yarnpkg.com/en/)而不是 npm 来安装所有依赖。因为在这种情形下，npm 会生成错误的依赖树。
 
-#### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-google-analytics.html#使用)
+##### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-google-analytics.html#使用)
 
 ```javascript
 module.exports = {
@@ -1669,19 +1669,19 @@ module.exports = {
 
 ![image-20221107212148649](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107212148649.png)
 
-## 配置拆分
+### 配置拆分
 
-### [拆分前](other/配置拆分.md)
+#### [拆分前](other/配置拆分.md)
 
 ![image-20221107214217280](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107214217280.png)
 
-### [拆分后](other/配置拆分.md)
+#### [拆分后](other/配置拆分.md)
 
 在`docs\.vuepress`文件夹里新建`config`文件夹，将所有配置都拆分到`docs\.vuepress\config`文件夹里
 
 ![image-20221107215412138](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107215412138.png)
 
-## 隐私保护
+### 隐私保护
 
 你可能不想在提交代码时把自己的隐私信息提交到`github`上，因此可以在`docs\.vuepress\config`文件夹里新建`secret.js`文件，在这里输入你的隐私信息
 
@@ -1703,7 +1703,7 @@ module.exports = {
 
 ![image-20221107221123123](https://gitlab.com/apzs/image/-/raw/master/image/image-20221107221123123.png)
 
-## Mackdown语法进阶
+### Mackdown语法进阶
 
 假如我们需要使用[CountUp](https://github.com/inorganik/CountUp.js)来实现数字滚动的效果，首先需要安装`COuntUp`
 
@@ -1734,9 +1734,9 @@ title: 使用数字滚动插件，并高亮展示源码
 
 ![GIF 2022-11-7 23-06-08](https://gitlab.com/apzs/image/-/raw/master/image/GIF 2022-11-7 23-06-08.gif)
 
-## [自动化部署](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages-and-travis-ci)
+### [自动化部署](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages-and-travis-ci)
 
-### GitHub Pages and Travis CI
+#### GitHub Pages and Travis CI
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
 
@@ -1775,7 +1775,7 @@ deploy:
 如果使用的是自己的域名需要在根路径下添加`cname.sh`文件
 
 ```bash
-# cname.sh
+## cname.sh
 
 #!/usr/bin/env sh
 
@@ -1814,11 +1814,11 @@ name输入`GITHUB_TOKEN`，` VALUE`输入刚刚复制的`access tocken`
 
 ![image-20221108170843086](https://gitlab.com/apzs/image/-/raw/master/image/image-20221108170843086.png)
 
-## 图片缩放
+### 图片缩放
 
-### [静态资源](https://vuepress.vuejs.org/zh/guide/assets.html#静态资源)
+#### [静态资源](https://vuepress.vuejs.org/zh/guide/assets.html#静态资源)
 
-#### [相对路径](https://vuepress.vuejs.org/zh/guide/assets.html#相对路径)
+##### [相对路径](https://vuepress.vuejs.org/zh/guide/assets.html#相对路径)
 
 所有的 Markdown 文件都会被 webpack 编译成 Vue 组件，因此你可以，并且**应该更倾向于**使用相对路径（Relative URLs）来引用所有的静态资源：
 
@@ -1849,11 +1849,11 @@ module.exports = {
 }
 ```
 
-#### [公共文件](https://vuepress.vuejs.org/zh/guide/assets.html#公共文件)
+##### [公共文件](https://vuepress.vuejs.org/zh/guide/assets.html#公共文件)
 
 有时，你可能需要提供一个静态资源，但是它们并不直接被你的任何一个 markdown 文件或者主题组件引用 —— 举例来说，favicons 和 PWA 的图标，在这种情形下，你可以将它们放在 `.vuepress/public` 中， 它们最终会被复制到生成的静态文件夹中。
 
-#### [基础路径](https://vuepress.vuejs.org/zh/guide/assets.html#基础路径)
+##### [基础路径](https://vuepress.vuejs.org/zh/guide/assets.html#基础路径)
 
 如果你的网站会被部署到一个**非根路径**，你将需要在 `.vuepress/config.js` 中设置 `base`，举例来说，如果你打算将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 的值就应该被设置为 `"/bar/"` (应当总是以斜杠开始，并以斜杠结束)。
 
@@ -1880,16 +1880,16 @@ module.exports = {
 
 ![image-20221108194219853](https://gitlab.com/apzs/image/-/raw/master/image/image-20221108194219853.png)
 
-### [图片缩放插件](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html)
+#### [图片缩放插件](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html)
 
-####  安装
+#####  安装
 
 ```bash
 yarn add -D @vuepress/plugin-medium-zoom
-# OR npm install -D @vuepress/plugin-medium-zoom
+## OR npm install -D @vuepress/plugin-medium-zoom
 ```
 
-#### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#使用)
+##### [使用](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#使用)
 
 **简单使用**:
 
@@ -1916,16 +1916,16 @@ module.exports = {
 }
 ```
 
-#### [选项](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#选项)
+##### [选项](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#选项)
 
-##### [selector](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#selector)
+###### [selector](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#selector)
 
 - 类型: `string`
 - 默认值: `.theme-default-content :not(a) > img`
 
 值得注意的是， `.theme-default-content` 是默认主题添加给 [``](https://vuepress.vuejs.org/zh/guide/using-vue.html#content) 组件的 class name。
 
-##### [options](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#options)
+###### [options](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#options)
 
 - 类型: `object`
 - 默认值: `undefined`
@@ -1944,7 +1944,7 @@ module.exports = {
 
 ![GIF 2022-11-8 19-54-27](https://gitlab.com/apzs/image/-/raw/master/image/GIF 2022-11-8 19-54-27.gif)
 
-### [algolia搜索](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#algolia-搜索)
+#### [algolia搜索](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#algolia-搜索)
 
 注册完账号后先点击`Search`，在`CONFIGURE`的`Index`里点击`Create Index`，创建一个`Index`
 
@@ -1956,7 +1956,7 @@ module.exports = {
 
 
 
-## [上 / 下一篇链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#上-下一篇链接)
+### [上 / 下一篇链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#上-下一篇链接)
 
 上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。
 
@@ -1983,7 +1983,7 @@ next: false
 ---
 ```
 
-## [Git 仓库和编辑链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#git-仓库和编辑链接)
+### [Git 仓库和编辑链接](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#git-仓库和编辑链接)
 
 当你提供了 `themeConfig.repo` 选项，将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
 
@@ -2021,7 +2021,7 @@ editLink: false
 ---
 ```
 
-## [页面滚动 1.2.0+](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#页面滚动)
+### [页面滚动 1.2.0+](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#页面滚动)
 
 你可以通过 `themeConfig.smoothScroll` 选项来启用页面滚动效果。
 
@@ -2034,7 +2034,7 @@ module.exports = {
 }
 ```
 
-## [自定义页面类](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#自定义页面类)
+### [自定义页面类](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#自定义页面类)
 
 有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
 
@@ -2058,7 +2058,7 @@ pageClass: custom-page-class
 
 自定义样式应该写在 [index.styl](https://vuepress.vuejs.org/config/#index-styl) 内, 该文件可以让你方便地添加或覆盖样式.
 
-## [特定页面的自定义布局](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#特定页面的自定义布局)
+### [特定页面的自定义布局](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#特定页面的自定义布局)
 
 默认情况下，每个 `*.md` 文件将会被渲染在一个 `<div class="page">` 容器中，同时还有侧边栏、自动生成的编辑链接，以及上 / 下一篇文章的链接。如果你想要使用一个完全自定义的组件来代替当前的页面（而只保留导航栏），你可以再次使用 `YAML front matter` 来指定这个组件。
 

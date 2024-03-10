@@ -1,19 +1,19 @@
-# 《Arthas进阶》
+## 《Arthas进阶》
 
-# 学习目标
+## 学习目标
 
 1. 类和类加载器相关的命令
 2. monitor/watch/trace/stack等核心命令的使用
 3. 火焰图的生成
 4. Arthas实战案例
 
-# dump
+## dump
 
-## 作用
+### 作用
 
 将已加载类的字节码文件保存到特定目录：logs/arthas/classdump/
 
-### 参数
+#### 参数
 
 | 数名称          | 参数说明                             |
 | --------------- | ------------------------------------ |
@@ -21,7 +21,7 @@
 | `[c:]`          | 类所属 ClassLoader 的 hashcode       |
 | [E]             | 开启正则表达式匹配，默认为通配符匹配 |
 
-## 举例
+### 举例
 
 ```
 把String类的字节码文件保存到~/logs/arthas/classdump/目录下
@@ -33,7 +33,7 @@ dump java.lang.String
 dump demo.*
 ```
 
-## 效果
+### 效果
 
 ![image-20200310223714230](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310223714230.png)
 
@@ -41,7 +41,7 @@ dump demo.*
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310224236313.png" alt="image-20200310224236313" style="zoom:67%;" />
 
-## 小结
+### 小结
 
 dump作用：将正在JVM中运行的程序的字节码文件提取出来，保存在logs相应的目录下
 
@@ -49,19 +49,19 @@ dump作用：将正在JVM中运行的程序的字节码文件提取出来，保�
 
 
 
-# classloader
+## classloader
 
-## 目标
+### 目标
 
 获取类加载器的信息
 
-## 作用
+### 作用
 
 1. `classloader` 命令将 JVM 中所有的classloader的信息统计出来，并可以展示继承树，urls等。
 
 2. 可以让指定的classloader去getResources，打印出所有查找到的resources的url。对于`ResourceNotFoundException`异常比较有用。
 
-## 参数说明
+### 参数说明
 
 | 参数名称     | 参数说明                                |
 | ------------ | --------------------------------------- |
@@ -72,7 +72,7 @@ dump作用：将正在JVM中运行的程序的字节码文件提取出来，保�
 | `[c: r:]`    | 用ClassLoader去查找resource             |
 | `[c: load:]` | 用ClassLoader去加载指定的类             |
 
-## 举例
+### 举例
 
 ```
 默认按类加载器的类型查看统计信息
@@ -123,7 +123,7 @@ classloader -c 70dea4e --load java.lang.String
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200311094910635.png" alt="image-20200311094910635" style="zoom:67%;" /> 
 
-## 小结
+### 小结
 
 classloader命令主要作用有哪些？
 
@@ -134,13 +134,13 @@ classloader命令主要作用有哪些？
 
 
 
-# monitor
+## monitor
 
-## 目标
+### 目标
 
 monitor命令：监控指定类中方法的执行情况
 
-## 作用
+### 作用
 
 > 对匹配 `class-pattern`／`method-pattern`的类、方法的调用进行监控。
 >
@@ -148,7 +148,7 @@ monitor命令：监控指定类中方法的执行情况
 >
 > 而非实时返回的命令，则是不断的等待目标 Java 进程返回信息，直到用户输入 `Ctrl+C` 为止。
 
-## 参数说明
+### 参数说明
 
 方法拥有一个命名参数 `[c:]`，意思是统计周期（cycle of output），拥有一个整型的参数值
 
@@ -159,7 +159,7 @@ monitor命令：监控指定类中方法的执行情况
 | [E]              | 开启正则表达式匹配，默认为通配符匹配 |
 | `[c:]`           | 统计周期，默认值为120秒              |
 
-## 举例
+### 举例
 
 ```
 过5秒监控一次，类demo.MathGame中primeFactors方法
@@ -170,7 +170,7 @@ monitor -c 5 demo.MathGame primeFactors
 
 
 
-## 监控的维度说明
+### 监控的维度说明
 
 | 监控项    | 说明                       |
 | --------- | -------------------------- |
@@ -183,7 +183,7 @@ monitor -c 5 demo.MathGame primeFactors
 | rt        | 平均耗时                   |
 | fail-rate | 失败率                     |
 
-## 小结
+### 小结
 
 monitor命令的作用是什么？
 
@@ -193,19 +193,19 @@ monitor命令的作用是什么？
 
 
 
-# watch
+## watch
 
-## 目标
+### 目标
 
 观察到指定方法的调用情况
 
-## 作用
+### 作用
 
 > 方法执行数据观测，让你能方便的观察到指定方法的调用情况。
 >
 > 能观察到的范围为：`返回值`、`抛出异常`、`入参`，通过编写OGNL 表达式进行对应变量的查看。
 
-## 参数说明
+### 参数说明
 
 watch 的参数比较多，主要是因为它能在 4 个不同的场景观察对象
 
@@ -224,14 +224,14 @@ watch 的参数比较多，主要是因为它能在 4 个不同的场景观察�
 
 这里重点要说明的是观察表达式，观察表达式的构成主要由ognl 表达式组成，所以你可以这样写`"{params,returnObj}"`，只要是一个合法的 ognl 表达式，都能被正常支持。
 
-### 特别说明
+#### 特别说明
 
 - watch 命令定义了4个观察事件点，即 `-b` 方法调用前，`-e` 方法异常后，`-s` 方法返回后，`-f` 方法结束后
 - 4个观察事件点 `-b`、`-e`、`-s` 默认关闭，`-f` 默认打开，当指定观察点被打开后，在相应事件点会对观察表达式进行求值并输出
 - 这里要注意`方法入参`和`方法出参`的区别，有可能在中间被修改导致前后不一致，除了 `-b` 事件点 `params` 代表方法入参外，其余事件都代表方法出参
 - 当使用 `-b` 时，由于观察事件点是在方法调用前，此时返回值或异常均不存在
 
-## 举例
+### 举例
 
 ```
 观察demo.MathGame类中primeFactors方法出参和返回值，结果属性遍历深度为2。
@@ -285,7 +285,7 @@ watch demo.MathGame primeFactors "{params[0],target}" "params[0]<0"
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200311155053465.png" alt="image-20200311155053465" style="zoom:80%;" /> 
 
-## 小结
+### 小结
 
 | 参数名称 | 参数说明                              |
 | -------- | ------------------------------------- |
@@ -296,15 +296,15 @@ watch demo.MathGame primeFactors "{params[0],target}" "params[0]<0"
 
 
 
-# trace
+## trace
 
-## 目标
+### 目标
 
 学习trace这条命令的使用
 
 对方法内部调用路径进行追踪，并输出方法路径上的每个节点上耗时
 
-## 介绍
+### 介绍
 
 > `trace` 命令能主动搜索 `class-pattern`／`method-pattern` 对应的方法调用路径，渲染和统计整个调用链路上的所有性能开销和追踪调用链路。
 >
@@ -314,7 +314,7 @@ watch demo.MathGame primeFactors "{params[0],target}" "params[0]<0"
 >
 > watch/stack/trace这个三个命令都支持`#cost`耗时条件过滤
 
-## 参数说明
+### 参数说明
 
 | 参数名称            | 参数说明                             |
 | ------------------- | ------------------------------------ |
@@ -325,7 +325,7 @@ watch demo.MathGame primeFactors "{params[0],target}" "params[0]<0"
 | `[n:]`              | 设置命令执行次数                     |
 | `#cost`             | 方法执行耗时，单位是毫秒             |
 
-## 举例
+### 举例
 
 ```
 trace函数指定类的指定方法
@@ -360,7 +360,7 @@ trace demo.MathGame run '#cost > .5'
 trace -E com.test.ClassA|org.test.ClassB method1|method2|method3
 ```
 
-## 小结
+### 小结
 
 | 参数名称          | 参数说明                       |
 | ----------------- | ------------------------------ |
@@ -371,17 +371,17 @@ trace -E com.test.ClassA|org.test.ClassB method1|method2|method3
 
 
 
-# stack
+## stack
 
-## 作用
+### 作用
 
 输出当前方法被调用的调用路径
 
-## 介绍
+### 介绍
 
 > 很多时候我们都知道一个方法被执行，但这个方法被执行的路径非常多，或者你根本就不知道这个方法是从那里被执行了，此时你需要的是 stack 命令。
 
-## 参数说明
+### 参数说明
 
 | 参数名称            | 参数说明                             |
 | ------------------- | ------------------------------------ |
@@ -391,7 +391,7 @@ trace -E com.test.ClassA|org.test.ClassB method1|method2|method3
 | [E]                 | 开启正则表达式匹配，默认为通配符匹配 |
 | `[n:]`              | 执行次数限制                         |
 
-## 举例
+### 举例
 
 ```
 获取primeFactors的调用路径
@@ -418,7 +418,7 @@ stack demo.MathGame primeFactors '#cost>0.5'
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200311174408523.png" alt="image-20200311174408523" style="zoom:67%;" /> 
 
-## 小结
+### 小结
 
 stack命令的作用是什么？
 
@@ -428,15 +428,15 @@ stack命令的作用是什么？
 
 
 
-# tt
+## tt
 
-## 作用
+### 作用
 
 time-tunnel 时间隧道
 
 记录下指定方法每次调用的入参和返回信息，并能对这些不同时间下调用的信息进行观测
 
-## 介绍
+### 介绍
 
 > `watch` 虽然很方便和灵活，但需要提前想清楚观察表达式的拼写，这对排查问题而言要求太高，因为很多时候我们并不清楚问题出自于何方，只能靠蛛丝马迹进行猜测。
 >
@@ -444,7 +444,7 @@ time-tunnel 时间隧道
 >
 > 于是乎，TimeTunnel 命令就诞生了。
 
-## 参数解析
+### 参数解析
 
 | tt的参数  | 说明                             |
 | --------- | -------------------------------- |
@@ -465,9 +465,9 @@ time-tunnel 时间隧道
 
   此时你可以通过 `-n` 参数指定你需要记录的次数，当达到记录次数时 Arthas 会主动中断tt命令的记录过程，避免人工操作无法停止的情况。
 
-## 使用案例
+### 使用案例
 
-### 基本使用
+#### 基本使用
 
 ```
 最基本的使用来说，就是记录下当前方法的每次调用环境现场。
@@ -476,7 +476,7 @@ tt -t demo.MathGame primeFactors
 
 ![image-20200321200911157](https://gitlab.com/apzs/image/-/raw/master/image/image-20200321200911157.png)
 
-### 表格字段说明
+#### 表格字段说明
 
 | 表格字段  | 字段解释                                                     |
 | --------- | ------------------------------------------------------------ |
@@ -512,7 +512,7 @@ tt -t demo.MathGame primeFactors
 
 
 
-### 检索调用记录
+#### 检索调用记录
 
 当你用 `tt` 记录了一大片的时间片段之后，你希望能从中筛选出自己需要的时间片段，这个时候你就需要对现有记录进行检索。
 
@@ -530,7 +530,7 @@ tt -s 'method.name=="primeFactors"'
 
 ![image-20200321194724694](https://gitlab.com/apzs/image/-/raw/master/image/image-20200321194724694.png)
 
-### 查看调用信息
+#### 查看调用信息
 
 对于具体一个时间片的信息而言，你可以通过 `-i` 参数后边跟着对应的 `INDEX` 编号查看到他的详细信息。
 
@@ -542,7 +542,7 @@ tt -i 1002
 
 
 
-### 重做一次调用
+#### 重做一次调用
 
 当你稍稍做了一些调整之后，你可能需要前端系统重新触发一次你的调用，此时得求爷爷告奶奶的需要前端配合联调的同学再次发起一次调用。而有些场景下，这个调用不是这么好触发的。
 
@@ -554,7 +554,7 @@ tt -i 1002 -p
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200321195211743.png" alt="image-20200321195211743" style="zoom:80%;" /> 
 
-## 小结
+### 小结
 
 作用：记录指定方法每次调用的入参和返回值，并后期还可以对这些信息进行观测
 
@@ -568,13 +568,13 @@ tt -i 1002 -p
 
 
 
-# options
+## options
 
-## 作用
+### 作用
 
 > 全局开关
 
-## 全局选项
+### 全局选项
 
 | 名称                | 默认值 | 描述                                                         |
 | ------------------- | ------ | ------------------------------------------------------------ |
@@ -588,9 +588,9 @@ tt -i 1002 -p
 | job-timeout         | 1d     | 异步后台任务的默认超时时间，超过这个时间，任务自动停止；比如设置 1d, 2h, 3m, 25s，分别代表天、小时、分、秒 |
 | print-parent-fields | true   | 是否打印在parent class里的filed                              |
 
-## 案例
+### 案例
 
-### 查看所有的options
+#### 查看所有的options
 
 ```
 options
@@ -598,7 +598,7 @@ options
 
 ![image-20200322092041440](https://gitlab.com/apzs/image/-/raw/master/image/image-20200322092041440.png)
 
-### 获取option的值
+#### 获取option的值
 
 ```
 options json-format
@@ -606,7 +606,7 @@ options json-format
 
 ![image-20200322092136758](https://gitlab.com/apzs/image/-/raw/master/image/image-20200322092136758.png)
 
-### 设置指定的option
+#### 设置指定的option
 
 例如，想打开执行结果存日志功能，输入如下命令即可：
 
@@ -616,27 +616,27 @@ options save-result true
 
 ![image-20200322092300964](https://gitlab.com/apzs/image/-/raw/master/image/image-20200322092300964.png) 
 
-## 小结
+### 小结
 
 options的作用是：查看或设置arthas全局环境变量
 
 
 
-# profiler火焰图
+## profiler火焰图
 
-## 目标
+### 目标
 
 生成火焰图
 
-## 介绍
+### 介绍
 
 `profiler` 命令支持生成应用热点的火焰图。本质上是通过不断的采样，然后把收集到的采样结果生成火焰图。
 
 命令基本运行结构是 `profiler 命令 [命令参数]`
 
-## 案例
+### 案例
 
-### 启动profiler
+#### 启动profiler
 
 ```
 $ profiler start
@@ -645,20 +645,20 @@ Started [cpu] profiling
 
 > 默认情况下，生成的是cpu的火焰图，即event为`cpu`。可以用`--event`参数来指定。
 
-### 显示支持的事件
+#### 显示支持的事件
 
 ```
 $ profiler list
 ```
 
-### 获取已采集的sample的数量
+#### 获取已采集的sample的数量
 
 ```
 $ profiler getSamples
 23
 ```
 
-### 查看profiler状态
+#### 查看profiler状态
 
 ```
 $ profiler status
@@ -667,9 +667,9 @@ $ profiler status
 
 可以查看当前profiler在采样哪种`event`和采样时间。
 
-### 停止profiler
+#### 停止profiler
 
-#### 生成svg格式结果
+##### 生成svg格式结果
 
 ```
 $ profiler stop
@@ -685,7 +685,7 @@ profiler output file: /tmp/output.svg
 OK
 ```
 
-#### 生成html格式结果
+##### 生成html格式结果
 
 默认情况下，结果文件是`svg`格式，如果想生成`html`格式，可以用`--format`参数指定：
 
@@ -699,7 +699,7 @@ OK
 
 
 
-### 通过浏览器查看arthas-output下面的profiler结果
+#### 通过浏览器查看arthas-output下面的profiler结果
 
 默认情况下，arthas使用3658端口，则可以打开： http://localhost:3658/arthas-output/ 查看到`arthas-output`目录下面的profiler结果：
 
@@ -711,7 +711,7 @@ OK
 
 
 
-## 火焰图的含义
+### 火焰图的含义
 
 火焰图是基于 perf 结果产生的SVG 图片，用来展示 CPU 的调用栈。
 
@@ -725,7 +725,7 @@ OK
 
 
 
-## 小结
+### 小结
 
 | profiler            | 命令作用                                                     |
 | ------------------- | ------------------------------------------------------------ |
@@ -737,19 +737,19 @@ OK
 
 
 
-# Arthas实践
+## Arthas实践
 
-## 需求
+### 需求
 
-### 1. 哪个Controller处理了请求
+#### 1. 哪个Controller处理了请求
 
 我们可以快速定位一个请求是被哪些`Filter`拦截的，或者请求最终是由哪些`Servlet`处理的。但有时，我们想知道一个请求是被哪个Spring MVC Controller处理的。如果翻代码的话，会比较难找，并且不一定准确。通过Arthas可以精确定位是哪个`Controller`处理请求。
 
-### 2. 每个请求的调用参数和返回值是多少
+#### 2. 每个请求的调用参数和返回值是多少
 
 通过watch来查看请求的参数和返回值
 
-## 准备场景
+### 准备场景
 
 将ssm_student.war项目部署到Linux的tomcat服务器下，可以正常访问。
 
@@ -759,14 +759,14 @@ OK
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200311201333701.png" alt="image-20200311201333701" style="zoom: 80%;" /> 
 
-## 步骤
+### 步骤
 
 1. trace定位DispatcherServlet
 2. jad反编译DispatcherServlet
 3. watch定位handler
 4. 使用watch得到方法的入参和返回值
 
-## 实现步骤
+### 实现步骤
 
 第1步：
 
@@ -810,7 +810,7 @@ watch com.itheima.controller.* * {params,returnObj} -x 2
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200322110452326.png" alt="image-20200322110452326" style="zoom:80%;" /> 
 
-## 结论
+### 结论
 
 通过trace, jad, watch最后得到这个操作由2个控制器来处理，分别是：
 
@@ -821,7 +821,7 @@ com.itheima.controller.StudentController.findAll()
 
 
 
-# 学习总结
+## 学习总结
 
 | 命令        | 说明                                                       |
 | ----------- | ---------------------------------------------------------- |

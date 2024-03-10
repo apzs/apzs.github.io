@@ -1,8 +1,8 @@
-# 12 【react高级指引（上）】
+## 12 【react高级指引（上）】
 
-## 1.setState 扩展
+### 1.setState 扩展
 
-### 1.1 对象式 setState
+#### 1.1 对象式 setState
 
 首先在我们以前的认知中，`setState` 是用来更新状态的，我们一般给它传递一个对象，就像这样
 
@@ -68,7 +68,7 @@ add = () => {
 
 这样我们就能成功的获取到最新的数据了，如果有这个需求我们可以在第二个参数输出噢~
 
-### 1.2 函数式 setState
+#### 1.2 函数式 setState
 
 ，函数式的 `setState` 也是接收两个参数
 
@@ -106,7 +106,7 @@ add = () => {
 
 > 可以理解为对象式的 `setState` 是函数式 `setState` 的语法糖
 
-### 1.3 总结
+#### 1.3 总结
 
 ```css
 (1). setState(stateChange, [callback])------对象式的setState
@@ -127,13 +127,13 @@ add = () => {
 ```
 
 
-## 2.Context
+### 2.Context
 
 在React中组件间的数据通信是通过props进行的，父组件给子组件设置props，子组件给后代组件设置props，props在组件间自上向下（父传子）的逐层传递数据。但并不是所有的数据都适合这种传递方式，有些数据需要在多个组件中共同使用，如果还通过props一层一层传递，麻烦自不必多说。
 
 Context为我们提供了一种在不同组件间共享数据的方式，它不再拘泥于props刻板的逐层传递，而是在外层组件中统一设置，设置后内层所有的组件都可以访问到Context中所存储的数据。换句话说，Context类似于JS中的全局作用域，可以将一些公共数据设置到一个同一个Context中，使得所有的组件都可以访问到这些数据。
 
-### 2.1 何时使用 Context
+#### 2.1 何时使用 Context
 
 Context 设计目的是为了共享那些对于一个组件树而言是“全局”的数据，例如当前认证的用户、主题或首选语言。举个例子，在下面的代码中，我们通过一个 “theme” 属性手动调整一个按钮组件的样式：
 
@@ -164,7 +164,7 @@ class C extends React.Component {
 
 使用 context, 我们可以避免通过中间元素传递 props。
 
-### 2.2 类式组件
+#### 2.2 类式组件
 
 当我们想要给子类的子类传递数据时，前面我们讲过了 redux 的做法，这里介绍的 Context 我觉得也类似于 Redux
 
@@ -268,7 +268,7 @@ class C extends Component {
 
 > 挂载在 class 上的 `contextType` 属性可以赋值为由 [`React.createContext()`](https://zh-hans.reactjs.org/docs/context.html#reactcreatecontext) 创建的 Context 对象。此属性可以让你使用 `this.context` 来获取最近 Context 上的值。你可以在任何生命周期中访问到它，包括 render 函数中。
 
-### 2.3 函数组件
+#### 2.3 函数组件
 
 函数组件和类式组件只有一点点小差别
 
@@ -327,7 +327,7 @@ function C(){
 
 Consumer的标签体必须是一个函数，这个函数会在组件渲染时调用并且将Context中存储的数据作为参数传递进函数，该函数的返回值将会作为组件被最终渲染到页面中。这里我们将参数命名为了ctx，在回调函数中我们就可以通过ctx.xxx访问到Context中的数据。如果需要访问多个Context可以使用多个Consumer嵌套即可。
 
-### 2.4 hook-useContext
+#### 2.4 hook-useContext
 
 通过Consumer使用Context实在是不够优雅，所以React还为我们提供了一个钩子函数`useContext()`，我们只需要将Context对象作为参数传递给钩子函数，它就会直接给我们返回Context对象中存储的数据。
 
@@ -362,9 +362,9 @@ function C(){
 }
 ```
 
-## 3.错误边界
+### 3.错误边界
 
-### 3.1 基本使用
+#### 3.1 基本使用
 
 当不可控因素导致数据不正常时，我们不能直接将报错页面呈现在用户的面前，由于我们没有办法给每一个组件、每一个文件添加判断，来确保正常运行，这样很不现实，因此我们要用到**错误边界**技术
 
@@ -407,7 +407,7 @@ static getDerivedStateFromError(error) {
 但是我们会发现这个效果过了几秒之后自动又出现报错页面了，那是因为**开发环境还是会报错**，**生产环境不会报错** 直接显示 要显示的文字，白话一些就是这个适用于生产环境，为了生产环境不报错。
 开发中我们可以将`Child出错啦`这种错误提示换成一个错误组件。
 
-### 3.2 综合案例
+#### 3.2 综合案例
 
 按照React官方的约定，一个类组件定义了**static getDerivedStateFromError()** 或**componentDidCatch()** 这两个生命周期函数中的任意一个（或两个），即可被称作ErrorBoundary组件，实现错误边界的功能。
 
@@ -497,7 +497,7 @@ export default App;
 
 ![image-20221027094444543](https://gitlab.com/apzs/image/-/raw/master/image/3269915e4f64c035ae9e3ce91a8bc1af11881fbd.png)
 
-### 3.3 让子组件不影响父组件正常显示案例
+#### 3.3 让子组件不影响父组件正常显示案例
 
 假设B组件（子组件）的出错：users不是一个数组，却是一个字符串。此时，会触发调用`getDerivedStateFromError`，并返回状态数据`{hasError:error}`。A组件（父组件）将根据hasError值判断是渲染备用的错误页面还是B组件。
 
@@ -551,7 +551,7 @@ class B extends Component {
 
 <img src="https://gitlab.com/apzs/image/-/raw/master/image/b79f78aeb57461debfea87d644ea5c8e4baec625.png" alt="image-20221027190233518"  />
 
-### 3.4 使用错误边界需要注意什么
+#### 3.4 使用错误边界需要注意什么
 
 没有什么技术栈或者技术思维是银弹，错误边界看起来用得很爽，但是需要注意以下几点：
 
@@ -563,7 +563,7 @@ class B extends Component {
 
 **总结：仅处理渲染子组件期间的同步错误**
 
-## 4.路由组件的lazyLoad
+### 4.路由组件的lazyLoad
 
 懒加载在 React 中用的最多的就是路由组件了，页面刷新时，所有的页面都会重新加载，这并不是我们想要的，我们想要实现点击哪个路由链接再加载即可，这样避免了不必要的加载
 
@@ -622,7 +622,7 @@ const About = lazy(() => import('./About'))
 
 > 注意：因为 loading 是作为一个兜底的存在，因此 loading 是 必须提前引入的，不能懒加载
 
-## 5.Fragment
+### 5.Fragment
 
 我们编写组件的时候每次都需要采用一个 `div` 标签包裹，才能让它正常的编译，但是这样会引发什么问题呢？我们打开控制台看看它的层级
 
@@ -664,11 +664,11 @@ render() {
 }
 ```
 
-# 13【react高级指引（下）】
+## 13【react高级指引（下）】
 
-## 1.组件优化
+### 1.组件优化
 
-### 1.1 shouldComponentUpdate 优化
+#### 1.1 shouldComponentUpdate 优化
 
 在我们之前一直写的代码中，我们一直使用的`Component` 是有问题存在的
 
@@ -714,7 +714,7 @@ class CounterButton extends React.Component {
 
 在这段代码中，`shouldComponentUpdate` 仅检查了 `props.color` 或 `state.count` 是否改变。如果这些值没有改变，那么这个组件不会更新。如果你的组件更复杂一些，你可以使用类似“浅比较”的模式来检查 `props` 和 `state` 中所有的字段，以此来决定是否组件需要更新。React 已经提供了一位好帮手来帮你实现这种常见的模式 - 你只要继承 `React.PureComponent` 就行了。
 
-### 1.2 PureComponent 优化
+#### 1.2 PureComponent 优化
 
 这段代码可以改成以下这种更简洁的形式：
 
@@ -755,7 +755,7 @@ addStu = ()=>{
 
 注释掉的那部分，我们是用`unshift`方法为`stus`数组添加了一项，它本身的地址是不变的，这样的话会被当做没有产生变化(因为引用数据类型比较的是地址)，所以我们平时都是采用合并数组的方式去更新数组。
 
-### 1.3 案例
+#### 1.3 案例
 
 ```jsx
 import React, { PureComponent } from 'react'
@@ -831,7 +831,7 @@ handleClick = () => {
 
 点击后不会有任何变化，`render`函数没有调用，这个时候其实是`shouldComponentUpdate`返回的`false`。
 
-## 2.Render Props
+### 2.Render Props
 
 **如何向组件内部动态传入带内容的结构(标签)?**
 
@@ -925,7 +925,7 @@ class B extends Component {
 
 ```
 
-## 3.Portal
+### 3.Portal
 
 Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
 
@@ -935,7 +935,7 @@ Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节�
 >
 > [portal – 李立超 | lilichao.com](https://www.lilichao.com/index.php/2022/03/22/portal/)
 
-### 3.1 问题的引出
+#### 3.1 问题的引出
 
 在React中，父组件引入子组件后，子组件会直接在父组件内部渲染。换句话说，React元素中的子组件，在DOM中，也会是其父组件对应DOM的后代元素。
 
@@ -1038,7 +1038,7 @@ const Box = props => {
 
 通过ReactDOM中的createPortal()方法，可以在渲染元素时将元素渲染到网页中的指定位置。这个方法就和他的名字一样，给React元素开启了一个传送门，让它可以去到它应该去的地方。
 
-### 3.2 Portal的用法
+#### 3.2 Portal的用法
 
 1. 在index.html中添加一个新的元素
 2. 在组件中中通过ReactDOM.createPortal()将元素渲染到新建的元素中
@@ -1077,7 +1077,7 @@ const Backdrop = () => {
 
 如此一来，我们虽然是在Box中引入了Backdrop，但是由于在Backdrop中开启了“传送门”，Backdrop就会直接渲染到网页中id为backdrop的div中，这样一来上边的问题就解决了
 
-### 3.3 通过 Portal 进行事件冒泡
+#### 3.3 通过 Portal 进行事件冒泡
 
 尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 *React 树*， 且与 *DOM 树* 中的位置无关，那么无论其子节点是否是 portal，像 context 这样的功能特性都是不变的。
 
