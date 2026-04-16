@@ -34,13 +34,11 @@ export default hopeTheme({
     // 介绍页
     // intro: "/intro.html",
     medias: {
-      Email: "apzs@foxmail.com",
+      Email: "mailto:apzs@foxmail.com",
       Gitee: "https://gitee.com/apzs",
       GitHub: "https://github.com/apzs",
       Gitlab: "https://gitlab.com/apzs",
-      Gmail: "striveanonymouszs@gmail.com",
-      QQ: "2162231836",
-      Wechat: "anonymouszszs",
+      Gmail: "mailto:striveanonymouszs@gmail.com",
     },
   },
 
