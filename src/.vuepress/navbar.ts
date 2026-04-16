@@ -212,4 +212,9 @@ export default navbar([
             }
         ]
     },
+    {
+        text: "面试题",
+        icon: "book",
+        link: "/interview/README.md"
+    },
 ]);
