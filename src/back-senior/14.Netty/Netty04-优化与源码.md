@@ -1444,7 +1444,7 @@ protected void run() {
 
 参考下图
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/0032.png"  />
+<img src="./image/0032.png"  />
 
 
 

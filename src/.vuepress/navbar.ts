@@ -169,7 +169,12 @@ export default navbar([
                 children: [
                     { text: 'K8s & kubesphere', icon: "braille", link: 'cluster' },
                 ]
-            }
+            },
+            {
+                text: '运行教程',
+                icon: "run",
+                link: ''
+            },
 
         ]
     },

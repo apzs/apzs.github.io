@@ -4,7 +4,7 @@
 
 ### Arthas（阿尔萨斯） 能为你做什么？
 
-![image-20200305153259359](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305153259359.png) 
+![image-20200305153259359](./image/image-20200305153259359.png) 
 
 `Arthas` 是Alibaba开源的Java诊断工具，深受开发者喜爱。
 
@@ -55,13 +55,13 @@ java -jar arthas-boot.jar --repo-mirror aliyun --use-http
 
 1. 在c:\下创建目录arthas，在windows命令窗口下，使用curl命令下载阿里服务器上的jar包，大小108k
 
-   ![image-20200305153935492](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305153935492.png) 
+   ![image-20200305153935492](./image/image-20200305153935492.png) 
 
    
 
 2. 使用java启动arthas-boot.jar，来安装arthas，大小约10M。运行此命令会发现java进程，输入1按回车。则自动从远程主机上下载arthas到本地目录
 
-   ![image-20200305154855501](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305154855501.png)
+   ![image-20200305154855501](./image/image-20200305154855501.png)
 
 3. 查看安装好的目录
 
@@ -69,7 +69,7 @@ java -jar arthas-boot.jar --repo-mirror aliyun --use-http
    C:\Users\Administrator\.arthas\lib\3.1.7\arthas\
    ```
 
-   <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200305155123449.png" alt="image-20200305155123449" style="zoom: 80%;" /> 
+   <img src="./image/image-20200305155123449.png" alt="image-20200305155123449" style="zoom: 80%;" /> 
 
 ### 小结
 
@@ -88,7 +88,7 @@ java -jar arthas-boot.jar --repo-mirror aliyun --use-http
 
 https://maven.aliyun.com/repository/public/com/taobao/arthas/arthas-packaging/3.1.7/arthas-packaging-3.1.7-bin.zip
 
-![image-20200305160520986](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305160520986.png) 
+![image-20200305160520986](./image/image-20200305160520986.png) 
 
 2. 解压后，在文件夹里有`arthas-boot.jar`，直接用`java -jar`的方式启动：
 
@@ -102,7 +102,7 @@ java -jar arthas-boot.jar
 unzip -d arthas arthas-packaging-3.1.7-bin.zip
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310141654101.png" alt="image-20200310141654101" style="zoom:80%;" /> 
+<img src="./image/image-20200310141654101.png" alt="image-20200310141654101" style="zoom:80%;" /> 
 
 ### 小结
 
@@ -128,11 +128,11 @@ rm -rf ~/logs/arthas
 
 1. 安装主目录
 
-   ![image-20200305155611311](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305155611311.png) 
+   ![image-20200305155611311](./image/image-20200305155611311.png) 
 
 2. 日志记录目录
 
-   ![image-20200305155504945](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305155504945.png) 
+   ![image-20200305155504945](./image/image-20200305155504945.png) 
 
 ### 小结
 
@@ -248,7 +248,7 @@ java -jar arthas-demo.jar
 
 ##### 效果
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200305161852822.png" alt="image-20200305161852822" style="zoom:80%;" />  
+<img src="./image/image-20200305161852822.png" alt="image-20200305161852822" style="zoom:80%;" />  
 
 
 
@@ -257,11 +257,11 @@ java -jar arthas-demo.jar
 1. 因为arthas-demo.jar进程打开了一个窗口，所以另开一个命令窗口执行arthas-boot.jar
 2. 选择要粘附的进程：arthas-demo.jar
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200305162944714.png" alt="image-20200305162944714" style="zoom:80%;" /> 
+<img src="./image/image-20200305162944714.png" alt="image-20200305162944714" style="zoom:80%;" /> 
 
 3. 如果粘附成功，在arthas-demo.jar那个窗口中会出现日志记录的信息，记录在c:\Users\Administrator\logs目录下
 
-![image-20200305163414111](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305163414111.png)
+![image-20200305163414111](./image/image-20200305163414111.png)
 
 
 
@@ -279,7 +279,7 @@ Arthas目前支持Web Console，用户在attach成功之后，可以直接访问
 
 可以填入IP，远程连接其它机器上的arthas。
 
-![image-20200310091357372](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310091357372.png)
+![image-20200310091357372](./image/image-20200310091357372.png)
 
 默认情况下，arthas只listen 127.0.0.1，所以如果想从远程连接，则可以使用 `--target-ip`参数指定listen的IP
 
@@ -312,7 +312,7 @@ Arthas目前支持Web Console，用户在attach成功之后，可以直接访问
 2. 第二部分显示的JVM内存的使用情况
 3. 第三部分是操作系统的一些信息和Java版本号
 
-![image-20200305164047346](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305164047346.png)
+![image-20200305164047346](./image/image-20200305164047346.png)
 
 
 
@@ -322,7 +322,7 @@ Arthas目前支持Web Console，用户在attach成功之后，可以直接访问
 
 `thread 1`会打印线程ID 1的栈，通常是main函数的线程。
 
-![image-20200305192646737](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305192646737.png) 
+![image-20200305192646737](./image/image-20200305192646737.png) 
 
 
 
@@ -332,7 +332,7 @@ Arthas目前支持Web Console，用户在attach成功之后，可以直接访问
 jad demo.MathGame
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200305194029146.png" alt="image-20200305194029146" style="zoom:80%;" /> 
+<img src="./image/image-20200305194029146.png" alt="image-20200305194029146" style="zoom:80%;" /> 
 
 
 
@@ -344,7 +344,7 @@ jad demo.MathGame
 $ watch demo.MathGame primeFactors returnObj
 ```
 
-![image-20200305194740589](https://gitlab.com/apzs/image/-/raw/master/image/image-20200305194740589.png) 
+![image-20200305194740589](./image/image-20200305194740589.png) 
 
 
 
@@ -396,7 +396,7 @@ $ watch demo.MathGame primeFactors returnObj
 
 #### 效果
 
-![image-20200310092304402](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310092304402.png)
+![image-20200310092304402](./image/image-20200310092304402.png)
 
 
 
@@ -410,7 +410,7 @@ $ watch demo.MathGame primeFactors returnObj
 
 #### 效果
 
-![image-20200310094255080](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310094255080.png)
+![image-20200310094255080](./image/image-20200310094255080.png)
 
 
 
@@ -435,28 +435,28 @@ $ watch demo.MathGame primeFactors returnObj
 只显示包含java字符串的行系统属性
 sysprop | grep java
 ```
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310100425059.png" alt="image-20200310100425059" style="zoom:80%;" /> 
+<img src="./image/image-20200310100425059.png" alt="image-20200310100425059" style="zoom:80%;" /> 
 
 ```
 显示包含java字符串的行和行号的系统属性
 sysprop | grep java -n
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310100505632.png" alt="image-20200310100505632" style="zoom:80%;" /> 
+<img src="./image/image-20200310100505632.png" alt="image-20200310100505632" style="zoom:80%;" /> 
 
 ```
 显示包含system字符串的10行信息
 thread | grep system -m 10
 ```
 
-![image-20200310101905466](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310101905466.png) 
+![image-20200310101905466](./image/image-20200310101905466.png) 
 
 ```
 使用正则表达式，显示包含2个o字符的线程信息
 thread | grep -e "o+"
 ```
 
-![image-20200310120512042](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310120512042.png) 
+![image-20200310120512042](./image/image-20200310120512042.png) 
 
 
 
@@ -470,7 +470,7 @@ pwd: Print Work Directory 打印当前工作目录
 
 #### 效果
 
-![image-20200310121645656](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310121645656.png) 
+![image-20200310121645656](./image/image-20200310121645656.png) 
 
 
 
@@ -511,7 +511,7 @@ pwd: Print Work Directory 打印当前工作目录
 
 #### 效果
 
-![image-20200310121756253](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310121756253.png) 
+![image-20200310121756253](./image/image-20200310121756253.png) 
 
 
 
@@ -536,7 +536,7 @@ reset
 
 #### 效果
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310133822171.png" alt="image-20200310133822171" style="zoom:80%;" /> 
+<img src="./image/image-20200310133822171.png" alt="image-20200310133822171" style="zoom:80%;" /> 
 
 
 
@@ -548,7 +548,7 @@ reset
 
 #### 效果
 
-![image-20200310135728790](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310135728790.png) 
+![image-20200310135728790](./image/image-20200310135728790.png) 
 
 
 
@@ -560,7 +560,7 @@ reset
 
 #### 效果
 
-![image-20200310135806184](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310135806184.png) 
+![image-20200310135806184](./image/image-20200310135806184.png) 
 
 
 
@@ -580,7 +580,7 @@ reset
 
 #### 效果
 
-![image-20200310140114118](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310140114118.png)
+![image-20200310140114118](./image/image-20200310140114118.png)
 
 
 
@@ -592,7 +592,7 @@ Arthas快捷键列表及自定义快捷键
 
 #### 效果
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310140330818.png" alt="image-20200310140330818" style="zoom:80%;" /> 
+<img src="./image/image-20200310140330818.png" alt="image-20200310140330818" style="zoom:80%;" /> 
 
 
 
@@ -657,7 +657,7 @@ Arthas快捷键列表及自定义快捷键
 
 #### 效果
 
-![image-20200310154559668](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310154559668.png)
+![image-20200310154559668](./image/image-20200310154559668.png)
 
 #### 数据说明
 
@@ -695,7 +695,7 @@ Arthas快捷键列表及自定义快捷键
 thread -n 3
 ```
 
-![image-20200310155221455](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310155221455.png) 
+![image-20200310155221455](./image/image-20200310155221455.png) 
 
 ```
 当没有参数时，显示所有线程的信息
@@ -707,28 +707,28 @@ thread
 thread 1
 ```
 
-![image-20200310155351705](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310155351705.png) 
+![image-20200310155351705](./image/image-20200310155351705.png) 
 
 ```
 找出当前阻塞其他线程的线程，有时候我们发现应用卡住了， 通常是由于某个线程拿住了某个锁， 并且其他线程都在等待这把锁造成的。 为了排查这类问题， arthas提供了thread -b， 一键找出那个罪魁祸首。
 thread -b
 ```
 
-![image-20200310155534864](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310155534864.png) 
+![image-20200310155534864](./image/image-20200310155534864.png) 
 
 ```
 指定采样时间间隔，每过1000毫秒采样，显示最占时间的3个线程
 thread -i 1000 -n 3
 ```
 
-![image-20200310155902397](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310155902397.png) 
+![image-20200310155902397](./image/image-20200310155902397.png) 
 
 ```
 查看处于等待状态的线程
 thread --state WAITING
 ```
 
-![image-20200310160036202](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310160036202.png) 
+![image-20200310160036202](./image/image-20200310160036202.png) 
 
 
 
@@ -740,7 +740,7 @@ thread --state WAITING
 
 #### 效果
 
-![image-20200310160418837](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310160418837.png) 
+![image-20200310160418837](./image/image-20200310160418837.png) 
 
 #### THREAD相关
 
@@ -773,7 +773,7 @@ sysprop
 sysprop java.version
 ```
 
-![image-20200310161328775](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310161328775.png) 
+![image-20200310161328775](./image/image-20200310161328775.png) 
 
 ```
 修改单个属性
@@ -785,7 +785,7 @@ Successfully changed the system property.
 user.country=CN
 ```
 
-![image-20200310161425897](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310161425897.png) 
+![image-20200310161425897](./image/image-20200310161425897.png) 
 
 
 
@@ -827,7 +827,7 @@ sysenv USER
 
 #### 效果
 
-![image-20200310161659199](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310161659199.png) 
+![image-20200310161659199](./image/image-20200310161659199.png) 
 
 
 
@@ -847,14 +847,14 @@ vmoption
 vmoption PrintGCDetails
 ```
 
-![image-20200310162027027](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310162027027.png) 
+![image-20200310162027027](./image/image-20200310162027027.png) 
 
 ```
 更新指定的选项
 vmoption PrintGCDetails true
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310162052792.png" alt="image-20200310162052792" style="zoom:80%;" /> 
+<img src="./image/image-20200310162052792.png" alt="image-20200310162052792" style="zoom:80%;" /> 
 
 
 
@@ -877,7 +877,7 @@ getstatic 类名 属性名
 getstatic demo.MathGame random
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310163124333.png" alt="image-20200310163124333" style="zoom:80%;" />  
+<img src="./image/image-20200310163124333.png" alt="image-20200310163124333" style="zoom:80%;" />  
 
 
 
@@ -893,7 +893,7 @@ getstatic demo.MathGame random
 http://commons.apache.org/proper/commons-ognl/language-guide.html
 ```
 
-![image-20200319143015562](https://gitlab.com/apzs/image/-/raw/master/image/image-20200319143015562.png)
+![image-20200319143015562](./image/image-20200319143015562.png)
 
 #### 参数说明
 
@@ -918,7 +918,7 @@ ognl '#value1=@System@getProperty("java.home"), #value2=@System@getProperty("jav
 
 #### 效果
 
-![image-20200310165348164](https://gitlab.com/apzs/image/-/raw/master/image/image-20200310165348164.png)
+![image-20200310165348164](./image/image-20200310165348164.png)
 
 
 
@@ -968,14 +968,14 @@ sc demo.*
 sc -d demo.MathGame
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310183345427.png" alt="image-20200310183345427" style="zoom: 67%;" /> 
+<img src="./image/image-20200310183345427.png" alt="image-20200310183345427" style="zoom: 67%;" /> 
 
 ```
 打印出类的Field信息
 sc -df demo.MathGame
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310183455546.png" alt="image-20200310183455546" style="zoom: 67%;" /> 
+<img src="./image/image-20200310183455546.png" alt="image-20200310183455546" style="zoom: 67%;" /> 
 
 
 
@@ -1005,14 +1005,14 @@ sc -df demo.MathGame
 sm java.lang.String
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310195834379.png" alt="image-20200310195834379" style="zoom:80%;" /> 
+<img src="./image/image-20200310195834379.png" alt="image-20200310195834379" style="zoom:80%;" /> 
 
 ```
 显示String中的toString方法详细信息
 sm -d java.lang.String toString
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310195915544.png" alt="image-20200310195915544" style="zoom:80%;" /> 
+<img src="./image/image-20200310195915544.png" alt="image-20200310195915544" style="zoom:80%;" /> 
 
 
 
@@ -1064,14 +1064,14 @@ jad java.lang.String
 jad --source-only demo.MathGame
 ```
 
- <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310214123430.png" alt="image-20200310214123430" style="zoom: 67%;" /> 
+ <img src="./image/image-20200310214123430.png" alt="image-20200310214123430" style="zoom: 67%;" /> 
 
 ```
 反编译指定的函数
 jad demo.MathGame main
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310214327498.png" alt="image-20200310214327498" style="zoom: 67%;" /> 
+<img src="./image/image-20200310214327498.png" alt="image-20200310214327498" style="zoom: 67%;" /> 
 
 
 
@@ -1093,7 +1093,7 @@ mc -d /root/bbb /root/Hello.java
 
 #### 效果
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310215259222.png" alt="image-20200310215259222" style="zoom:80%;" /> 
+<img src="./image/image-20200310215259222.png" alt="image-20200310215259222" style="zoom:80%;" /> 
 
 
 
@@ -1163,9 +1163,9 @@ redefine /root/demo/MathGame.class
 
 ##### 结果
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310222846411.png" alt="image-20200310222846411" style="zoom: 67%;" /> 
+<img src="./image/image-20200310222846411.png" alt="image-20200310222846411" style="zoom: 67%;" /> 
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20200310222756483.png" alt="image-20200310222756483" style="zoom: 67%;" /> 
+<img src="./image/image-20200310222756483.png" alt="image-20200310222756483" style="zoom: 67%;" /> 
 
 ### 小结
 

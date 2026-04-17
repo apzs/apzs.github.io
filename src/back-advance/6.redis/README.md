@@ -19,7 +19,7 @@ Redis是一种键值型的NoSQL数据库，这里有两个关键字
 
 而NoSQL则对数据库格式没有约束，可以是键值型，也可以是文档型，甚至是图格式
 
-![image-20230309154525986](https://gitlab.com/apzs/image/-/raw/master/image/image-20230309154525986.png)
+![image-20230309154525986](./image/image-20230309154525986.png)
 
 #### 关联与非关联
 
@@ -49,7 +49,7 @@ Redis是一种键值型的NoSQL数据库，这里有两个关键字
 
 例如此处要维护张三与两个手机订单的关系，不得不冗余的将这两个商品保存在张三的订单文档中，不够优雅，所以建议使用业务逻辑来维护关联关系
 
-![image-20230309154903011](https://gitlab.com/apzs/image/-/raw/master/image/image-20230309154903011.png)
+![image-20230309154903011](./image/image-20230309154903011.png)
 
 #### 查询方式
 
@@ -68,7 +68,7 @@ MongoDB: db.user.find({_id: 1})
 elasticsearch:  GET http://localhost:9200/users/1
 ```
 
-![image-20230309155047999](https://gitlab.com/apzs/image/-/raw/master/image/image-20230309155047999.png)
+![image-20230309155047999](./image/image-20230309155047999.png)
 
 #### 事务
 
@@ -171,7 +171,7 @@ yamlCopy code● redis.service - Redis persistent key-value database
 
 其中 `Active: active (running)` 表示 Redis 正在运行。如果您看到类似的输出，那么您已经成功安装并启动了 Redis 服务。
 
-点击查看完整[redis安装完整过程](https://gitlab.com/apzs/image/-/raw/master/image/redis安装完整过程.png)
+点击查看完整[redis安装完整过程](./image/redis安装完整过程.png)
 
 ### 修改配置
 
@@ -307,7 +307,7 @@ OK
 ## Redis常用命令
 
 Redis是典型的key-value数据库，key一般是字符串，而value包含很多不同的数据类型
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/63527eb616f2c2beb12beb85.jpg)](https://pic1.imgdb.cn/item/63527eb616f2c2beb12beb85.jpg)
+[![img](./image/63527eb616f2c2beb12beb85.jpg)](https://pic1.imgdb.cn/item/63527eb616f2c2beb12beb85.jpg)
 
 ### Redis通用命令
 
@@ -488,7 +488,7 @@ String的常见命令有：
 |   blpop key [key ...] timeout   | `blpop`和`lpop`类似，只不过在没有该元素时等待指定时间（单位为秒，非准确时间，但等待时间`>=`指定时间），而不是直接返回`(nil)` | 如果有则立即返回该`key`和从左侧删除的`value`，如果没有则等待指定秒，超过该秒后还没有则返回`(nil)` | `blpop users 2`：如果左侧有`value`则立即返回`key`和删除的`value`，如果没有则等待指定时间，超过该时间后还没有则返回`(nil)` |
 |   brpop key [key ...] timeout   | `brpop`和`rpop`类似，只不过在没有该元素时等待指定时间（单位为秒，非准确时间，但等待时间`>=`指定时间），而不是直接返回`(nil)` | 如果有则立即返回该`key`和从右侧删除的`value`，如果没有则等待指定秒，超过该秒后还没有则返回`(nil)` | `brpop users 2`：如果右侧有`value`则立即返回`key`和删除的`value`，如果没有则等待指定时间，超过该时间后还没有则返回`(nil)` |
 
-![image-20230310100436263](https://gitlab.com/apzs/image/-/raw/master/image/image-20230310100436263.png)
+![image-20230310100436263](./image/image-20230310100436263.png)
 
 ### Set类型
 
@@ -1106,7 +1106,7 @@ void testHash(){
 - 手机或者app端发起请求，请求我们的Nginx服务器，Nginx基于七层模型走的事HTTP协议，可以实现基于Lua直接绕开Tomcat访问Redis，也可以作为静态资源服务器，轻松扛下上万并发， 负载均衡到下游Tomcat服务器，打散流量，我们都知道一台4核8G的Tomcat，在优化和处理简单业务的加持下，大不了就处理1000左右的并发， 经过Nginx的负载均衡分流后，利用集群支撑起整个项目，同时Nginx在部署了前端项目后，更是可以做到动静分离，进一步降低Tomcat服务的压力，这些功能都得靠Nginx起作用，所以Nginx是整个项目中重要的一环。
 - 在Tomcat支撑起并发流量后，我们如果让Tomcat直接去访问Mysql，根据经验Mysql企业级服务器只要上点并发，一般是16或32 核心cpu，32 或64G内存，像企业级mysql加上固态硬盘能够支撑的并发，大概就是4000起~7000左右，上万并发， 瞬间就会让Mysql服务器的cpu，硬盘全部打满，容易崩溃，所以我们在高并发场景下，会选择使用mysql集群，同时为了进一步降低Mysql的压力，同时增加访问的性能，我们也会加入Redis，同时使用Redis集群使得Redis对外提供更好的服务。
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/6353709216f2c2beb134e44b.jpg)](https://pic1.imgdb.cn/item/6353709216f2c2beb134e44b.jpg)
+[![img](./image/6353709216f2c2beb134e44b.jpg)](https://pic1.imgdb.cn/item/6353709216f2c2beb134e44b.jpg)
 
 #### 导入后端项目
 
@@ -1125,7 +1125,7 @@ void testHash(){
   ```
 
 - 访问http://localhost:8080/， 打开开发者模式，可以看到页面
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6353775b16f2c2beb140da1d.jpg)](https://pic1.imgdb.cn/item/6353775b16f2c2beb140da1d.jpg)
+  [![img](./image/6353775b16f2c2beb140da1d.jpg)](https://pic1.imgdb.cn/item/6353775b16f2c2beb140da1d.jpg)
 
 ### 基于Session实现登录流程
 
@@ -1733,13 +1733,13 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 - 在这个方案中，他确实可以使用对应路径的拦截，同时刷新登录token令牌的存活时间，但是现在这个拦截器他只是拦截需要被拦截的路径，假设当前用户访问了一些不需要拦截的路径，那么这个拦截器就不会生效，所以此时令牌刷新的动作实际上就不会执行，所以这个方案他是存在问题的
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/6353edd016f2c2beb1f967f0.jpg)](https://pic1.imgdb.cn/item/6353edd016f2c2beb1f967f0.jpg)
+[![img](./image/6353edd016f2c2beb1f967f0.jpg)](https://pic1.imgdb.cn/item/6353edd016f2c2beb1f967f0.jpg)
 
 #### 优化方案
 
 - 既然之前的拦截器无法对不需要拦截的路径生效，那么我们可以添加一个拦截器，在第一个拦截器中拦截所有的路径，把第二个拦截器做的事情放入到第一个拦截器中，同时刷新令牌，因为第一个拦截器有了threadLocal的数据，所以此时第二个拦截器只需要判断拦截器中的user对象是否存在即可，完成整体刷新功能。
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/6353ef1416f2c2beb1fb5e48.jpg)](https://pic1.imgdb.cn/item/6353ef1416f2c2beb1fb5e48.jpg)
+[![img](./image/6353ef1416f2c2beb1fb5e48.jpg)](https://pic1.imgdb.cn/item/6353ef1416f2c2beb1fb5e48.jpg)
 
 - 新建一个`RefreshTokenInterceptor`类，其业务逻辑与之前的`LoginInterceptor`类似，就算遇到用户未登录，也继续放行，交给`LoginInterceptor`处理。由于这个对象是我们手动在WebConfig里创建的，所以这里不能用@AutoWired自动装配，只能声明一个私有的，到了WebConfig里再自动装配
 
@@ -1916,12 +1916,12 @@ public class LoginInterceptor implements HandlerInterceptor {
   
 - 所以我们可以在客户端与数据库之间加上一个Redis缓存，先从Redis中查询，如果没有查到，再去MySQL中查询，同时查询完毕之后，将查询到的数据也存入Redis，这样当下一个用户来进行查询的时候，就可以直接从Redis中获取到数据
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/6354a19216f2c2beb1b095dd.jpg)](https://pic1.imgdb.cn/item/6354a19216f2c2beb1b095dd.jpg)
+[![img](./image/6354a19216f2c2beb1b095dd.jpg)](https://pic1.imgdb.cn/item/6354a19216f2c2beb1b095dd.jpg)
 
 #### 缓存模型和思路
 
 - 标准的操作方式就是查询数据库之前先查询缓存，如果缓存数据存在，则直接从缓存中返回，如果缓存数据不存在，再查询数据库，然后将数据存入Redis。
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354a1aa16f2c2beb1b0aa83.jpg)](https://pic1.imgdb.cn/item/6354a1aa16f2c2beb1b0aa83.jpg)
+  [![img](./image/6354a1aa16f2c2beb1b0aa83.jpg)](https://pic1.imgdb.cn/item/6354a1aa16f2c2beb1b0aa83.jpg)
 
 #### 代码实现
 
@@ -2000,10 +2000,10 @@ public Result queryTypeList() {
 - 先操作缓存还是先操作数据库？我们来仔细分析一下这两种方式的线程安全问题
 - 先删除缓存，在操作数据库
   删除缓存的操作很快，但是更新数据库的操作相对较慢，如果此时有一个线程2刚好进来查询缓存，由于我们刚刚才删除缓存，所以线程2需要查询数据库，并写入缓存，但是我们更新数据库的操作还未完成，所以线程2查询到的数据是脏数据，出现线程安全问题
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354be3e16f2c2beb1d11bd0.jpg)](https://pic1.imgdb.cn/item/6354be3e16f2c2beb1d11bd0.jpg)
+  [![img](./image/6354be3e16f2c2beb1d11bd0.jpg)](https://pic1.imgdb.cn/item/6354be3e16f2c2beb1d11bd0.jpg)
 - 先操作数据库，再删除缓存
   线程1在查询缓存的时候，缓存TTL刚好失效，需要查询数据库并写入缓存，这个操作耗时相对较短（相比较于上图来说），但是就在这么短的时间内，线程2进来了，更新数据库，删除缓存，但是线程1虽然查询完了数据（更新前的旧数据），但是还没来得及写入缓存，所以线程2的更新数据库与删除缓存，并没有影响到线程1的查询旧数据，写入缓存，造成线程安全问题
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354be5316f2c2beb1d130c0.jpg)](https://pic1.imgdb.cn/item/6354be5316f2c2beb1d130c0.jpg)
+  [![img](./image/6354be5316f2c2beb1d130c0.jpg)](https://pic1.imgdb.cn/item/6354be5316f2c2beb1d130c0.jpg)
 - 虽然这二者都存在线程安全问题，但是相对来说，后者出现线程安全问题的概率相对较低，所以我们最终采用后者`先操作数据库，再删除缓存`的方案
 
 ### 实现商铺缓存与数据库双写一致
@@ -2193,18 +2193,18 @@ public Result queryTypeList() {
   1. 互斥锁
   2. 逻辑过期
 - `逻辑分析`：假设线程1在查询缓存之后未命中，本来应该去查询数据库，重建缓存数据，完成这些之后，其他线程也就能从缓存中加载这些数据了。但是在线程1还未执行完毕时，又进来了线程2、3、4同时来访问当前方法，那么这些线程都不能从缓存中查询到数据，那么他们就会在同一时刻访问数据库，执行SQL语句查询，对数据库访问压力过大
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354f77716f2c2beb1225032.jpg)](https://pic1.imgdb.cn/item/6354f77716f2c2beb1225032.jpg)
+  [![img](./image/6354f77716f2c2beb1225032.jpg)](https://pic1.imgdb.cn/item/6354f77716f2c2beb1225032.jpg)
 - `解决方案一`：互斥锁
 - 利用锁的互斥性，假设线程过来，只能一个人一个人的访问数据库，从而避免对数据库频繁访问产生过大压力，但这也会影响查询的性能，将查询的性能从并行变成了串行，我们可以采用tryLock方法+double check来解决这个问题
 - 线程1在操作的时候，拿着锁把房门锁上了，那么线程2、3、4就不能都进来操作数据库，只有1操作完了，把房门打开了，此时缓存数据也重建好了，线程2、3、4直接从redis中就可以查询到数据。
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/6354f76816f2c2beb1223b47.jpg)](https://pic1.imgdb.cn/item/6354f76816f2c2beb1223b47.jpg)
+[![img](./image/6354f76816f2c2beb1223b47.jpg)](https://pic1.imgdb.cn/item/6354f76816f2c2beb1223b47.jpg)
 
 - `解决方案二`：逻辑过期方案
 - 方案分析：我们之所以会出现缓存击穿问题，主要原因是在于我们对key设置了TTL，如果我们不设置TTL，那么就不会有缓存击穿问题，但是不设置TTL，数据又会一直占用我们的内存，所以我们可以采用逻辑过期方案
 - 我们之前是TTL设置在redis的value中，注意：这个过期时间并不会直接作用于Redis，而是我们后续通过逻辑去处理。假设线程1去查询缓存，然后从value中判断当前数据已经过期了，此时线程1去获得互斥锁，那么其他线程会进行阻塞，获得了锁的进程他会开启一个新线程去进行之前的重建缓存数据的逻辑，直到新开的线程完成者逻辑之后，才会释放锁，而线程1直接进行返回，假设现在线程3过来访问，由于线程2拿着锁，所以线程3无法获得锁，线程3也直接返回数据（但只能返回旧数据，牺牲了数据一致性，换取性能上的提高），只有等待线程2重建缓存数据之后，其他线程才能返回正确的数据
 - 这种方案巧妙在于，异步构建缓存数据，缺点是在重建完缓存数据之前，返回的都是脏数据
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354f97716f2c2beb124e950.jpg)](https://pic1.imgdb.cn/item/6354f97716f2c2beb124e950.jpg)
+  [![img](./image/6354f97716f2c2beb124e950.jpg)](https://pic1.imgdb.cn/item/6354f97716f2c2beb124e950.jpg)
 
 ### 对比互斥锁与逻辑删除
 
@@ -2221,7 +2221,7 @@ public Result queryTypeList() {
 - `核心思路`：相较于原来从缓存中查询不到数据后直接查询数据库而言，现在的方案是，进行查询之后，如果没有从缓存中查询到数据，则进行互斥锁的获取，获取互斥锁之后，判断是否获取到了锁，如果没获取到，则休眠一段时间，过一会儿再去尝试，知道获取到锁为止，才能进行查询
 
 - 如果获取到了锁的线程，则进行查询，将查询到的数据写入Redis，再释放锁，返回数据，利用互斥锁就能保证只有一个线程去执行数据库的逻辑，防止缓存击穿
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6354fb8116f2c2beb127ac8b.jpg)](https://pic1.imgdb.cn/item/6354fb8116f2c2beb127ac8b.jpg)
+  [![img](./image/6354fb8116f2c2beb127ac8b.jpg)](https://pic1.imgdb.cn/item/6354fb8116f2c2beb127ac8b.jpg)
 
 - `操作锁的代码`
 
@@ -2345,7 +2345,7 @@ public Result queryTypeList() {
   
 - 如果日志输出了好多SQL语句，则说明我们的代码有问题
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/6356424916f2c2beb1a493ea.jpg)](https://pic1.imgdb.cn/item/6356424916f2c2beb1a493ea.jpg)
+[![img](./image/6356424916f2c2beb1a493ea.jpg)](https://pic1.imgdb.cn/item/6356424916f2c2beb1a493ea.jpg)
 
 ### 利用逻辑过期解决缓存击穿问题
 
@@ -2357,7 +2357,7 @@ public Result queryTypeList() {
 - 如果命中，则将value取出，判断value中的过期时间是否满足
   - 如果没有过期，则直接返回redis中的数据
   - 如果过期，则在开启独立线程后，直接返回之前的数据，独立线程去重构数据，重构完成后再释放互斥锁
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/6355073c16f2c2beb1375808.jpg)](https://pic1.imgdb.cn/item/6355073c16f2c2beb1375808.jpg)
+    [![img](./image/6355073c16f2c2beb1375808.jpg)](https://pic1.imgdb.cn/item/6355073c16f2c2beb1375808.jpg)
 
 - 封装数据：因为现在redis中存储的数据的value需要带上过期时间，此时要么你去修改原来的实体类，要么新建一个类包含原有的数据和过期时间
 
@@ -2499,7 +2499,7 @@ public Result queryTypeList() {
   - 之后去数据库把这个数据修改一下，这样逻辑过期前和逻辑过期后的数据就不一致，当用户来访问数据的时候，需要花时间来进行重构缓存数据，但是在重构完成之前，都只能获得脏数据（也就是我们修改前的数据），只有当重构完毕之后，才能获得新数据（我们修改后的数据）
 
   - 测试结果如下，同样是开了100个线程去访问逻辑过期数据，前面的用户只能看到脏数据，后面的用户看到的才是新数据
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/6356558116f2c2beb1d8a832.jpg)](https://pic1.imgdb.cn/item/6356558116f2c2beb1d8a832.jpg)
+    [![img](./image/6356558116f2c2beb1d8a832.jpg)](https://pic1.imgdb.cn/item/6356558116f2c2beb1d8a832.jpg)
 
 ### 封装Redis工具类
 
@@ -2957,7 +2957,7 @@ public Result queryTypeList() {
   ```
   
 - 效果如下
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6358bbb316f2c2beb1b7967c.jpg)](https://pic1.imgdb.cn/item/6358bbb316f2c2beb1b7967c.jpg)
+  [![img](./image/6358bbb316f2c2beb1b7967c.jpg)](https://pic1.imgdb.cn/item/6358bbb316f2c2beb1b7967c.jpg)
 
 ### 实现秒杀下单
 
@@ -2992,7 +2992,7 @@ public Result queryTypeList() {
     - 没开始，则返回一个错误信息
 
 - 对应的流程图如下
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6358c21a16f2c2beb1bfd43a.jpg)](https://pic1.imgdb.cn/item/6358c21a16f2c2beb1bfd43a.jpg)
+  [![img](./image/6358c21a16f2c2beb1bfd43a.jpg)](https://pic1.imgdb.cn/item/6358c21a16f2c2beb1bfd43a.jpg)
 
 - 那现在我们就根据我们刚刚的分析和流程图，来编写对应的代码
 
@@ -3025,10 +3025,10 @@ public Result queryTypeList() {
 - 我们之前的代码其实是有问题的，当遇到高并发场景时，会出现超卖现象，我们可以用Jmeter开200个线程来模拟抢优惠券的场景，URL为 localhost:8081/voucher-order/seckill/13，请求方式为POST
 
   注意使用Jmeter进行压测时，需要携带我们登录的token
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635a168316f2c2beb193f83d.jpg)](https://pic1.imgdb.cn/item/635a168316f2c2beb193f83d.jpg)
+  [![img](./image/635a168316f2c2beb193f83d.jpg)](https://pic1.imgdb.cn/item/635a168316f2c2beb193f83d.jpg)
 
 - 测试完毕之后，查看数据库中的订单表，我们明明只设置了100张优惠券，却有166条数据，去优惠券表查看，库存为-66，超卖了66张
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635a16d316f2c2beb19443a7.jpg)](https://pic1.imgdb.cn/item/635a16d316f2c2beb19443a7.jpg)
+  [![img](./image/635a16d316f2c2beb19443a7.jpg)](https://pic1.imgdb.cn/item/635a16d316f2c2beb19443a7.jpg)
 
 - 那么如何解决这个问题呢？先来看看我们的代码中是怎么写的
 
@@ -3124,7 +3124,7 @@ public Result queryTypeList() {
   ```
   
 - 以上逻辑的核心含义是：只要我扣减库存时的库存和之前我查询到的库存是一样的，就意味着没有人在中间修改过库存，那么此时就是安全的，但是以上这种方式通过测试发现会有很多失败的情况，失败的原因在于：在使用乐观锁过程中假设100个线程同时都拿到了100的库存，然后大家一起去进行扣减，但是100个人中只有1个人能扣减成功，其他的人在处理时，他们在扣减时，库存已经被修改过了，所以此时其他线程都会失败
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635a30ca16f2c2beb1ba8efd.jpg)](https://pic1.imgdb.cn/item/635a30ca16f2c2beb1ba8efd.jpg)
+  [![img](./image/635a30ca16f2c2beb1ba8efd.jpg)](https://pic1.imgdb.cn/item/635a30ca16f2c2beb1ba8efd.jpg)
 
 - 那么我们继续完善代码，修改我们的逻辑，在这种场景，我们可以只判断是否有剩余优惠券，即只要数据库中的库存大于0，都能顺利完成扣减库存操作
 
@@ -3407,7 +3407,7 @@ public Result queryTypeList() {
   2. 然后修改nginx的config目录下的nginx.conf文件，配置反向代理和负载均衡（默认轮询就行）
 - 具体操作，我们使用`POSTMAN`发送两次请求，header携带同一用户的token，尝试用同一账号抢两张优惠券，发现是可行的。
 - 失败原因分析：由于我们部署了多个Tomcat，每个Tomcat都有一个属于自己的jvm，那么假设在服务器A的Tomcat内部，有两个线程，即线程1和线程2，这两个线程使用的是同一份代码，那么他们的锁对象是同一个，是可以实现互斥的。但是如果在Tomcat的内部，又有两个线程，但是他们的锁对象虽然写的和服务器A一样，但是锁对象却不是同一个，所以线程3和线程4可以实现互斥，但是却无法和线程1和线程2互斥
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635a5e3e16f2c2beb1289579.jpg)](https://pic1.imgdb.cn/item/635a5e3e16f2c2beb1289579.jpg)
+  [![img](./image/635a5e3e16f2c2beb1289579.jpg)](https://pic1.imgdb.cn/item/635a5e3e16f2c2beb1289579.jpg)
 - 这就是集群环境下，syn锁失效的原因，在这种情况下，我们需要使用分布式锁来解决这个问题，让锁不存在于每个jvm的内部，而是让所有jvm公用外部的一把锁（Redis）
 
 ## 分布式锁
@@ -3417,7 +3417,7 @@ public Result queryTypeList() {
 - 分布式锁：满足分布式系统或集群模式下多线程课件并且可以互斥的锁
 
 - 分布式锁的核心思想就是让大家共用同一把锁，那么我们就能锁住线程，不让线程进行，让程序串行执行，这就是分布式锁的核心思路
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635a5e5516f2c2beb1292f05.jpg)](https://pic1.imgdb.cn/item/635a5e5516f2c2beb1292f05.jpg)
+  [![img](./image/635a5e5516f2c2beb1292f05.jpg)](https://pic1.imgdb.cn/item/635a5e5516f2c2beb1292f05.jpg)
 
 - 那么分布式锁应该满足一些什么条件呢？
 
@@ -3583,7 +3583,7 @@ public Result queryTypeList() {
 - 解决方案
   - 解决方案就是在每个线程释放锁的时候，都判断一下这个锁是不是自己的，如果不属于自己，则不进行删除操作。
   - 假设还是上面的情况，线程1阻塞，锁自动释放，线程2进入到锁的内部执行逻辑，此时线程1阻塞完了，继续往下执行，开始删除锁，但是线程1发现这把锁不是自己的，所以不进行删除锁的逻辑，当线程2执行到删除锁的逻辑时，如果TTL还未到期，则判断当前这把锁是自己的，于是删除这把锁
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/635aa1b016f2c2beb1e68e4f.jpg)](https://pic1.imgdb.cn/item/635aa1b016f2c2beb1e68e4f.jpg)
+    [![img](./image/635aa1b016f2c2beb1e68e4f.jpg)](https://pic1.imgdb.cn/item/635aa1b016f2c2beb1e68e4f.jpg)
 
 ### 解决Redis分布式锁误删问题
 
@@ -3638,7 +3638,7 @@ public Result queryTypeList() {
 - 这就是删锁时的原子性问题
 - 因为线程1的拿锁，判断标识，删锁，不是原子操作，所以我们要防止刚刚的情况
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/635c85c916f2c2beb1236040.jpg)](https://pic1.imgdb.cn/item/635c85c916f2c2beb1236040.jpg)
+[![img](./image/635c85c916f2c2beb1236040.jpg)](https://pic1.imgdb.cn/item/635c85c916f2c2beb1236040.jpg)
 
 ### Lua脚本解决多条命令原子性问题
 
@@ -3979,7 +3979,7 @@ public void unlock() {
 
 - 由于我们需要额外存储一个state，所以用字符串型`SET NX EX`是不行的，需要用到`Hash`结构，但是`Hash`结构又没有`NX`这种方法，所以我们需要将原有的逻辑拆开，进行手动判断
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/635cea4f16f2c2beb1df2620.jpg)](https://pic1.imgdb.cn/item/635cea4f16f2c2beb1df2620.jpg)
+[![img](./image/635cea4f16f2c2beb1df2620.jpg)](https://pic1.imgdb.cn/item/635cea4f16f2c2beb1df2620.jpg)
 
 为了保证原子性，所以流程图中的业务逻辑也是需要我们用Lua来实现的
 
@@ -4264,7 +4264,7 @@ public void unlock() {
   }
   ```
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/635d046816f2c2beb1293315.jpg)](https://pic1.imgdb.cn/item/635d046816f2c2beb1293315.jpg)
+[![img](./image/635d046816f2c2beb1293315.jpg)](https://pic1.imgdb.cn/item/635d046816f2c2beb1293315.jpg)
 
 ### Redisson锁的MutiLock原理
 
@@ -4518,7 +4518,7 @@ public void unlock() {
   6. 创建订单
 - 在这六个步骤中，有很多操作都是要去操作数据库的，而且还是一个线程串行执行，这样就会导致我们的程序执行很慢，所以我们需要异步程序执行，那么如何加速呢？
 - `优化方案：`我们将耗时较短的逻辑判断放到Redis中，例如：库存是否充足，是否一人一单这样的操作，只要满足这两条操作，那我们是一定可以下单成功的，不用等数据真的写进数据库，我们直接告诉用户下单成功就好了。然后后台再开一个线程，后台线程再去慢慢执行队列里的消息，这样我们就能很快的完成下单业务。
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635dedfc16f2c2beb1c42f52.jpg)](https://pic1.imgdb.cn/item/635dedfc16f2c2beb1c42f52.jpg)
+  [![img](./image/635dedfc16f2c2beb1c42f52.jpg)](https://pic1.imgdb.cn/item/635dedfc16f2c2beb1c42f52.jpg)
 - 但是这里还存在两个难点
   1. 我们怎么在Redis中快速校验是否一人一单，还有库存判断
   2. 我们校验一人一单和将下单数据写入数据库，这是两个线程，我们怎么知道下单是否完成。
@@ -4526,7 +4526,7 @@ public void unlock() {
 - 我们现在来看整体思路：当用户下单之后，判断库存是否充足，只需要取Redis中根据key找对应的value是否大于0即可，如果不充足，则直接结束。如果充足，则在Redis中判断用户是否可以下单，如果set集合中没有该用户的下单数据，则可以下单，并将userId和优惠券存入到Redis中，并且返回0，整个过程需要保证是原子性的，所以我们要用Lua来操作，同时由于我们需要在Redis中查询优惠券信息，所以在我们新增秒杀优惠券的同时，需要将优惠券信息保存到Redis中
 - 完成以上逻辑判断时，我们只需要判断当前Redis中的返回值是否为0，如果是0，则表示可以下单，将信息保存到queue中去，然后返回，开一个线程来异步下单，其阿奴单可以通过返回订单的id来判断是否下单成功
 
-[![img](https://gitlab.com/apzs/image/-/raw/master/image/635df17d16f2c2beb1cf02be.jpg)](https://pic1.imgdb.cn/item/635df17d16f2c2beb1cf02be.jpg)
+[![img](./image/635df17d16f2c2beb1cf02be.jpg)](https://pic1.imgdb.cn/item/635df17d16f2c2beb1cf02be.jpg)
 
 ### Redis完成秒杀资格判断
 
@@ -5428,7 +5428,7 @@ public void unlock() {
 
 
 - 效果图如下
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635f8f8216f2c2beb1692e5f.jpg)](https://pic1.imgdb.cn/item/635f8f8216f2c2beb1692e5f.jpg)
+  [![img](./image/635f8f8216f2c2beb1692e5f.jpg)](https://pic1.imgdb.cn/item/635f8f8216f2c2beb1692e5f.jpg)
 
 - 对应的代码
 
@@ -5472,7 +5472,7 @@ public void unlock() {
 ### 查看探店笔记
 
 - 需求：点击首页的探店笔记，会进入详情页面，我们现在需要实现页面的查询接口
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/635f908616f2c2beb16ba05d.jpg)](https://pic1.imgdb.cn/item/635f908616f2c2beb16ba05d.jpg)
+  [![img](./image/635f908616f2c2beb16ba05d.jpg)](https://pic1.imgdb.cn/item/635f908616f2c2beb16ba05d.jpg)
 
 - 随便点击一张图片，查看发送的请求
 
@@ -5749,7 +5749,7 @@ public void unlock() {
   ```
   
 - 重启服务器，查看效果
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/636328b216f2c2beb10e3c08.jpg)](https://pic1.imgdb.cn/item/636328b216f2c2beb10e3c08.jpg)
+  [![img](./image/636328b216f2c2beb10e3c08.jpg)](https://pic1.imgdb.cn/item/636328b216f2c2beb10e3c08.jpg)
 
 ## 好友关注
 
@@ -5870,12 +5870,12 @@ public void unlock() {
   ```
   
 - 测试效果如下
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/63633ca816f2c2beb12b772e.jpg)](https://pic1.imgdb.cn/item/63633ca816f2c2beb12b772e.jpg)
+  [![img](./image/63633ca816f2c2beb12b772e.jpg)](https://pic1.imgdb.cn/item/63633ca816f2c2beb12b772e.jpg)
 
 ### 共同关注
 
 - 点击用户头像，进入到用户详情页，可以查看用户发布的笔记，和共同关注列表
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/63635de616f2c2beb15b17cb.jpg)](https://pic1.imgdb.cn/item/63635de616f2c2beb15b17cb.jpg)
+  [![img](./image/63635de616f2c2beb15b17cb.jpg)](https://pic1.imgdb.cn/item/63635de616f2c2beb15b17cb.jpg)
 
 - 但现在我们还没写具体的业务逻辑，所以现在暂时看不到数据
 
@@ -5942,7 +5942,7 @@ public void unlock() {
   ```
   
 - 效果如下
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363632816f2c2beb162b6de.jpg)](https://pic1.imgdb.cn/item/6363632816f2c2beb162b6de.jpg)
+  [![img](./image/6363632816f2c2beb162b6de.jpg)](https://pic1.imgdb.cn/item/6363632816f2c2beb162b6de.jpg)
 
 - 接下来我们来看看怎么实现共同关注
 
@@ -6007,7 +6007,7 @@ public Result followCommons(@PathVariable Long id){
 
 
 - 最终效果如下
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363737716f2c2beb17fae7b.jpg)](https://pic1.imgdb.cn/item/6363737716f2c2beb17fae7b.jpg)
+  [![img](./image/6363737716f2c2beb17fae7b.jpg)](https://pic1.imgdb.cn/item/6363737716f2c2beb17fae7b.jpg)
 
 ### Feed流实现方案
 
@@ -6038,17 +6038,17 @@ public Result followCommons(@PathVariable Long id){
   - 该模式的核心含义是：当张三和李四、王五发了消息之后，都会保存到自己的发件箱中，如果赵六要读取消息，那么他会读取他自己的收件箱，此时系统会从他关注的人群中，将他关注人的信息全都进行拉取，然后进行排序
   - 优点：比较节约空间，因为赵六在读取信息时，并没有重复读取，并且读取完之后，可以将他的收件箱清除
   - 缺点：有延迟，当用户读取数据时，才会去关注的人的时发件箱中拉取信息，假设该用户关注了海量用户，那么此时就会拉取很多信息，对服务器压力巨大
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363826516f2c2beb1992291.jpg)](https://pic1.imgdb.cn/item/6363826516f2c2beb1992291.jpg)
+    [![img](./image/6363826516f2c2beb1992291.jpg)](https://pic1.imgdb.cn/item/6363826516f2c2beb1992291.jpg)
 
 - 推模式：也叫写扩散
   - 推模式是没有写邮箱的，当张三写了一个内容，此时会主动把张三写的内容发送到它粉丝的收件箱中，假设此时李四再来读取，就不用再去临时拉取了
   - 优点：时效快，不用临时拉取
   - 缺点：内存压力大，假设一个大V发了一个动态，很多人关注他，那么就会写很多份数据到粉丝那边去
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/636383e816f2c2beb1a0ab75.jpg)](https://pic1.imgdb.cn/item/636383e816f2c2beb1a0ab75.jpg)
+    [![img](./image/636383e816f2c2beb1a0ab75.jpg)](https://pic1.imgdb.cn/item/636383e816f2c2beb1a0ab75.jpg)
 
 - 推拉结合：页脚读写混合，兼具推和拉两种模式的优点
   - 推拉模式是一个折中的方案，站在发件人这一边，如果是普通人，那么我们采用写扩散的方式，直接把数据写入到他的粉丝收件箱中，因为普通人的粉丝数量较少，所以这样不会产生太大压力。但如果是大V，那么他是直接将数据写入一份到发件箱中去，在直接写一份到活跃粉丝的收件箱中，站在收件人这边来看，如果是活跃粉丝，那么大V和普通人发的都会写到自己的收件箱里，但如果是普通粉丝，由于上线不是很频繁，所以等他们上线的时候，再从发件箱中去拉取信息。
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363841b16f2c2beb1a1e1e3.jpg)](https://pic1.imgdb.cn/item/6363841b16f2c2beb1a1e1e3.jpg)
+    [![img](./image/6363841b16f2c2beb1a1e1e3.jpg)](https://pic1.imgdb.cn/item/6363841b16f2c2beb1a1e1e3.jpg)
 
 ### 推送到粉丝收件箱
 
@@ -6061,13 +6061,13 @@ public Result followCommons(@PathVariable Long id){
 - Feed流中的数据会不断更新，所以数据的角标也会不断变化，所以我们不能使用传统的分页模式
 
 - 假设在t1时刻，我们取读取第一页，此时page = 1，size = 5，那么我们拿到的就是`10~6`这几条记录，假设t2时刻有发布了一条新纪录，那么在t3时刻，我们来读取第二页，此时page = 2，size = 5，那么此时读取的数据是从6开始的，读到的是`6~2`，那么我们就读到了重复的数据，所以我们要使用Feed流的分页，不能使用传统的分页
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/63638cce16f2c2beb1b72c2f.jpg)](https://pic1.imgdb.cn/item/63638cce16f2c2beb1b72c2f.jpg)
+  [![img](./image/63638cce16f2c2beb1b72c2f.jpg)](https://pic1.imgdb.cn/item/63638cce16f2c2beb1b72c2f.jpg)
 
 - Feed流的滚动分页
 
   - 我们需要记录每次操作的最后一条，然后从这个位置去开始读数据
   - 举个例子：我们从t1时刻开始，拿到第一页数据，拿到了`10~6`，然后记录下当前最后一次读取的记录，就是6，t2时刻发布了新纪录，此时这个11在最上面，但不会影响我们之前拿到的6，此时t3时刻来读取第二页，第二页读数据的时候，从`6-1=5`开始读，这样就拿到了`5~1`的记录。我们在这个地方可以使用SortedSet来做，使用时间戳来充当表中的`1~10`
-    [![img](https://gitlab.com/apzs/image/-/raw/master/image/63638cdb16f2c2beb1b743f5.jpg)](https://pic1.imgdb.cn/item/63638cdb16f2c2beb1b743f5.jpg)
+    [![img](./image/63638cdb16f2c2beb1b743f5.jpg)](https://pic1.imgdb.cn/item/63638cdb16f2c2beb1b743f5.jpg)
 
 - 核心思路：我们保存完探店笔记后，获取当前用户的粉丝列表，然后将数据推送给粉丝
 
@@ -6137,7 +6137,7 @@ public Result followCommons(@PathVariable Long id){
   
   
 - 最终效果如下，在最上方显示的都是我们最新发布的动态
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6363a7da16f2c2beb1e17702.jpg)](https://pic1.imgdb.cn/item/6363a7da16f2c2beb1e17702.jpg)
+  [![img](./image/6363a7da16f2c2beb1e17702.jpg)](https://pic1.imgdb.cn/item/6363a7da16f2c2beb1e17702.jpg)
 
 ## 附近商户
 
@@ -6530,7 +6530,7 @@ public Result followCommons(@PathVariable Long id){
   ```
   
 - 最终效果如下，可以显示出距离
-  [![img](https://gitlab.com/apzs/image/-/raw/master/image/6364c8c216f2c2beb16eb996.jpg)](https://pic1.imgdb.cn/item/6364c8c216f2c2beb16eb996.jpg)
+  [![img](./image/6364c8c216f2c2beb16eb996.jpg)](https://pic1.imgdb.cn/item/6364c8c216f2c2beb16eb996.jpg)
 
 ## 用户签到
 

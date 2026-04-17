@@ -38,7 +38,7 @@ buffer 则用来缓冲读写数据，常见的 buffer 有
 * DoubleBuffer
 * CharBuffer
 
-![img](https://gitlab.com/apzs/image/-/raw/master/image/20210412135510.png)
+![img](./image/20210412135510.png)
 
 ### 1.2 Selector
 
@@ -183,29 +183,29 @@ ByteBuffer 有以下重要属性
 
 一开始时，position指向0，capacity和limit都指向容量的最大索引
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0021.png)
+![](./image/0021.png)
 
 写模式下，position 是写入位置，limit 等于容量，下图表示写入了 4 个字节后的状态
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0018.png)
+![](./image/0018.png)
 
 flip 动作（切换到写模式）发生后，position 切换为读取位置，limit 切换为读取限制
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0019.png)
+![](./image/0019.png)
 
 读取 4 个字节后，状态
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0020.png)
+![](./image/0020.png)
 
 clear 动作发生后，状态
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0021.png)
+![](./image/0021.png)
 
 compact 方法，是把未读完的部分向前压缩，然后切换至写模式
 
 > 原`c、d`从索引为`2、3`复制到了`0、1`，但执行完后索引为`2、3`的`c、d`并未清除，只不过切换到写模式后，会将position指向`2`，此时再写入就会覆盖未清除的`c、d`；即便不写入，再切换到读模式也可以通过`limit`防止读取到未清除的数据
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0022.png)
+![](./image/0022.png)
 
 
 
@@ -1175,7 +1175,7 @@ file ==> D:\笔记\docker部署\README.md
 442
 ```
 
-![目录](https://gitlab.com/apzs/image/-/raw/master/image/%E7%9B%AE%E5%BD%95.png)
+![目录](./image/%E7%9B%AE%E5%BD%95.png)
 
 
 
@@ -1816,7 +1816,7 @@ ld�
 
 #### 处理消息的边界
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0023.png)
+![](./image/0023.png)
 
 * 一种思路是固定消息长度，数据包大小一样，服务器按预定长度读取，缺点是浪费带宽（如果某种场景下发送的消息长度是固定的，就可以使用这种方式）
 * 另一种思路是按分隔符拆分，缺点是效率低（比如说以`\n`做分隔符，`\n`前一个字符就是上一个消息的结束，`\n`后一个字符就是下一个消息的开始）
@@ -2573,26 +2573,26 @@ public class UdpClient {
 * 等待数据阶段
 * 复制数据阶段
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0033.png)
+![](./image/0033.png)
 
 * 阻塞 IO（一直都被阻塞）
 
   用户线程询问内核有没有数据，等到内核从网卡获得到数据并将数据写到内存后才返回数据，在这期间用户线程被阻塞了，什么都不做
 
-  ![](https://gitlab.com/apzs/image/-/raw/master/image/0039.png)
+  ![](./image/0039.png)
 
 * 非阻塞  IO（等待数据阶段非阻塞，复制数据阶段被阻塞）
 
   * 用户线程询问内核有没有数据，内核在从网卡等待数据阶段发现没有数据就立即返回，告诉用户线程没有数据；然后用户线程再询问内核有没有数据，内核再立即返回没有数据，此时用户线程是非阻塞的，用户线程一直在不停的询问，并没有干等着什么都不做；（当然用户态和内核态不停地切换比较耗费性能）
   * 当某一次用户线程再次询问内核有没有数据时，内核从网卡中获取到数据了，此时就不会立即返回，而是将网卡中的数据复制到内存中，等到内核从网卡获得到数据并将数据写到内存后才返回数据，告诉用户线程获取到数据了，在这期间用户线程被阻塞了，什么都不做
 
-  ![](https://gitlab.com/apzs/image/-/raw/master/image/0035.png)
+  ![](./image/0035.png)
 
 * 多路复用（两个阶段是阻塞的）
 
   用户线程并不是直接调用`read()`方法读数据，而是调用`select()`方法向内核中注册事件，当事件发生了内核就会告诉用户线程相应的事件发生了，比如可读事件发生了；这是用户线程就收到了可读事件发生的消息，然后用户线程就根据`SelectionKey`去调用`read()`方法读数据。
 
-  ![](https://gitlab.com/apzs/image/-/raw/master/image/0038.png)
+  ![](./image/0038.png)
 
 * 信号驱动
 
@@ -2600,17 +2600,17 @@ public class UdpClient {
 
   异步IO的`read()`方法是非阻塞的，线程1调用`read()`方法后不用执行等待数据阶段和复制数据阶段，只是通知操作系统需要读取这个数据，在执行`read()`方法时定义了一个回调方法（这时回调方法并未执行）；当内核获取到数据并读入到内存后，让线程2执行回调方法，并将数据作为参数；
 
-  ![](https://gitlab.com/apzs/image/-/raw/master/image/0037.png)
+  ![](./image/0037.png)
 
 * 阻塞 IO vs 多路复用
 
   阻塞io向chanel读数据（包括等待数据和复制数据）时，不能做其他事情，只能等待事件处理完才能继续执行其他事情。
 
-  ![](https://gitlab.com/apzs/image/-/raw/master/image/0034.png)
+  ![](./image/0034.png)
 
   而多路复用可以一次获取一批事件（减少了等待事件的时间，阻塞IO 3个事件需要等待3次，而多路复用只用等待一次就可以获取全部事件），然后依次执行各种事件
 
-  ![](https://gitlab.com/apzs/image/-/raw/master/image/0036.png)
+  ![](./image/0036.png)
 
 #### 🔖 参考
 
@@ -2635,7 +2635,7 @@ socket.getOutputStream().write(buf);
 
 内部工作流程是这样的：
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0024.png)
+![](./image/0024.png)
 
 1. java 本身并不具备 IO 读写能力，因此 read 方法调用后，要从 java 程序的**用户态**切换至**内核态**，去调用操作系统（Kernel）的读能力，将数据读入**内核缓冲区**。这期间用户线程阻塞，操作系统使用 DMA（Direct Memory Access）来实现文件读，其间也不会使用 cpu
 
@@ -2659,7 +2659,7 @@ socket.getOutputStream().write(buf);
 * ByteBuffer.allocate(10)  HeapByteBuffer 使用的还是 java 内存
 * ByteBuffer.allocateDirect(10)  DirectByteBuffer 使用的是操作系统内存
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0025.png)
+![](./image/0025.png)
 
 大部分步骤与优化前相同，不再赘述。唯有一点：java 可以使用 DirectByteBuf 将堆外内存映射到 jvm 内存中来直接访问使用
 
@@ -2671,7 +2671,7 @@ socket.getOutputStream().write(buf);
 
 进一步优化（底层采用了 linux 2.1 后提供的 sendFile 方法），java 中对应着两个 channel 调用 transferTo/transferFrom 方法拷贝数据
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0026.png)
+![](./image/0026.png)
 
 1. java 调用 transferTo 方法后，要从 java 程序的**用户态**切换至**内核态**，使用 DMA将数据读入**内核缓冲区**，不会使用 cpu
 2. 数据从**内核缓冲区**传输到 **socket 缓冲区**，cpu 会参与拷贝
@@ -2684,7 +2684,7 @@ socket.getOutputStream().write(buf);
 
 进一步优化（linux 2.4）
 
-![](https://gitlab.com/apzs/image/-/raw/master/image/0027.png)
+![](./image/0027.png)
 
 1. java 调用 transferTo 方法后，要从 java 程序的**用户态**切换至**内核态**，使用 DMA将数据读入**内核缓冲区**，不会使用 cpu
 2. 只会将一些 offset 和 length 信息拷入 **socket 缓冲区**，几乎无消耗

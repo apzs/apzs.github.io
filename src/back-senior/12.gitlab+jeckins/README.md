@@ -1,6 +1,6 @@
 > 目标：开发提交代码到git服务器后，Jenkins自动构建，并将其部署到测试服务器上
 
-![image-20230601104404720](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601104404720.png)
+![image-20230601104404720](./image/image-20230601104404720.png)
 
 ## 1、gitlab简单使用
 
@@ -65,7 +65,7 @@ sudo EXTERNAL_URL="https://gitlab.example.com" yum install -y gitlab-jh
 >
 > 修改该文件的`external_url`
 >
-> ![image-20230514163310393](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514163310393.png)
+> ![image-20230514163310393](./image/image-20230514163310393.png)
 >
 > 然后再执行`gitlab-ctl reconfigure`重新加载配置
 >
@@ -108,7 +108,7 @@ Password: eoEPtKv4Sh1I1uYN1Mslp2kVgFU1tbqutXZYJj/2KOI=
 
 如果出现了`502`，不用着急，等一下即可；如果一直这样你需要看以下是不是内存不足或`8080`、`80`等端口被占用
 
-![image-20230514160606167](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514160606167.png)
+![image-20230514160606167](./image/image-20230514160606167.png)
 
 ##### 4、常用命令
 
@@ -191,7 +191,7 @@ vi /etc/gitlab/gitlab.rb
 external_url 'http://192.168.56.10:81'
 ```
 
-![image-20230521110406056](https://gitlab.com/apzs/image/-/raw/master/image/image-20230521110406056.png)
+![image-20230521110406056](./image/image-20230521110406056.png)
 
 然后继续修改`nginx['listen_port']`
 
@@ -201,7 +201,7 @@ external_url 'http://192.168.56.10:81'
 nginx['listen_port'] = 81
 ```
 
-![image-20230521110619272](https://gitlab.com/apzs/image/-/raw/master/image/image-20230521110619272.png)
+![image-20230521110619272](./image/image-20230521110619272.png)
 
 然后继续修改`gitlab_rails['gitlab_shell_ssh_port']`
 
@@ -211,7 +211,7 @@ nginx['listen_port'] = 81
 gitlab_rails['gitlab_shell_ssh_port'] = 2222
 ```
 
-![image-20230521110744671](https://gitlab.com/apzs/image/-/raw/master/image/image-20230521110744671.png)
+![image-20230521110744671](./image/image-20230521110744671.png)
 
 然后进入`/assets/sshd_config`文件里，修改`Port`
 
@@ -221,7 +221,7 @@ gitlab_rails['gitlab_shell_ssh_port'] = 2222
 vi /assets/sshd_config
 ```
 
-![image-20230521110839263](https://gitlab.com/apzs/image/-/raw/master/image/image-20230521110839263.png)
+![image-20230521110839263](./image/image-20230521110839263.png)
 
 然后执行如下命令，重新加载配置并重启gitlab
 
@@ -232,7 +232,7 @@ gitlab-ctl restart
 
 访问`Monitoring`项目，点击克隆即可查看`ssh`和`http`的端口
 
-![image-20230528121708916](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528121708916.png)
+![image-20230528121708916](./image/image-20230528121708916.png)
 
 如果发现访问不了，可以执行`gitlab-ctl tail`命令查看日志，看运行的端口对不对
 
@@ -368,7 +368,7 @@ sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 登录成功后，可以在`Preferences`的`Localization`里修改语言
 
-![image-20230514162004930](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514162004930.png)
+![image-20230514162004930](./image/image-20230514162004930.png)
 
 ### 3、修改密码
 
@@ -378,7 +378,7 @@ sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 apzs20001118
 ```
 
-![GIF 2023-5-14 16-26-09](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-5-14%2016-26-09.gif)
+![GIF 2023-5-14 16-26-09](./image/GIF%202023-5-14%2016-26-09.gif)
 
 ### 4、修改头像
 
@@ -395,11 +395,11 @@ gitlab_rails['gravatar_ssl_url'] = 'https://sdn.geekzu.org/avatar/%{hash}?s=%{si
 gitlab_rails['gravatar_ssl_url'] = 'https://sdn.geekzu.org/avatar/%{hash}?s=%{size}&d=identicon'
 ```
 
-![image-20230514231621243](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514231621243.png)
+![image-20230514231621243](./image/image-20230514231621243.png)
 
 
 
-![image-20230514164748799](https://gitlab.com/apzs/image/-/raw/master/image/image-20230514164748799.png)
+![image-20230514164748799](./image/image-20230514164748799.png)
 
 然后再执行`gitlab-ctl reconfigure`重新加载配置（执行时间稍微长一点）
 
@@ -423,7 +423,7 @@ gitlab-ctl restart
 ssh-keygen -t rsa -C 'apzs@foxmail.com'
 ```
 
-![image-20230520212202774](https://gitlab.com/apzs/image/-/raw/master/image/image-20230520212202774.png)
+![image-20230520212202774](./image/image-20230520212202774.png)
 
 > 如果你以前已经生成过ssh密钥，想给gitlab单独申请一个密钥可以执行如下命令，再增加一个`gitlab_id_rsa`密钥
 >
@@ -431,11 +431,11 @@ ssh-keygen -t rsa -C 'apzs@foxmail.com'
 > ssh-keygen -t rsa -C 'apzs@foxmail.com' -f ~/.ssh/gitlab_id_rsa
 > ```
 >
-> ![image-20230520212558349](https://gitlab.com/apzs/image/-/raw/master/image/image-20230520212558349.png)
+> ![image-20230520212558349](./image/image-20230520212558349.png)
 >
 > 如果你有多个密钥，需要增加一个`config`文件
 >
-> ![image-20230530204010553](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530204010553.png)
+> ![image-20230530204010553](./image/image-20230530204010553.png)
 >
 > ```
 > # github
@@ -463,7 +463,7 @@ pbcopy < ~/.ssh/id_rsa.pub  #mac os系统
 
 然后在gitlab里添加密钥
 
-![image-20230520214929834](https://gitlab.com/apzs/image/-/raw/master/image/image-20230520214929834.png)
+![image-20230520214929834](./image/image-20230520214929834.png)
 
 #### 2、测试连接
 
@@ -501,69 +501,69 @@ Welcome to GitLab, @root!
 
 然后新建一个空白项目
 
-![image-20230517212929458](https://gitlab.com/apzs/image/-/raw/master/image/image-20230517212929458.png)
+![image-20230517212929458](./image/image-20230517212929458.png)
 
 然后复制ssh链接
 
-![image-20230530213930378](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530213930378.png)
+![image-20230530213930378](./image/image-20230530213930378.png)
 
 然后使用IDEA新建一个SpringBoot项目
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230517213325617.png" alt="image-20230517213325617" style="zoom:50%;" />
+<img src="./image/image-20230517213325617.png" alt="image-20230517213325617" style="zoom:50%;" />
 
 先写个简单的`hello`，注意添加`@RestController`注解
 
-![image-20230601103138456](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601103138456.png)
+![image-20230601103138456](./image/image-20230601103138456.png)
 
 然后测试一下能不能访问
 
-![image-20230601103108088](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601103108088.png)
+![image-20230601103108088](./image/image-20230601103108088.png)
 
 然后打包一下，看能不能构建成功，构建成功了再提交代码
 
-![image-20230531223423975](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531223423975.png)
+![image-20230531223423975](./image/image-20230531223423975.png)
 
 然后点击`VCS`里的`Create Git Repository...`
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230517213700275.png" alt="image-20230517213700275" style="zoom:50%;" />
+<img src="./image/image-20230517213700275.png" alt="image-20230517213700275" style="zoom:50%;" />
 
 然后选择自己的项目
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230517213805764.png" alt="image-20230517213805764" style="zoom:50%;" />
+<img src="./image/image-20230517213805764.png" alt="image-20230517213805764" style="zoom:50%;" />
 
 然后点击`Git`里的`Manage Remotes...`
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230517213928459.png" alt="image-20230517213928459" style="zoom:50%;" />
+<img src="./image/image-20230517213928459.png" alt="image-20230517213928459" style="zoom:50%;" />
 
 
 
 直接使用ip不行，前面已经说过了。使用别名(`~/.ssh/config`里配置的`Host`)会查找`~/.ssh/config`文件，然后按照配置使用指定的端口和密钥进行连接，而直接使用ip不行
 
-![image-20230530213730505](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530213730505.png)
+![image-20230530213730505](./image/image-20230530213730505.png)
 
 使用`~/.ssh/config`里配置的`gitlab`对应的`Host`就可以了
 
-![image-20230530213840900](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530213840900.png)
+![image-20230530213840900](./image/image-20230530213840900.png)
 
 然后将项目代码添加到版本控制
 
-![image-20230530214959315](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530214959315.png)
+![image-20230530214959315](./image/image-20230530214959315.png)
 
 然后提交代码
 
-![image-20230530215048473](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530215048473.png)
+![image-20230530215048473](./image/image-20230530215048473.png)
 
 
 
-![image-20230530220523013](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530220523013.png)
+![image-20230530220523013](./image/image-20230530220523013.png)
 
 然后提交代码
 
-![image-20230530220022407](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530220022407.png)
+![image-20230530220022407](./image/image-20230530220022407.png)
 
 已经提交成功了
 
-![image-20230530220459587](https://gitlab.com/apzs/image/-/raw/master/image/image-20230530220459587.png)
+![image-20230530220459587](./image/image-20230530220459587.png)
 
 ## 2、安装其他软件
 
@@ -577,7 +577,7 @@ Welcome to GitLab, @root!
 yum search java | grep jdk
 ```
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230528101922264.png" alt="image-20230528101922264" style="zoom:50%;" />
+<img src="./image/image-20230528101922264.png" alt="image-20230528101922264" style="zoom:50%;" />
 
 执行`yum install -y java-1.8.0-openjdk`下载jdk1.8（这个其实安装的是jdk）
 
@@ -593,7 +593,7 @@ yum install -y java-devel
 
 在[jenkins官网](http://www.jenkins.io/download/)里，最新的长久支持版最少需要jdk11，因此我们可以下载[2.346.2](https://mirrors.jenkins.io/war-stable/2.346.2/)这个版本，这是最后一个支持jdk1.8的版本
 
-![image-20230528104059249](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528104059249.png)
+![image-20230528104059249](./image/image-20230528104059249.png)
 
 可以使用如下命令，使用本地的当前用户将存在D盘的`jenkins.war`文件，使用远程的root用户传到`192.168.56.10`这台主机的`/root`目录，期间会提示输入远程的root用户的密码
 
@@ -631,41 +631,41 @@ java -jar jenkins.war --httpPort=8888
 
 运行成功后，会在控制台显示admin用户的密码，信息可以在当前用户目录的`.jenkins/secrets/initialAdminPassword`文件里查看
 
-![image-20230528105215469](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528105215469.png)
+![image-20230528105215469](./image/image-20230528105215469.png)
 
 然后在浏览器上访问`http://121.40.49.203:8888`，输入密码即可
 
-![image-20230528110007762](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528110007762.png)
+![image-20230528110007762](./image/image-20230528110007762.png)
 
 然后选择安装推荐的插件
 
-![image-20230528110219765](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528110219765.png)
+![image-20230528110219765](./image/image-20230528110219765.png)
 
 然后一直等待就好了
 
-![image-20230528110314930](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528110314930.png)
+![image-20230528110314930](./image/image-20230528110314930.png)
 
 下载插件完成后，输入用户名密码等信息，密码直接输入`123456`就可以，点击保存并完成
 
-![image-20230528112121710](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528112121710.png)
+![image-20230528112121710](./image/image-20230528112121710.png)
 
 然后检查一下url，点击保存并完成
 
-![image-20230528112108286](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528112108286.png)
+![image-20230528112108286](./image/image-20230528112108286.png)
 
 然后点击`开始使用jenkins`
 
-![image-20230528112257017](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528112257017.png)
+![image-20230528112257017](./image/image-20230528112257017.png)
 
 然后就来到了后台界面
 
-![image-20230528112402776](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528112402776.png)
+![image-20230528112402776](./image/image-20230528112402776.png)
 
 ### 2、安装maven
 
 由于jenkins需要使用maven，因此我们还有安装maven，在[官网](https://maven.apache.org/download.cgi)下载最新的`tar.gz`格式的压缩包，然后放到运行jenkins的机器上
 
-![image-20230528110549702](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528110549702.png)
+![image-20230528110549702](./image/image-20230528110549702.png)
 
 然后执行如下命令解压压缩包
 
@@ -673,7 +673,7 @@ java -jar jenkins.war --httpPort=8888
 tar -zxvf apache-maven-3.9.2-bin.tar.gz
 ```
 
-![image-20230528112815558](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528112815558.png)
+![image-20230528112815558](./image/image-20230528112815558.png)
 
 然后执行mv命令，将`apache-maven-3.9.2`文件夹里的内容移到`/usr/local/maven`目录下
 
@@ -694,7 +694,7 @@ cd /usr/local/maven/bin
 ./mvn -v
 ```
 
-![image-20230528113906482](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528113906482.png)
+![image-20230528113906482](./image/image-20230528113906482.png)
 
 
 
@@ -704,15 +704,15 @@ cd /usr/local/maven/bin
 
 点击`Manage Jenkins`里的`Manage Plugins`即可管理插件
 
-![image-20230528114347288](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528114347288.png)
+![image-20230528114347288](./image/image-20230528114347288.png)
 
 然后再`可选插件`里输入`maven`，然后勾选` Maven Integration`这个插件，选择`Install without restart`即可安装插件
 
-![image-20230528114630507](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528114630507.png)
+![image-20230528114630507](./image/image-20230528114630507.png)
 
 然后划到最下面，即可查看刚刚安装的插件的状态
 
-![image-20230528114806411](https://gitlab.com/apzs/image/-/raw/master/image/image-20230528114806411.png)
+![image-20230528114806411](./image/image-20230528114806411.png)
 
 ## 3、新建maven项目任务
 
@@ -720,17 +720,17 @@ cd /usr/local/maven/bin
 
 点击`新建任务`
 
-![image-20230531202040049](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531202040049.png)
+![image-20230531202040049](./image/image-20230531202040049.png)
 
 然后输入项目名，选择`构建一个maven项目`，然后点击确定
 
-![image-20230531202125253](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531202125253.png)
+![image-20230531202125253](./image/image-20230531202125253.png)
 
 ### 2、配置git
 
 然后需要添加git仓库，由于需要使用git,因此我们需要在安装jenkins的机器上安装git
 
-![image-20230531204806614](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531204806614.png)
+![image-20230531204806614](./image/image-20230531204806614.png)
 
 使用`yum install -y git`命令安装git
 
@@ -752,7 +752,7 @@ cat ~/.ssh/id_rsa.pub
 
 然后在gitlab上粘贴即可（由于自己运行gitlab比较占内存，就没用自己的了）
 
-![image-20230531210556386](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531210556386.png)
+![image-20230531210556386](./image/image-20230531210556386.png)
 
 然后可以使用`ssh -T git@gitlab.com`测试能否连接。第一次连接时，需要手动输入`yes`，后续则不用。出现`Welcome to GitLab`就证明成功了
 
@@ -772,11 +772,11 @@ Warning: Permanently added 'gitlab.com,172.65.251.78' (ECDSA) to the list of kno
 Welcome to GitLab, @apzs!
 ```
 
-![image-20230531211824799](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531211824799.png)
+![image-20230531211824799](./image/image-20230531211824799.png)
 
 填上地址后，如果出现如下错误，刷新一下页面就行了
 
-![image-20230531211357336](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531211357336.png)
+![image-20230531211357336](./image/image-20230531211357336.png)
 
 ```
 **An internal error occurred during form field validation (HTTP 403). Please reload the page and if the problem persists, ask the administrator for help.**
@@ -784,25 +784,25 @@ Welcome to GitLab, @apzs!
 
 刷新后，再次填入就不报错了
 
-![image-20230531211559743](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531211559743.png)
+![image-20230531211559743](./image/image-20230531211559743.png)
 
 由于我的主分支是master分支，因此不用修改`Branches to build`配置
 
 > 如果你的是`main`分支需要修改`Branches to build`为`*/main`
 
-![image-20230531210857178](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531210857178.png)
+![image-20230531210857178](./image/image-20230531210857178.png)
 
-![image-20230531203627289](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531203627289.png)
+![image-20230531203627289](./image/image-20230531203627289.png)
 
 ### 3、配置maven
 
 接着我们需要修改maven
 
-![image-20230531211918377](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531211918377.png)
+![image-20230531211918377](./image/image-20230531211918377.png)
 
 往下滑到底，点击`新增Maven`，取消勾选`自动安装`，输入自己的maven安装路径，然后保存即可
 
-![image-20230531212924901](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531212924901.png)
+![image-20230531212924901](./image/image-20230531212924901.png)
 
 配置完成刷新`构建一个maven项目`页面，将前面配置的git再重新添加一下
 
@@ -810,27 +810,27 @@ Welcome to GitLab, @apzs!
 
 > 如果你的`pom.xml`文件位置为`demo-1/pom.xml`，则需要修改`Root POM`的值为`demo-1/pom.xml`
 
-![image-20230531213329200](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531213329200.png)
+![image-20230531213329200](./image/image-20230531213329200.png)
 
-![image-20230531213151982](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531213151982.png)
+![image-20230531213151982](./image/image-20230531213151982.png)
 
 然后点击保存即可
 
-![image-20230531214048397](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214048397.png)
+![image-20230531214048397](./image/image-20230531214048397.png)
 
 ### 4、构建任务
 
 我们返回`Dashboard`，点击这个名称右边的运行按钮，就可以在左下角的`构建执行状态`里看到构建任务，点击这个构建任务
 
-![image-20230531214639048](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214639048.png)
+![image-20230531214639048](./image/image-20230531214639048.png)
 
 然后再点击左下角的这个任务的时间这个地方
 
-![image-20230531214817843](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214817843.png)
+![image-20230531214817843](./image/image-20230531214817843.png)
 
 然后带你就`控制台输出`即可看到输出信息
 
-![image-20230531215011269](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531215011269.png)
+![image-20230531215011269](./image/image-20230531215011269.png)
 
 如果安装的是jre，会报如下的错误，这是因为我们安装的其实是jre，而不是jdk
 
@@ -874,7 +874,7 @@ channel stopped
 Finished: FAILURE
 ```
 
-![image-20230531215344860](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531215344860.png)
+![image-20230531215344860](./image/image-20230531215344860.png)
 
 最后面告诉我们pom文件的位置为`/root/.jenkins/workspace/first/pom.xml`
 
@@ -886,13 +886,13 @@ cd /root/.jenkins/workspace/first
 /usr/local/maven/bin/mvn clean package -Dmaven.test.skip=true
 ```
 
-![image-20230531225340345](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531225340345.png)
+![image-20230531225340345](./image/image-20230531225340345.png)
 
-![image-20230531224859642](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531224859642.png)
+![image-20230531224859642](./image/image-20230531224859642.png)
 
 能够构建成功了，再使用jenkins进行构建
 
-![image-20230531224549870](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531224549870.png)
+![image-20230531224549870](./image/image-20230531224549870.png)
 
 我们可以看到jar包位置为`/root/.jenkins/workspace/first/target/demo-0.0.1-SNAPSHOT.jar`，我们可以进到这个目录执行这个jar包，由于jenkins默认用的也是8080端口，因此需要修改一下端口
 
@@ -901,25 +901,25 @@ cd /root/.jenkins/workspace/first/target/
 java -jar demo-0.0.1-SNAPSHOT.jar --server.port=8088
 ```
 
-![image-20230601103511406](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601103511406.png)
+![image-20230601103511406](./image/image-20230601103511406.png)
 
 访问一下，发现可以访问成功
 
-![image-20230601104107373](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601104107373.png)
+![image-20230601104107373](./image/image-20230601104107373.png)
 
 ### 4、修改配置
 
 如果需要修改配置，需要返回到`Dashboard`，点击这个名称
 
-![image-20230531214242444](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214242444.png)
+![image-20230531214242444](./image/image-20230531214242444.png)
 
 然后点击`配置`即可修改这次的任务配置
 
-![image-20230531214404262](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214404262.png)
+![image-20230531214404262](./image/image-20230531214404262.png)
 
 
 
-![image-20230531214214192](https://gitlab.com/apzs/image/-/raw/master/image/image-20230531214214192.png)
+![image-20230531214214192](./image/image-20230531214214192.png)
 
 ## 4、运行到测试服务器
 
@@ -927,65 +927,65 @@ java -jar demo-0.0.1-SNAPSHOT.jar --server.port=8088
 
 我们可以安装一个`Publish Over SSH`插件
 
-![image-20230601104815577](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601104815577.png)
+![image-20230601104815577](./image/image-20230601104815577.png)
 
 安装完成后在系统管理里，选择系统配置
 
-![image-20230601105342998](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601105342998.png)
+![image-20230601105342998](./image/image-20230601105342998.png)
 
 然后一直划到最后，找到`SSH Servers`，点击新增
 
-![image-20230601105653028](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601105653028.png)
+![image-20230601105653028](./image/image-20230601105653028.png)
 
 输入`Name`、主机的ip、和主机的用户名，和家目录后，点击高级
 
-![image-20230601105807088](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601105807088.png)
+![image-20230601105807088](./image/image-20230601105807088.png)
 
 点击高级后，勾选`Use password authentication, or use a different key`，然后输入密码
 
-![image-20230601110142073](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601110142073.png)
+![image-20230601110142073](./image/image-20230601110142073.png)
 
 如果需要代理服务器才能访问测试机，则还需要添加代理配置。
 
 配置完后点击`Test Configuration`后出现`Success`就证明成功了，然后点击保存即可
 
-![image-20230601110545258](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601110545258.png)
+![image-20230601110545258](./image/image-20230601110545258.png)
 
 ### 2、修改配置
 
 修改`first`的`Add post-build step`为`Send files or execute commands over SSH`
 
-![image-20230601110709330](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601110709330.png)
+![image-20230601110709330](./image/image-20230601110709330.png)
 
 我们选择刚刚添加的测试服务器；`Source files`默认的根目录为`workspace`目录，也就是`/root/.jenkins/workspace/first`。可以输入`**/*.jar`也就是上传所有的jar包
 
 > 这个workspace可以在运行任务时看到
 >
-> <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230604155651253.png" alt="image-20230604155651253" style="zoom:50%;" />
+> <img src="./image/image-20230604155651253.png" alt="image-20230604155651253" style="zoom:50%;" />
 
-![image-20230601111251628](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601111251628.png)
+![image-20230601111251628](./image/image-20230601111251628.png)
 
 > 最好点击**Send files or execute commands over SSH**里的SSH Publishers里的SSH Server里的高级
 >
-> ![image-20230604164828148](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604164828148.png)
+> ![image-20230604164828148](./image/image-20230604164828148.png)
 >
 > 把`Verbose output in console`勾选上，这样就能够看到连接ssh后执行的命令和执行命令后的结果了
 >
-> ![image-20230604164831621](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604164831621.png)
+> ![image-20230604164831621](./image/image-20230604164831621.png)
 
 `Exec command`可以简单输一个`echo 1`，然后点击保存。
 
-![image-20230601113059417](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601113059417.png)
+![image-20230601113059417](./image/image-20230601113059417.png)
 
 点击高级，我们可以配置执行的超时时间，默认为2分钟，如果文件比较大或执行命令的时间比较长可以适当修改超时时间
 
-![image-20230601121926746](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601121926746.png)
+![image-20230601121926746](./image/image-20230601121926746.png)
 
 然后再次执行一下`first`任务，查看控制台，可以看到文件已经传输成功了。
 
 默认会把项目放到测试服务器的`root`目录下（我们前面添加测试服务器的时候指定了`Remote directory`为`root`），例如`jenkins`的`jar`包位置为`/root/.jenkins/workspace/first/target/demo-0.0.1-SNAPSHOT.jar`，那上传到测试服务器的路径就为`/root/target/demo-0.0.1-SNAPSHOT.jar`
 
-![image-20230601112440558](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601112440558.png)
+![image-20230601112440558](./image/image-20230601112440558.png)
 
 打开测试服务器，执行`java -jar demo-0.0.1-SNAPSHOT.jar`，可以看到已经运行成功了
 
@@ -1012,11 +1012,11 @@ demo-0.0.1-SNAPSHOT.jar
 2023-06-01 11:27:10.986  INFO 13062 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication v0.0.1-SNAPSHOT using Java 1.8.0_372 on iZuf64go38e6sks55pfasaZ with PID 13062 (/root/target/demo-0.0.1-SNAPSHOT.jar started by root in /root/target)
 ```
 
-![image-20230601112729241](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601112729241.png)
+![image-20230601112729241](./image/image-20230601112729241.png)
 
 访问一下，可以发现能够访问
 
-![image-20230601120943518](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601120943518.png)
+![image-20230601120943518](./image/image-20230601120943518.png)
 
 > 注意关闭测试服务器运行的java项目
 
@@ -1026,7 +1026,7 @@ demo-0.0.1-SNAPSHOT.jar
 
 【`添加测试服务器配置的目录` + `这个构建任务配置的目录` + （`/root/.jenkins/workspace/first`后面的目录 - `Remove prefix`配置的目录前缀）】
 
-![image-20230601113721560](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601113721560.png)
+![image-20230601113721560](./image/image-20230601113721560.png)
 
 然后再次构建这个任务，报了如下错误
 
@@ -1043,19 +1043,19 @@ Build step 'Send files or execute commands over SSH' changed build result to UNS
 Finished: UNSTABLE
 ```
 
-![image-20230601114557764](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601114557764.png)
+![image-20230601114557764](./image/image-20230601114557764.png)
 
 这是因为我们还有一个`.mvn/wrapper/maven-wrapper.jar`的jar包
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230601114648874.png" alt="image-20230601114648874" style="zoom:50%;" />
+<img src="./image/image-20230601114648874.png" alt="image-20230601114648874" style="zoom:50%;" />
 
 我们可以修改一下`Source files`为`**/target/*.jar`，只传输`target`目录下的`jar`包
 
-![image-20230601115219033](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601115219033.png)
+![image-20230601115219033](./image/image-20230601115219033.png)
 
 重新构建就构建成功了
 
-![image-20230601115215050](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601115215050.png)
+![image-20230601115215050](./image/image-20230601115215050.png)
 
 进入到测试服务器，可以发现能够正常运行
 
@@ -1076,11 +1076,11 @@ demo-0.0.1-SNAPSHOT.jar
 2023-06-01 11:51:51.500  INFO 13379 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication v0.0.1-SNAPSHOT using Java 1.8.0_372 on iZuf64go38e6sks55pfasaZ with PID 13379 (/root/mydata/demo-0.0.1-SNAPSHOT.jar started by root in /root/mydata)
 ```
 
-![image-20230601115210597](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601115210597.png)
+![image-20230601115210597](./image/image-20230601115210597.png)
 
 访问一下，可以发现能够访问
 
-![image-20230601120943518](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601120943518.png)
+![image-20230601120943518](./image/image-20230601120943518.png)
 
 > 注意关闭测试服务器运行的java项目
 
@@ -1094,13 +1094,13 @@ nohup java -jar /root/mydata/demo*.jar &
 >
 > 输入命令后的状态
 >
-> ![image-20230601123159908](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601123159908.png)
+> ![image-20230601123159908](./image/image-20230601123159908.png)
 >
 > 回车后的状态
 >
-> ![image-20230601123228703](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601123228703.png)
+> ![image-20230601123228703](./image/image-20230601123228703.png)
 
-![image-20230601120059188](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601120059188.png)
+![image-20230601120059188](./image/image-20230601120059188.png)
 
 重新构建，如果显示的为如下信息就证明成功了
 
@@ -1119,7 +1119,7 @@ Build step 'Send files or execute commands over SSH' changed build result to UNS
 Finished: UNSTABLE
 ```
 
-![image-20230601120738678](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601120738678.png)
+![image-20230601120738678](./image/image-20230601120738678.png)
 
 查看测试服务器，可以看到`java`已经占用`8080`端口了，并且进程就是`demo-0.0.1-SNAPSHOT.jar`
 
@@ -1140,11 +1140,11 @@ udp6       0      0 ::1:323                 :::*                                
 11908 Jps
 ```
 
-![image-20230601121527358](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601121527358.png)
+![image-20230601121527358](./image/image-20230601121527358.png)
 
 访问一下测试服务器的`8080`端口，可以直接访问
 
-![image-20230601120911765](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601120911765.png)
+![image-20230601120911765](./image/image-20230601120911765.png)
 
 ### 3、优化配置
 
@@ -1165,11 +1165,11 @@ nohup java -jar /root/mydata/demo*.jar >mylog.log 2>&1 &
 nohup java -jar /root/mydata/demo*.jar &>mylog.log &
 ```
 
-![image-20230601123905850](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601123905850.png)
+![image-20230601123905850](./image/image-20230601123905850.png)
 
 修改一下`Post Steps`即可
 
-![image-20230601141046408](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601141046408.png)
+![image-20230601141046408](./image/image-20230601141046408.png)
 
 #### 2、清理以前的文件
 
@@ -1198,7 +1198,7 @@ root     23693     1  1 21:45 ?        00:00:06 java -jar /root/mydata/demo-0.0.
 23693[root@iZbp1asdy4uxt0pu8ywpiqZ mydata]# 
 ```
 
-![image-20230601215728390](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601215728390.png)
+![image-20230601215728390](./image/image-20230601215728390.png)
 
 因此我们可以在测试服务器的`/root`目录下新增`x.sh`文件，内容为如下（我们可以在`root`目录下执行`./x.sh demo`命令删除文件并杀死进程）
 
@@ -1265,77 +1265,77 @@ demo pid:23693 is stop
 [root@iZbp1asdy4uxt0pu8ywpiqZ mydata]
 ```
 
-![image-20230601221235498](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601221235498.png)
+![image-20230601221235498](./image/image-20230601221235498.png)
 
 我们在构建之前还需要将前面构建的程序停止，并且删掉前面上传的文件，我们可以在`Pre Steps`里执行命令，做一些构建之前的事情
 
-![image-20230601142010683](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601142010683.png)
+![image-20230601142010683](./image/image-20230601142010683.png)
 
 修改`Exec command`为`./x.sh demo`，`Source files`报红不用管，至少填写`Source files`和`Exec command`其中一个即可，然后点击保存，然后再次测试可以发现已经能将`/root/mydata`里的文件删掉，并将以前的程序停掉，构建成功后，能够自动运行程序。
 
-![image-20230601150801730](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601150801730.png)
+![image-20230601150801730](./image/image-20230601150801730.png)
 
 最好点击**Send files or execute commands over SSH**里的SSH Publishers里的SSH Server里的高级
 
-![image-20230604165225912](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604165225912.png)
+![image-20230604165225912](./image/image-20230604165225912.png)
 
 把`Verbose output in console`勾选上，这样就能够看到连接ssh后执行的命令和执行命令后的结果了
 
-![image-20230604165231604](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604165231604.png)
+![image-20230604165231604](./image/image-20230604165231604.png)
 
 ### 4、提交代码后自动构建
 
 我们这个任务的构建触发器里勾选`触发远程构建`，然后配置身份验证令牌，然后浏览器访问`JENKINS_URL/job/first/build?token=TOKEN_NAME`（也就是   http://121.40.49.203:8888/job/first/build?token=123123  ）
 
-![image-20230601152212021](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601152212021.png)
+![image-20230601152212021](./image/image-20230601152212021.png)
 
 可以看到当同一个浏览器访问 http://121.40.49.203:8888/job/first/build?token=123123  后，会执行这个任务
 
-![image-20230601152250731](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601152250731.png)
+![image-20230601152250731](./image/image-20230601152250731.png)
 
 但是当其他浏览器访问时，会提示我们需要进行登录
 
-![image-20230601152458382](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601152458382.png)
+![image-20230601152458382](./image/image-20230601152458382.png)
 
 为了解决这个问题我们需要安装`Build Authorization Token Root`这个插件
 
-![image-20230601221828874](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601221828874.png)
+![image-20230601221828874](./image/image-20230601221828874.png)
 
 安装插件完成后，需要将url修改为`buildByToken/build?job=NAME&token=SECRET`
 
-![image-20230601222418685](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601222418685.png)
+![image-20230601222418685](./image/image-20230601222418685.png)
 
 也就是 [http://121.40.49.203:8888/buildByToken/build?job=first&token=123123](http://121.40.49.203:8888/buildByToken/build?job=first&token=123123)  就可以匿名访问了
 
-![image-20230601222309534](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601222309534.png)
+![image-20230601222309534](./image/image-20230601222309534.png)
 
 然后在项目的设置里点击`Webhooks`，输入`URL`，勾选`推送事件`和`合并请求事件`，取消勾选`启用SSL验证`，然后点击`添加Webhooks`即可
 
 （工作中最好使用`推送到指定的分支`。`合并请求事件`不推荐，因为`合并请求事件`在`已有的合并请求被更新`、`有新的合并请求被创建`、`合并请求被合并`时都会触发。只不过为了测试方便我们勾选了`推送所有分支事件`和`合并请求事件`）
 
-![image-20230601223045058](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601223045058.png)
+![image-20230601223045058](./image/image-20230601223045058.png)
 
 如果使用的是本地的url，会报`Url is blocked: Requests to the local network are not allowed`的错误
 
-![image-20230601223652293](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601223652293.png)
+![image-20230601223652293](./image/image-20230601223652293.png)
 
 我们可以切换到管理员身份，然后在`设置` -> `网路`里，把`允许来自web hooks和服务对本地网络的请求`勾上
 
-![image-20230601223901931](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601223901931.png)
+![image-20230601223901931](./image/image-20230601223901931.png)
 
 我们可以点击测试里的`推送事件`，可以看到已经能够自动化运行了
 
-![image-20230601224257011](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601224257011.png)
+![image-20230601224257011](./image/image-20230601224257011.png)
 
 我们修改一下接口返回的内容，然后提交代码后，可以发现能够自动化构建
 
-![GIF 2023-6-1 22-46-55.gif](https://gitlab.com/apzs/image/-/raw/master/image/GIF%202023-6-1%2022-46-55.gif)
+![GIF 2023-6-1 22-46-55.gif](./image/GIF%202023-6-1%2022-46-55.gif)
 
 访问一下就可以访问成功了，返回的内容也修改了
 
 > 如果自动构建成功，但是请求返回的内容没有改变，有可能是因为`jenkins`里拉取的是`main`分支，而提交的是`master`分支。我们可以修改一下拉取的分支，或者将master分支合并到main分支
 
-![image-20230601224257012](https://gitlab.com/apzs/image/-/raw/master/image/image-20230601224257012.png)
+![image-20230601224257012](./image/image-20230601224257012.png)
 
 ### 5、其他自动化构建方式
 
@@ -1343,27 +1343,27 @@ demo pid:23693 is stop
 
 假设您正在开发一个Java Web应用程序，并且您的应用程序依赖于一个名为"my-lib"的Maven库。在您的项目的pom.xml文件中，您将指定"my-lib"库的版本号为1.0-SNAPSHOT。每当您在"my-lib"库的源代码中进行更改并构建该库时，Jenkins将自动触发您的应用程序构建作业。这对于确保您的应用程序与最新版本的"my-lib"库兼容非常有用。如果您没有使用SNAPSHOT依赖项，那么您将需要手动触发构建作业以确保您的应用程序与最新版本的"my-lib"库兼容。
 
-![image-20230602202221171](https://gitlab.com/apzs/image/-/raw/master/image/image-20230602202221171.png)
+![image-20230602202221171](./image/image-20230602202221171.png)
 
 - `触发远程构建`：当`gitlab`上有提交、合并等事件时，gitlab调用我们配置的jenkins接口，以完成构建
 
-![image-20230602202806513](https://gitlab.com/apzs/image/-/raw/master/image/image-20230602202806513.png)
+![image-20230602202806513](./image/image-20230602202806513.png)
 
 - `其他工程构建后触发`：当父项目构建后，构建此子项目（或者其他项目构建完成后，想构建此项目，不一定是父子项目）
 
-![image-20230602203024732](https://gitlab.com/apzs/image/-/raw/master/image/image-20230602203024732.png)
+![image-20230602203024732](./image/image-20230602203024732.png)
 
 - `定时构建`：使用`corn`表达式，定时进行构建
 
-![image-20230602203310126](https://gitlab.com/apzs/image/-/raw/master/image/image-20230602203310126.png)
+![image-20230602203310126](./image/image-20230602203310126.png)
 
 - `GitHub hook trigger for GITScm polling`：跟我们前面的gitlab类似，当`github`上有提交、合并等事件时，github调用我们配置的jenkins接口，以完成构建
 
-![image-20230602203341540](https://gitlab.com/apzs/image/-/raw/master/image/image-20230602203341540.png)
+![image-20230602203341540](./image/image-20230602203341540.png)
 
 - `轮询 SCM`：jenkins主动定时查看`git`服务器的jenkins拉取的分支的代码有没有更改，如果有更改则进行构建
 
-![image-20230602203450435](https://gitlab.com/apzs/image/-/raw/master/image/image-20230602203450435.png)
+![image-20230602203450435](./image/image-20230602203450435.png)
 
 标准的corn表达式网站： https://crontab.guru/
 
@@ -1482,19 +1482,19 @@ Cron特殊字符解释
 
 点击网易邮箱的设置里的`POP3/SMTP/IMAP`，开启`POP3/SMTP服务`
 
-![image-20230603111435058](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603111435058.png)
+![image-20230603111435058](./image/image-20230603111435058.png)
 
 点击`继续开启`
 
-![image-20230603111454990](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603111454990.png)
+![image-20230603111454990](./image/image-20230603111454990.png)
 
 可以使用浏览器或者其他软件扫描二维码，然后跳转到短信，然后点击发送即可
 
-![image-20230603111440287](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603111440287.png)
+![image-20230603111440287](./image/image-20230603111440287.png)
 
 或者可以点击`手动发送短信`，自己手输电话号和短信内容
 
-![image-20230603111501507](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603111501507.png)
+![image-20230603111501507](./image/image-20230603111501507.png)
 
 发送完成后，点击`我已发送`就会出来一个授权码，复制该授权码
 
@@ -1502,13 +1502,13 @@ Cron特殊字符解释
 BBCAQKAKUXWTQDVD
 ```
 
-![image-20230603111604842](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603111604842.png)
+![image-20230603111604842](./image/image-20230603111604842.png)
 
 ### 2、配置管理员邮箱
 
 在jenkins的系统管理 -> 系统配置里的`Jenkins Location`里输入自己的系统管理员邮件地址
 
-![image-20230603112038438](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603112038438.png)
+![image-20230603112038438](./image/image-20230603112038438.png)
 
 ### 3、添加自定义邮件服务
 
@@ -1516,43 +1516,43 @@ BBCAQKAKUXWTQDVD
 
 > 如果没有，是因为没有安装推荐的插件，可以下载`Email Extension`这个插件
 
-![image-20230603112921340](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603112921340.png)
+![image-20230603112921340](./image/image-20230603112921340.png)
 
 SMTP服务器地址在邮件服务商的`POP3/SMTP/IMAP`的相关位置都会写
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230603112936313.png" alt="image-20230603112936313" style="zoom:50%;" />
+<img src="./image/image-20230603112936313.png" alt="image-20230603112936313" style="zoom:50%;" />
 
 然后点击`高级`，选择添加Jenkins凭据提供者
 
-![image-20230603113838106](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603113838106.png)
+![image-20230603113838106](./image/image-20230603113838106.png)
 
 然后输入用户名和密码
 
 > 注意这里的密码是给的用户凭证，不是邮箱的密码
 
-![image-20230603114041605](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603114041605.png)
+![image-20230603114041605](./image/image-20230603114041605.png)
 
 然后选择刚刚添加的邮箱
 
-![image-20230603114324109](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603114324109.png)
+![image-20230603114324109](./image/image-20230603114324109.png)
 
 我们可以在`Default Content`里定制化一些内容
 
-![image-20230603114443493](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603114443493.png)
+![image-20230603114443493](./image/image-20230603114443493.png)
 
 > 如果使用的是国内的邮件服务器默认禁止使用25端口，因此我们需要修改SMTP端口为465，并勾选`Use SSL`，以使用SSL进行连接
 >
-> ![image-20230603211133292](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603211133292.png)
+> ![image-20230603211133292](./image/image-20230603211133292.png)
 
 可以在`Default Triggers`里配置哪些情况下会被触发
 
-![image-20230603114550984](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603114550984.png)
+![image-20230603114550984](./image/image-20230603114550984.png)
 
 ### 4、添加系统级邮件服务
 
 在邮件通知里俗人SMTP服务器，然后点击`高级`
 
-![image-20230603115106242](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603115106242.png)
+![image-20230603115106242](./image/image-20230603115106242.png)
 
 然后勾选`使用SMTP认证`
 
@@ -1560,7 +1560,7 @@ SMTP服务器地址在邮件服务商的`POP3/SMTP/IMAP`的相关位置都会写
 
 > 注意这里的密码是给的用户凭证，不是邮箱的密码
 
-![image-20230603114836170](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603114836170.png)
+![image-20230603114836170](./image/image-20230603114836170.png)
 
 可以点击`通过发送测试邮件测试配置`，填写qq邮箱地址进行测试
 
@@ -1572,31 +1572,31 @@ Caused: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 
 	java.net.SocketTimeoutException: connect timed out
 ```
 
-![image-20230603120359248](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603120359248.png)
+![image-20230603120359248](./image/image-20230603120359248.png)
 
 我以为是安全组的问题，所以添加了如下安全组（其实添加安全组没什么用，安全组是配置别人允许访问我们哪些端口，而`SMTP`是我们使用我们的25端口访问别人的服务）
 
-![image-20230603121510383](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603121510383.png)
+![image-20230603121510383](./image/image-20230603121510383.png)
 
 然后还是报错，测试一下连接，发现阿里云禁用了25号端口。可以申请`25`号端口解封，不过大部分都会被拒绝
 
-![image-20230603123435539](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603123435539.png)
+![image-20230603123435539](./image/image-20230603123435539.png)
 
 我们可以使用`ssl`的`465`端口（其实配不配都无所谓，安全组是配置别人允许访问我们哪些端口，而`SMTP`是我们使用我们的465端口（ssl加密）访问别人的服务）
 
-![image-20230603123255090](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603123255090.png)
+![image-20230603123255090](./image/image-20230603123255090.png)
 
 我们可以勾选`使用SSL协议`，`SMTP端口`修改为`465`，再次测试就显示发送邮件成功了
 
-![image-20230603205204408](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603205204408.png)
+![image-20230603205204408](./image/image-20230603205204408.png)
 
 登录qq邮箱，已经接收到邮件了
 
-![image-20230603205242043](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603205242043.png)
+![image-20230603205242043](./image/image-20230603205242043.png)
 
 因此，我们还要修改前面配置的自定义邮件服务的SMTP端口为465，并勾选`Use SSL`
 
-![image-20230603211133292](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603211133292.png)
+![image-20230603211133292](./image/image-20230603211133292.png)
 
 > 我在阿里云ECS上安装了Jenkins，然后使用163邮箱的哦邮件服务器给qq邮箱发送邮件，那么jenkins与邮件服务器通讯时双方使用的分别是什么端口？邮件服务器与qq邮箱通讯时双方使用的分别是什么端口？
 >
@@ -1620,37 +1620,37 @@ Caused: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 
 
 然后修改我们的first任务，在`构建后操作`里，点击`增加构建后操作步骤`，选择`Editable Email Notihcation`
 
-![image-20230603211718848](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603211718848.png)
+![image-20230603211718848](./image/image-20230603211718848.png)
 
 然后点击`Advanced Settings...`
 
-![image-20230603211857761](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603211857761.png)
+![image-20230603211857761](./image/image-20230603211857761.png)
 
 然后在`Triggers`的 `Always` 、`Failure - Any` 、`Success`的`Send To`里都添加上`Build User`
 
-![image-20230603212036386](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603212036386.png)
+![image-20230603212036386](./image/image-20230603212036386.png)
 
-![image-20230603212039466](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603212039466.png)
+![image-20230603212039466](./image/image-20230603212039466.png)
 
-![image-20230603212042053](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603212042053.png)
+![image-20230603212042053](./image/image-20230603212042053.png)
 
 ### 6、测试
 
 然后我们构建first项目，在控制台可以看到已经将构建的信息发送邮箱了，这个邮箱就是最开始初始化jenkins时配置的邮箱
 
-![image-20230603213404623](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603213404623.png)
+![image-20230603213404623](./image/image-20230603213404623.png)
 
 此时邮件已经收到消息了
 
-![image-20230604142629810](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604142629810.png)
+![image-20230604142629810](./image/image-20230604142629810.png)
 
 如果想要修改邮箱，可以点击自己用户名右边的设置
 
-![image-20230603212655694](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603212655694.png)
+![image-20230603212655694](./image/image-20230603212655694.png)
 
 下滑找到E-mail，在这里可以修改我们的邮箱
 
-![image-20230603213011284](https://gitlab.com/apzs/image/-/raw/master/image/image-20230603213011284.png)
+![image-20230603213011284](./image/image-20230603213011284.png)
 
 ## 6、使用docker
 
@@ -1738,7 +1738,7 @@ rm -rf /root/mydata/*
 > docker rmi demo
 > ```
 
-![image-20230604160808649](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604160808649.png)
+![image-20230604160808649](./image/image-20230604160808649.png)
 
 然后修改first任务的Post Steps的`Exec command`，启动demo容器
 
@@ -1746,21 +1746,21 @@ rm -rf /root/mydata/*
 docker start demo
 ```
 
-![image-20230604155059562](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604155059562.png)
+![image-20230604155059562](./image/image-20230604155059562.png)
 
 #### 3、修改版本
 
 我们可以再我们的项目里修改一下版本
 
-![image-20230604180055473](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604180055473.png)
+![image-20230604180055473](./image/image-20230604180055473.png)
 
 然后修改一下hello接口的返回内容
 
-![image-20230604180136531](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604180136531.png)
+![image-20230604180136531](./image/image-20230604180136531.png)
 
 此时直接提交代码并构建jenkins任务会发现jenkins会向测试服务器发送`demo-0.0.1-SNAPSHOT.jar`和`demo-0.0.2-SNAPSHOT.jar`两个文件
 
-![image-20230604180438838](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604180438838.png)
+![image-20230604180438838](./image/image-20230604180438838.png)
 
 这是因为我们在更改版本号后，没有执行`mvn clean`命令，导致`target`目录里面原来的文件没有删除
 
@@ -1773,11 +1773,11 @@ demo-0.0.1-SNAPSHOT.jar           demo-0.0.2-SNAPSHOT.jar.original  maven-archiv
 demo-0.0.1-SNAPSHOT.jar.original  generated-sources                 maven-status
 ```
 
-![image-20230604174002294](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604174002294.png)
+![image-20230604174002294](./image/image-20230604174002294.png)
 
 就像我们在IDEA里执行`isntall`命令一样，并不会删除target文件里的目录
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230604174946549.png" alt="image-20230604174946549" style="zoom:50%;" />
+<img src="./image/image-20230604174946549.png" alt="image-20230604174946549" style="zoom:50%;" />
 
 如果我们使用IDEA，可以运行`clean`和`install`命令，但是jenkins不行啊。因此我们可以给项目添加一个`maven-clean-plugin`插件（添加后别忘了提交代码到远程仓库）
 
@@ -1797,11 +1797,11 @@ demo-0.0.1-SNAPSHOT.jar.original  generated-sources                 maven-status
 </plugin>
 ```
 
-![image-20230604180848505](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604180848505.png)
+![image-20230604180848505](./image/image-20230604180848505.png)
 
 这样直接执行install命令就能将target目录里的文件删除了
 
-<img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230604180958491.png" alt="image-20230604180958491" style="zoom:50%;" />
+<img src="./image/image-20230604180958491.png" alt="image-20230604180958491" style="zoom:50%;" />
 
 #### 4、测试
 
@@ -1817,9 +1817,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 f3b80165733e        demo                "sh -c 'java -jar ..."   24 seconds ago      Up 23 seconds       0.0.0.0:8080->8080/tcp   demo
 ```
 
-![image-20230604175234428](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604175234428.png)
+![image-20230604175234428](./image/image-20230604175234428.png)
 
-![image-20230604175237547](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604175237547.png)
+![image-20230604175237547](./image/image-20230604175237547.png)
 
 修改版本后：可以看到修改版本后jar包名修改了，接口返回的内容也修改了
 
@@ -1832,9 +1832,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 f3b80165733e        demo                "sh -c 'java -jar ..."   27 minutes ago      Up 3 minutes        0.0.0.0:8080->8080/tcp   demo
 ```
 
-![image-20230604175237546](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604175237546.png)
+![image-20230604175237546](./image/image-20230604175237546.png)
 
-![image-20230604175237548](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604175237548.png)
+![image-20230604175237548](./image/image-20230604175237548.png)
 
 
 
@@ -1842,11 +1842,11 @@ f3b80165733e        demo                "sh -c 'java -jar ..."   27 minutes ago 
 
 
 
-![image-20230604182856330](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604182856330.png)
+![image-20230604182856330](./image/image-20230604182856330.png)
 
 
 
-![image-20230605213934828](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605213934828.png)
+![image-20230605213934828](./image/image-20230605213934828.png)
 
 
 
@@ -1857,13 +1857,13 @@ docker rmi demo
 rm -rf /root/mydata/*
 ```
 
-![image-20230604183308293](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604183308293.png)
+![image-20230604183308293](./image/image-20230604183308293.png)
 
 
 
 删除`Exec command`，然后点击`Add Transfer Set`
 
-![image-20230604183012771](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604183012771.png)
+![image-20230604183012771](./image/image-20230604183012771.png)
 
 然后我们再添加一个
 
@@ -1874,7 +1874,7 @@ docker build -t demo ./mydata
 docker run -d --name demo -p 8080:8080 -v /root/mydata:/root demo
 ```
 
-![image-20230604183523519](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604183523519.png)
+![image-20230604183523519](./image/image-20230604183523519.png)
 
 
 
@@ -1896,7 +1896,7 @@ Step 4/5 : ADD mydata/demo*.jar /root/demo01.jar
 No source files were specified
 ```
 
-![image-20230605213420809](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605213420809.png)
+![image-20230605213420809](./image/image-20230605213420809.png)
 
 
 
@@ -1936,7 +1936,7 @@ Removing intermediate container 90c90c3f35fb
 Successfully built 2e2fafb48f27
 ```
 
-![image-20230605212338143](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605212338143.png)
+![image-20230605212338143](./image/image-20230605212338143.png)
 
 
 
@@ -1972,7 +1972,7 @@ Removing intermediate container dbcbcedaef22
 Successfully built ff3f7cf42fb7
 ```
 
-![image-20230605212734741](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605212734741.png)![image-20230605212734883](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605212734883.png)
+![image-20230605212734741](./image/image-20230605212734741.png)![image-20230605212734883](./image/image-20230605212734883.png)
 
 我们可以修改项目的`docker/dockerfile`文件，并将修改推送到远程仓库
 
@@ -1986,11 +1986,11 @@ ADD demo*.jar /root/demo01.jar
 ENTRYPOINT ["sh", "-c", "java -jar /root/demo*.jar"]
 ```
 
-![image-20230605213526696](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605213526696.png)
+![image-20230605213526696](./image/image-20230605213526696.png)
 
 
 
-![image-20230605234615822](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605234615822.png)
+![image-20230605234615822](./image/image-20230605234615822.png)
 
 
 
@@ -2005,11 +2005,11 @@ root@d4ed0b5a958b:~# ls
 demo-0.0.2-SNAPSHOT.jar  dockerfile  mydata
 ```
 
-![image-20230606085930623](https://gitlab.com/apzs/image/-/raw/master/image/image-20230606085930623.png)
+![image-20230606085930623](./image/image-20230606085930623.png)
 
 
 
-![image-20230605234615821](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605234615821.png)
+![image-20230605234615821](./image/image-20230605234615821.png)
 
 
 
@@ -2025,7 +2025,7 @@ Successfully built 8d3794f4c2cc
 /usr/bin/docker-current: Error response from daemon: oci runtime error: container_linux.go:290: starting container process caused "chdir to cwd (\"/root/mydata\") set in config.json failed: no such file or directory".
 ```
 
-![image-20230605221128662](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605221128662.png)
+![image-20230605221128662](./image/image-20230605221128662.png)
 
 
 
@@ -2037,49 +2037,49 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 /usr/bin/docker-current: Error response from daemon: oci runtime error: container_linux.go:290: starting container process caused "chdir to cwd (\"/root/mydata\") set in config.json failed: no such file or directory".
 ```
 
-![image-20230605222220917](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605222220917.png)
+![image-20230605222220917](./image/image-20230605222220917.png)
 
 ## 7、集群
 
 
 
-![image-20230604201147685](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201147685.png)
+![image-20230604201147685](./image/image-20230604201147685.png)
 
 新建节点
 
-![image-20230604201209903](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201209903.png)
+![image-20230604201209903](./image/image-20230604201209903.png)
 
 
 
 `Number of executors` 为当前节点允许的并发执行的个数
 
-![image-20230604203931942](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604203931942.png)
+![image-20230604203931942](./image/image-20230604203931942.png)
 
 指定远程工作目录和标签，标签比较有用，以后我们指定在哪台机器上运行时，可以使用标签
 
-![image-20230604201550734](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201550734.png)
+![image-20230604201550734](./image/image-20230604201550734.png)
 
 在这里输入登录这台主机的用户名和密码
 
-![image-20230604201748131](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201748131.png)
+![image-20230604201748131](./image/image-20230604201748131.png)
 
 然后选择我们刚刚添加的，再点击报错即可
 
-![image-20230604201845913](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201845913.png)
+![image-20230604201845913](./image/image-20230604201845913.png)
 
 
 
-![image-20230604202034839](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604202034839.png)
+![image-20230604202034839](./image/image-20230604202034839.png)
 
 我们点击这个节点，在日志里就可以看到这台主机正在干嘛
 
-![image-20230604202047284](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604202047284.png)
+![image-20230604202047284](./image/image-20230604202047284.png)
 
 
 
 再添加一个节点
 
-![image-20230604202359111](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604202359111.png)
+![image-20230604202359111](./image/image-20230604202359111.png)
 
 
 
@@ -2089,15 +2089,15 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 
 
-![image-20230604201550734](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201550734.png)
+![image-20230604201550734](./image/image-20230604201550734.png)
 
 在这里输入登录这台主机的用户名和密码
 
-![image-20230604201748131](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604201748131.png)
+![image-20230604201748131](./image/image-20230604201748131.png)
 
 注意选择最下面的这个凭证
 
-![image-20230604203319250](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604203319250.png)
+![image-20230604203319250](./image/image-20230604203319250.png)
 
 
 
@@ -2117,29 +2117,29 @@ java.lang.IllegalStateException: Connection is not established!
 	at com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPasswordAuthenticator.canAuthenticate(TrileadSSHPasswordAuthenticator.java:83)
 ```
 
-![image-20230604203047664](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604203047664.png)
+![image-20230604203047664](./image/image-20230604203047664.png)
 
-![image-20230604203131546](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604203131546.png)
-
-
-
-![image-20230604203207585](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604203207585.png)
+![image-20230604203131546](./image/image-20230604203131546.png)
 
 
 
+![image-20230604203207585](./image/image-20230604203207585.png)
 
 
-![image-20230604205336138](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604205336138.png)
+
+
+
+![image-20230604205336138](./image/image-20230604205336138.png)
 
 
 
 我们可以选择`在必要的时候并发构建`，这样就会随机分配一个节点
 
-![image-20230604210027848](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604210027848.png)
+![image-20230604210027848](./image/image-20230604210027848.png)
 
 让我们点击多次，可以看到这些任务能够并发构建
 
-![image-20230604210331879](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604210331879.png)
+![image-20230604210331879](./image/image-20230604210331879.png)
 
 我们还可以选择`限制项目的运行节点`，这样就只在`jenkins-02`或`jenkins-03`中的一个节点运行了
 
@@ -2147,11 +2147,11 @@ java.lang.IllegalStateException: Connection is not established!
 jenkins-02  || jenkins-03
 ```
 
-![image-20230604205928263](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604205928263.png)
+![image-20230604205928263](./image/image-20230604205928263.png)
 
 
 
-![image-20230604205959551](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604205959551.png)
+![image-20230604205959551](./image/image-20230604205959551.png)
 
 
 
@@ -2169,7 +2169,7 @@ stage:某一阶段，可有多个
 steps:阶段内的每一步， 可执行命令
 ```
 
-![image-20230604210756288](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604210756288.png)
+![image-20230604210756288](./image/image-20230604210756288.png)
 
 
 
@@ -2195,39 +2195,39 @@ pipeline {
 
 取消`使用 Groovy 沙盒`的选中状态，然后点击保存
 
-![image-20230604211657437](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604211657437.png)
+![image-20230604211657437](./image/image-20230604211657437.png)
 
 然后执行这个任务，再点击这个任务即可看到执行的这一次构建所使用的时间
 
-![image-20230604212053796](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604212053796.png)
+![image-20230604212053796](./image/image-20230604212053796.png)
 
 点击这个构建，然后点击`Console Output`，可以看到控制台信息，而且这个控制台信息可以点击
 
-![image-20230604212314611](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604212314611.png)
+![image-20230604212314611](./image/image-20230604212314611.png)
 
 我们还可以从指定阶段重新运行
 
-![image-20230604212406109](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604212406109.png)
+![image-20230604212406109](./image/image-20230604212406109.png)
 
 我们可以下载`Blue Ocean`这个插件，这个插件有更加友好的界面和更加丰富的功能
 
-![image-20230604212623896](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604212623896.png)
+![image-20230604212623896](./image/image-20230604212623896.png)
 
 我们点击`打开 Blue Ocean`就能看到非常美观的页面
 
-![image-20230604212759466](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604212759466.png)
+![image-20230604212759466](./image/image-20230604212759466.png)
 
 
 
-![image-20230604212955452](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604212955452.png)
+![image-20230604212955452](./image/image-20230604212955452.png)
 
 
 
-![image-20230604213002086](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604213002086.png)
+![image-20230604213002086](./image/image-20230604213002086.png)
 
 
 
-![image-20230604213006379](https://gitlab.com/apzs/image/-/raw/master/image/image-20230604213006379.png)
+![image-20230604213006379](./image/image-20230604213006379.png)
 
 
 
@@ -2247,29 +2247,29 @@ post
 
 
 
-![image-20230605195248308](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605195248308.png)
+![image-20230605195248308](./image/image-20230605195248308.png)
 
 
 
-![image-20230605195225799](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605195225799.png)
+![image-20230605195225799](./image/image-20230605195225799.png)
 
 
 
-![image-20230605195054108](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605195054108.png)
+![image-20230605195054108](./image/image-20230605195054108.png)
 
 > 注意修改为自己项目的分支
 
-![image-20230605195218863](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605195218863.png)
+![image-20230605195218863](./image/image-20230605195218863.png)
 
 然后我们点击`生成流水线脚本`，就可以看到了
 
 
 
-![image-20230605195808934](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605195808934.png)
+![image-20230605195808934](./image/image-20230605195808934.png)
 
 由于我的jenkins的这台机器已经配置了git的ssh密钥了，因此不需要凭证
 
-![image-20230605195918596](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605195918596.png)
+![image-20230605195918596](./image/image-20230605195918596.png)
 
 然后我们写在steps里
 
@@ -2294,13 +2294,13 @@ pipeline {
 }
 ```
 
-![image-20230605200230185](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605200230185.png)
+![image-20230605200230185](./image/image-20230605200230185.png)
 
 由于在bash我们可以直接使用git命令，但是我们不能直接使用maven的相关命令，需要引入相关的maven配置才行
 
 这个maven我们在`全局工具配置`里已经添加了，我们需要复制这个名字
 
-![image-20230605200523118](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605200523118.png)
+![image-20230605200523118](./image/image-20230605200523118.png)
 
 我们可以使用` tools { maven "maven3" }`，表示我们需要maven3这个工具（这里的maven3是全局工具配置里添加的maven的名字）
 
@@ -2336,11 +2336,11 @@ pipeline {
 }
 ```
 
-![image-20230605202433574](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605202433574.png)
+![image-20230605202433574](./image/image-20230605202433574.png)
 
 在片段生成器的示例步骤里选择`sshPublisher: Send build artifacts over SSH`，然后设置和first任务的`Pre Step`里一样的配置
 
-![image-20230609113811443](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609113811443.png)
+![image-20230609113811443](./image/image-20230609113811443.png)
 
 
 
@@ -2387,7 +2387,7 @@ pipeline {
 
 
 
-![image-20230609120300258](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609120300258.png)
+![image-20230609120300258](./image/image-20230609120300258.png)
 
 
 
@@ -2439,15 +2439,15 @@ pipeline {
 
 
 
-![image-20230609140734583](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609140734583.png)
+![image-20230609140734583](./image/image-20230609140734583.png)
 
 
 
-![image-20230609115625094](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609115625094.png)
+![image-20230609115625094](./image/image-20230609115625094.png)
 
 
 
-![image-20230609140816137](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609140816137.png)
+![image-20230609140816137](./image/image-20230609140816137.png)
 
 
 
@@ -2455,17 +2455,17 @@ pipeline {
 
 
 
-![image-20230609120300259](https://gitlab.com/apzs/image/-/raw/master/image/image-20230609120300259.png)
+![image-20230609120300259](./image/image-20230609120300259.png)
 
 ## 9、多分支job
 
-![image-20230605203731556](https://gitlab.com/apzs/image/-/raw/master/image/image-20230605203731556.png)
+![image-20230605203731556](./image/image-20230605203731556.png)
 
 
 
 
 
-![image-20230612170050709](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612170050709.png)
+![image-20230612170050709](./image/image-20230612170050709.png)
 
 
 
@@ -2489,46 +2489,46 @@ pipeline {
 }
 ```
 
-![image-20230612170935936](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612170935936.png)
+![image-20230612170935936](./image/image-20230612170935936.png)
 
 
 
-![image-20230612170807110](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612170807110.png)
+![image-20230612170807110](./image/image-20230612170807110.png)
 
 
 
-![image-20230612171305267](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612171305267.png)
+![image-20230612171305267](./image/image-20230612171305267.png)
 
 
 
-![image-20230612171301164](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612171301164.png)
+![image-20230612171301164](./image/image-20230612171301164.png)
 
 
 
-![image-20230612171341797](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612171341797.png)
+![image-20230612171341797](./image/image-20230612171341797.png)
 
 
 
-![image-20230612172135860](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612172135860.png)
+![image-20230612172135860](./image/image-20230612172135860.png)
 
 
 
 
 
-![image-20230612172140180](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612172140180.png)
+![image-20230612172140180](./image/image-20230612172140180.png)
 
 
 
-![image-20230612172417915](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612172417915.png)
+![image-20230612172417915](./image/image-20230612172417915.png)
 
 
 
-![image-20230612172517046](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612172517046.png)
+![image-20230612172517046](./image/image-20230612172517046.png)
 
 
 
-![image-20230612172456536](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612172456536.png)
+![image-20230612172456536](./image/image-20230612172456536.png)
 
 
 
-![image-20230612172500336](https://gitlab.com/apzs/image/-/raw/master/image/image-20230612172500336.png)
+![image-20230612172500336](./image/image-20230612172500336.png)

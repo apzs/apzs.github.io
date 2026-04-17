@@ -40,7 +40,8 @@ export default defineUserConfig({
             const dirPath = filePath.   substring(0,filePath.indexOf('/', 1) + 1);
             if (!href.startsWith("http")){
                 // 修改图片路径逻辑
-                const newHref = host + dirPath + (href.startsWith("./") ? href.substring(2) : href)
+                // const newHref = host + dirPath + (href.startsWith("./") ? href.substring(2) : href)
+                const newHref = host + (href.startsWith("./") ? href.substring(2) : href)
                 token.attrs[token.attrIndex('src')][1] = newHref;
                 console.log(newHref)
             }
