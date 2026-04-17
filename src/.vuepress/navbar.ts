@@ -122,6 +122,7 @@ export default navbar([
             {text: "SpringBoot", icon: "leaf", link: "7.SpringBoot2"},
             {text: "git", icon: "code-branch", link: "9.git/README"},
             {text: "nginx", icon: "server", link: "10.nginx"},
+            {text: "jni", icon: "server", link: "11.jni"},
         ]
     },
     {
@@ -229,5 +230,43 @@ export default navbar([
         text: "面试题",
         icon: "clipboard-question",
         link: "/interview/README.md"
+    },
+    {
+        text: 'C++',
+        icon: "screwdriver-wrench",
+        prefix: "/cpp/",
+        children: [
+            { text: 'C++基础入门', icon: "leaf", link: '1.C++基础入门' },
+            { text: '通讯录管理系统', icon: "database", link: '2.通讯录管理系统' },
+            { text: 'C++核心编程', icon: "fa-brands fa-docker", link: '3.C++核心编程' },
+            { text: '职工管理系统', icon: "box", link: '4.职工管理系统' },
+            { text: 'C++提高编程STL', icon: "fa-brands fa-linux", link: '5.C++提高编程STL' },
+            { text: '基于STL的演讲比赛流程管理系统', icon: "fa-brands fa-windows", link: '6.基于STL的演讲比赛流程管理系统' },
+            { text: '机房预约系统', icon: "fa-brands fa-git-alt", link: '7.机房预约系统' },
+        ]
+    },
+    {
+        text: 'python',
+        icon: "screwdriver-wrench",
+        prefix: "/python/",
+        children: [
+            { text: '基础语法', icon: "leaf", link: '01.基础语法' },
+            { text: '判断语句', icon: "database", link: '02.判断语句' },
+            { text: '循环语句', icon: "fa-brands fa-docker", link: '03.循环语句' },
+            { text: '函数使用', icon: "box", link: '04.函数使用' },
+            { text: '数据容器', icon: "fa-brands fa-linux", link: '05.数据容器' },
+            { text: '文件基础操作', icon: "fa-brands fa-windows", link: '06.文件基础操作' },
+            { text: '异常处理', icon: "fa-brands fa-git-alt", link: '07.异常处理' },
+            { text: '模块与包', icon: "fa-brands fa-git-alt", link: '08.模块与包' },
+            { text: '面向对象', icon: "fa-brands fa-git-alt", link: '09.面向对象' },
+            { text: '类型注解', icon: "fa-brands fa-git-alt", link: '10.类型注解' },
+            { text: '高阶技巧', icon: "fa-brands fa-git-alt", link: '11.高阶技巧' },
+            { text: '操作MySQL', icon: "fa-brands fa-git-alt", link: '12.操作MySQL' },
+        ]
+    },
+    {
+        text: 'cmo',
+        icon: "screwdriver-wrench",
+        link: 'cmo'
     },
 ]);
