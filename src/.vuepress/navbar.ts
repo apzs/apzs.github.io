@@ -2,11 +2,10 @@ import {navbar} from "vuepress-theme-hope";
 
 export default navbar([
     "/",
-    // "/demo/",
     {
-        text: "前端基础",
+        text: "前端笔记",
         icon: "code",
-        prefix: "/front-base/",
+        prefix: "/front/",
         children: [
             {
                 text: "html&css",
@@ -29,14 +28,7 @@ export default navbar([
                     {text: "ECMAScript6", icon: "fa-brands fa-js", link: "5.ECMAScript6"},
                     {text: "Promise", icon: "clock", link: "6.Promise"},
                 ]
-            }
-        ]
-    },
-    {
-        text: "前端进阶",
-        icon: "rocket",
-        prefix: "/front-advance/",
-        children: [
+            },
             {
                 text: "前置知识",
                 icon: "circle-info",
@@ -102,41 +94,47 @@ export default navbar([
         ]
     },
     {
-        text: "后端基础",
+        text: "后端笔记",
         icon: "server",
-        prefix: "/back-base/",
         children: [
-            {text: "Java基础语法", icon: "fa-brands fa-java", link: "1.Java基础语法/README"},
-            {text: "Java核心", icon: "coffee", link: "2.Java核心"},
-            {text: "JavaWeb", icon: "globe", link: "3.JavaWeb"},
-            {text: "mysql", icon: "database", link: "4.mysql/MySQL"},
-        ]
-    },
-    {
-        text: "后端进阶",
-        icon: "gears",
-        prefix: "/back-advance/",
-        children: [
-            {text: "SSM", icon: "layer-group", link: "5.SSM/SSM笔记"},
-            {text: "redis", icon: "database", link: "6.redis/README"},
-            {text: "SpringBoot", icon: "leaf", link: "7.SpringBoot2"},
-            {text: "git", icon: "code-branch", link: "9.git/README"},
-            {text: "nginx", icon: "server", link: "10.nginx"},
-            {text: "jni", icon: "server", link: "11.jni"},
-        ]
-    },
-    {
-        text: "后端高级",
-        icon: "microchip",
-        prefix: "/back-senior/",
-        children: [
-            {text: "docker", icon: "fa-brands fa-docker", link: "11.docker/README"},
-            {text: "gitlab+jeckins", icon: "vials", link: "12.gitlab+jeckins/README"},
-            {text: "SpringSecurity", icon: "shield-halved", link: "13.SpringSecurity/README"},
-            {text: "Netty", icon: "network-wired", link: "14.Netty"},
-            {text: "arthas", icon: "bug", link: "15.arthas"},
-            {text: "ShardingSphere5", icon: "database", link: "16.ShardingSphere5"},
-            {text: "mongodb", icon: "leaf", link: "17.mongodb/mongodb"},
+            {
+                text: "后端基础",
+                icon: "server",
+                prefix: "/back-base/",
+                children: [
+                    {text: "Java基础语法", icon: "fa-brands fa-java", link: "1.Java基础语法/README"},
+                    {text: "Java核心", icon: "coffee", link: "2.Java核心"},
+                    {text: "JavaWeb", icon: "globe", link: "3.JavaWeb"},
+                    {text: "mysql", icon: "database", link: "4.mysql/MySQL"},
+                ]
+            },
+            {
+                text: "后端进阶",
+                icon: "gears",
+                prefix: "/back-advance/",
+                children: [
+                    {text: "SSM", icon: "layer-group", link: "5.SSM/SSM笔记"},
+                    {text: "redis", icon: "database", link: "6.redis/README"},
+                    {text: "SpringBoot", icon: "leaf", link: "7.SpringBoot2"},
+                    {text: "git", icon: "code-branch", link: "9.git/README"},
+                    {text: "nginx", icon: "server", link: "10.nginx"},
+                    {text: "jni", icon: "link", link: "11.jni"},
+                ]
+            },
+            {
+                text: "后端高级",
+                icon: "microchip",
+                prefix: "/back-senior/",
+                children: [
+                    {text: "docker", icon: "fa-brands fa-docker", link: "11.docker/README"},
+                    {text: "gitlab+jeckins", icon: "vials", link: "12.gitlab+jeckins/README"},
+                    {text: "SpringSecurity", icon: "shield-halved", link: "13.SpringSecurity/README"},
+                    {text: "Netty", icon: "network-wired", link: "14.Netty"},
+                    {text: "arthas", icon: "bug", link: "15.arthas"},
+                    {text: "ShardingSphere5", icon: "database", link: "16.ShardingSphere5"},
+                    {text: "mongodb", icon: "leaf", link: "17.mongodb/mongodb"},
+                ]
+            },
         ]
     },
     {
@@ -233,40 +231,40 @@ export default navbar([
     },
     {
         text: 'C++',
-        icon: "screwdriver-wrench",
+        icon: "code",
         prefix: "/cpp/",
         children: [
-            { text: 'C++基础入门', icon: "leaf", link: '1.C++基础入门' },
-            { text: '通讯录管理系统', icon: "database", link: '2.通讯录管理系统' },
-            { text: 'C++核心编程', icon: "fa-brands fa-docker", link: '3.C++核心编程' },
-            { text: '职工管理系统', icon: "box", link: '4.职工管理系统' },
-            { text: 'C++提高编程STL', icon: "fa-brands fa-linux", link: '5.C++提高编程STL' },
-            { text: '基于STL的演讲比赛流程管理系统', icon: "fa-brands fa-windows", link: '6.基于STL的演讲比赛流程管理系统' },
-            { text: '机房预约系统', icon: "fa-brands fa-git-alt", link: '7.机房预约系统' },
+            { text: 'C++基础入门', icon: "code", link: '1.C++基础入门' },
+            { text: '通讯录管理系统', icon: "address-book", link: '2.通讯录管理系统' },
+            { text: 'C++核心编程', icon: "gears", link: '3.C++核心编程' },
+            { text: '职工管理系统', icon: "users", link: '4.职工管理系统' },
+            { text: 'C++提高编程STL', icon: "layer-group", link: '5.C++提高编程STL' },
+            { text: '基于STL的演讲比赛流程管理系统', icon: "ranking-star", link: '6.基于STL的演讲比赛流程管理系统' },
+            { text: '机房预约系统', icon: "calendar-check", link: '7.机房预约系统' },
         ]
     },
     {
         text: 'python',
-        icon: "screwdriver-wrench",
+        icon: "fa-brands fa-python",
         prefix: "/python/",
         children: [
-            { text: '基础语法', icon: "leaf", link: '01.基础语法' },
-            { text: '判断语句', icon: "database", link: '02.判断语句' },
-            { text: '循环语句', icon: "fa-brands fa-docker", link: '03.循环语句' },
-            { text: '函数使用', icon: "box", link: '04.函数使用' },
-            { text: '数据容器', icon: "fa-brands fa-linux", link: '05.数据容器' },
-            { text: '文件基础操作', icon: "fa-brands fa-windows", link: '06.文件基础操作' },
-            { text: '异常处理', icon: "fa-brands fa-git-alt", link: '07.异常处理' },
-            { text: '模块与包', icon: "fa-brands fa-git-alt", link: '08.模块与包' },
-            { text: '面向对象', icon: "fa-brands fa-git-alt", link: '09.面向对象' },
-            { text: '类型注解', icon: "fa-brands fa-git-alt", link: '10.类型注解' },
-            { text: '高阶技巧', icon: "fa-brands fa-git-alt", link: '11.高阶技巧' },
-            { text: '操作MySQL', icon: "fa-brands fa-git-alt", link: '12.操作MySQL' },
+            { text: '基础语法', icon: "code", link: '01.基础语法' },
+            { text: '判断语句', icon: "code-branch", link: '02.判断语句' },
+            { text: '循环语句', icon: "rotate", link: '03.循环语句' },
+            { text: '函数使用', icon: "gears", link: '04.函数使用' },
+            { text: '数据容器', icon: "boxes-stacked", link: '05.数据容器' },
+            { text: '文件基础操作', icon: "file-lines", link: '06.文件基础操作' },
+            { text: '异常处理', icon: "bug", link: '07.异常处理' },
+            { text: '模块与包', icon: "cubes", link: '08.模块与包' },
+            { text: '面向对象', icon: "layer-group", link: '09.面向对象' },
+            { text: '类型注解', icon: "spell-check", link: '10.类型注解' },
+            { text: '高阶技巧', icon: "rocket", link: '11.高阶技巧' },
+            { text: '操作MySQL', icon: "database", link: '12.操作MySQL' },
         ]
     },
     {
         text: 'cmo',
-        icon: "screwdriver-wrench",
+        icon: "jet-fighter",
         link: 'cmo'
     },
 ]);
