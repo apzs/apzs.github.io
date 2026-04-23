@@ -1,0 +1,1431 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.0" />
+    <meta name="theme" content="VuePress Theme Hope 2.0.0-rc.5" />
+    <style>
+      html {
+        background: var(--bg-color, #fff);
+      }
+
+      html[data-theme="dark"] {
+        background: var(--bg-color, #1d1e1f);
+      }
+
+      body {
+        background: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <meta property="og:url" content="https://apzs.github.io/cmo/"><meta property="og:site_name" content="apzs"><meta property="og:title" content="CMO研究"><meta property="og:description" content="CMO研究 🍑 添加阵营 创建一个新想定后，首先要做的就是添加阵营，要不然添加单位、创建矩形区域等很多事情都做不了。 🐟 界面交互 添加阵营功能在编辑菜单下的添加/编辑阵营下。 image-20250806132852671"><meta property="og:type" content="article"><meta property="og:image" content="https://apzs.github.io/"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2026-04-17T09:48:25.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image:alt" content="CMO研究"><meta property="article:author" content="apzs"><meta property="article:modified_time" content="2026-04-17T09:48:25.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CMO研究","image":["https://apzs.github.io/"],"dateModified":"2026-04-17T09:48:25.000Z","author":[{"@type":"Person","name":"apzs","url":"https://apzs.eu.org"}]}</script><link rel="icon" href="/favicon.ico"><link rel="icon" href="/assets/icon/chrome-mask-512.png" type="image/png" sizes="512x512"><link rel="icon" href="/assets/icon/chrome-mask-192.png" type="image/png" sizes="192x192"><link rel="icon" href="/assets/icon/chrome-512.png" type="image/png" sizes="512x512"><link rel="icon" href="/assets/icon/chrome-192.png" type="image/png" sizes="192x192"><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"><meta name="theme-color" content="#46bd87"><link rel="apple-touch-icon" href="/assets/icon/apple-icon-152.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"><title>CMO研究 | apzs</title><meta name="description" content="CMO研究 🍑 添加阵营 创建一个新想定后，首先要做的就是添加阵营，要不然添加单位、创建矩形区域等很多事情都做不了。 🐟 界面交互 添加阵营功能在编辑菜单下的添加/编辑阵营下。 image-20250806132852671">
+    <link rel="preload" href="/assets/style-1BJnvNLI.css" as="style"><link rel="stylesheet" href="/assets/style-1BJnvNLI.css">
+    <link rel="modulepreload" href="/assets/app-DPu-SEhm.js"><link rel="modulepreload" href="/assets/index.html-7PsDMvJG.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper-x3n3nnut.js"><link rel="modulepreload" href="/assets/index.html-Zq1GOiEV.js">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="vp-skip-link sr-only">跳至主要內容</a><!--]--><div class="theme-container has-toc"><!--[--><header id="navbar" class="vp-navbar"><div class="vp-navbar-start"><button type="button" class="vp-toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><!----><!--]--><!--[--><a class="vp-link vp-brand vp-brand" href="/"><img class="vp-nav-logo" src="https://theme-hope-assets.vuejs.press/logo.svg" aria-hidden><!----><span class="vp-site-name hide-in-pad">apzs</span></a><!--]--><!--[--><!----><!--]--></div><div class="vp-navbar-center"><!--[--><!----><!--]--><!--[--><nav class="vp-nav-links"><div class="nav-item hide-in-mobile"><a aria-label="博客主页" class="vp-link nav-link nav-link" href="/"><span class="font-icon icon fa-fw fa-sm fas fa-home" style=""></span>博客主页<!----></a></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="前端笔记"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-code" style=""></span>前端笔记</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>html&amp;css</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="html&amp;css基础" class="vp-link nav-link nav-link" href="/front/html_css/1.html_css.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-html5" style=""></span>html&amp;css基础<!----></a></li><li class="dropdown-subitem"><a aria-label="移动端布局" class="vp-link nav-link nav-link" href="/front/html_css/2.mobile.html"><span class="font-icon icon fa-fw fa-sm fas fa-mobile-screen-button" style=""></span>移动端布局<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>js</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="js基础" class="vp-link nav-link nav-link" href="/front/js/1.JS%E5%9F%BA%E7%A1%80.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-js" style=""></span>js基础<!----></a></li><li class="dropdown-subitem"><a aria-label="WebApi" class="vp-link nav-link nav-link" href="/front/js/2.WebApi%EF%BC%88BOM%E5%92%8CDOM%EF%BC%89.html"><span class="font-icon icon fa-fw fa-sm fas fa-window-maximize" style=""></span>WebApi<!----></a></li><li class="dropdown-subitem"><a aria-label="Ajax" class="vp-link nav-link nav-link" href="/front/js/3.Ajax.html"><span class="font-icon icon fa-fw fa-sm fas fa-rotate" style=""></span>Ajax<!----></a></li><li class="dropdown-subitem"><a aria-label="js高级" class="vp-link nav-link nav-link" href="/front/js/4.js%E9%AB%98%E7%BA%A7.html"><span class="font-icon icon fa-fw fa-sm fas fa-bolt" style=""></span>js高级<!----></a></li><li class="dropdown-subitem"><a aria-label="ECMAScript6" class="vp-link nav-link nav-link" href="/front/js/5.ECMAScript6.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-js" style=""></span>ECMAScript6<!----></a></li><li class="dropdown-subitem"><a aria-label="Promise" class="vp-link nav-link nav-link" href="/front/js/6.Promise.html"><span class="font-icon icon fa-fw fa-sm fas fa-clock" style=""></span>Promise<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>前置知识</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="npm基本使用" class="vp-link nav-link nav-link" href="/front/npm/1.npm%E5%9F%BA%E7%A1%80.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-npm" style=""></span>npm基本使用<!----></a></li><li class="dropdown-subitem"><a aria-label="scss" class="vp-link nav-link nav-link" href="/front/scss/"><span class="font-icon icon fa-fw fa-sm fa-brands fa-sass" style=""></span>scss<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>vue</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="vue2" class="vp-link nav-link nav-link" href="/front/vue/1.vue2.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-vuejs" style=""></span>vue2<!----></a></li><li class="dropdown-subitem"><a aria-label="vue3" class="vp-link nav-link nav-link" href="/front/vue/2.vue3.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-vuejs" style=""></span>vue3<!----></a></li><li class="dropdown-subitem"><a aria-label="创建vue项目的几种方式" class="vp-link nav-link nav-link" href="/front/vue/3.%E5%88%9B%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-vuejs" style=""></span>创建vue项目的几种方式<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>react</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="react入门" class="vp-link nav-link nav-link" href="/front/react/01%20%E3%80%90react%E5%85%A5%E9%97%A8%E3%80%91.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-react" style=""></span>react入门<!----></a></li><li class="dropdown-subitem"><a aria-label="react脚手架" class="vp-link nav-link nav-link" href="/front/react/02%20%E3%80%90react%E8%84%9A%E6%89%8B%E6%9E%B6%E3%80%91.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-react" style=""></span>react脚手架<!----></a></li><li class="dropdown-subitem"><a aria-label="路由" class="vp-link nav-link nav-link" href="/front/react/03%20%E3%80%90%E8%B7%AF%E7%94%B1%E3%80%91.html"><span class="font-icon icon fa-fw fa-sm fas fa-route" style=""></span>路由<!----></a></li><li class="dropdown-subitem"><a aria-label="redux" class="vp-link nav-link nav-link" href="/front/react/05%20%E3%80%90redux%E3%80%91.html"><span class="font-icon icon fa-fw fa-sm fas fa-atom" style=""></span>redux<!----></a></li><li class="dropdown-subitem"><a aria-label="hooks" class="vp-link nav-link nav-link" href="/front/react/06%20%E3%80%90hooks%E3%80%91.html"><span class="font-icon icon fa-fw fa-sm fas fa-anchor" style=""></span>hooks<!----></a></li><li class="dropdown-subitem"><a aria-label="react高级" class="vp-link nav-link nav-link" href="/front/react/07%20%E3%80%90react%E9%AB%98%E7%BA%A7%E3%80%91.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-react" style=""></span>react高级<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>webpack</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="基础" class="vp-link nav-link nav-link" href="/front/webpack/1.%E5%9F%BA%E7%A1%80.html"><span class="font-icon icon fa-fw fa-sm fas fa-cube" style=""></span>基础<!----></a></li><li class="dropdown-subitem"><a aria-label="高级" class="vp-link nav-link nav-link" href="/front/webpack/2.%E9%AB%98%E7%BA%A7.html"><span class="font-icon icon fa-fw fa-sm fas fa-cube" style=""></span>高级<!----></a></li><li class="dropdown-subitem"><a aria-label="项目配置" class="vp-link nav-link nav-link" href="/front/webpack/3.%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE.html"><span class="font-icon icon fa-fw fa-sm fas fa-gear" style=""></span>项目配置<!----></a></li><li class="dropdown-subitem"><a aria-label="原理分析" class="vp-link nav-link nav-link" href="/front/webpack/4.%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html"><span class="font-icon icon fa-fw fa-sm fas fa-magnifying-glass-chart" style=""></span>原理分析<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="前端项目"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-briefcase" style=""></span>前端项目</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-label="小兔鲜PC (Vue3+Pinia+js)" class="vp-link nav-link nav-link" href="/front-project/%E5%B0%8F%E5%85%94%E9%B2%9CPC%20(Vue3_Pinia_js)/"><span class="font-icon icon fa-fw fa-sm fas fa-desktop" style=""></span>小兔鲜PC (Vue3+Pinia+js)<!----></a></li><li class="dropdown-item"><a aria-label="小兔鲜儿uni-app (Vue3+ts)" class="vp-link nav-link nav-link" href="/front-project/%E5%B0%8F%E5%85%94%E9%B2%9C%E5%84%BFuni-app%20(Vue3_ts)/"><span class="font-icon icon fa-fw fa-sm fas fa-mobile-screen" style=""></span>小兔鲜儿uni-app (Vue3+ts)<!----></a></li><li class="dropdown-item"><a aria-label="尚品汇 (Vue2+js)" class="vp-link nav-link nav-link" href="/front-project/%E5%B0%9A%E5%93%81%E6%B1%87%20(Vue2_js)/"><span class="font-icon icon fa-fw fa-sm fas fa-store" style=""></span>尚品汇 (Vue2+js)<!----></a></li><li class="dropdown-item"><a aria-label="硅谷甄选 (Vue3+ts)" class="vp-link nav-link nav-link" href="/front-project/%E7%A1%85%E8%B0%B7%E7%94%84%E9%80%89%20(Vue3_ts)/"><span class="font-icon icon fa-fw fa-sm fas fa-check-to-slot" style=""></span>硅谷甄选 (Vue3+ts)<!----></a></li><li class="dropdown-item"><a aria-label="个人博客搭建教程" class="vp-link nav-link nav-link" href="/front-project/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"><span class="font-icon icon fa-fw fa-sm fas fa-blog" style=""></span>个人博客搭建教程<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="后端笔记"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-server" style=""></span>后端笔记</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>后端基础</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="Java基础语法" class="vp-link nav-link nav-link" href="/back-base/1.Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"><span class="font-icon icon fa-fw fa-sm fa-brands fa-java" style=""></span>Java基础语法<!----></a></li><li class="dropdown-subitem"><a aria-label="Java核心" class="vp-link nav-link nav-link" href="/back-base/2.Java%E6%A0%B8%E5%BF%83/"><span class="font-icon icon fa-fw fa-sm fas fa-coffee" style=""></span>Java核心<!----></a></li><li class="dropdown-subitem"><a aria-label="JavaWeb" class="vp-link nav-link nav-link" href="/back-base/3.JavaWeb.html"><span class="font-icon icon fa-fw fa-sm fas fa-globe" style=""></span>JavaWeb<!----></a></li><li class="dropdown-subitem"><a aria-label="mysql" class="vp-link nav-link nav-link" href="/back-base/4.mysql/MySQL.html"><span class="font-icon icon fa-fw fa-sm fas fa-database" style=""></span>mysql<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>后端进阶</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="SSM" class="vp-link nav-link nav-link" href="/back-advance/5.SSM/SSM%E7%AC%94%E8%AE%B0.html"><span class="font-icon icon fa-fw fa-sm fas fa-layer-group" style=""></span>SSM<!----></a></li><li class="dropdown-subitem"><a aria-label="redis" class="vp-link nav-link nav-link" href="/back-advance/6.redis/"><span class="font-icon icon fa-fw fa-sm fas fa-database" style=""></span>redis<!----></a></li><li class="dropdown-subitem"><a aria-label="SpringBoot" class="vp-link nav-link nav-link" href="/back-advance/7.SpringBoot2.html"><span class="font-icon icon fa-fw fa-sm fas fa-leaf" style=""></span>SpringBoot<!----></a></li><li class="dropdown-subitem"><a aria-label="git" class="vp-link nav-link nav-link" href="/back-advance/9.git/"><span class="font-icon icon fa-fw fa-sm fas fa-code-branch" style=""></span>git<!----></a></li><li class="dropdown-subitem"><a aria-label="nginx" class="vp-link nav-link nav-link" href="/back-advance/10.nginx.html"><span class="font-icon icon fa-fw fa-sm fas fa-server" style=""></span>nginx<!----></a></li><li class="dropdown-subitem"><a aria-label="jni" class="vp-link nav-link nav-link" href="/back-advance/11.jni.html"><span class="font-icon icon fa-fw fa-sm fas fa-link" style=""></span>jni<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>后端高级</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="docker" class="vp-link nav-link nav-link" href="/back-senior/11.docker/"><span class="font-icon icon fa-fw fa-sm fa-brands fa-docker" style=""></span>docker<!----></a></li><li class="dropdown-subitem"><a aria-label="gitlab+jeckins" class="vp-link nav-link nav-link" href="/back-senior/12.gitlab_jeckins/"><span class="font-icon icon fa-fw fa-sm fas fa-vials" style=""></span>gitlab+jeckins<!----></a></li><li class="dropdown-subitem"><a aria-label="SpringSecurity" class="vp-link nav-link nav-link" href="/back-senior/13.SpringSecurity/"><span class="font-icon icon fa-fw fa-sm fas fa-shield-halved" style=""></span>SpringSecurity<!----></a></li><li class="dropdown-subitem"><a aria-label="Netty" class="vp-link nav-link nav-link" href="/back-senior/14.Netty.html"><span class="font-icon icon fa-fw fa-sm fas fa-network-wired" style=""></span>Netty<!----></a></li><li class="dropdown-subitem"><a aria-label="arthas" class="vp-link nav-link nav-link" href="/back-senior/15.arthas.html"><span class="font-icon icon fa-fw fa-sm fas fa-bug" style=""></span>arthas<!----></a></li><li class="dropdown-subitem"><a aria-label="ShardingSphere5" class="vp-link nav-link nav-link" href="/back-senior/16.ShardingSphere5.html"><span class="font-icon icon fa-fw fa-sm fas fa-database" style=""></span>ShardingSphere5<!----></a></li><li class="dropdown-subitem"><a aria-label="mongodb" class="vp-link nav-link nav-link" href="/back-senior/17.mongodb/mongodb.html"><span class="font-icon icon fa-fw fa-sm fas fa-leaf" style=""></span>mongodb<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="谷粒商城"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-cart-shopping" style=""></span>谷粒商城</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>基础篇</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="前后端环境搭建" class="vp-link nav-link nav-link" href="/gulimall/base1.html"><span class="font-icon icon fa-fw fa-sm fas fa-wrench" style=""></span>前后端环境搭建<!----></a></li><li class="dropdown-subitem"><a aria-label="前后端联调" class="vp-link nav-link nav-link" href="/gulimall/base2.html"><span class="font-icon icon fa-fw fa-sm fas fa-link" style=""></span>前后端联调<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>高级篇</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="Elasticsearch &amp; nginx" class="vp-link nav-link nav-link" href="/gulimall/advanced1.html"><span class="font-icon icon fa-fw fa-sm fas fa-magnifying-glass" style=""></span>Elasticsearch &amp; nginx<!----></a></li><li class="dropdown-subitem"><a aria-label="Redisson &amp; SpringCache" class="vp-link nav-link nav-link" href="/gulimall/advanced2.html"><span class="font-icon icon fa-fw fa-sm fas fa-bolt" style=""></span>Redisson &amp; SpringCache<!----></a></li><li class="dropdown-subitem"><a aria-label="CompletableFuture" class="vp-link nav-link nav-link" href="/gulimall/advanced3.html"><span class="font-icon icon fa-fw fa-sm fas fa-clock" style=""></span>CompletableFuture<!----></a></li><li class="dropdown-subitem"><a aria-label="Spring Session &amp; OAuth2.0" class="vp-link nav-link nav-link" href="/gulimall/advanced4.html"><span class="font-icon icon fa-fw fa-sm fas fa-key" style=""></span>Spring Session &amp; OAuth2.0<!----></a></li><li class="dropdown-subitem"><a aria-label="RabbitMQ &amp; Seata" class="vp-link nav-link nav-link" href="/gulimall/advanced5.html"><span class="font-icon icon fa-fw fa-sm fas fa-envelope" style=""></span>RabbitMQ &amp; Seata<!----></a></li><li class="dropdown-subitem"><a aria-label="支付 &amp; Sentinel" class="vp-link nav-link nav-link" href="/gulimall/advanced6.html"><span class="font-icon icon fa-fw fa-sm fas fa-credit-card" style=""></span>支付 &amp; Sentinel<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>集群篇</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="K8s &amp; kubesphere" class="vp-link nav-link nav-link" href="/gulimall/cluster.html"><span class="font-icon icon fa-fw fa-sm fas fa-braille" style=""></span>K8s &amp; kubesphere<!----></a></li></ul></li><li class="dropdown-item"><a aria-label="运行教程" class="vp-link nav-link nav-link" href="/gulimall/"><span class="font-icon icon fa-fw fa-sm fas fa-run" style=""></span>运行教程<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="常用功能"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-screwdriver-wrench" style=""></span>常用功能</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-label="SpringBoot相关" class="vp-link nav-link nav-link" href="/CommonFunctions/1.SpringBoot.html"><span class="font-icon icon fa-fw fa-sm fas fa-leaf" style=""></span>SpringBoot相关<!----></a></li><li class="dropdown-item"><a aria-label="mysql相关" class="vp-link nav-link nav-link" href="/CommonFunctions/2.mysql.html"><span class="font-icon icon fa-fw fa-sm fas fa-database" style=""></span>mysql相关<!----></a></li><li class="dropdown-item"><a aria-label="docker相关" class="vp-link nav-link nav-link" href="/CommonFunctions/3.docker.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-docker" style=""></span>docker相关<!----></a></li><li class="dropdown-item"><a aria-label="maven相关" class="vp-link nav-link nav-link" href="/CommonFunctions/4.maven.html"><span class="font-icon icon fa-fw fa-sm fas fa-box" style=""></span>maven相关<!----></a></li><li class="dropdown-item"><a aria-label="linux相关" class="vp-link nav-link nav-link" href="/CommonFunctions/5.linux.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-linux" style=""></span>linux相关<!----></a></li><li class="dropdown-item"><a aria-label="windows相关" class="vp-link nav-link nav-link" href="/CommonFunctions/6.windows.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-windows" style=""></span>windows相关<!----></a></li><li class="dropdown-item"><a aria-label="git相关" class="vp-link nav-link nav-link" href="/CommonFunctions/7.git.html"><span class="font-icon icon fa-fw fa-sm fa-brands fa-git-alt" style=""></span>git相关<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="阅读源码"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-magnifying-glass" style=""></span>阅读源码</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Spring</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="搭建SpringBoot源码环境" class="vp-link nav-link nav-link" href="/sourceCode/spring/SpringBoot/"><span class="font-icon icon fa-fw fa-sm fas fa-wrench" style=""></span>搭建SpringBoot源码环境<!----></a></li><li class="dropdown-subitem"><a aria-label="SpringBoot自动配置 &amp; 请求处理" class="vp-link nav-link nav-link" href="/sourceCode/spring/SpringBoot/1.%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%20_%20%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86.html"><span class="font-icon icon fa-fw fa-sm fas fa-leaf" style=""></span>SpringBoot自动配置 &amp; 请求处理<!----></a></li><li class="dropdown-subitem"><a aria-label="SpringBoot异常处理" class="vp-link nav-link nav-link" href="/sourceCode/spring/SpringBoot/2.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html"><span class="font-icon icon fa-fw fa-sm fas fa-bug" style=""></span>SpringBoot异常处理<!----></a></li><li class="dropdown-subitem"><a aria-label="SpringSecurity源码阅读" class="vp-link nav-link nav-link" href="/sourceCode/spring/SpringSecurity/"><span class="font-icon icon fa-fw fa-sm fas fa-shield-halved" style=""></span>SpringSecurity源码阅读<!----></a></li><li class="dropdown-subitem"><a aria-label="SpringSecurity基础知识" class="vp-link nav-link nav-link" href="/sourceCode/spring/SpringSecurity/learn.html"><span class="font-icon icon fa-fw fa-sm fas fa-book" style=""></span>SpringSecurity基础知识<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Tomcat</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="Tomcat源码阅读" class="vp-link nav-link nav-link" href="/sourceCode/tomcat.html"><span class="font-icon icon fa-fw fa-sm fas fa-magnifying-glass" style=""></span>Tomcat源码阅读<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Mybatis</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="MyBatis源码阅读" class="vp-link nav-link nav-link" href="/sourceCode/mybatis/"><span class="font-icon icon fa-fw fa-sm fas fa-magnifying-glass" style=""></span>MyBatis源码阅读<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><a aria-label="面试题" class="vp-link nav-link nav-link" href="/interview/"><span class="font-icon icon fa-fw fa-sm fas fa-clipboard-question" style=""></span>面试题<!----></a></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="C++"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-code" style=""></span>C++</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-label="C++基础入门" class="vp-link nav-link nav-link" href="/cpp/1.C__%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8.html"><span class="font-icon icon fa-fw fa-sm fas fa-code" style=""></span>C++基础入门<!----></a></li><li class="dropdown-item"><a aria-label="通讯录管理系统" class="vp-link nav-link nav-link" href="/cpp/2.%E9%80%9A%E8%AE%AF%E5%BD%95%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html"><span class="font-icon icon fa-fw fa-sm fas fa-address-book" style=""></span>通讯录管理系统<!----></a></li><li class="dropdown-item"><a aria-label="C++核心编程" class="vp-link nav-link nav-link" href="/cpp/3.C__%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B.html"><span class="font-icon icon fa-fw fa-sm fas fa-gears" style=""></span>C++核心编程<!----></a></li><li class="dropdown-item"><a aria-label="职工管理系统" class="vp-link nav-link nav-link" href="/cpp/4.%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html"><span class="font-icon icon fa-fw fa-sm fas fa-users" style=""></span>职工管理系统<!----></a></li><li class="dropdown-item"><a aria-label="C++提高编程STL" class="vp-link nav-link nav-link" href="/cpp/5.C__%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8BSTL.html"><span class="font-icon icon fa-fw fa-sm fas fa-layer-group" style=""></span>C++提高编程STL<!----></a></li><li class="dropdown-item"><a aria-label="基于STL的演讲比赛流程管理系统" class="vp-link nav-link nav-link" href="/cpp/6.%E5%9F%BA%E4%BA%8ESTL%E7%9A%84%E6%BC%94%E8%AE%B2%E6%AF%94%E8%B5%9B%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html"><span class="font-icon icon fa-fw fa-sm fas fa-ranking-star" style=""></span>基于STL的演讲比赛流程管理系统<!----></a></li><li class="dropdown-item"><a aria-label="机房预约系统" class="vp-link nav-link nav-link" href="/cpp/7.%E6%9C%BA%E6%88%BF%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F.html"><span class="font-icon icon fa-fw fa-sm fas fa-calendar-check" style=""></span>机房预约系统<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="python"><span class="title"><span class="font-icon icon fa-fw fa-sm fa-brands fa-python" style=""></span>python</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-label="基础语法" class="vp-link nav-link nav-link" href="/python/01.%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95.html"><span class="font-icon icon fa-fw fa-sm fas fa-code" style=""></span>基础语法<!----></a></li><li class="dropdown-item"><a aria-label="判断语句" class="vp-link nav-link nav-link" href="/python/02.%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5.html"><span class="font-icon icon fa-fw fa-sm fas fa-code-branch" style=""></span>判断语句<!----></a></li><li class="dropdown-item"><a aria-label="循环语句" class="vp-link nav-link nav-link" href="/python/03.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5.html"><span class="font-icon icon fa-fw fa-sm fas fa-rotate" style=""></span>循环语句<!----></a></li><li class="dropdown-item"><a aria-label="函数使用" class="vp-link nav-link nav-link" href="/python/04.%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8.html"><span class="font-icon icon fa-fw fa-sm fas fa-gears" style=""></span>函数使用<!----></a></li><li class="dropdown-item"><a aria-label="数据容器" class="vp-link nav-link nav-link" href="/python/05.%E6%95%B0%E6%8D%AE%E5%AE%B9%E5%99%A8.html"><span class="font-icon icon fa-fw fa-sm fas fa-boxes-stacked" style=""></span>数据容器<!----></a></li><li class="dropdown-item"><a aria-label="文件基础操作" class="vp-link nav-link nav-link" href="/python/06.%E6%96%87%E4%BB%B6%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.html"><span class="font-icon icon fa-fw fa-sm fas fa-file-lines" style=""></span>文件基础操作<!----></a></li><li class="dropdown-item"><a aria-label="异常处理" class="vp-link nav-link nav-link" href="/python/07.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html"><span class="font-icon icon fa-fw fa-sm fas fa-bug" style=""></span>异常处理<!----></a></li><li class="dropdown-item"><a aria-label="模块与包" class="vp-link nav-link nav-link" href="/python/08.%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85.html"><span class="font-icon icon fa-fw fa-sm fas fa-cubes" style=""></span>模块与包<!----></a></li><li class="dropdown-item"><a aria-label="面向对象" class="vp-link nav-link nav-link" href="/python/09.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1.html"><span class="font-icon icon fa-fw fa-sm fas fa-layer-group" style=""></span>面向对象<!----></a></li><li class="dropdown-item"><a aria-label="类型注解" class="vp-link nav-link nav-link" href="/python/10.%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3.html"><span class="font-icon icon fa-fw fa-sm fas fa-spell-check" style=""></span>类型注解<!----></a></li><li class="dropdown-item"><a aria-label="高阶技巧" class="vp-link nav-link nav-link" href="/python/11.%E9%AB%98%E9%98%B6%E6%8A%80%E5%B7%A7.html"><span class="font-icon icon fa-fw fa-sm fas fa-rocket" style=""></span>高阶技巧<!----></a></li><li class="dropdown-item"><a aria-label="操作MySQL" class="vp-link nav-link nav-link" href="/python/12.%E6%93%8D%E4%BD%9CMySQL.html"><span class="font-icon icon fa-fw fa-sm fas fa-database" style=""></span>操作MySQL<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><a aria-label="cmo" class="vp-link nav-link active nav-link active" href="/cmo.html"><span class="font-icon icon fa-fw fa-sm fas fa-jet-fighter" style=""></span>cmo<!----></a></div></nav><!--]--><!--[--><!----><!--]--></div><div class="vp-navbar-end"><!--[--><!----><!--]--><!--[--><!----><div class="nav-item vp-repo"><a class="vp-repo-link" href="https://github.com/apzs/apzs.github.io" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="github icon" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="nav-item hide-in-mobile"><button type="button" id="appearance-switch"><svg xmlns="http://www.w3.org/2000/svg" class="icon auto-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="auto icon" style="display:block;"><path d="M512 992C246.92 992 32 777.08 32 512S246.92 32 512 32s480 214.92 480 480-214.92 480-480 480zm0-840c-198.78 0-360 161.22-360 360 0 198.84 161.22 360 360 360s360-161.16 360-360c0-198.78-161.22-360-360-360zm0 660V212c165.72 0 300 134.34 300 300 0 165.72-134.28 300-300 300z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="dark icon" style="display:none;"><path d="M524.8 938.667h-4.267a439.893 439.893 0 0 1-313.173-134.4 446.293 446.293 0 0 1-11.093-597.334A432.213 432.213 0 0 1 366.933 90.027a42.667 42.667 0 0 1 45.227 9.386 42.667 42.667 0 0 1 10.24 42.667 358.4 358.4 0 0 0 82.773 375.893 361.387 361.387 0 0 0 376.747 82.774 42.667 42.667 0 0 1 54.187 55.04 433.493 433.493 0 0 1-99.84 154.88 438.613 438.613 0 0 1-311.467 128z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="light icon" style="display:none;"><path d="M952 552h-80a40 40 0 0 1 0-80h80a40 40 0 0 1 0 80zM801.88 280.08a41 41 0 0 1-57.96-57.96l57.96-58a41.04 41.04 0 0 1 58 58l-58 57.96zM512 752a240 240 0 1 1 0-480 240 240 0 0 1 0 480zm0-560a40 40 0 0 1-40-40V72a40 40 0 0 1 80 0v80a40 40 0 0 1-40 40zm-289.88 88.08-58-57.96a41.04 41.04 0 0 1 58-58l57.96 58a41 41 0 0 1-57.96 57.96zM192 512a40 40 0 0 1-40 40H72a40 40 0 0 1 0-80h80a40 40 0 0 1 40 40zm30.12 231.92a41 41 0 0 1 57.96 57.96l-57.96 58a41.04 41.04 0 0 1-58-58l58-57.96zM512 832a40 40 0 0 1 40 40v80a40 40 0 0 1-80 0v-80a40 40 0 0 1 40-40zm289.88-88.08 58 57.96a41.04 41.04 0 0 1-58 58l-57.96-58a41 41 0 0 1 57.96-57.96z"></path></svg></button></div><!--[--><button type="button" class="search-pro-button" aria-label="搜索"><svg xmlns="http://www.w3.org/2000/svg" class="icon search-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="search icon"><path d="M192 480a256 256 0 1 1 512 0 256 256 0 0 1-512 0m631.776 362.496-143.2-143.168A318.464 318.464 0 0 0 768 480c0-176.736-143.264-320-320-320S128 303.264 128 480s143.264 320 320 320a318.016 318.016 0 0 0 184.16-58.592l146.336 146.368c12.512 12.48 32.768 12.48 45.28 0 12.48-12.512 12.48-32.768 0-45.28"></path></svg><div class="search-pro-placeholder">搜索</div><div class="search-pro-key-hints"><kbd class="search-pro-key">Ctrl</kbd><kbd class="search-pro-key">K</kbd></div></button><!--]--><!--]--><!--[--><!----><!--]--><button type="button" class="vp-toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span><span class="vp-top"></span><span class="vp-middle"></span><span class="vp-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow start"></span></div><aside id="sidebar" class="vp-sidebar"><!--[--><!----><!--]--><ul class="vp-sidebar-links"><li><!--[--><a aria-label="🍑 添加阵营" class="vp-link nav-link vp-sidebar-link vp-sidebar-heading nav-link vp-sidebar-link vp-sidebar-heading" href="/cmo/#添加阵营"><!---->🍑 添加阵营<!----></a><ul class="vp-sidebar-sub-headers"><li class="vp-sidebar-sub-header"><a aria-label="🐟 界面交互" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#界面交互"><!---->🐟 界面交互<!----></a><ul class="vp-sidebar-sub-headers"></ul></li><li class="vp-sidebar-sub-header"><a aria-label="🐟 入口代码" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#入口代码"><!---->🐟 入口代码<!----></a><ul class="vp-sidebar-sub-headers"></ul></li><li class="vp-sidebar-sub-header"><a aria-label="🐟 界面代码" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#界面代码"><!---->🐟 界面代码<!----></a><ul class="vp-sidebar-sub-headers"></ul></li><li class="vp-sidebar-sub-header"><a aria-label="🐟 编辑阵营对话框" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#编辑阵营对话框"><!---->🐟 编辑阵营对话框<!----></a><ul class="vp-sidebar-sub-headers"></ul></li><li class="vp-sidebar-sub-header"><a aria-label="🐟 获取阵营列表" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#获取阵营列表"><!---->🐟 获取阵营列表<!----></a><ul class="vp-sidebar-sub-headers"></ul></li><li class="vp-sidebar-sub-header"><a aria-label="🐟添加阵营" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#添加阵营-1"><!---->🐟添加阵营<!----></a><ul class="vp-sidebar-sub-headers"></ul></li><li class="vp-sidebar-sub-header"><a aria-label="🐟删除阵营" class="vp-link nav-link vp-sidebar-link vp-heading nav-link vp-sidebar-link vp-heading" href="/cmo/#删除阵营"><!---->🐟删除阵营<!----></a><ul class="vp-sidebar-sub-headers"></ul></li></ul><!--]--></li><li><!--[--><a aria-label="🍑  想定录制" class="vp-link nav-link vp-sidebar-link vp-sidebar-heading nav-link vp-sidebar-link vp-sidebar-heading" href="/cmo/#想定录制"><!---->🍑  想定录制<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li></ul><!--[--><!----><!--]--></aside><!--[--><main id="main-content" class="vp-page"><!--[--><!--[--><!----><!--]--><!----><nav class="vp-breadcrumb disable"></nav><div class="vp-page-title"><h1><!---->CMO研究</h1><div class="page-info"><span class="page-author-info" aria-label="作者🖊" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="author icon"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><a class="page-author-item" href="https://apzs.eu.org" target="_blank" rel="noopener noreferrer">apzs</a></span><span property="author" content="apzs"></span></span><!----><span class="page-date-info" aria-label="写作日期📅" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon calendar-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="calendar icon"><path d="M716.4 110.137c0-18.753-14.72-33.473-33.472-33.473-18.753 0-33.473 14.72-33.473 33.473v33.473h66.993v-33.473zm-334.87 0c0-18.753-14.72-33.473-33.473-33.473s-33.52 14.72-33.52 33.473v33.473h66.993v-33.473zm468.81 33.52H716.4v100.465c0 18.753-14.72 33.473-33.472 33.473a33.145 33.145 0 01-33.473-33.473V143.657H381.53v100.465c0 18.753-14.72 33.473-33.473 33.473a33.145 33.145 0 01-33.473-33.473V143.657H180.6A134.314 134.314 0 0046.66 277.595v535.756A134.314 134.314 0 00180.6 947.289h669.74a134.36 134.36 0 00133.94-133.938V277.595a134.314 134.314 0 00-133.94-133.938zm33.473 267.877H147.126a33.145 33.145 0 01-33.473-33.473c0-18.752 14.72-33.473 33.473-33.473h736.687c18.752 0 33.472 14.72 33.472 33.473a33.145 33.145 0 01-33.472 33.473z"></path></svg><span><!----></span><meta property="datePublished" content="2026-04-17T09:48:25.000Z"></span><span class="page-pageview-info" aria-label="访问量🔢" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon eye-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="eye icon"><path d="M992 512.096c0-5.76-.992-10.592-1.28-11.136-.192-2.88-1.152-8.064-2.08-10.816-.256-.672-.544-1.376-.832-2.08-.48-1.568-1.024-3.104-1.6-4.32C897.664 290.112 707.104 160 512 160c-195.072 0-385.632 130.016-473.76 322.592-1.056 2.112-1.792 4.096-2.272 5.856a55.512 55.512 0 00-.64 1.6c-1.76 5.088-1.792 8.64-1.632 7.744-.832 3.744-1.568 11.168-1.568 11.168-.224 2.272-.224 4.032.032 6.304 0 0 .736 6.464 1.088 7.808.128 1.824.576 4.512 1.12 6.976h-.032c.448 2.08 1.12 4.096 1.984 6.08.48 1.536.992 2.976 1.472 4.032C126.432 733.856 316.992 864 512 864c195.136 0 385.696-130.048 473.216-321.696 1.376-2.496 2.24-4.832 2.848-6.912.256-.608.48-1.184.672-1.728 1.536-4.48 1.856-8.32 1.728-8.32l-.032.032c.608-3.104 1.568-7.744 1.568-13.28zM512 672c-88.224 0-160-71.776-160-160s71.776-160 160-160 160 71.776 160 160-71.776 160-160 160z"></path></svg><span id="ArtalkPV" class="waline-pageview-count" data-path="/cmo/">...</span></span><span class="page-reading-time-info" aria-label="阅读时间⌛" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="timer icon"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 23 分钟</span><meta property="timeRequired" content="PT23M"></span><!----><!----></div><hr></div><div class="toc-place-holder"><aside id="toc"><!--[--><!----><!--]--><div class="toc-header">此页内容<button type="button" class="print-button" title="打印"><svg xmlns="http://www.w3.org/2000/svg" class="icon print-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="print icon"><path d="M819.2 364.8h-44.8V128c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v236.8h-44.8C145.067 364.8 96 413.867 96 473.6v192c0 59.733 49.067 108.8 108.8 108.8h44.8V896c0 17.067 14.933 32 32 32h460.8c17.067 0 32-14.933 32-32V774.4h44.8c59.733 0 108.8-49.067 108.8-108.8v-192c0-59.733-49.067-108.8-108.8-108.8zM313.6 160h396.8v204.8H313.6V160zm396.8 704H313.6V620.8h396.8V864zM864 665.6c0 25.6-19.2 44.8-44.8 44.8h-44.8V588.8c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v121.6h-44.8c-25.6 0-44.8-19.2-44.8-44.8v-192c0-25.6 19.2-44.8 44.8-44.8h614.4c25.6 0 44.8 19.2 44.8 44.8v192z"></path></svg></button></div><div class="toc-wrapper"><ul class="toc-list"><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="#添加阵营">🍑 添加阵营</a></li><li><ul class="toc-list"><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#界面交互">🐟 界面交互</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#入口代码">🐟 入口代码</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#界面代码">🐟 界面代码</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#编辑阵营对话框">🐟 编辑阵营对话框</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#获取阵营列表">🐟 获取阵营列表</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#添加阵营-1">🐟添加阵营</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="#删除阵营">🐟删除阵营</a></li><!----><!--]--></ul></li><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="#想定录制">🍑  想定录制</a></li><!----><!--]--></ul><div class="toc-marker" style="top:-1.7rem;"></div></div><!--[--><!----><!--]--></aside></div><!--[--><!----><!--]--><div class="theme-hope-content"><h1 id="cmo研究" tabindex="-1"><a class="header-anchor" href="#cmo研究" aria-hidden="true">#</a> CMO研究</h1><h2 id="添加阵营" tabindex="-1"><a class="header-anchor" href="#添加阵营" aria-hidden="true">#</a> 🍑 添加阵营</h2><p>创建一个新想定后，首先要做的就是添加阵营，要不然添加单位、创建矩形区域等很多事情都做不了。</p><h3 id="界面交互" tabindex="-1"><a class="header-anchor" href="#界面交互" aria-hidden="true">#</a> 🐟 界面交互</h3><p>添加阵营功能在<code>编辑</code>菜单下的<code>添加/编辑阵营</code>下。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250806132852671.png" alt="image-20250806132852671" tabindex="0" loading="lazy"><figcaption>image-20250806132852671</figcaption></figure><p>我们点击后会弹出<code>编辑阵营</code>的对话框。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250806133114051.png" alt="image-20250806133114051" tabindex="0" loading="lazy"><figcaption>image-20250806133114051</figcaption></figure><p>点击添加后会再次弹出一个对话框让我们输入阵营的名称。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250806133239420.png" alt="image-20250806133239420" tabindex="0" loading="lazy"><figcaption>image-20250806133239420</figcaption></figure><p>点击确定后，编辑阵营的对话框就会出现刚刚添加的<code>红方</code>，选中该名称后<code>删除</code>、<code>对抗关系</code>等按钮会亮起</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250806133420820.png" alt="image-20250806133420820" tabindex="0" loading="lazy"><figcaption>image-20250806133420820</figcaption></figure><h3 id="入口代码" tabindex="-1"><a class="header-anchor" href="#入口代码" aria-hidden="true">#</a> 🐟 入口代码</h3><p>首先我们要找出这个功能的入口位置，我们全局搜索<code>添加/编辑阵营</code>，相关代码在<code>MainForm.cs</code>的<code>ResetState</code>方法里面。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250806133701843.png" alt="image-20250806133701843" tabindex="0" loading="lazy"><figcaption>image-20250806133701843</figcaption></figure><p>其代码结构如下所示，<code>MainForm</code>的构造方法调用了<code>ResetState()</code>方法，<code>ResetState()</code>方法创建了<code>添加/编辑阵营</code>菜单项：</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class MainForm : Form
+{
+	
+	[AccessedThroughProperty(&quot;Sides_TSMI&quot;)]
+	[CompilerGenerated]
+	private DarkToolStripMenuItem m_MapperAdvisor;
+	
+	internal DarkToolStripMenuItem Sides_TSMI
+	{
+		// 省略
+	}
+	
+	public MainForm() // &lt;== 构造方法
+	{
+		base.Resize += CheckState;
+		base.FormClosing += SortState;
+		// 省略
+		m_WrapperAdvisor = new List&lt;ActiveUnit&gt;();
+		m_ObserverAdvisor = false;
+		_IssuerAdvisor = new List&lt;System.Drawing.Point&gt;();
+		// 省略
+		paramConnection = new ThreadLocal&lt;List&lt;System.Drawing.Point&gt;&gt;();
+		_PageConnection = new ThreadLocal&lt;Dictionary&lt;float, System.Drawing.Point&gt;&gt;();
+		ResetState();  // &lt;== 调用了ResetState()方法
+	}
+
+	private void ResetState()
+	{
+	    // 省略
+        Sides_TSMI = new DarkToolStripMenuItem();
+		// 省略
+		Sides_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		Sides_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		Sides_TSMI.Name = &quot;Sides_TSMI&quot;;
+		Sides_TSMI.Size = new System.Drawing.Size(267, 22);
+		Sides_TSMI.Text = &quot;添加/编辑阵营&quot;;                         // &lt;== TSMI_Editor&quot;编辑&quot;菜单项
+		SwitchTo_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		SwitchTo_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		SwitchTo_TSMI.Name = &quot;SwitchTo_TSMI&quot;;
+		SwitchTo_TSMI.Size = new System.Drawing.Size(267, 22);
+		SwitchTo_TSMI.Text = &quot;切换到...&quot;;
+		// 省略
+	}
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>接下来我们查看<code>MainForm</code>是怎么被创建的。</p><p>在<code>MainForm</code>的构造方法方法开头打上断点。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809142043504.png" alt="image-20250809142043504" tabindex="0" loading="lazy"><figcaption>image-20250809142043504</figcaption></figure><p>然后启动项目，查看调用栈就知道了：</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809142236524.png" alt="image-20250809142236524" tabindex="0" loading="lazy"><figcaption>image-20250809142236524</figcaption></figure><p>第一个执行的是<code>Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;</code>，其所在的方法为<span id="AdapterCallbackCandidate.RateInterruptibleMap"><code>RateInterruptibleMap</code></span>，我们再看<code>RateInterruptibleMap</code>方法是怎么被执行的。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809142418032.png" alt="image-20250809142418032" tabindex="0" loading="lazy"><figcaption>image-20250809142418032</figcaption></figure><p>根据搜索发现该方法绑定的是父类的<code>Startup</code>事件。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809142634774.png" alt="image-20250809142634774" tabindex="0" loading="lazy"><figcaption>image-20250809142634774</figcaption></figure><p>按住<code>ctrl</code>然后点击<code>Startup</code>就跳转到了<code>WindowsFormsApplicationBase</code>的<code>Startup</code>。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809145427569.png" alt="image-20250809145427569" tabindex="0" loading="lazy"><figcaption>image-20250809145427569</figcaption></figure><p>然后我们搜索<code>StartupEventHandler</code>，发现其在<code>OnStartup</code>方法里被使用，顺腾摸瓜就发现了其具体的逻辑：</p><p><code>Run</code>方法调用了<code>DoApplicationModel</code>方法,<code>DoApplicationModel</code>方法调用了<code>OnStartup</code>方法，<code>OnStartup</code>方法里触发了我们的事件。</p><blockquote><p><strong>编译器生成的委托字段</strong>：</p><p>当声明事件时：</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public event StartupEventHandler Startup;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>编译器会自动生成一个<strong>私有委托字段</strong> <code>StartupEvent</code>（名称可能略有不同，实际为编译器生成的后备字段）</p><p><strong>事件订阅的存储</strong>：</p><p>当外部代码订阅事件：</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>app.Startup += MyStartupHandler;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>订阅的方法会被添加到<code>StartupEvent</code>委托链中</p><p><strong>触发原理</strong>：</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>// 获取当前所有订阅者
+StartupEventHandler startupEvent = this.StartupEvent;
+
+// 安全触发事件（避免null引用）
+if (startupEvent != null) 
+    startupEvent(this, eventArgs);
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里直接调用委托字段<code>StartupEvent</code>，等效于触发所有订阅了<code>Startup</code>事件的方法。</p></blockquote><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public class WindowsFormsApplicationBase : ConsoleApplicationBase
+{
+  // 省略
+  public event StartupEventHandler Startup;
+
+  public event StartupNextInstanceEventHandler StartupNextInstance;
+    
+  public event ShutdownEventHandler Shutdown;
+
+  [SecuritySafeCritical]
+  [MethodImpl(MethodImplOptions.NoInlining)]
+  public void Run(string[] commandLine)
+  {
+    this.InternalCommandLine = new ReadOnlyCollection&lt;string&gt;((IList&lt;string&gt;) commandLine);
+    if (!this.IsSingleInstance)     // 软件是否是单实例
+    {
+      this.DoApplicationModel();   // &lt;== 调用 DoApplicationModel 方法
+    }
+    else
+    {
+      // 省略
+      if (createdNew)
+      {
+        try
+        {
+          TcpServerChannel tcpServerChannel = (TcpServerChannel) this.RegisterChannel(WindowsFormsApplicationBase.ChannelType.Server, ChannelIsSecure);
+           // 省略
+          this.DoApplicationModel();  // &lt;== 调用 DoApplicationModel 方法
+        }
+        finally
+        {
+        }
+      }
+      else
+      {
+         // 省略
+        if (!this.m_MessageRecievedSemaphore.WaitOne(2500, false))
+          throw new CantStartSingleInstanceException();
+      }
+    }
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  protected virtual bool OnStartup(StartupEventArgs eventArgs)  // &lt;== OnStartup方法
+  {
+    eventArgs.Cancel = false;
+    if (this.m_TurnOnNetworkListener &amp; this.m_NetworkObject == null)
+    {
+      this.m_NetworkObject = new Network();
+      this.m_NetworkObject.NetworkAvailabilityChanged += new NetworkAvailableEventHandler(this.NetworkAvailableEventAdaptor);
+    }
+    // ISSUE: reference to a compiler-generated field
+    StartupEventHandler startupEvent = this.StartupEvent; // 编译器会自动生成的私有委托字段 StartupEvent  (调用base.Startup += RateInterruptibleMap;会自动添加到StartupEvent委托链中)
+    if (startupEvent != null)
+      startupEvent((object) this, eventArgs); // 直接调用委托字段StartupEvent，等效于触发所有订阅了Startup事件的方法
+    return !eventArgs.Cancel;
+  }
+
+    private void DoApplicationModel()                       // &lt;== DoApplicationModel方法
+  {
+    StartupEventArgs eventArgs = new StartupEventArgs(this.CommandLineArgs);
+    if (!Debugger.IsAttached)
+    {
+      try
+      {
+        if (!this.OnInitialize(this.CommandLineArgs) || !this.OnStartup(eventArgs)) // DoApplicationModel方法里调用OnStartup方法
+          return;
+        // 省略
+      }
+    }
+    else
+    {
+      if (!this.OnInitialize(this.CommandLineArgs) || !this.OnStartup(eventArgs))  // DoApplicationModel方法里调用OnStartup方法
+        return;
+      this.OnRun();
+      this.OnShutdown();
+    }
+  }
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>那么<code>WindowsFormsApplicationBase</code>的<code>Run</code>方法是怎么被调用的呢？</p><p>根据查找，是<code>AdapterCallbackCandidate</code>类的<code>Main</code>方法（也就是程序的入口）调用的。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal class AdapterCallbackCandidate : WindowsFormsApplicationBase
+{
+	
+	internal static void Main(string[] args)
+	{
+		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
+		ItemExporter.RevertInterruptibleMap.Run(args); // 调用的 `WindowsFormsApplicationBase`(本组件的父组件)的`Run`方法（这里的ItemExporter.RevertInterruptibleMap其实返回的是本类即AdapterCallbackCandidate，和RateInterruptibleMap方法没有任何关系）
+	}
+
+
+	private void RateInterruptibleMap(object sender, StartupEventArgs e)
+	{
+		// 省略
+		try
+		{
+			// 省略
+			Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher; // 断点的第一个调用栈
+			ItemExporter.RevertInterruptibleMap.DoEvents();
+			StartGameMenuWindow.ShowStartWindow();
+			ItemExporter.RevertInterruptibleMap.DoEvents();
+		}
+		
+		// 省略
+	}
+
+	public AdapterCallbackCandidate()
+		: base(AuthenticationMode.Windows)
+	{
+		base.NetworkAvailabilityChanged += ResetInterruptibleMap;
+		base.Shutdown += MapInterruptibleMap;
+		base.Startup += RateInterruptibleMap;      //  订阅`WindowsFormsApplicationBase`的Startup事件
+		base.IsSingleInstance = false;
+		base.EnableVisualStyles = true;
+		base.SaveMySettingsOnExit = true;
+		base.ShutdownStyle = ShutdownMode.AfterMainFormCloses;
+	}
+
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>我们看一下<code>ItemExporter.RevertInterruptibleMap.Run(args);</code>方法为什么调用的是 <code>WindowsFormsApplicationBase</code>的<code>Run</code>方法。</p><p>调用<code>ItemExporter.RevertInterruptibleMap</code>时首先会加载<code>ItemExporter</code>类调用其静态代码块，初始化<code>_CreatorExporter = new CustomerRuleWatcher&lt;AdapterCallbackCandidate&gt;();</code>。然后执行<code>ItemExporter.RevertInterruptibleMap</code>的<code>get</code>方法返回<code>_CreatorExporter.PushInterruptiblePolicy()</code>。即返回创建的<code>AdapterCallbackCandidate</code>类型对象。</p><p>调用<code>ItemExporter.RevertInterruptibleMap.Run(args);</code>方法也就是调用<code>AdapterCallbackCandidate</code>类型对象的<code>Run</code>方法，而<code>AdapterCallbackCandidate</code>类型的<code>Run</code>方法继承至 <code>WindowsFormsApplicationBase</code>。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal sealed class ItemExporter
+{
+    
+    internal sealed class CustomerRuleWatcher&lt;T&gt; where T : new()
+	{
+		internal static object m_StubMapping;
+        private static T _TokenizerMapping; // T类型的对象
+
+		internal T PushInterruptiblePolicy() // 调用该方法返回该泛型类型的单例对象（懒加载）
+		{
+			if (_TokenizerMapping == null)
+			{
+				_TokenizerMapping = new T(); // 如果_TokenizerMapping为空就创建该泛型类型的对象
+			}
+			return _TokenizerMapping; // _TokenizerMapping不为空直接返回
+        }
+
+		public CustomerRuleWatcher()
+		{
+		}
+	}
+    
+    private static readonly CustomerRuleWatcher&lt;AdapterCallbackCandidate&gt; _CreatorExporter;
+    
+    [HelpKeyword(&quot;My.Application&quot;)]
+    internal static AdapterCallbackCandidate RevertInterruptibleMap // &lt;== ItemExporter.RevertInterruptibleMap
+    {
+       [DebuggerHidden]
+       get
+       {  // 返回的是 _CreatorExporter.PushInterruptiblePolicy()即_CreatorExporter存的单例对象AdapterCallbackCandidate
+          return _CreatorExporter.PushInterruptiblePolicy();
+       }
+    }
+
+    static ItemExporter()
+    {
+       setterExporter = new CustomerRuleWatcher&lt;ComparatorExporter&gt;();
+       _CreatorExporter = new CustomerRuleWatcher&lt;AdapterCallbackCandidate&gt;(); // _CreatorExporter里存入是AdapterCallbackCandidate的单例对象
+       _TemplateExporter = new CustomerRuleWatcher&lt;User&gt;();
+       m_MappingExporter = new CustomerRuleWatcher&lt;WatcherListenerMapping&gt;();
+       _MockExporter = new CustomerRuleWatcher&lt;MethodCallbackCandidate&gt;();
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>因此第一个调用栈的逻辑大概是<code>AdapterCallbackCandidate</code>类的<code>Main</code>方法调用<code>ItemExporter.RevertInterruptibleMap.Run(args);</code>触发了<code>Startup</code>事件。<code>AdapterCallbackCandidate</code>订阅了<code>Startup</code>事件执行<code>RateInterruptibleMap</code>方法。<code>RateInterruptibleMap</code>方法里执行了<code>Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;</code>。</p><hr><p>接下来我们看第二帧的代码。</p><p>第一帧中执行了<code>Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;</code>自然要加载<code>Client</code>类，从而执行了该类的静态代码块。代码块里创建了<code>RecorderForm</code>对象</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Client
+{
+    
+    internal static RecorderForm messageClass;
+
+    static Client()
+    {
+       _CandidateClass = false;
+       AreaInPolygonDraw = null;
+       messageClass = new RecorderForm(); // 创建 RecorderForm对象
+       // 省略
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809154303061.png" alt="image-20250809154303061" tabindex="0" loading="lazy"><figcaption>image-20250809154303061</figcaption></figure><hr><p>接下来我们看第三帧。第三帧执行<code>RecorderForm</code>构造方法，该构造方法调用了<code>RemoveInterruptibleStatus</code>方法</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809155040591.png" alt="image-20250809155040591" tabindex="0" loading="lazy"><figcaption>image-20250809155040591</figcaption></figure><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class RecorderForm : DarkSecondaryFormBase
+{
+    
+    public RecorderForm()          // 构造方法
+    {
+       base.Load += PrepareInterruptibleStatus;
+       base.KeyDown += CancelInterruptibleStatus;
+       base.FormClosing += VerifyInterruptibleStatus;
+       base.Closing += ListInterruptibleStatus;
+       RemoveInterruptibleStatus(); // 调用了RemoveInterruptibleStatus方法
+    }
+    
+    private void RemoveInterruptibleStatus()
+    {
+       // 省略
+       Text = &quot;回放查看器&quot;;
+       base.TopMost = true;       // 执行base.TopMost = true 将窗口置顶
+       ((ISupportInitialize)TB_Snapshots).EndInit();
+       ToolStrip1.ResumeLayout(performLayout: false);
+       ToolStrip1.PerformLayout();
+       DarkToolStrip1.ResumeLayout(performLayout: false);
+       DarkToolStrip1.PerformLayout();
+       ResumeLayout(performLayout: false);
+       PerformLayout();
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr><p>接下来看第四帧。这一帧调用<code>base.TopMost = true;</code>将<code>RecorderForm</code>窗口置顶。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809155208805.png" alt="image-20250809155208805" tabindex="0" loading="lazy"><figcaption>image-20250809155208805</figcaption></figure><hr><p>接着看第五帧。这一帧调用用了<code>DarkSecondaryFormBase</code>类的<code>LogoutServer</code>方法。<code>DarkSecondaryFormBase</code>类的<code>LogoutServer</code>方法为<code>Activated</code>事件的处理函数。<code>Activated</code>事件在窗口被激活（即当前操作的是该窗口，每次选择该窗口都会触发）时触发。<code>RecorderForm</code>的父类是<code>DarkSecondaryFormBase</code>，当<code>RecorderForm</code>设置<code>base.TopMost = true;</code>时窗口被置顶，从而执行了该窗口的<code>Activated</code>事件。</p><blockquote><p><strong>Load</strong>： 初始化窗体、加载窗体资源（窗体上的各种控件），在窗体句柄创建之后、显示之前，为显示做准备。只触发一次。 <strong>Shown</strong>：在窗体加载后显示窗体，设置窗体属性<code>Visible=true</code>或<code>form.show()</code>才会触发。触发一次或者不触发。 <strong>Activated</strong>：每次窗体获得焦点均会触发（从别的窗体或对话框切回来时）。可触发多次。</p></blockquote><div class="language-C# line-numbers-mode" data-ext="C#"><pre class="language-C#"><code>public class DarkSecondaryFormBase : DarkForm
+{
+    public DarkSecondaryFormBase()
+    {
+       base.Activated += LogoutServer;
+       tokenValue = true;
+       _IndexerValue = true;
+       SelectServer();
+    }
+
+    private void LogoutServer(object sender, EventArgs e)
+    {
+       if (!Client.infoClass)
+       {
+          base.Owner = ItemExporter.ConnectInterruptibleTemplate.MainForm;
+       }
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809155433524.png" alt="image-20250809155433524" tabindex="0" loading="lazy"><figcaption>image-20250809155433524</figcaption></figure><hr><p>接着我们看第六帧。上一帧调用<code>base.Owner = ItemExporter.ConnectInterruptibleTemplate.MainForm;</code>时执行了<code>MainForm</code>的<code>get</code>方法。其作用就是懒加载创建<code>MainForm</code>对象实例。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal sealed class ItemExporter
+{
+    internal sealed class WatcherListenerMapping
+    {
+        public MainForm databaseTemplate;
+
+        public MainForm MainForm
+        {
+            get
+            {
+                databaseTemplate = CountInterruptibleService(databaseTemplate); // 懒加载创建MainForm对象
+                return databaseTemplate;
+            }
+            set
+            {
+                if (value != databaseTemplate)
+                {
+                    if (value != null)
+                    {
+                        throw new ArgumentException(&quot;Property can only be set to Nothing&quot;);
+                    }
+
+                    CustomizeInterruptibleService(ref databaseTemplate);
+                }
+            }
+        }
+
+        private static T CountInterruptibleService&lt;T&gt;(T instance) where T : Form, new()
+        {
+            if (instance != null &amp;&amp; !instance.IsDisposed)
+            {
+                return instance; // 如果有这个对象实例直接返回
+            }
+
+            if (ruleTemplate == null)
+            {
+                ruleTemplate = new Hashtable();
+            }
+            else if (ruleTemplate.ContainsKey(typeof(T)))
+            {
+                throw new InvalidOperationException(
+                    Microsoft.VisualBasic.CompilerServices.Utils.GetResourceString(&quot;WinForms_RecursiveFormCreate&quot;));
+            }
+
+            ruleTemplate.Add(typeof(T), null);
+            TargetInvocationException ex = default(TargetInvocationException);
+            try
+            {
+                return new T(); // 如果没有这个对象实例，创建实例并返回
+            }
+            catch (TargetInvocationException ex2) 
+            {
+                // 省略
+            }
+            finally
+            {
+                ruleTemplate.Remove(typeof(T));
+            }
+        }
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809161157882.png" alt="image-20250809161157882" tabindex="0" loading="lazy"><figcaption>image-20250809161157882</figcaption></figure><hr><p>接着看第七帧。此时<code>MainForm</code>的构造方法就执行了。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809161113010.png" alt="image-20250809161113010" tabindex="0" loading="lazy"><figcaption>image-20250809161113010</figcaption></figure><h3 id="界面代码" tabindex="-1"><a class="header-anchor" href="#界面代码" aria-hidden="true">#</a> 🐟 界面代码</h3><p>在<code>MainForm</code>的构造方法里,首先进行了一系列的初始化工作，最后调用了<code>ResetState()</code>。在<code>ResetState()</code>方法里，创建了<code>MenuStrip1主菜单</code>，在<code>MenuStrip1主菜单</code>里添加了<code>TSMI_Editor编辑</code>菜单项，在<code>TSMI_Editor编辑</code>菜单项里添加了<code>Sides_TSMI添加/编辑阵营</code>菜单项，然后将<code>MenuStrip1主菜单</code>添加到了控件中。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>
+public sealed class MainForm : Form
+{
+	
+	[AccessedThroughProperty(&quot;Sides_TSMI&quot;)]
+	[CompilerGenerated]
+	private DarkToolStripMenuItem m_MapperAdvisor;
+	
+	internal DarkToolStripMenuItem Sides_TSMI
+	{
+		[CompilerGenerated]
+		get
+		{
+			return m_MapperAdvisor;
+		}
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		[CompilerGenerated]
+		set
+		{
+			EventHandler value2 = FindAuthentication;
+			DarkToolStripMenuItem mapperAdvisor = m_MapperAdvisor;
+			if (mapperAdvisor != null)
+			{
+				mapperAdvisor.Click -= value2;
+			}
+			m_MapperAdvisor = value;
+			mapperAdvisor = m_MapperAdvisor;
+			if (mapperAdvisor != null)
+			{
+				mapperAdvisor.Click += value2;
+			}
+		}
+	}
+	
+	public MainForm() // &lt;== 构造方法
+	{
+		base.Resize += CheckState;
+		base.FormClosing += SortState;
+		// 省略
+		m_WrapperAdvisor = new List&lt;ActiveUnit&gt;();
+		m_ObserverAdvisor = false;
+		_IssuerAdvisor = new List&lt;System.Drawing.Point&gt;();
+		// 省略
+		paramConnection = new ThreadLocal&lt;List&lt;System.Drawing.Point&gt;&gt;();
+		_PageConnection = new ThreadLocal&lt;Dictionary&lt;float, System.Drawing.Point&gt;&gt;();
+		ResetState();  // &lt;== 调用了ResetState()方法
+	}
+
+	private void ResetState()
+	{
+		productAdvisor = new Container();
+		QComponentResourceManager componentResourceManager = new QComponentResourceManager(typeof(MainForm));
+		MenuStrip1 = new DarkMenuStrip();
+		// 省略
+		TSMI_Editor = new DarkToolStripMenuItem();
+        // 省略
+        Sides_TSMI = new DarkToolStripMenuItem();
+		// 省略
+		MenuStrip1.BackColor = System.Drawing.SystemColors.ScrollBar;
+		MenuStrip1.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		MenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+		MenuStrip1.Items.AddRange(new ToolStripItem[13] // &lt;== 将TSMI_Editor&quot;编辑&quot;添加到了主菜单中
+		{
+			FileToolStripMenuItem, ViewToolStripMenuItem1, ReportsToolStripMenuItem, TSMI_MapSettings, QuickJumpTSMI, TSMI_UnitOrders, UnitOrdersToolStripMenuItem, MissionsToolStripMenuItem, ContactsToolStripMenuItem, TSMI_Editor,
+			HelpToolStripMenuItem, TSMI_Scripts, TSMI_Testing
+		});
+		MenuStrip1.Location = new System.Drawing.Point(0, 0);
+		MenuStrip1.Name = &quot;MenuStrip1&quot;;
+		MenuStrip1.Padding = new Padding(3, 2, 0, 2);
+		MenuStrip1.Size = new System.Drawing.Size(1162, 24);
+		MenuStrip1.TabIndex = 4;
+		MenuStrip1.Text = &quot;MenuStrip1&quot;;
+		
+		// 省略
+		TSMI_Editor.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		TSMI_Editor.DropDownItems.AddRange(new ToolStripItem[35] // &lt;== 将Sides_TSMI&quot;添加/编辑阵营&quot;菜单项添加到TSMI_Editor&quot;编辑&quot;里面
+		{
+			StartDurationToolStripMenuItem, TitleDescriptionToolStripMenuItem, ToolStripSeparator_2, DarkToolStripMenuItem_2, ToolStripSeparator4, TSMI_Campaign, ToolStripSeparator_24, Sides_TSMI, SwitchTo_TSMI, BriefingToolStripMenuItem,
+			TSMI_EditScoring, GodsEyeViewToolStripMenuItem, MinefieldsToolStripMenuItem, ToolStripSeparator_4, WeatherToolStripMenuItem, RealismSettingsToolStripMenuItem, TSMI_MergeScenarios, EventEditorToolStripMenuItem, DarkToolStripMenuItem_0, ToolStripSeparator5,
+			TSMI_UnitOps, TSMI_IsolatedUnitPOV, ToolStripSeparator_0, KillAllUnitsofThisSideToolStripMenuItem, TSMI_RemoveAllSideContacts, ToolStripMenuItem9, TSMI_PublishToSteam, TSMI_PackageScen, InstallationsToolStripMenuItem, ScenarioMigrationTSMI,
+			TSMI_ScriptingConsole, ToolStripSeparator_33, TSMI_MonteCarloAnalysis, TSMI_InteractivAnalysisConfig, TSMI_CustomIcon
+		});
+		TSMI_Editor.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		TSMI_Editor.Name = &quot;TSMI_Editor&quot;;
+		TSMI_Editor.Size = new System.Drawing.Size(50, 20);
+		TSMI_Editor.Text = &quot;编辑&quot;;
+		TSMI_Editor.Visible = false;
+		// 省略
+		Sides_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		Sides_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		Sides_TSMI.Name = &quot;Sides_TSMI&quot;;
+		Sides_TSMI.Size = new System.Drawing.Size(267, 22);
+		Sides_TSMI.Text = &quot;添加/编辑阵营&quot;;                         // &lt;== TSMI_Editor&quot;编辑&quot;菜单项
+		SwitchTo_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		SwitchTo_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		SwitchTo_TSMI.Name = &quot;SwitchTo_TSMI&quot;;
+		SwitchTo_TSMI.Size = new System.Drawing.Size(267, 22);
+		SwitchTo_TSMI.Text = &quot;切换到...&quot;;
+		
+		// 省略
+		base.Controls.Add(MenuStrip1); // &lt;== 主菜单添加到控件中
+		base.Controls.Add(Panel_WW);
+		base.Controls.Add(ToolStrip_Status);
+		DoubleBuffered = true;
+		base.Icon = (Icon)componentResourceManager.GetIcon(&quot;$this.Icon&quot;);
+		base.KeyPreview = true;
+		base.MainMenuStrip = MenuStrip1;
+		base.Name = &quot;MainForm&quot;;
+		base.StartPosition = FormStartPosition.CenterScreen;
+		Text = &quot;Command&quot;;
+		MenuStrip1.ResumeLayout(performLayout: false);
+		MenuStrip1.PerformLayout();
+		// 省略
+		PerformLayout();
+		WindowDarkMode.UseImmersiveDarkMode(base.Handle, bool_0: true);
+	}
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>Sides_TSMI添加/编辑阵营</code>使用了<code>get/set</code>方法，在<code>get</code>方法里返回了<code>m_MapperAdvisor</code>，在<code>set</code>方法里给按钮绑定了<code>FindAuthentication</code>事件。<code>FindAuthentication()</code>方法里调用了<code>ItemExporter.ConnectInterruptibleTemplate.Sides.Show()</code>方法，打开一个对话框。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>
+public sealed class MainForm : Form
+{
+	
+	[AccessedThroughProperty(&quot;Sides_TSMI&quot;)]
+	[CompilerGenerated]
+	private DarkToolStripMenuItem m_MapperAdvisor;
+	
+	internal DarkToolStripMenuItem Sides_TSMI
+	{
+		[CompilerGenerated]
+		get
+		{
+			return m_MapperAdvisor;
+		}
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		[CompilerGenerated]
+		set
+		{
+			EventHandler value2 = FindAuthentication;   // 事件
+			DarkToolStripMenuItem mapperAdvisor = m_MapperAdvisor; // mapperAdvisor 赋值为老的菜单项
+			if (mapperAdvisor != null)
+			{ // 目的： 防止事件重复绑定：避免同一个事件处理程序被多次附加到同一个控件 。内存管理：防止旧对象无法被垃圾回收
+				mapperAdvisor.Click -= value2; // 老的菜单项移除 FindAuthentication 事件
+			}
+			m_MapperAdvisor = value; // mapperAdvisor 赋值为 新设置的菜单项 (value为新设置的值)
+			mapperAdvisor = m_MapperAdvisor; // mapperAdvisor 赋值为 新设置的菜单项
+			if (mapperAdvisor != null)
+			{
+				mapperAdvisor.Click += value2; // 新设置的菜单项 绑定 FindAuthentication 事件
+			}
+		}
+	}
+    
+    private void FindAuthentication(object sender, EventArgs e)
+	{
+		ItemExporter.ConnectInterruptibleTemplate.Sides.Show(); // 打开 编辑阵营 对话框
+	}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>ItemExporter.ConnectInterruptibleTemplate.Sides</code>其实就是返回一个<code>Sides</code>对象，这段代码不重要。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal sealed class ItemExporter
+{
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	[MyGroupCollection(&quot;System.Windows.Forms.Form&quot;, &quot;Create__Instance__&quot;, &quot;Dispose__Instance__&quot;, &quot;My.MyProject.Forms&quot;)]
+	internal sealed class WatcherListenerMapping
+	{
+		
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public Sides definitionMapping;
+		
+		// 省略
+		
+		public Sides Sides
+		{
+			get
+			{   // 懒加载Sides对象
+				definitionMapping = CountInterruptibleService(definitionMapping);
+				return definitionMapping;
+			}
+			set
+			{
+				if (value != definitionMapping)
+				{
+					if (value != null)
+					{
+						throw new ArgumentException(&quot;Property can only be set to Nothing&quot;);
+					}
+					CustomizeInterruptibleService(ref definitionMapping);
+				}
+			}
+		}
+
+		// 省略
+
+		[DebuggerHidden]
+		private static T CountInterruptibleService&lt;T&gt;(T instance) where T : Form, new()
+		{
+			if (instance != null &amp;&amp; !instance.IsDisposed)
+			{
+				return instance; //  &lt;== 如果definitionMapping设置了Sides对象，直接返回
+			}
+			if (ruleTemplate == null)
+			{
+				ruleTemplate = new Hashtable();
+			}
+			else if (ruleTemplate.ContainsKey(typeof(T)))
+			{
+                throw new InvalidOperationException(Microsoft.VisualBasic.CompilerServices.Utils.GetResourceString(&quot;WinForms_RecursiveFormCreate&quot;));
+            }
+			ruleTemplate.Add(typeof(T), null);
+			TargetInvocationException ex = default(TargetInvocationException);
+			try
+			{
+				return new T(); //  &lt;== 创建Sides对象
+			}
+			catch (TargetInvocationException ex2) when (((Func&lt;bool&gt;)delegate
+			{
+				// Could not convert BlockContainer to single expression
+				ex = ex2;
+				return ((Func&lt;bool&gt;)delegate
+				{
+					ProjectData.SetProjectError(ex);
+					return ex.InnerException != null;
+				})();
+			}).Invoke())
+			{
+				throw new InvalidOperationException(Microsoft.VisualBasic.CompilerServices.Utils.GetResourceString(&quot;WinForms_SeeInnerException&quot;, ex.InnerException.Message), ex.InnerException);
+			}
+			finally
+			{
+				ruleTemplate.Remove(typeof(T));
+			}
+		}
+
+		[DebuggerHidden]
+		private void CustomizeInterruptibleService&lt;T&gt;(ref T gparam_0) where T : Form
+		{
+			gparam_0.Dispose();
+			gparam_0 = null;
+		}
+
+	}
+	
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="编辑阵营对话框" tabindex="-1"><a class="header-anchor" href="#编辑阵营对话框" aria-hidden="true">#</a> 🐟 编辑阵营对话框</h3><p><code>Sides</code>类调用了<code>InvokeInterruptibleAdapter()</code>方法，这个方法里就是对话框的页面，里面有<code>Button1添加</code>、<code>Button2删除</code>等按钮。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Sides : DarkSecondaryFormBase, GInterface9
+{
+
+    public Sides()
+    {
+       base.FormClosing += SetupInterruptibleAdapter;
+       base.Load += ExcludeInterruptibleAdapter;
+       base.KeyDown += FillInterruptibleAdapter;
+       InvokeInterruptibleAdapter();                  // &lt;== 调用 InvokeInterruptibleAdapter()生成对话框
+    }
+
+    [DebuggerStepThrough]
+    private void InvokeInterruptibleAdapter()
+    {
+       LB_Sides = new DarkListView();
+       Button1 = new DarkUIButton();
+       Button2 = new DarkUIButton();
+       // 省略
+       ((ISupportInitialize)TrackBar_Proficiency).BeginInit();
+       DarkToolStrip1.SuspendLayout();
+       SuspendLayout();
+       LB_Sides.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+       LB_Sides.Location = new Point(1, 9);
+       LB_Sides.Name = &quot;LB_Sides&quot;;                               // &lt;== 阵营列表组件
+       LB_Sides.RelatedInfos = null;
+       LB_Sides.Size = new Size(213, 435);
+       LB_Sides.TabIndex = 0;
+       Button1.BackColor = Color.Transparent;
+       Button1.DialogResult = DialogResult.None;
+       Button1.Font = new Font(&quot;Segoe UI&quot;, 10f);
+       Button1.ForeColor = SystemColors.Control;
+       Button1.Location = new Point(220, 9);
+       Button1.Name = &quot;Button1&quot;;
+       Button1.RoundRadius = 0;
+       Button1.Size = new Size(134, 23);
+       Button1.TabIndex = 1;
+       Button1.Text = &quot;添加&quot;;                                     // &lt;== 添加按钮
+       Button2.BackColor = Color.Transparent;
+       Button2.DialogResult = DialogResult.None;
+       Button2.Font = new Font(&quot;Segoe UI&quot;, 10f);
+       Button2.ForeColor = SystemColors.Control;
+       Button2.Location = new Point(220, 38);
+       Button2.Name = &quot;Button2&quot;;
+       Button2.RoundRadius = 0;
+       Button2.Size = new Size(133, 23);
+       Button2.TabIndex = 2;
+       Button2.Text = &quot;删除&quot;;                                     // &lt;== 删除按钮
+       // 省略
+       base.Controls.Add(Button2);
+       base.Controls.Add(Button1);
+       base.Controls.Add(LB_Sides);
+       base.Controls.Add(DarkToolStrip1);
+       base.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+       base.KeyPreview = true;
+       base.MaximizeBox = false;
+       base.MinimizeBox = false;
+       base.Name = &quot;Sides&quot;;
+       base.ShowIcon = false;
+       base.StartPosition = FormStartPosition.CenterScreen;
+       Text = &quot;编辑阵营&quot;;
+       ((ISupportInitialize)TrackBar_Proficiency).EndInit();
+       DarkToolStrip1.ResumeLayout(performLayout: false);
+       DarkToolStrip1.PerformLayout();
+       ResumeLayout(performLayout: false);
+       PerformLayout();
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="获取阵营列表" tabindex="-1"><a class="header-anchor" href="#获取阵营列表" aria-hidden="true">#</a> 🐟 获取阵营列表</h3><p>我们首先看看阵营列表数据是怎么来的，根据推断<code>LB_Sides</code>应该是阵营列表（因为添加的其他控件都是有名字的按钮，只有<code>LB_Sides</code>是<code>DarkListView列表</code>，而且代码是从左到右，从上到下生成的页面，只有<code>LB_Sides</code>最符合）。下面是<code>DarkListView</code>类的主要代码，<code>DarkListView</code>的构造方法里给<code>Items</code>赋值为空的<code>DarkListItem</code>列表项。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class DarkListView : DarkScrollView
+{
+
+    private ObservableCollection&lt;DarkListItem&gt; readerExpression;
+
+    public ObservableCollection&lt;DarkListItem&gt; Items
+    {
+       get
+       {
+          return readerExpression;
+       }
+       set
+       {
+          if (readerExpression != null)
+          {
+             readerExpression.CollectionChanged -= CheckRegistry;
+          }
+          readerExpression = value;
+          readerExpression.CollectionChanged += CheckRegistry;
+          FindRegistry();
+       }
+    }
+
+    public DarkListView()
+    {
+       Items = new ObservableCollection&lt;DarkListItem&gt;();
+       _PropertyExpression = new List&lt;int&gt;();
+    }
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>因此我们要查看这个列表是怎么获取到的只需在<code>Side</code>类里搜索<code>LB_Sides.Items</code>看在哪被赋值的就行了。经过搜索可以看到具体的逻辑是<code>Sides</code>的构造方法里设置在组件加载时调用<code>ExcludeInterruptibleAdapter</code>方法，<code>ExcludeInterruptibleAdapter</code>方法了会调用<span id="Sides.RefreshForm"><code>RefreshForm()</code></span>方法，<code>RefreshForm()</code>方法里搜选清空阵营列表数据。调用<code>Client.CurrentScenario.Sides_ReadOnly.OrderBy((Side theS) =&gt; theS.Name)</code>获取当前想定的阵营列表并按名称排序，并依次调用<code>LB_Sides.Items.Add(new DarkListItem(item.Name));</code>添加到阵营列表里。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Sides : DarkSecondaryFormBase, GInterface9
+{
+
+    public Sides()
+    {
+       base.FormClosing += SetupInterruptibleAdapter;
+       base.Load += ExcludeInterruptibleAdapter;      // &lt;== 加载时调用ExcludeInterruptibleAdapter
+       base.KeyDown += FillInterruptibleAdapter;
+       InvokeInterruptibleAdapter();                  // &lt;== 调用 InvokeInterruptibleAdapter()生成对话框
+    }
+
+    private void ExcludeInterruptibleAdapter(object sender, EventArgs e)
+    {
+       if (Client._StateClass == 1f)
+       {
+          base.AutoScaleMode = AutoScaleMode.None;
+       }
+       RefreshForm();                             // &lt;== ExcludeInterruptibleAdapter方法调用RefreshForm()方法
+    }
+    
+    public void RefreshForm()
+    {
+       LB_Sides.Items.Clear(); // RefreshForm()方法首先清空 LB_Sides.Items 列表数据
+       foreach (Side item in Client.CurrentScenario.Sides_ReadOnly.OrderBy((Side theS) =&gt; theS.Name))
+       {  // 将 Client.CurrentScenario.Sides_ReadOnly按名称排序添加到 LB_Sides.Items 列表里
+          LB_Sides.Items.Add(new DarkListItem(item.Name));
+       }
+       Button2.Enabled = (LB_Sides.Items.Count &gt; 0) &amp; (LB_Sides.SelectedIndices.Count &gt; 0); // 删除按钮
+       Button3.Enabled = (LB_Sides.Items.Count &gt; 0) &amp; (LB_Sides.SelectedIndices.Count &gt; 0);
+       Label_Proficiency.Visible = (LB_Sides.Items.Count &gt; 0) &amp; (LB_Sides.SelectedIndices.Count &gt; 0);
+       TrackBar_Proficiency.Visible = (LB_Sides.Items.Count &gt; 0) &amp; (LB_Sides.SelectedIndices.Count &gt; 0);
+       RefreshSideColorControls();
+       if (ItemExporter.ConnectInterruptibleTemplate.AddUnit.Visible)
+       {
+          ItemExporter.ConnectInterruptibleTemplate.AddUnit.RefreshSides();
+       }
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>Client.CurrentScenario.Sides_ReadOnly</code>返回的就是想定类的<code>_Sides</code>字段</p><blockquote><p>🙈 <code>Client.CurrentScenario.Sides_ReadOnly</code>的数据是怎么来的呢❔</p><p>🙉 初始化是通过加载想定文件设置的，这个以后会讲；添加阵营后会继续添加，我们接下来会讲。</p></blockquote><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Scenario
+{
+
+    private Side[] _Sides; // 阵营列表
+    
+    public Side[] Sides_ReadOnly =&gt; _Sides; // Sides_ReadOnly 返回的就是阵营列表
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="添加阵营-1" tabindex="-1"><a class="header-anchor" href="#添加阵营-1" aria-hidden="true">#</a> 🐟添加阵营</h3><p>添加阵营按钮绑定<code>IncludeInterruptibleAdapter</code>方法，该方法会调用<code>ItemExporter.ConnectInterruptibleTemplate.AddSide.Show()</code></p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Sides : DarkSecondaryFormBase, GInterface9
+{
+	
+	[CompilerGenerated]
+	[AccessedThroughProperty(&quot;Button1&quot;)]
+	private DarkUIButton methodSingleton;
+
+	internal DarkUIButton Button1
+	{
+		[CompilerGenerated]
+		get
+		{
+			return methodSingleton;
+		}
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		[CompilerGenerated]
+		set
+		{
+			EventHandler value2 = IncludeInterruptibleAdapter;   // &lt;== 添加阵营按钮事件绑定 IncludeInterruptibleAdapter方法
+			DarkUIButton darkUIButton = methodSingleton;
+			if (darkUIButton != null)
+			{
+				darkUIButton.Click -= value2;
+			}
+			methodSingleton = value;
+			darkUIButton = methodSingleton;
+			if (darkUIButton != null)
+			{
+				darkUIButton.Click += value2;
+			}
+		}
+	}
+	
+	private void InvokeInterruptibleAdapter()
+	{
+		LB_Sides = new DarkListView();
+		Button1 = new DarkUIButton();
+		// 省略
+		Button1.BackColor = Color.Transparent;
+		Button1.DialogResult = DialogResult.None;
+		Button1.Font = new Font(&quot;Segoe UI&quot;, 10f);
+		Button1.ForeColor = SystemColors.Control;
+		Button1.Location = new Point(220, 9);
+		Button1.Name = &quot;Button1&quot;;
+		Button1.RoundRadius = 0;
+		Button1.Size = new Size(134, 23);
+		Button1.TabIndex = 1;
+		Button1.Text = &quot;添加&quot;;                                  // &lt;== 添加按钮名为 Button1
+		// 省略
+		base.Controls.Add(Button1);
+		// 省略
+	}
+
+	private void IncludeInterruptibleAdapter(object sender, EventArgs e)
+	{
+		ItemExporter.ConnectInterruptibleTemplate.AddSide.Show();  // &lt;== 调用AddSide.Show()
+	}
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>AddSide</code>的get方法也是调用<code>CountInterruptibleService</code>方法返回一个<code>AddSide</code>对象</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal sealed class ItemExporter
+{
+	
+	internal sealed class WatcherListenerMapping
+	{
+
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public AddSide _ValTemplate;
+
+		public AddSide AddSide
+		{
+			get
+			{   // 懒加载创建AddSide对象
+				_ValTemplate = CountInterruptibleService(_ValTemplate);
+				return _ValTemplate;
+			}
+			set
+			{
+				if (value != _ValTemplate)
+				{
+					if (value != null)
+					{
+						throw new ArgumentException(&quot;Property can only be set to Nothing&quot;);
+					}
+
+					CustomizeInterruptibleService(ref _ValTemplate);
+				}
+			}
+		}
+
+	}
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>AddSide</code>类比较简单，构造方法调用<code>DestroyTests()</code>方法，该方法只有<code>Label1名称文本</code>组件、<code>TextBox1输入框</code>组件、<code>Button1确定</code>按钮、<code>Button2取消</code>按钮。<code>Button1确定</code>按钮的点击事件绑定 <code>ComputeTests</code> 方法，该方法调用 <code>Client.AddSide(string_, ref scenario_)</code> 添加阵营</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class AddSide : DarkSecondaryFormBase
+{
+
+    internal DarkUIButton Button1
+    {
+       [CompilerGenerated]
+       get
+       {
+          return m_SystemProperty;
+       }
+       [MethodImpl(MethodImplOptions.Synchronized)]
+       [CompilerGenerated]
+       set
+       {
+          EventHandler value2 = ComputeTests;             // &lt;== 确定按钮点击事件绑定 ComputeTests 方法
+          EventHandler value3 = PatchTests;
+          DarkUIButton systemProperty = m_SystemProperty;
+          if (systemProperty != null)
+          {
+             systemProperty.Click -= value2;
+             systemProperty.DoubleClick -= value3;
+          }
+          m_SystemProperty = value;
+          systemProperty = m_SystemProperty;
+          if (systemProperty != null)
+          {
+             systemProperty.Click += value2;
+             systemProperty.DoubleClick += value3;
+          }
+       }
+    }
+
+
+    public AddSide()
+    {
+       base.FormClosing += CallTests;
+       base.Load += LogoutTests;
+       base.KeyDown += ValidateTests;
+       DestroyTests();                              // &lt;== 构造方法调用 DestroyTests() 方法
+    }
+
+    [DebuggerStepThrough]
+    private void DestroyTests()
+    {
+       Label1 = new DarkLabel();
+       TextBox1 = new DarkUITextBox();
+       Button1 = new DarkUIButton();
+       Button2 = new DarkUIButton();
+       SuspendLayout();
+       Label1.ForeColor = Color.FromArgb(220, 220, 220);
+       Label1.Location = new Point(13, 13);
+       Label1.Name = &quot;Label1&quot;;
+       Label1.Size = new Size(54, 17);
+       Label1.TabIndex = 0;
+       Label1.Text = &quot;名称:&quot;;
+       TextBox1.AutoCompleteCustomSource = null;
+       TextBox1.AutoCompleteMode = AutoCompleteMode.None;
+       TextBox1.AutoCompleteSource = AutoCompleteSource.None;
+       TextBox1.BackColor = Color.Transparent;
+       TextBox1.ForeColor = Color.FromArgb(189, 189, 189);
+       TextBox1.Image = null;
+       TextBox1.Lines = null;
+       TextBox1.Location = new Point(57, 10);
+       TextBox1.MaxLength = 32767;
+       TextBox1.Multiline = false;
+       TextBox1.Name = &quot;TextBox1&quot;;
+       TextBox1.ReadOnly = false;
+       TextBox1.ScrollBars = ScrollBars.None;
+       TextBox1.SelectionStart = 0;
+       TextBox1.Size = new Size(212, 20);
+       TextBox1.TabIndex = 0;
+       TextBox1.TextAlign = HorizontalAlignment.Left;
+       TextBox1.UseSystemPasswordChar = false;
+       TextBox1.WatermarkText = &quot;&quot;;
+       Button1.BackColor = Color.Transparent;
+       Button1.DialogResult = DialogResult.None;
+       Button1.ForeColor = SystemColors.Control;
+       Button1.Location = new Point(57, 36);
+       Button1.Name = &quot;Button1&quot;;
+       Button1.RoundRadius = 0;
+       Button1.Size = new Size(75, 23);
+       Button1.TabIndex = 2;
+       Button1.Text = &quot;确定&quot;;                             // &lt;== 确定按钮
+       Button2.BackColor = Color.Transparent;
+       Button2.DialogResult = DialogResult.Cancel;
+       Button2.ForeColor = SystemColors.Control;
+       Button2.Location = new Point(194, 36);
+       Button2.Name = &quot;Button2&quot;;
+       Button2.RoundRadius = 0;
+       Button2.Size = new Size(75, 23);
+       Button2.TabIndex = 3;
+       Button2.Text = &quot;取消&quot;;
+       base.AcceptButton = Button1;
+       base.AutoScaleMode = AutoScaleMode.None;
+       base.CancelButton = Button2;
+       base.ClientSize = new Size(281, 68);
+       base.ControlBox = false;
+       base.Controls.Add(Button2);
+       base.Controls.Add(Button1);
+       base.Controls.Add(TextBox1);
+       base.Controls.Add(Label1);
+       base.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+       base.KeyPreview = true;
+       base.MaximizeBox = false;
+       base.MinimizeBox = false;
+       base.Name = &quot;AddSide&quot;;
+       base.ShowIcon = false;
+       base.StartPosition = FormStartPosition.CenterScreen;
+       Text = &quot;创建一个新阵营&quot;;
+       ResumeLayout(performLayout: false);
+    }
+
+    private void ComputeTests(object sender, EventArgs e)
+    {
+       string string_ = TextBox1.Text;
+       Scenario scenario_ = Client.CurrentScenario;   // &lt;== Client.CurrentScenario 获取当前想定
+       Client.AddSide(string_, ref scenario_);        // &lt;== 调用 Client.AddSide(string_, ref scenario_)添加阵营
+       Close();
+    }
+
+    private void PatchTests(object sender, EventArgs e)
+    {
+       string string_ = TextBox1.Text;
+       Scenario scenario_ = Client.CurrentScenario;
+       Client.AddSide(string_, ref scenario_);
+       Close();
+    }
+
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>Client.AddSide</code>方法调用<code>composerRequest.AddSide(side)</code>方法添加阵营。如果只有一个阵营，就设置当前阵营为这个阵营。如果阵营可见就更新阵营界面列表，其会调用<code>Sides.RefreshForm()</code>，这个方法我们<a href="#Sides.RefreshForm">添加阵营列表</a>里讲过，其作用就是更新编辑阵营对话框左边的阵营列表和右侧的按钮状态。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Client
+{
+    
+    [AccessedThroughProperty(&quot;_CurrentScenario&quot;)]
+    [CompilerGenerated]
+    private static Scenario composerRequest;
+    
+    // Client.CurrentScenario 获取当前想定就是 返回的就是composerRequest
+	public static Scenario CurrentScenario //=&gt; composerRequest;
+	{
+		get
+		{   // 如果composerRequest有值就直接返回，没有就创建想定对象并返回
+			if (composerRequest != null) return composerRequest;
+			var newscen = new Scenario();
+			composerRequest = newscen;
+
+            return newscen;
+		}
+	}
+
+    public static void AddSide(string string_0, ref Scenario scenario_0)
+    {
+       Side side = new Side(string_0, ref scenario_0); // 创建阵营对象
+       composerRequest.AddSide(side); // 调用想定的AddSide方法
+       if (composerRequest.Sides_ReadOnly.Length == 1)
+       {
+          CurrentSide = side; // 如果只有一个阵营，就设置当前阵营为这个阵营
+       }
+       if (ItemExporter.ConnectInterruptibleTemplate.Sides.Visible) // 如果阵营可见就更新阵营界面列表
+       {
+          ItemExporter.ConnectInterruptibleTemplate.Sides.RefreshForm(); // 调用Sides的RefreshForm()方法
+       }
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>接下来我们看<code>composerRequest.AddSide(side)</code>方法，这个方法调用<code>ArrayExtensions.Add(ref _Sides, side_0)</code>方法，并调用订阅<code>SidesChanged</code>事件的方法。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Scenario
+{
+
+	public delegate void SidesChangedEventHandler(Scenario theScen, SideAdditionOrRemoval AddOrRemove); // SidesChangedEventHandler规定了订阅SidesChanged事件的方法必须接收两个参数(分别为Scenario当前想定 和 SideAdditionOrRemoval 是添加阵营还是删除阵营)并且没有返回值
+    
+    private Side[] _Sides; // 阵营列表
+    
+    public Side[] Sides_ReadOnly =&gt; _Sides; // Sides_ReadOnly 返回的就是阵营列表（获取阵营列表里调用的Client.CurrentScenario.Sides_ReadOnly就是返回的该字段）
+	
+	public static event SidesChangedEventHandler SidesChanged; // SidesChanged事件类型为SidesChangedEventHandler
+	
+
+	public void AddSide(Side side_0)
+	{
+		if (!_Sides.Contains(side_0))
+		{
+			ArrayExtensions.Add(ref _Sides, side_0); // 调用工具类，将side_0添加到_Sides列表中
+			Scenario.SidesChanged?.Invoke(this, SideAdditionOrRemoval.Addition); // 执行订阅SidesChanged事件的方法
+		}
+	}
+	
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>ArrayExtensions</code>是一个工具类，<code>Add</code>方法是将第二个参数的对象添加到第一个参数的集合里面</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class ArrayExtensions
+{
+    public static void Add&lt;T&gt;(ref T[] gparam_0, T theAC)
+    {   // 创建一个比原集合大1个空间的集合，并拷贝该集合到新的集合
+        gparam_0 = (T[])Microsoft.VisualBasic.CompilerServices.Utils.CopyArray(gparam_0, new T[gparam_0.Length + 1]);
+        gparam_0[gparam_0.Length - 1] = theAC; // 将第二个参数对象的值 设置到刚创建的集合的最后一位里
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>接下来我们看<code>Scenario.SidesChanged</code>的订阅者做了什么事情。全局搜索<code>Scenario.SidesChanged</code>发现<code>Client</code>类的<code>Initialize</code>方法订阅了该事件。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250806174030074.png" alt="image-20250806174030074" tabindex="0" loading="lazy"><figcaption>image-20250806174030074</figcaption></figure><p><code>Client</code>类的<code>SelectConfiguration</code>方法主要逻辑是删除当前阵营时重新设置一个新的阵营为当前阵营。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Client
+{
+	
+	[AccessedThroughProperty(&quot;_CurrentScenario&quot;)]
+	[CompilerGenerated]
+	private static Scenario composerRequest;
+	
+	[CompilerGenerated]
+	[AccessedThroughProperty(&quot;_CurrentSide&quot;)]
+	private static Side m_ModelRequest;
+	
+	public static Side CurrentSide
+	{
+		get
+		{
+			return m_ModelRequest;
+		}
+		set
+		{
+			// 省略
+		}
+	}
+    
+    public static void Initialize()
+	{
+		try
+		{
+			Dispatcher = Dispatcher.CurrentDispatcher;
+			PlatformComponent.StatusChanged += CallConfiguration;
+			ActiveUnit_Damage.DamageSustained += LogoutConfiguration;
+			Scenario.CurrentSideChanged += PatchConfiguration;
+			Scenario.SidesChanged += SelectConfiguration;           // &lt;== 订阅了 Scenario.SidesChanged 事件
+			Scenario.ScenCompleted += AddConfiguration;
+			Scenario.CurrentScenarioChanged += CountConfiguration;
+		}
+		catch (Exception ex2)
+		{
+			// 省略
+			throw;
+		}
+	}
+
+	private static void SelectConfiguration(object object_0, Scenario.SideAdditionOrRemoval sideAdditionOrRemoval_0)
+	{   // 如果触发该事件的是删除操作，并且 阵营列表里没有当前阵营（删除的是当前阵营）就重新设置当前阵营
+		if (sideAdditionOrRemoval_0 == Scenario.SideAdditionOrRemoval.Removal &amp;&amp; !composerRequest.Sides_ReadOnly.Contains(m_ModelRequest)) // m_ModelRequest就是Client.CurrentSide即当前阵营
+		{
+			if (composerRequest.Sides_ReadOnly.Length == 0)
+			{
+				composerRequest.SetCurrentSide(null);     //  如果没有阵营了就将当前阵营置空
+			}
+			else
+			{
+				composerRequest.SetCurrentSide(composerRequest.Sides_ReadOnly[0]); // 如果还有阵营，就设置当前阵营为第一个阵营
+			}
+		}
+		if (composerRequest.Sides_ReadOnly.Length == 1)
+		{   // 如果阵营列表里只有一个，则设置这个阵营为当前阵营
+			composerRequest.SetCurrentSide(composerRequest.Sides_ReadOnly[0]);
+		}
+	}
+
+	
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>那<code>Client</code>类的<code>Initialize</code>方法又是怎么被执行的呢？</p><p>我们在<code>Client</code>类的<code>Initialize</code>方法里打上断点，就可以发现如下调用栈。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809161822500.png" alt="image-20250809161822500" tabindex="0" loading="lazy"><figcaption>image-20250809161822500</figcaption></figure><p>我们打开第一个调用栈，发现<code>MainSplash</code>类的<code>VerifyInterruptibleConfig</code>方法调用了<code>Client</code>类的<code>Initialize</code>方法。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809161916170.png" alt="image-20250809161916170" tabindex="0" loading="lazy"><figcaption>image-20250809161916170</figcaption></figure><p>经过查找发现<code>MainSplash</code>的构造方法里订阅了<code>Show</code>事件执行<code>VerifyInterruptibleConfig</code>方法。我们在<code>base.Shown += VerifyInterruptibleConfig;</code>这行打上断点，重新运行项目，看看<code>MainSplash</code>对象是在哪被创建的。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809162040978.png" alt="image-20250809162040978" tabindex="0" loading="lazy"><figcaption>image-20250809162040978</figcaption></figure><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class MainSplash : Form
+{
+    public MainSplash()
+    {
+       base.Shown += VerifyInterruptibleConfig;
+       CancelInterruptibleConfig();
+    }
+
+    private void VerifyInterruptibleConfig(object sender, EventArgs e)
+    {
+       base.Visible = false;
+       // 省略
+       try
+       {
+          GameGeneral.WriteLogDebugInfoToFile(&quot;Client.Initalize&quot;);
+          Client.Initialize();
+       }
+       catch (Exception projectError3)
+       {
+          ProjectData.SetProjectError(projectError3);
+          GameGeneral.WriteLogDebugInfoToFile(&quot;Client.Initalize FAILED&quot;);
+          ProjectData.ClearProjectError();
+       }
+    }
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建<code>MainSplash</code>有三个调用栈帧。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809162518954.png" alt="image-20250809162518954" tabindex="0" loading="lazy"><figcaption>image-20250809162518954</figcaption></figure><p>第一个栈帧的<code>RateInterruptibleMap</code>方法我们在<a href="#AdapterCallbackCandidate.RateInterruptibleMap"><code>入口代码</code></a>里讲过。具体逻辑是程序的入口<code>Main</code>方法执行<code>Run</code>方法触发<code>Startup</code>事件，该类订阅了<code>Startup</code>事件执行了<code>RateInterruptibleMap</code>方法。<code>RateInterruptibleMap</code>方法调用<code>ItemExporter.ConnectInterruptibleTemplate.MainSplash.Show()</code>显示<code>MainSplash</code>窗体。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal class AdapterCallbackCandidate : WindowsFormsApplicationBase
+{
+    internal static void Main(string[] args)   // Main函数
+    {
+       Application.SetCompatibleTextRenderingDefault(defaultValue: false);
+       ItemExporter.RevertInterruptibleMap.Run(args);  // 执行run方法，触发Startup事件
+    }
+    
+    private void RateInterruptibleMap(object sender, StartupEventArgs e)
+    {
+       // 省略
+       try
+       {
+          // 省略
+          Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher; // 入口代码里讲的代码
+          ItemExporter.RevertInterruptibleMap.DoEvents();
+          StartGameMenuWindow.ShowStartWindow();
+          ItemExporter.RevertInterruptibleMap.DoEvents();
+       }
+       try
+       {
+          // 省略
+          try
+          {
+             ItemExporter.ConnectInterruptibleTemplate.MainSplash.Show(); // RateInterruptibleMap方法执行显示MainSplash窗体
+          }
+          
+       }
+       
+    }
+
+    
+    public AdapterCallbackCandidate()
+       : base(AuthenticationMode.Windows)
+    {
+       base.NetworkAvailabilityChanged += ResetInterruptibleMap;
+       base.Shutdown += MapInterruptibleMap;
+       base.Startup += RateInterruptibleMap; // 订阅Startup事件执行RateInterruptibleMap方法
+       base.IsSingleInstance = false;
+       base.EnableVisualStyles = true;
+       base.SaveMySettingsOnExit = true;
+       base.ShutdownStyle = ShutdownMode.AfterMainFormCloses;
+    }
+    
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809163201690.png" alt="image-20250809163201690" tabindex="0" loading="lazy"><figcaption>image-20250809163201690</figcaption></figure><p>第一帧的<code>ItemExporter.ConnectInterruptibleTemplate.MainSplash.Show()</code>调用了<code>ItemExporter.ConnectInterruptibleTemplate.MainSplash</code>就进入了第二帧，懒加载<code>MainSplash</code>创建<code>MainSplash</code>对象。这个<code>CountInterruptibleService</code>方法讲过，其作用就是懒加载创建对象。</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>internal sealed class ItemExporter
+{
+
+	internal sealed class WatcherListenerMapping
+	{
+
+		public MainSplash _InterceptorTemplate;
+		
+		public MainSplash MainSplash
+		{
+			get
+			{
+				_InterceptorTemplate = CountInterruptibleService(_InterceptorTemplate); // 懒加载创建MainSplash对象
+				return _InterceptorTemplate;
+			}
+			set
+			{
+				if (value != _InterceptorTemplate)
+				{
+					if (value != null)
+					{
+						throw new ArgumentException(&quot;Property can only be set to Nothing&quot;);
+					}
+
+					CustomizeInterruptibleService(ref _InterceptorTemplate);
+				}
+			}
+		}
+
+		private static T CountInterruptibleService&lt;T&gt;(T instance) where T : Form, new()
+		{
+			if (instance != null &amp;&amp; !instance.IsDisposed)
+			{
+				return instance; // 如果有对象实例直接返回
+			}
+			// 省略
+			try
+			{
+				return new T(); // 如果没有对象实例则创建实例并返回
+			}
+			// 省略
+		}1
+	}
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20250809164318230.png" alt="image-20250809164318230" tabindex="0" loading="lazy"><figcaption>image-20250809164318230</figcaption></figure><h3 id="删除阵营" tabindex="-1"><a class="header-anchor" href="#删除阵营" aria-hidden="true">#</a> 🐟删除阵营</h3><p>添加阵营后，<code>删除</code>按钮是置灰状态的。</p><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/@source/cmo/image/image-20250809173628706.png" alt="image-20250809173628706" style="zoom:50%;"><p>当我们选中一方后<code>删除</code>按钮才能正常点击。</p><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/@source/cmo/image/image-20250809173717359.png" alt="image-20250809173717359" style="zoom:50%;"><p>点击<code>删除</code>按钮会出现确认框</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20251016102925282.png" alt="image-20251016102925282" tabindex="0" loading="lazy"><figcaption>image-20251016102925282</figcaption></figure><p>点击<code>Ok</code>后就删除了<code>蓝方</code>阵营，此时<code>删除</code>、<code>对抗关系</code>重新置灰。</p><figure><img src="https://gitlab.com/apzs/apzs/-/raw/master/cmo/image/image-20251016102955478.png" alt="image-20251016102955478" tabindex="0" loading="lazy"><figcaption>image-20251016102955478</figcaption></figure><p>首先我们看看选中后，<code>删除</code>按钮可以点击是怎么做的。</p><p>选中某个阵营后<code>LB_Sides</code>（阵营列表）会触发<code>SelectedIndicesChanged</code>事件（根据名称推算而来，判断是不是这个事件也很简单，直接在<code>EnableInterruptibleAdapter</code>方法的开头打断点，看能不能进去就行了），然后执行<code>EnableInterruptibleAdapter</code>方法，这个方法用于更新<code>删除</code>、<code>对抗关系</code>、<code>能力</code>等数据。</p><blockquote><p><code>SelectedIndexChanged</code> 事件：在 <code>SelectedIndex</code> 属性更改后发生（即列表里选中的索引发生变化）。</p></blockquote><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Sides : DarkSecondaryFormBase, GInterface9
+{
+
+    [AccessedThroughProperty(&quot;LB_Sides&quot;)]
+    private DarkListView rulesSingleton;
+    
+    internal DarkListView LB_Sides
+    {
+       [CompilerGenerated]
+       get
+       {
+          return rulesSingleton;
+       }
+       [MethodImpl(MethodImplOptions.Synchronized)]
+       [CompilerGenerated]
+       set
+       {
+          MouseEventHandler value2 = SearchInterruptibleAdapter; // 双击触发的事件
+          EventHandler value3 = EnableInterruptibleAdapter; // 选中的索引改变触发的事件
+          DarkListView darkListView = rulesSingleton;
+          if (darkListView != null)
+          {
+             darkListView.MouseDoubleClick -= value2;
+             darkListView.SelectedIndicesChanged -= value3;
+          }
+          rulesSingleton = value;
+          darkListView = rulesSingleton;
+          if (darkListView != null)
+          {
+             darkListView.MouseDoubleClick += value2;
+             darkListView.SelectedIndicesChanged += value3;
+          }
+       }
+    }
+
+    public Sides()
+    {
+       base.FormClosing += SetupInterruptibleAdapter;
+       base.Load += ExcludeInterruptibleAdapter;
+       base.KeyDown += FillInterruptibleAdapter;
+       InvokeInterruptibleAdapter();
+    }
+    
+    private void InvokeInterruptibleAdapter()
+    {
+       LB_Sides = new DarkListView(); // 阵营列表
+       // 省略
+       LB_Sides.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+       LB_Sides.Location = new Point(1, 9);
+       LB_Sides.Name = &quot;LB_Sides&quot;;
+       LB_Sides.RelatedInfos = null;
+       LB_Sides.Size = new Size(213, 435);
+       LB_Sides.TabIndex = 0;
+    }
+
+    private void EnableInterruptibleAdapter(object sender, EventArgs e)
+    {
+       if (LB_Sides.SelectedIndices.Count == 0) // LB_Sides.SelectedIndices下面会讲
+       { // 选中的阵营索引数量为0证明没有选中阵营了
+          return;
+       }
+       Side[] sides_ReadOnly = Client.CurrentScenario.Sides_ReadOnly;
+       foreach (Side side in sides_ReadOnly)
+       {  // 比较阵营列表里的阵营名称 哪个 与 LB_Sides.SelectedItems[0].Text 的值相等（LB_Sides.SelectedItems下面会讲）
+          if (Operators.CompareString(side.Name, LB_Sides.SelectedItems[0].Text, TextCompare: true) == 0)
+          {
+             factorySingleton = side; // 如果相等则退出循环，并将值设置到factorySingleton里面（点击删除按钮的时候会用到）
+             break;
+          }
+       }
+       Button2.Enabled = LB_Sides.Items.Count &gt; 0; // 如果还有阵营就设置删除按钮可用（调用EnableInterruptibleAdapter方法则要么选中的阵营变为了别的阵营，要么没有选中的阵营了。）
+       Button3.Enabled = LB_Sides.Items.Count &gt; 0; // 对抗关系
+       CB_AIOnly.Enabled = LB_Sides.Items.Count &gt; 0; // 阵营是AI控制的
+       CB_CollRespons.Enabled = LB_Sides.Items.Count &gt; 0; // 集体责任
+       CB_AIOnly.Checked = factorySingleton.IsAIOnly;
+       CB_CollRespons.Checked = factorySingleton.AssignsCollectiveResponsibility;
+       CB_AutoTrackCivs.Checked = factorySingleton.CanAutoTrackCivs; // 可自动探测民用目标
+       switch (factorySingleton.AwarenessLevel)
+       {
+       case Side.AwarenessLevel_Enum.Blind:
+          CB_Awareness.SelectedIndex = 0;
+          break;
+       case Side.AwarenessLevel_Enum.Normal:
+          CB_Awareness.SelectedIndex = 1;
+          break;
+       case Side.AwarenessLevel_Enum.AutoSideID:
+          CB_Awareness.SelectedIndex = 2;
+          break;
+       case Side.AwarenessLevel_Enum.AutoSideAndUnitID:
+          CB_Awareness.SelectedIndex = 3;
+          break;
+       case Side.AwarenessLevel_Enum.Omniscient:
+          CB_Awareness.SelectedIndex = 4;
+          break;
+       }
+       Label_Proficiency.Visible = true;
+       TrackBar_Proficiency.Visible = true;
+       Label_Proficiency.Text = &quot;能力：&quot; + Misc.TestRequest(factorySingleton.Proficiency); // 能力
+       TrackBar_Proficiency.Value = (int)factorySingleton.Proficiency;
+       RefreshSideColorControls();
+    }
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>删除按钮点击后会调用<code>ChangeInterruptibleAdapter</code>方法。首先弹出确认删除的对话框，用户点击Ok后遍历阵营单位将其收集到collection中，然后遍历collection列表，调用当前想定的<code>DeleteUnitImmediately</code>方法，传入对当前阵营的单位，以立即删除当前想定的该单位。然后再找出属于该阵营的所有非制导武器并将其从非制导武器集合中删除。然后将属于该阵营的所有非制导武器从武器齐射列表中删除。最后从阵营列表中删除当前阵营并调用<code>RefreshForm</code>方法，这个方法我们<a href="#Sides.RefreshForm">添加阵营列表</a>里讲过，其作用就是更新编辑阵营对话框左边的阵营列表和右侧的按钮状态。（简单来说就是删除属于当前阵营的单元、非制导武器、武器齐射，然后删除当前阵营，最后刷新页面）</p><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>public sealed class Sides : DarkSecondaryFormBase, GInterface9
+{
+
+    [AccessedThroughProperty(&quot;LB_Sides&quot;)]
+    private DarkListView rulesSingleton;
+    
+    [CompilerGenerated]
+    [AccessedThroughProperty(&quot;Button2&quot;)]
+    private DarkUIButton m_ServiceSingleton;
+
+    internal DarkUIButton Button2
+    {
+       [CompilerGenerated]
+       get
+       {
+          return m_ServiceSingleton;
+       }
+       [MethodImpl(MethodImplOptions.Synchronized)]
+       [CompilerGenerated]
+       set
+       {
+          EventHandler value2 = ChangeInterruptibleAdapter;     // &lt;== 删除按钮点击事件调用的方法
+          DarkUIButton serviceSingleton = m_ServiceSingleton;
+          if (serviceSingleton != null)
+          {
+             serviceSingleton.Click -= value2;
+          }
+          m_ServiceSingleton = value;
+          serviceSingleton = m_ServiceSingleton;
+          if (serviceSingleton != null)
+          {
+             serviceSingleton.Click += value2;
+          }
+       }
+    }
+
+    
+    public Sides()
+    {
+       base.FormClosing += SetupInterruptibleAdapter;
+       base.Load += ExcludeInterruptibleAdapter;
+       base.KeyDown += FillInterruptibleAdapter;
+       InvokeInterruptibleAdapter();
+    }
+
+    [DebuggerStepThrough]
+    private void InvokeInterruptibleAdapter()
+    {
+       LB_Sides = new DarkListView();  // 阵营列表
+       Button1 = new DarkUIButton();
+       Button2 = new DarkUIButton();   // 删除按钮
+       // 省略
+       Button2.BackColor = Color.Transparent;
+       Button2.DialogResult = DialogResult.None;
+       Button2.Font = new Font(&quot;Segoe UI&quot;, 10f);
+       Button2.ForeColor = SystemColors.Control;
+       Button2.Location = new Point(220, 38);
+       Button2.Name = &quot;Button2&quot;;
+       Button2.RoundRadius = 0;
+       Button2.Size = new Size(133, 23);
+       Button2.TabIndex = 2;
+       Button2.Text = &quot;删除&quot;;
+       // 省略
+    }
+
+    private void ChangeInterruptibleAdapter(object sender, EventArgs e)
+    {  // 弹出 “确认是否删除” 的对话框，factorySingleton为要删除的阵营（上面设置的，阵营列表里选择当前阵营时会将当前阵营设置到factorySingleton里面）
+       if (DarkMessageBox.ShowWarning(&quot;你确定吗？所有单元，任务和该方的任何其他对象将被删除！&quot;, &quot;删除阵营：&quot; + factorySingleton.Name, DarkDialogButton.OkCancel) != DialogResult.OK)
+       {
+          return;
+       }
+       Collection&lt;ActiveUnit&gt; collection = new Collection&lt;ActiveUnit&gt;();
+       foreach (ActiveUnit unit in factorySingleton.Units)
+       {
+          collection.Add(unit); // 遍历当前阵营的单位，并将单位添加到collection中
+       }
+       foreach (ActiveUnit item in collection)
+       {  // 遍历当前阵营单位并调用DeleteUnitImmediately方法立即删除单位
+          Client.CurrentScenario.DeleteUnitImmediately(item.ObjectID, bool_0: true, &quot;Unit deleted&quot;);
+       }
+       List&lt;string&gt; list = new List&lt;string&gt;();
+       foreach (KeyValuePair&lt;string, UnguidedWeapon&gt; unguidedWeapon in Client.CurrentScenario.UnguidedWeapons) // 遍历当前想定的非制导武器集合
+       {
+          if (unguidedWeapon.Value.GetUnitSide() == factorySingleton)
+          {
+             list.Add(unguidedWeapon.Key); // 如果非制导武器的阵营是当前阵营，将其添加到list里
+          }
+       }
+       foreach (string item2 in list)
+       {
+          string string_ = item2;
+          Client.CurrentScenario.UnguidedWeapons.Remove(string_); // 遍历list，将当前阵营的非制导武器从集合中删除（UnguidedWeapons是Key、value类型的集合）
+          Side side = factorySingleton;
+          Scenario scenario_ = Client.CurrentScenario;
+          side.RemoveWeaponFromSalvos(ref scenario_, ref string_); // 从武器齐射（可以理解为万箭齐发，比如：多门火炮同时开火、多枚鱼雷同时发射）列表中删除当前非制导武器
+       }
+       Client.CurrentScenario.RemoveSide(factorySingleton); // 将当前阵营从阵营列表里删除
+       Client.MustRefreshMainForm = true;
+       RefreshForm(); // 刷新页面里的阵营列表和按钮状态
+    }
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="想定录制" tabindex="-1"><a class="header-anchor" href="#想定录制" aria-hidden="true">#</a> 🍑 想定录制</h2><p>Command/Command/AttackTarget.cs</p></div><!--[--><!----><!--]--><footer class="page-meta"><div class="meta-item edit-link"><a href="https://github.com/apzs/apzs.github.io/edit/master/src/cmo/README.md" rel="noopener noreferrer" target="_blank" aria-label="在 GitHub 上编辑此页" class="nav-link label"><!--[--><svg xmlns="http://www.w3.org/2000/svg" class="icon edit-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="edit icon"><path d="M430.818 653.65a60.46 60.46 0 0 1-50.96-93.281l71.69-114.012 7.773-10.365L816.038 80.138A60.46 60.46 0 0 1 859.225 62a60.46 60.46 0 0 1 43.186 18.138l43.186 43.186a60.46 60.46 0 0 1 0 86.373L588.879 565.55l-8.637 8.637-117.466 68.234a60.46 60.46 0 0 1-31.958 11.229z"></path><path d="M728.802 962H252.891A190.883 190.883 0 0 1 62.008 771.98V296.934a190.883 190.883 0 0 1 190.883-192.61h267.754a60.46 60.46 0 0 1 0 120.92H252.891a69.962 69.962 0 0 0-69.098 69.099V771.98a69.962 69.962 0 0 0 69.098 69.098h475.911A69.962 69.962 0 0 0 797.9 771.98V503.363a60.46 60.46 0 1 1 120.922 0V771.98A190.883 190.883 0 0 1 728.802 962z"></path></svg><!--]-->在 GitHub 上编辑此页<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></div><div class="meta-item git-info"><div class="update-time"><span class="label">上次编辑于: </span><!----></div><div class="contributors"><span class="label">贡献者: </span><!--[--><!--[--><span class="contributor" title="email: apzsgg@gmail.com">apzs</span><!--]--><!--]--></div></div></footer><!----><div id="comment" class="waline-wrapper" darkmode="false" style="display:block;"><div data-waline provider="Waline"><!--v-if--><div class="wl-comment"><!--v-if--><div class="wl-panel"><div class="wl-header item3"><!--[--><div class="wl-header-item"><label for="wl-nick">昵称</label><input id="wl-nick" class="wl-input wl-nick" name="nick" type="text" value></div><div class="wl-header-item"><label for="wl-mail">邮箱</label><input id="wl-mail" class="wl-input wl-mail" name="mail" type="email" value></div><div class="wl-header-item"><label for="wl-link">网址</label><input id="wl-link" class="wl-input wl-link" name="link" type="text" value></div><!--]--></div><textarea id="wl-edit" class="wl-editor" placeholder="请留言。(填写邮箱可在被回复时收到邮件提醒)"></textarea><div class="wl-preview" style="display:none;"><hr><h4>预览:</h4><div class="wl-content"></div></div><div class="wl-footer"><div class="wl-actions"><a href="https://guides.github.com/features/mastering-markdown/" title="Markdown Guide" aria-label="Markdown is supported" class="wl-action" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" ariaHidden="true"><path d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z" fill="currentColor"></path></svg></a><button type="button" class="wl-action" title="表情" style="display:none;"><svg viewBox="0 0 1024 1024" width="24" height="24"><path d="M563.2 463.3 677 540c1.7 1.2 3.7 1.8 5.8 1.8.7 0 1.4-.1 2-.2 2.7-.5 5.1-2.1 6.6-4.4l25.3-37.8c1.5-2.3 2.1-5.1 1.6-7.8s-2.1-5.1-4.4-6.6l-73.6-49.1 73.6-49.1c2.3-1.5 3.9-3.9 4.4-6.6.5-2.7 0-5.5-1.6-7.8l-25.3-37.8a10.1 10.1 0 0 0-6.6-4.4c-.7-.1-1.3-.2-2-.2-2.1 0-4.1.6-5.8 1.8l-113.8 76.6c-9.2 6.2-14.7 16.4-14.7 27.5.1 11 5.5 21.3 14.7 27.4zM387 348.8h-45.5c-5.7 0-10.4 4.7-10.4 10.4v153.3c0 5.7 4.7 10.4 10.4 10.4H387c5.7 0 10.4-4.7 10.4-10.4V359.2c0-5.7-4.7-10.4-10.4-10.4zm333.8 241.3-41-20a10.3 10.3 0 0 0-8.1-.5c-2.6.9-4.8 2.9-5.9 5.4-30.1 64.9-93.1 109.1-164.4 115.2-5.7.5-9.9 5.5-9.5 11.2l3.9 45.5c.5 5.3 5 9.5 10.3 9.5h.9c94.8-8 178.5-66.5 218.6-152.7 2.4-5 .3-11.2-4.8-13.6zm186-186.1c-11.9-42-30.5-81.4-55.2-117.1-24.1-34.9-53.5-65.6-87.5-91.2-33.9-25.6-71.5-45.5-111.6-59.2-41.2-14-84.1-21.1-127.8-21.1h-1.2c-75.4 0-148.8 21.4-212.5 61.7-63.7 40.3-114.3 97.6-146.5 165.8-32.2 68.1-44.3 143.6-35.1 218.4 9.3 74.8 39.4 145 87.3 203.3.1.2.3.3.4.5l36.2 38.4c1.1 1.2 2.5 2.1 3.9 2.6 73.3 66.7 168.2 103.5 267.5 103.5 73.3 0 145.2-20.3 207.7-58.7 37.3-22.9 70.3-51.5 98.1-85 27.1-32.7 48.7-69.5 64.2-109.1 15.5-39.7 24.4-81.3 26.6-123.8 2.4-43.6-2.5-87-14.5-129zm-60.5 181.1c-8.3 37-22.8 72-43 104-19.7 31.1-44.3 58.6-73.1 81.7-28.8 23.1-61 41-95.7 53.4-35.6 12.7-72.9 19.1-110.9 19.1-82.6 0-161.7-30.6-222.8-86.2l-34.1-35.8c-23.9-29.3-42.4-62.2-55.1-97.7-12.4-34.7-18.8-71-19.2-107.9-.4-36.9 5.4-73.3 17.1-108.2 12-35.8 30-69.2 53.4-99.1 31.7-40.4 71.1-72 117.2-94.1 44.5-21.3 94-32.6 143.4-32.6 49.3 0 97 10.8 141.8 32 34.3 16.3 65.3 38.1 92 64.8 26.1 26 47.5 56 63.6 89.2 16.2 33.2 26.6 68.5 31 105.1 4.6 37.5 2.7 75.3-5.6 112.3z" fill="currentColor"></path></svg></button><button type="button" class="wl-action" title="表情包"><svg width="24" height="24" fill="currentcolor" viewBox="0 0 24 24"><path style="transform: translateY(0.5px)" d="M18.968 10.5H15.968V11.484H17.984V12.984H15.968V15H14.468V9H18.968V10.5V10.5ZM8.984 9C9.26533 9 9.49967 9.09367 9.687 9.281C9.87433 9.46833 9.968 9.70267 9.968 9.984V10.5H6.499V13.5H8.468V12H9.968V14.016C9.968 14.2973 9.87433 14.5317 9.687 14.719C9.49967 14.9063 9.26533 15 8.984 15H5.984C5.70267 15 5.46833 14.9063 5.281 14.719C5.09367 14.5317 5 14.2973 5 14.016V9.985C5 9.70367 5.09367 9.46933 5.281 9.282C5.46833 9.09467 5.70267 9.001 5.984 9.001H8.984V9ZM11.468 9H12.968V15H11.468V9V9Z"></path><path d="M18.5 3H5.75C3.6875 3 2 4.6875 2 6.75V18C2 20.0625 3.6875 21.75 5.75 21.75H18.5C20.5625 21.75 22.25 20.0625 22.25 18V6.75C22.25 4.6875 20.5625 3 18.5 3ZM20.75 18C20.75 19.2375 19.7375 20.25 18.5 20.25H5.75C4.5125 20.25 3.5 19.2375 3.5 18V6.75C3.5 5.5125 4.5125 4.5 5.75 4.5H18.5C19.7375 4.5 20.75 5.5125 20.75 6.75V18Z"></path></svg></button><input id="wl-image-upload" class="upload" type="file" accept=".png,.jpg,.jpeg,.webp,.bmp,.gif"><label for="wl-image-upload" class="wl-action" title="上传图片"><svg viewBox="0 0 1024 1024" width="24" height="24"><path d="M784 112H240c-88 0-160 72-160 160v480c0 88 72 160 160 160h544c88 0 160-72 160-160V272c0-88-72-160-160-160zm96 640c0 52.8-43.2 96-96 96H240c-52.8 0-96-43.2-96-96V272c0-52.8 43.2-96 96-96h544c52.8 0 96 43.2 96 96v480z" fill="currentColor"></path><path d="M352 480c52.8 0 96-43.2 96-96s-43.2-96-96-96-96 43.2-96 96 43.2 96 96 96zm0-128c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm462.4 379.2-3.2-3.2-177.6-177.6c-25.6-25.6-65.6-25.6-91.2 0l-80 80-36.8-36.8c-25.6-25.6-65.6-25.6-91.2 0L200 728c-4.8 6.4-8 14.4-8 24 0 17.6 14.4 32 32 32 9.6 0 16-3.2 22.4-9.6L380.8 640l134.4 134.4c6.4 6.4 14.4 9.6 24 9.6 17.6 0 32-14.4 32-32 0-9.6-4.8-17.6-9.6-24l-52.8-52.8 80-80L769.6 776c6.4 4.8 12.8 8 20.8 8 17.6 0 32-14.4 32-32 0-8-3.2-16-8-20.8z" fill="currentColor"></path></svg></label><button type="button" class="wl-action" title="预览"><svg viewBox="0 0 1024 1024" width="24" height="24"><path d="M710.816 654.301c70.323-96.639 61.084-230.578-23.705-314.843-46.098-46.098-107.183-71.109-172.28-71.109-65.008 0-126.092 25.444-172.28 71.109-45.227 46.098-70.756 107.183-70.756 172.106 0 64.923 25.444 126.007 71.194 172.106 46.099 46.098 107.184 71.109 172.28 71.109 51.414 0 100.648-16.212 142.824-47.404l126.53 126.006c7.058 7.06 16.297 10.979 26.406 10.979 10.105 0 19.343-3.919 26.402-10.979 14.467-14.467 14.467-38.172 0-52.723L710.816 654.301zm-315.107-23.265c-65.88-65.88-65.88-172.54 0-238.42 32.069-32.07 74.245-49.149 119.471-49.149 45.227 0 87.407 17.603 119.472 49.149 65.88 65.879 65.88 172.539 0 238.42-63.612 63.178-175.242 63.178-238.943 0zm0 0" fill="currentColor"></path><path d="M703.319 121.603H321.03c-109.8 0-199.469 89.146-199.469 199.38v382.034c0 109.796 89.236 199.38 199.469 199.38h207.397c20.653 0 37.384-16.645 37.384-37.299 0-20.649-16.731-37.296-37.384-37.296H321.03c-68.582 0-124.352-55.77-124.352-124.267V321.421c0-68.496 55.77-124.267 124.352-124.267h382.289c68.582 0 124.352 55.771 124.352 124.267V524.72c0 20.654 16.736 37.299 37.385 37.299 20.654 0 37.384-16.645 37.384-37.299V320.549c-.085-109.8-89.321-198.946-199.121-198.946zm0 0" fill="currentColor"></path></svg></button></div><div class="wl-info"><div class="wl-captcha-container"></div><div class="wl-text-number">0 <!--v-if-->  字</div><button type="button" class="wl-btn">登录</button><button type="submit" class="primary wl-btn" title="Cmd|Ctrl + Enter"><!--[-->提交<!--]--></button></div><div class="wl-gif-popup"><input type="text" placeholder="搜索表情包"><!--v-if--><div class="wl-loading"><svg width="30" height="30" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" fill="none" stroke="currentColor" strokeWidth="4" r="40" stroke-dasharray="85 30"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></circle></svg></div></div><div class="wl-emoji-popup"><!--[--><!--]--><!--v-if--></div></div></div><!--v-if--></div><div class="wl-meta-head"><div class="wl-count"><!--v-if--> 评论</div><ul class="wl-sort"><!--[--><li class="active">按正序</li><li class="">按倒序</li><li class="">按热度</li><!--]--></ul></div><div class="wl-cards"><!--[--><!--]--></div><div class="wl-loading"><svg width="30" height="30" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" fill="none" stroke="currentColor" strokeWidth="4" r="40" stroke-dasharray="85 30"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></circle></svg></div><div class="wl-power"> Powered by <a href="https://github.com/walinejs/waline" target="_blank" rel="noopener noreferrer"> Waline </a> v3.0.0-alpha.8</div></div></div><!--[--><!----><!--]--><!--]--></main><!--]--><footer class="vp-footer-wrapper"><div class="vp-footer">默认页脚</div><div class="vp-copyright">Copyright © 2026 apzs</div></footer></div><!--]--><!----><!----><!----><!--]--></div>
+    <script type="module" src="/assets/app-DPu-SEhm.js" defer></script>
+  </body>
+</html>
