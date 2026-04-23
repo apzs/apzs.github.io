@@ -343,7 +343,7 @@ module.exports = {
 }
 ```
 
-[完整配置](other\导航栏完整配置.md)的显示效果：
+[完整配置](./other/导航栏完整配置.md)的显示效果：
 
 ![image-20221106153715069](./image/image-20221106153715069.png)
 
@@ -512,7 +512,7 @@ module.exports = {
 
 ------
 
-在添加[如下配置](other\侧边栏分组完整配置.md)，并在`docs`文件夹里新建`note`文件夹，并添加如下几个文件  (`children`使用绝对路径)
+在添加[如下配置](./other/侧边栏分组完整配置.md)，并在`docs`文件夹里新建`note`文件夹，并添加如下几个文件  (`children`使用绝对路径)
 
 ![image-20221106154829314](./image/image-20221106154829314.png)
 
@@ -1091,7 +1091,7 @@ yarn deploy
 npm config set script-shell "A:\\git\\Git\\bin\\bash.exe"
 ```
 
-[此时报了个错](other/完整错误.md)，提示`/contact`和`/about`找不到，直接删掉`docs\.vuepress\config.js`里的配置即可
+[此时报了个错](./other/完整错误.md)，提示`/contact`和`/about`找不到，直接删掉`docs\.vuepress\config.js`里的配置即可
 
 ![image-20221106202530129](./image/image-20221106202530129.png)
 
@@ -1334,7 +1334,7 @@ module.exports = {
 
 ![image-20221107110820581](./image/image-20221107110820581.png)
 
-可以使用[特殊的方式](other\应用集成-在Hexo、Hugo博客框架中使用Gitalk基于Github上仓库项目的issue无后端服务评论系统实践....md)添加反向代理来解决跨域问题：https://blog.csdn.net/u013072756/article/details/126416759
+可以使用[特殊的方式](./other/应用集成-在Hexo、Hugo博客框架中使用Gitalk基于Github上仓库项目的issue无后端服务评论系统实践....md)添加反向代理来解决跨域问题：https://blog.csdn.net/u013072756/article/details/126416759
 
 不过几乎大部分白嫖的方式都不行了，需要自己有一台vps服务器或使用科学上网的方式访问
 
@@ -1671,11 +1671,11 @@ module.exports = {
 
 ### 配置拆分
 
-#### [拆分前](other/配置拆分.md)
+#### [拆分前](./other/配置拆分.md)
 
 ![image-20221107214217280](./image/image-20221107214217280.png)
 
-#### [拆分后](other/配置拆分.md)
+#### [拆分后](./other/配置拆分.md)
 
 在`docs\.vuepress`文件夹里新建`config`文件夹，将所有配置都拆分到`docs\.vuepress\config`文件夹里
 
@@ -1713,7 +1713,7 @@ yarn add countup.js  # npm i countup.js
 
 [在 Markdown 中使用 Vue | VuePress (vuejs.org)](https://vuepress.vuejs.org/zh/guide/using-vue.html#浏览器的-api-访问限制)
 
-新建`docs\.vuepress\components\CountUp.vue`文件，并添加[内容](other\数字滚动插件.md)
+新建`docs\.vuepress\components\CountUp.vue`文件，并添加[内容](./other/数字滚动插件.md)
 
 ![image-20221107230101910](./image/image-20221107230101910.png)
 
@@ -1950,7 +1950,7 @@ module.exports = {
 
 ![image-20221108201620417](./image/image-20221108201620417.png)
 
-新建一个`API Key`，创建步骤请参见 https://docsearch.algolia.com/docs/legacy/run-your-own/ ，如果不能访问可以查看[离线文档](other\algolia.md)
+新建一个`API Key`，创建步骤请参见 https://docsearch.algolia.com/docs/legacy/run-your-own/ ，如果不能访问可以查看[离线文档](./other/algolia.md)
 
 ![GIF 2022-11-8 20-30-58](./image/GIF 2022-11-8 20-30-58.gif)
 

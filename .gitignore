@@ -2,7 +2,11 @@ node_modules/
 src/.vuepress/.cache/
 src/.vuepress/.temp/
 src/.vuepress/dist/
+src/.vuepress/public/gulimall
 .idea
 **/image
 **/code
 **/video
+src/.gitattributes
+src/.gitignore
+**/other

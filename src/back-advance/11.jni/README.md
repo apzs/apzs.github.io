@@ -161,15 +161,15 @@ or
 有的时候，你可能需要使用-Djava.library.path来指定加载库的位置，因为可能报出java.lang.UnsatisfiedLinkError错误.
 \==================================这部分是笔者添加的==================================
 我们首先使用nm命令（关于nm请自行Google或者man）查看libhello.so中都有那些函数：
-![](image/SouthEast.png)  
+![](./image/SouthEast.png)  
 
 可以看到我们的sayHello函数已经在这个里面，这说明我们编译的基本没有问题。
 下面，我给出在我电脑上运行的效果（原文作者没有给出）：
 首先我们执行java HelloJNI，看看能不能运行： 
-![](image/SouthEast-174168722777911.png) 
+![](./image/SouthEast-174168722777911.png) 
 
 果然，出现了UnsatisfiedLinkError错误，原因是VM去标准路径下查找这个库，发现找不到，然后就挂了。因此我们还是需要使用-Djava.library.path来明确告诉VM我们的库在哪里（当然，你也可以将你编译出来的库放到系统标准路径中，比如/usr/lib目录下）：
-![](image/SouthEast-174168722777912.png)  
+![](./image/SouthEast-174168722777912.png)  
 现在OK了，因为我们明确告诉VM，我们的libhello.so就在当前目录下，不用傻傻地去系统中找啦！！
 ==================================这部分是笔者添加的==================================
 
@@ -1302,7 +1302,7 @@ if (NULL == classInteger) {
 
 首选准备一个示例代码，该代码的主要功能为获取用户，设置最后的用户，返回用户；获取职位，设置最后的职位，返回职位：
 
-![image-20250421091406897](.\image\image-20250421091406897.png)
+![image-20250421091406897](./image/image-20250421091406897.png)
 
 ### 准备工作
 
@@ -1312,17 +1312,17 @@ if (NULL == classInteger) {
 
 如果是maven项目或Gradle项目可以直接点击`compile`进行编译
 
-![image-20250421092025225](image/image-20250421092025225.png)
+![image-20250421092025225](./image/image-20250421092025225.png)
 
 如果没有构建工具可以使用IDEA自带的构建，点击工具栏里的`Build`->`Build Project`或使用快捷键`Ctrl + F9`即可构建，由于`Build Project`是增量构建即只有改代码的文件会重新构建，有时会有问题，此时可以点击`Rebuild Project`即可全部重新构建。
 
-![image-20250421092328404](image/image-20250421092328404.png)
+![image-20250421092328404](./image/image-20250421092328404.png)
 
 #### 获取头文件
 
 点击IDEA的设置，找到`Tools -> External Tools`，添加如下三个工具
 
-![image-20250421093501295](image/image-20250421093501295.png)
+![image-20250421093501295](./image/image-20250421093501295.png)
 
 下面是各文件的内容
 
@@ -1334,7 +1334,7 @@ $JDKPath$/bin/javah
 $ProjectFileDir$
 ```
 
-![image-20250421093527141](image/image-20250421093527141.png)
+![image-20250421093527141](./image/image-20250421093527141.png)
 
 > 生成class文件的有些鸡肋，只能生成当前java文件的class，如果该java文件依赖了新添加的java类且新添加的java类没有在classes和jar文件里、或着依赖的类里添加了方法并且使用了该方法 则会报错，还是用其他的构建工具比较好。
 
@@ -1346,7 +1346,7 @@ $FilePath$ -d $OutputPath$ -classpath "$Classpath$"
 $ProjectFileDir$
 ```
 
-![image-20250421093537060](image/image-20250421093537060.png)
+![image-20250421093537060](./image/image-20250421093537060.png)
 
 ```
 Generate Signature File
@@ -1356,21 +1356,21 @@ $JDKPath$\bin\javap
 $ProjectFileDir$
 ```
 
-![image-20250421093708670](image/image-20250421093708670.png)
+![image-20250421093708670](./image/image-20250421093708670.png)
 
 右键想要生成头文件的类，比如在`UserService.java`文件上右键，选择`Extenal Tools` -> `Generate Header File`即可生成该类的头文件
 
-![image-20250421094449165](image/image-20250421094449165.png)
+![image-20250421094449165](./image/image-20250421094449165.png)
 
 同理，可以生成EmployeeService的头文件
 
-![image-20250421094740917](image/image-20250421094740917.png)
+![image-20250421094740917](./image/image-20250421094740917.png)
 
 #### 编写c语言代码
 
 打开`Clion`，选择`C++ Library`，选择一个路径并设置`Library type`为`static`，然后点击`Create`
 
-![image-20250421095649449](image/image-20250421095649449.png)
+![image-20250421095649449](./image/image-20250421095649449.png)
 
 在`CMakeLists.txt`文件里添加jdk的头文件，然后点击右上角的刷新
 
@@ -1379,15 +1379,15 @@ include_directories("D:\\software\\jdk\\include")
 include_directories("D:\\software\\jdk\\include\\win32")
 ```
 
-![image-20250421095800457](image/image-20250421095800457.png)
+![image-20250421095800457](./image/image-20250421095800457.png)
 
 签名可以使用前面添加的`Generate Signature File`工具生成，编写完代码后，点击`Build`->`Build Project`即可生成dll文件
 
-![image-20250421115054091](image/image-20250421115054091.png)
+![image-20250421115054091](./image/image-20250421115054091.png)
 
 然后先运行以下java项目，此时肯定会报错，我们点击右上角的`Application`，点击`Edit Configurations...`
 
-![image-20250421115422195](image/image-20250421115422195.png)
+![image-20250421115422195](./image/image-20250421115422195.png)
 
 然后点击`Modify options`，勾选`Add VM options`，然后左边的`VM options`里添加dll所在文件夹
 
@@ -1395,7 +1395,7 @@ include_directories("D:\\software\\jdk\\include\\win32")
 -Djava.library.path=D:\JNI\clion\jni-project\cmake-build-debug
 ```
 
-![image-20250421131709986](image/image-20250421131709986.png)
+![image-20250421131709986](./image/image-20250421131709986.png)
 
 添加加载dll的代码，并打上断点
 
@@ -1405,7 +1405,7 @@ static{
 }
 ```
 
-![image-20250421134418721](image/image-20250421134418721.png)
+![image-20250421134418721](./image/image-20250421134418721.png)
 
 ### Clion使用`CMake`
 
@@ -1413,23 +1413,23 @@ Clion默认使用`CMake`因此什么都不用配置。
 
 以debugger方式启动，此时可以看到processId为`23980`
 
-![image-20250421134710246](image/image-20250421134710246.png)
+![image-20250421134710246](./image/image-20250421134710246.png)
 
 打开`Clion`，选择`Run`->`Attach to Process...`
 
-![image-20250421134825448](image/image-20250421134825448.png)
+![image-20250421134825448](./image/image-20250421134825448.png)
 
 输入java的进程id，并点击`Attach with Bundled GDB`,然后在方法的开头打上断点
 
-![image-20250421134952456](image/image-20250421134952456.png)
+![image-20250421134952456](./image/image-20250421134952456.png)
 
 IDEA里点击`Resume Program`按钮
 
-![image-20250421135042196](image/image-20250421135042196.png)
+![image-20250421135042196](./image/image-20250421135042196.png)
 
 此时就跳转到Clion对应源码的方法开头了
 
-![image-20250421135210862](image/image-20250421135210862.png)
+![image-20250421135210862](./image/image-20250421135210862.png)
 
 
 
@@ -1437,33 +1437,33 @@ IDEA里点击`Resume Program`按钮
 
 点击Clion的设置，选择`Bulid, Execution, Deployment`，添加一个`Vusuak Studio`
 
-![image-20250421135648276](image/image-20250421135648276.png)
+![image-20250421135648276](./image/image-20250421135648276.png)
 
 输入`Visual Studio`的路径，并把它防到最上面。
 
-![image-20250421135352825](image/image-20250421135352825.png)
+![image-20250421135352825](./image/image-20250421135352825.png)
 
 `Visual Studio`的路径为如下内容：
 
-![image-20250421135813354](image/image-20250421135813354.png)
+![image-20250421135813354](./image/image-20250421135813354.png)
 
 如果刚刚使用了`CMake`再次Build还是使用的`CMake`，此时可以点击右上角的`Debug`，选择`Edit CMake Profiles...`
 
-![image-20250421140020870](image/image-20250421140020870.png)
+![image-20250421140020870](./image/image-20250421140020870.png)
 
 在`Toolchain`里选择`Visual Studio`，`Generator`里选择你的`Vusual Studio`版本，然后重新构建即可
 
-![image-20250421140623944](image/image-20250421140623944.png)
+![image-20250421140623944](./image/image-20250421140623944.png)
 
 构建完成后会生成`jni_project.dll`。此时`cmake-build-debug-visual-studio`目录会变黄，说明当前使用的是`visual studio`进行的构建。
 
-![image-20250421140713954](image/image-20250421140713954.png)
+![image-20250421140713954](./image/image-20250421140713954.png)
 
 
 
 IDEA里我们点击右上角的`Application`，点击`Edit Configurations...`
 
-![image-20250421141133958](image/image-20250421141133958.png)
+![image-20250421141133958](./image/image-20250421141133958.png)
 
 点击`Modify options`，勾选`Add VM options`，然后左边的`VM options`里添加dll所在文件夹
 
@@ -1471,7 +1471,7 @@ IDEA里我们点击右上角的`Application`，点击`Edit Configurations...`
 -Djava.library.path=D:\JNI\clion\jni-project\cmake-build-debug-visual-studio\Debug
 ```
 
-![image-20250421141231808](image/image-20250421141231808.png)
+![image-20250421141231808](./image/image-20250421141231808.png)
 
 修改加载dll的代码，并打上断点
 
@@ -1483,69 +1483,69 @@ static{
 
 以debugger方式启动，此时可以看到processId为`248208`
 
-![image-20250421141438995](image/image-20250421141438995.png)
+![image-20250421141438995](./image/image-20250421141438995.png)
 
 Clion里点击`Run` -> `Attach to Process...`
 
-![image-20250421141530367](image/image-20250421141530367.png)
+![image-20250421141530367](./image/image-20250421141530367.png)
 
 输入Java的进程ID，然后下拉选择`Attach with Bundled LLDB`并点击。然后在方法的开头打上断点。
 
-![image-20250421141820722](image/image-20250421141820722.png)
+![image-20250421141820722](./image/image-20250421141820722.png)
 
 IDEA里点击`Resume Program`按钮
 
-![image-20250421141941861](image/image-20250421141941861.png)
+![image-20250421141941861](./image/image-20250421141941861.png)
 
 此时就跳转到Clion对应源码的方法开头了
 
-![image-20250421142004407](image/image-20250421142004407.png)
+![image-20250421142004407](./image/image-20250421142004407.png)
 
 ### 使用Visual Studio
 
 打开`Visual Studio`，创建一个新的空项目。
 
-![image-20250421175031221](image/image-20250421175031221.png)
+![image-20250421175031221](./image/image-20250421175031221.png)
 
 然后配置一下项目名称和位置，点击创建。
 
-![image-20250421175107905](image/image-20250421175107905-17452290682721.png)
+![image-20250421175107905](./image/image-20250421175107905-17452290682721.png)
 
 选择菜单里的`调试` -> `jni-project 调试属性`
 
-![image-20250421175202225](image/image-20250421175202225.png)
+![image-20250421175202225](./image/image-20250421175202225.png)
 
 在`配置属性` -> `常规`里修改`配置类型`为`动态库(.dll)`
 
-![image-20250421175559425](image/image-20250421175559425.png)
+![image-20250421175559425](./image/image-20250421175559425.png)
 
 在`配置属性` -> `C/C++` -> `常规`里，点击`附加包含目录`选项的右侧倒三角，选择`<编辑...>`
 
-![image-20250421180036050](image/image-20250421180036050.png)
+![image-20250421180036050](./image/image-20250421180036050.png)
 
 添加jdk里的`include`和`include\\win32`目录。
 
-![image-20250421180132037](image/image-20250421180132037.png)
+![image-20250421180132037](./image/image-20250421180132037.png)
 
 
 
 下面是配置后的样子。
 
-![image-20250421180140184](image/image-20250421180140184.png)
+![image-20250421180140184](./image/image-20250421180140184.png)
 
 等加载完毕后，添加代码，修改平台为x64。注意Visual Studio是把所有东西都放在了一个目录下，而不是我们创建的目录层级，所以`#include`的时候不要添加相应的目录。
 
 在方法的开头打上断点，然后右键项目名称，点击生成。
 
-![image-20250422100349387](image/image-20250422100349387.png)
+![image-20250422100349387](./image/image-20250422100349387.png)
 
 生成成功后会显示生成的dll的具体位置。
 
-![image-20250422100505424](image/image-20250422100505424.png)
+![image-20250422100505424](./image/image-20250422100505424.png)
 
 修改IDEA里的`java.library.path`路径为当前dll的所在目录。
 
-![image-20250422100515377](image/image-20250422100515377.png)
+![image-20250422100515377](./image/image-20250422100515377.png)
 
 修改一下加载的dll名称。
 
@@ -1555,27 +1555,27 @@ static{
 }
 ```
 
-![image-20250422100540420](image/image-20250422100540420.png)
+![image-20250422100540420](./image/image-20250422100540420.png)
 
 然后以Debug方式启动项目，并可以查看到进程的id为6692。
 
-![image-20250422100644928](image/image-20250422100644928.png)
+![image-20250422100644928](./image/image-20250422100644928.png)
 
 在Visual Studio里点击菜单里的`调试` -> `附加到进程`。
 
-![image-20250422100716897](image/image-20250422100716897.png)
+![image-20250422100716897](./image/image-20250422100716897.png)
 
 输入java的进程id，并选择该进程，然后点击`附加`。
 
-![image-20250422100757262](image/image-20250422100757262.png)
+![image-20250422100757262](./image/image-20250422100757262.png)
 
 IDEA里点击`Resume Program`按钮。
 
-![image-20250422100816430](image/image-20250422100816430.png)
+![image-20250422100816430](./image/image-20250422100816430.png)
 
 此时就跳转到Visual Studio对应源码的方法开头了
 
-![image-20250422100847725](image/image-20250422100847725.png)
+![image-20250422100847725](./image/image-20250422100847725.png)
 
 ### 只有部分源码调试
 
@@ -1583,8 +1583,8 @@ IDEA里点击`Resume Program`按钮。
 
 新建个空的项目，使用`Visual Studio`构建，然后就可以把其他的都删掉，保留`cmake-build-debug-visual-studio`里面的`Debug`目录。粘贴前面使用`Visual Studio`编写代码并构建的dll和pdb文件到`Debug`目录，复制一份`EmployeeService.cpp`和`UserService.cpp`到项目根目录，在`UserService.cpp`的方法开头打上断点，再使用相同的步骤设置`java.library.path`并调试项目，附件到进程后跳转到Clion这边就会自动跳转到生成pdb文件的对应源码的位置。
 
-![image-20250422102327423](image/image-20250422102327423.png)
+![image-20250422102327423](./image/image-20250422102327423.png)
 
 如果生成pdb文件的源码不存在就不会跳转了，而是使用当前的文件。
 
-![image-20250422103853607](image/image-20250422103853607.png)
+![image-20250422103853607](./image/image-20250422103853607.png)

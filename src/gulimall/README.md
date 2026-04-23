@@ -18,37 +18,37 @@
 
 点击`Customize`里的`All settings...`
 
-![image-20221128131705752](image/image-20221128131705752.png)
+![image-20221128131705752](./image/image-20221128131705752.png)
 
 在`Build,Execution, Deployment`的`Build Tools`的`Maven`，修改为自己`Maven`的路径
 
-![image-20221128131648206](image/image-20221128131648206.png)
+![image-20221128131648206](./image/image-20221128131648206.png)
 
 编码全部设为`UTF-8`，一定要勾选`Transparent native-to-ascii conversion`将文件转码为`UTF-8`
 
-![image-20221221085502080](image/image-20221221085502080.png)
+![image-20221221085502080](./image/image-20221221085502080.png)
 
 然后打开，一直等，等到下载全部完成，大概需要10分钟
 
-![image-20221128132317300](image/image-20221128132317300.png)
+![image-20221128132317300](./image/image-20221128132317300.png)
 
 下载完成后，如果这个`pom.xml`文件是橘红色，右键选择`Add as Maven Project`就行了
 
-![image-20221128140727671](image/image-20221128140727671.png)
+![image-20221128140727671](./image/image-20221128140727671.png)
 
 首先运行网关模块，运行网关模块之前需要启动`nacos`
 
 双击`\bin\startup.cmd`即可
 
-![image-20221128162043956](image/image-20221128162043956.png)
+![image-20221128162043956](./image/image-20221128162043956.png)
 
 没报错就证明成功了
 
-![image-20221128162020403](image/image-20221128162020403.png)
+![image-20221128162020403](./image/image-20221128162020403.png)
 
 然后运行网关模块
 
-![image-20221128141829648](image/image-20221128141829648.png)
+![image-20221128141829648](./image/image-20221128141829648.png)
 
 #### 错误1
 
@@ -60,27 +60,27 @@ java: -source 1.5 中不支持 diamond 运算符
   (请使用 -source 7 或更高版本以启用 diamond 运算符)
 ```
 
-![image-20221128141054713](image/image-20221128141054713.png)
+![image-20221128141054713](./image/image-20221128141054713.png)
 
 
 
-![image-20221128141220901](image/image-20221128141220901.png)
+![image-20221128141220901](./image/image-20221128141220901.png)
 
 
 
-![image-20221128141241194](image/image-20221128141241194.png)
+![image-20221128141241194](./image/image-20221128141241194.png)
 
 吧这些模块都改为`8 - Lambdas, type annotations etc.`
 
-![image-20221128141305540](image/image-20221128141305540.png)
+![image-20221128141305540](./image/image-20221128141305540.png)
 
 
 
-![image-20221128142143762](image/image-20221128142143762.png)
+![image-20221128142143762](./image/image-20221128142143762.png)
 
 
 
-![image-20221128142123687](image/image-20221128142123687.png)
+![image-20221128142123687](./image/image-20221128142123687.png)
 
 
 
@@ -92,37 +92,37 @@ java: -source 1.5 中不支持 diamond 运算符
 java: Compilation failed: internal java compiler error
 ```
 
-![image-20221128141541050](image/image-20221128141541050.png)
+![image-20221128141541050](./image/image-20221128141541050.png)
 
 
 
-![image-20221128141701108](image/image-20221128141701108.png)
+![image-20221128141701108](./image/image-20221128141701108.png)
 
 网关模块运行成功
 
-![image-20221128161914374](image/image-20221128161914374.png)
+![image-20221128161914374](./image/image-20221128161914374.png)
 
 `maven`打包，先禁用`test`
 
-![image-20221128162231874](image/image-20221128162231874.png)
+![image-20221128162231874](./image/image-20221128162231874.png)
 
 然后点击`install`
 
-![image-20221128162258372](image/image-20221128162258372.png)
+![image-20221128162258372](./image/image-20221128162258372.png)
 
 
 
 错误3
 
-![image-20221128160956167](image/image-20221128160956167.png)
+![image-20221128160956167](./image/image-20221128160956167.png)
 
 这些模块的`Language level:`全部修改为`8 - Lambdas, type annotations etc.`(我已经修改过了，不知道怎么回事又变回去了)
 
-![image-20221128162403142](image/image-20221128162403142.png)
+![image-20221128162403142](./image/image-20221128162403142.png)
 
 这些模块的`jdk`版本我已经修改为`1.8`了，又给我变成`1.5`了，再次修改过来
 
-![image-20221128161634858](image/image-20221128161634858.png)
+![image-20221128161634858](./image/image-20221128161634858.png)
 
 
 
@@ -144,11 +144,11 @@ java: Compilation failed: internal java compiler error
   </proxies>
 ```
 
-![image-20221128161207030](image/image-20221128161207030.png)
+![image-20221128161207030](./image/image-20221128161207030.png)
 
 至此，项目全部打包完成
 
-![image-20221128162631181](image/image-20221128162631181.png)
+![image-20221128162631181](./image/image-20221128162631181.png)
 
 
 
@@ -206,11 +206,11 @@ docker  update --restart=always mysql
 
 将`mydata`移动到`linux`的根目录
 
-![image-20221221101405719](image/image-20221221101405719.png)
+![image-20221221101405719](./image/image-20221221101405719.png)
 
 
 
-![image-20221221101537483](image/image-20221221101537483.png)
+![image-20221221101537483](./image/image-20221221101537483.png)
 
 如果是第二个命令运行的(即挂载mysql的`/etc/mysql/conf.d`)
 
@@ -225,23 +225,23 @@ mysqld: [ERROR] Fatal error in defaults handling. Program aborted!
 mysqld: [ERROR] Fatal error in defaults handling. Program aborted!
 ```
 
-![image-20221221102257888](image/image-20221221102257888.png)
+![image-20221221102257888](./image/image-20221221102257888.png)
 
 需要将`/mydata/mysql`里的`conf`文件夹删掉
 
-![image-20221221101907214](image/image-20221221101907214.png)
+![image-20221221101907214](./image/image-20221221101907214.png)
 
 然后使用我提供的这个`conf`
 
-![image-20221221102030424](image/image-20221221102030424.png)
+![image-20221221102030424](./image/image-20221221102030424.png)
 
 测试连接：
 
-![image-20221221102552698](image/image-20221221102552698.png)
+![image-20221221102552698](./image/image-20221221102552698.png)
 
 此时数据都显示出来了
 
-![image-20221221102622790](image/image-20221221102622790.png)
+![image-20221221102622790](./image/image-20221221102622790.png)
 
 ## 运行redis
 
@@ -314,7 +314,7 @@ docker  update --restart=always elasticsearch
 
 使用`docker ps -a`命令，发现没有启动
 
-![image-20221221130302887](image/image-20221221130302887.png)
+![image-20221221130302887](./image/image-20221221130302887.png)
 
 使用`docker logs elasticsearch`命令，查看日志，报了没有权限的异常
 
@@ -340,7 +340,7 @@ docker  update --restart=always elasticsearch
 "... 6 more"] }
 ```
 
-![image-20221221130206529](image/image-20221221130206529.png)
+![image-20221221130206529](./image/image-20221221130206529.png)
 
 
 
@@ -350,7 +350,7 @@ docker  update --restart=always elasticsearch
 chmod -R 777 elasticsearch
 ```
 
-![image-20221221131202311](image/image-20221221131202311.png)
+![image-20221221131202311](./image/image-20221221131202311.png)
 
 过了一会又报了一个新的错误
 
@@ -368,7 +368,7 @@ chmod -R 777 elasticsearch
 "... 6 more"] }
 ```
 
-![image-20221221140030067](image/image-20221221140030067.png)
+![image-20221221140030067](./image/image-20221221140030067.png)
 
 这是因为是直接将数据复制过来的，删掉`data/nodes/0/_state/`里`manifest`开头的文件就行了
 
@@ -379,7 +379,7 @@ docker start elasticsearch
 docker ps
 ```
 
-![image-20221221140524239](image/image-20221221140524239.png)
+![image-20221221140524239](./image/image-20221221140524239.png)
 
 ## 运行kibana
 
@@ -404,7 +404,7 @@ docker  update --restart=always kibana
 
 直接访问 http://192.168.56.10:5601/ 就行了
 
-![image-20221221140557478](image/image-20221221140557478.png)
+![image-20221221140557478](./image/image-20221221140557478.png)
 
 ## rabbitmq
 
@@ -420,11 +420,11 @@ rabbitmq:management
 docker  update --restart=always rabbitmq
 ```
 
-![image-20221221141448985](image/image-20221221141448985.png)
+![image-20221221141448985](./image/image-20221221141448985.png)
 
 直接访问 http://192.168.56.10:15672/ 即可
 
-![image-20221221141506778](image/image-20221221141506778.png)
+![image-20221221141506778](./image/image-20221221141506778.png)
 
 ## zipkin
 
@@ -442,7 +442,7 @@ docker  update --restart=always frosty_shamir
 
 访问  http://192.168.56.10:9411/ 即可
 
-![image-20221221142555321](image/image-20221221142555321.png)
+![image-20221221142555321](./image/image-20221221142555321.png)
 
 ## 修改Host文件
 
@@ -459,23 +459,23 @@ docker  update --restart=always frosty_shamir
 192.168.56.10  seckill.gulimall.com
 ```
 
-![image-20221221113653615](image/image-20221221113653615.png)
+![image-20221221113653615](./image/image-20221221113653615.png)
 
 ## 启动nacos和seata
 
 双击`nacos\bin\startup.cmd`
 
-![image-20221221154424514](image/image-20221221154424514.png)
+![image-20221221154424514](./image/image-20221221154424514.png)
 
 
 
 seata需要将`conf\registry.conf`文件里的`type`修改为`nacos`，`nacos.serverAddr`修改为`localhost:8848`
 
-![image-20221221155845058](image/image-20221221155845058.png)
+![image-20221221155845058](./image/image-20221221155845058.png)
 
 双击`seata-server-0.7.1\bin\seata-server.bat`
 
-![image-20221221154523474](image/image-20221221154523474.png)
+![image-20221221154523474](./image/image-20221221154523474.png)
 
 如果不修改seata配置，`gulimall-order`模块会报如下错误
 
@@ -483,7 +483,7 @@ seata需要将`conf\registry.conf`文件里的`type`修改为`nacos`，`nacos.se
 2022-12-21 15:48:40.149 ERROR [gulimall-order,,,] 21648 --- [imeoutChecker_1] i.s.c.r.netty.NettyClientChannelManager  : no available server to connect.
 ```
 
-![image-20221221160234107](image/image-20221221160234107.png)
+![image-20221221160234107](./image/image-20221221160234107.png)
 
 
 
@@ -491,7 +491,7 @@ seata需要将`conf\registry.conf`文件里的`type`修改为`nacos`，`nacos.se
 
 报`nacos`的错不用管
 
-![image-20221221152459468](image/image-20221221152459468.png)
+![image-20221221152459468](./image/image-20221221152459468.png)
 
 
 
@@ -504,23 +504,23 @@ Caused by: org.springframework.amqp.rabbit.listener.BlockingQueueConsumer$Declar
 	... 4 common frames omitted
 ```
 
-![image-20221221151337558](image/image-20221221151337558.png)
+![image-20221221151337558](./image/image-20221221151337558.png)
 
 
 
 这是因为没有名为`hello-java-queue`的队列，注释掉`gulimall-order`模块的`com.atguigu.gulimall.order.test.ReceiveMessage2`类的`@RabbitListener(queues = {"hello-java-queue"})`即可
 
-![image-20221221153952680](image/image-20221221153952680.png)
+![image-20221221153952680](./image/image-20221221153952680.png)
 
 ## 运行前端后台管理项目
 
 使用`10.16.3`版本的[node.js](https://nodejs.org/dist/v10.16.3/)
 
-![image-20221222133322476](image/image-20221222133322476.png)
+![image-20221222133322476](./image/image-20221222133322476.png)
 
 使用`node -v`验证版本
 
-![image-20221222133454803](image/image-20221222133454803.png)
+![image-20221222133454803](./image/image-20221222133454803.png)
 
 然后在cmd中执行如下命令
 
@@ -533,7 +533,7 @@ npm config set cache "D:/nodejs/npm_global"
 npm config set prefix "D:/nodejs/npm_cache"
 ```
 
-![image-20221222134851281](image/image-20221222134851281.png)
+![image-20221222134851281](./image/image-20221222134851281.png)
 
 使用`npm install`命令下载依赖，报了如下错误
 
@@ -564,11 +564,11 @@ FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaS
 21: 00007FFC52C4DFB8 RtlUserThreadStart+40
 ```
 
-![image-20221222134851282](image/image-20221222134851282.png)
+![image-20221222134851282](./image/image-20221222134851282.png)
 
 删掉用户目录下的`.npmrc`文件(`C:\Users\pc01\.npmrc`)
 
-![image-20221222135139919](image/image-20221222135139919.png)
+![image-20221222135139919](./image/image-20221222135139919.png)
 
 再次使用`npm install`命令下载依赖，显示node-sass安装失败
 
@@ -587,7 +587,7 @@ npm ERR! A complete log of this run can be found in:
 npm ERR!     C:\Users\pc01\AppData\Roaming\npm-cache\_logs\2022-12-22T05_52_48_531Z-debug.log
 ```
 
-![image-20221222135318140](image/image-20221222135318140.png)
+![image-20221222135318140](./image/image-20221222135318140.png)
 
 重新安装node-sass
 
@@ -598,7 +598,7 @@ npm uninstall node-sass
 npm install sass -i
 ```
 
-![image-20221222135717972](image/image-20221222135717972.png)
+![image-20221222135717972](./image/image-20221222135717972.png)
 
 再次使用`npm install`命令安装，提示有`656`个漏洞不用管
 
@@ -616,7 +616,7 @@ found 656 vulnerabilities (56 low, 179 moderate, 318 high, 103 critical)
   run `npm audit fix` to fix them, or `npm audit` for details
 ```
 
-![image-20221222135838426](image/image-20221222135838426.png)
+![image-20221222135838426](./image/image-20221222135838426.png)
 
 使用`npm run dev`运行项目提示没有发现`node-sass`模块
 
@@ -625,7 +625,7 @@ Module build failed: Error: Cannot find module 'node-sass'
     at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
 ```
 
-![image-20221222140046492](image/image-20221222140046492.png)
+![image-20221222140046492](./image/image-20221222140046492.png)
 
 卸载掉以前的`node-sass`，重新安装`node-sass`，还是报错
 
@@ -634,7 +634,7 @@ npm uninstall --save node-sass
 npm install --save node-sass
 ```
 
-![image-20221222140600261](image/image-20221222140600261.png)
+![image-20221222140600261](./image/image-20221222140600261.png)
 
 换成`4.14.1`版本就好了
 
@@ -642,13 +642,13 @@ npm install --save node-sass
 npm install --save node-sass@4.14.1
 ```
 
-![image-20221222141650512](image/image-20221222141650512.png)
+![image-20221222141650512](./image/image-20221222141650512.png)
 
 再次使用`npm run dev`就运行成功了
 
-![image-20221222141857800](image/image-20221222141857800.png)
+![image-20221222141857800](./image/image-20221222141857800.png)
 
 访问 http://localhost:8001/ 即可（如果没有验证码，需要后台启动`gulimall-gateway`和`renren-fast`模块）
 
-![image-20221222155305626](image/image-20221222155305626.png)
+![image-20221222155305626](./image/image-20221222155305626.png)
 
