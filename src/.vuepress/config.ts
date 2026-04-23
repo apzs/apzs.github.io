@@ -37,72 +37,63 @@ export default defineUserConfig({
     extendsMarkdown: (md, app) => {
         const host = "https://gitlab.com/apzs/apzs/-/raw/master/";
 
-        // ==========================================
-        // 1. 处理标准的 Markdown 图片语法 ![alt](src)
-        // （保留你原来的逻辑，因为这是标准的 image token，能跑通）
-        // ==========================================
-        const defaultRender = md.renderer.rules.image;
-        md.renderer.rules.image = (tokens, idx, options, env, self) => {
-            const token = tokens[idx];
-            const srcIndex = token.attrIndex('src');
-            const href = token.attrs[srcIndex][1];
-
+        // 提取公共的路径转换逻辑
+        const getNewHref = (href, env) => {
+            if (!href || href.startsWith("http") || href.startsWith("//") || href.startsWith("data:")) {
+                return href;
+            }
             const filePath = env.filePathRelative || "";
             const dirPath = filePath ? filePath.substring(0, filePath.lastIndexOf('/') + 1) : "";
-
-            if (!href.startsWith("http") && !href.startsWith("//")) {
+            try {
                 const baseUrl = new URL(dirPath, host).href;
-                const newHref = new URL(href, baseUrl).href;
-                token.attrs[srcIndex][1] = newHref;
+                return new URL(href, baseUrl).href;
+            } catch (e) {
+                return href;
             }
-            return defaultRender(tokens, idx, options, env, self);
         };
 
         // ==========================================
-        // 2. 处理原生 HTML 标签 (<video>, <source>)
-        // 【关键修改】：使用 md.core.ruler 在 AST 解析阶段直接修改内容
+        // 1. 处理标准的 Markdown 图片语法 ![alt](src)
         // ==========================================
-        md.core.ruler.push('replace_html_video_src', (state) => {
-            const env = state.env;
-            // 防御性判断：有些页面可能没有相对路径信息
-            if (!env.filePathRelative) return;
+        const defaultImageRender = md.renderer.rules.image;
+        md.renderer.rules.image = (tokens, idx, options, env, self) => {
+            const token = tokens[idx];
+            const srcIndex = token.attrIndex('src');
+            if (srcIndex !== -1) {
+                token.attrs[srcIndex][1] = getNewHref(token.attrs[srcIndex][1], env);
+            }
+            return defaultImageRender(tokens, idx, options, env, self);
+        };
 
-            const filePath = env.filePathRelative;
-            const dirPath = filePath.substring(0, filePath.lastIndexOf('/') + 1);
+        // ==========================================
+        // 2. 处理原生 HTML 标签 (<img>, <video>, <source>)
+        // ==========================================
+        const rewriteHtmlSrc = (tokens, idx, options, env, self, defaultRender) => {
+            // 【关键】：必须完整透传所有参数，防止 @mdit-vue/plugin-sfc 报错
+            let htmlContent = defaultRender ? defaultRender(tokens, idx, options, env, self) : tokens[idx].content;
 
-            // 统一的正则替换逻辑
-            const replaceSrc = (content) => {
-                return content.replace(/(<(?:source|video)[^>]+src=["'])([^"']+)(["'])/gi, (match, prefix, src, suffix) => {
-                    // 如果已经是绝对路径，则跳过
-                    if (!src.startsWith("http") && !src.startsWith("//") && !src.startsWith("data:")) {
-                        try {
-                            const baseUrl = new URL(dirPath, host).href;
-                            const newSrc = new URL(src, baseUrl).href;
-                            console.log("AST 替换 HTML 成功 => " + newSrc);
-                            return prefix + newSrc + suffix;
-                        } catch (e) {
-                            return match;
-                        }
-                    }
-                    return match;
-                });
-            };
-
-            // 遍历所有 Token 树
-            state.tokens.forEach((token) => {
-                // 情况 A：块级 HTML（比如前后有空行的 <video>）
-                if (token.type === 'html_block') {
-                    token.content = replaceSrc(token.content);
+            // 【关键修改】：正则增加对 img 标签的支持
+            // 匹配 <img src="...">, <video src="...">, <source src="...">
+            return htmlContent.replace(/(<(?:img|source|video)[^>]+src=["'])([^"']+)(["'])/gi, (match, prefix, src, suffix) => {
+                const newSrc = getNewHref(src, env);
+                if (newSrc !== src) {
+                    console.log(`HTML Tag Replaced: ${src} => ${newSrc}`);
+                    return prefix + newSrc + suffix;
                 }
-                // 情况 B：行内 HTML（比如嵌套在段落里的 <video>），它存在于 inline 类型的 children 里
-                if (token.type === 'inline' && token.children) {
-                    token.children.forEach(child => {
-                        if (child.type === 'html_inline') {
-                            child.content = replaceSrc(child.content);
-                        }
-                    });
-                }
+                return match;
             });
-        });
+        };
+
+        // 保存原有的渲染器
+        const defaultHtmlBlockRender = md.renderer.rules.html_block;
+        const defaultHtmlInlineRender = md.renderer.rules.html_inline;
+
+        // 劫持渲染逻辑
+        md.renderer.rules.html_block = (tokens, idx, options, env, self) => {
+            return rewriteHtmlSrc(tokens, idx, options, env, self, defaultHtmlBlockRender);
+        };
+        md.renderer.rules.html_inline = (tokens, idx, options, env, self) => {
+            return rewriteHtmlSrc(tokens, idx, options, env, self, defaultHtmlInlineRender);
+        };
     }
 });
