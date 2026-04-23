@@ -183,7 +183,7 @@ public void test() throws IOException {
 }
 ```
 
-![image-20221112111836983](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112111836983.png)
+![image-20221112111836983](./image/image-20221112111836983.png)
 
 然后调用三个参数的`build`方法
 
@@ -193,7 +193,7 @@ public SqlSessionFactory build(InputStream inputStream) {
 }
 ```
 
-![image-20221112111941494](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112111941494.png)
+![image-20221112111941494](./image/image-20221112111941494.png)
 
 然后创建`XMLConfigBuilder`对象
 
@@ -215,7 +215,7 @@ public SqlSessionFactory build(InputStream inputStream, String environment, Prop
 }
 ```
 
-![image-20221112112608096](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112112608096.png)
+![image-20221112112608096](./image/image-20221112112608096.png)
 
 这个构造方法会调用`XMLConfigBuilder(XPathParser parser, String environment, Properties props)`构造方法，根据`inputStream`创建`new XPathParser(inputStream, true, props, new XMLMapperEntityResolver())`，保存到类型为`XPathParser`的`parser`中
 
@@ -234,11 +234,11 @@ private XMLConfigBuilder(XPathParser parser, String environment, Properties prop
 }
 ```
 
-![image-20221112113305947](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112113305947.png)
+![image-20221112113305947](./image/image-20221112113305947.png)
 
 创建完`XMLConfigBuilder`对象后，调用`parser.parse()`方法
 
-![image-20221112112135388](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112112135388.png)
+![image-20221112112135388](./image/image-20221112112135388.png)
 
 然后调用`parser.evalNode("/configuration")`解析`mybatis-config.xml`，这个`/configuration`就是`mybatis-config.xml`文件的根标签`<configuration> </configuration>`，拿到根节点后调用` parseConfiguration(XNode root)`解析根节点
 
@@ -253,7 +253,7 @@ public Configuration parse() {
 }
 ```
 
-![image-20221112112315992](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112112315992.png)
+![image-20221112112315992](./image/image-20221112112315992.png)
 
 `parseConfiguration(XNode root)`方法会获取根标签`<configuration>`下面的子标签，比如`<settings>`、`<typeAliases>`、`<plugins>`、`<environments>`、`<mappers>`等，把`<settings>`里的数据封装为一个`Properties`对象，然后调用`settingsElement(settings);`
 
@@ -282,7 +282,7 @@ private void parseConfiguration(XNode root) {
 }
 ```
 
-![image-20221112114115058](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112114115058.png)
+![image-20221112114115058](./image/image-20221112114115058.png)
 
 然后设置一些默认的设置信息
 
@@ -323,11 +323,11 @@ private void settingsElement(Properties props) {
 }
 ```
 
-![image-20221112150348869](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112150348869.png)
+![image-20221112150348869](./image/image-20221112150348869.png)
 
 然后再解析`mappers`信息
 
-![image-20221112150619747](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112150619747.png)
+![image-20221112150619747](./image/image-20221112150619747.png)
 
 解析`<mappers>`标签
 
@@ -371,7 +371,7 @@ private void mapperElement(XNode parent) throws Exception {
 }
 ```
 
-![image-20221112152052903](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112152052903.png)
+![image-20221112152052903](./image/image-20221112152052903.png)
 
 拿到`<mapper>`根标签
 
@@ -389,7 +389,7 @@ public void parse() {
 }
 ```
 
-![image-20221112152252643](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112152252643.png)
+![image-20221112152252643](./image/image-20221112152252643.png)
 
 解析`<mapper>`根标签里的配置
 
@@ -420,7 +420,7 @@ private void configurationElement(XNode context) {
 }
 ```
 
-![image-20221112153021923](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112153021923.png)
+![image-20221112153021923](./image/image-20221112153021923.png)
 
 调用`buildStatementFromContext(list, null);`方法继续进行解析
 
@@ -433,7 +433,7 @@ private void buildStatementFromContext(List<XNode> list) {
 }
 ```
 
-![image-20221112153214006](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112153214006.png)
+![image-20221112153214006](./image/image-20221112153214006.png)
 
 然后创建能解析增删查改标签的`XMLStatementBuilder`，调用其`parseStatementNode()`方法
 
@@ -450,7 +450,7 @@ private void buildStatementFromContext(List<XNode> list, String requiredDatabase
 }
 ```
 
-![image-20221112153613979](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112153613979.png)
+![image-20221112153613979](./image/image-20221112153613979.png)
 
 解析这个`增/删/查/改`标签的所有属性，然后调用` builderAssistant`的`addMappedStatement`方法
 
@@ -519,7 +519,7 @@ public void parseStatementNode() {
 }
 ```
 
-![image-20221112154110103](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112154110103.png)
+![image-20221112154110103](./image/image-20221112154110103.png)
 
 
 
@@ -585,19 +585,19 @@ public MappedStatement addMappedStatement(
 }
 ```
 
-![image-20221112155026041](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112155026041.png)
+![image-20221112155026041](./image/image-20221112155026041.png)
 
 这些都解析完了后会返回一个`configuration`
 
-![image-20221112155735377](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112155735377.png)
+![image-20221112155735377](./image/image-20221112155735377.png)
 
 这个`configuration`包含前面解析到的所有信息
 
-![image-20221112155648206](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112155648206.png)
+![image-20221112155648206](./image/image-20221112155648206.png)
 
 将配置文件的信息解析好后，封装成`Configuration`，然后调用本类的`build(Configuration config)`方法
 
-![image-20221112161945973](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112161945973.png)
+![image-20221112161945973](./image/image-20221112161945973.png)
 
 该`build(Configuration config)`方法返回一个`DefaultSqlSessionFactory`对象
 
@@ -607,7 +607,7 @@ public SqlSessionFactory build(Configuration config) {
 }
 ```
 
-![image-20221112162150972](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112162150972.png)
+![image-20221112162150972](./image/image-20221112162150972.png)
 
 至此，`new SqlSessionFactoryBuilder().build(inputStream)`已处理完毕
 
@@ -636,7 +636,7 @@ public void test() throws IOException {
 }
 ```
 
-![image-20221112162751574](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112162751574.png)
+![image-20221112162751574](./image/image-20221112162751574.png)
 
 `openSession()`方法调用`openSessionFromDataSource(configuration.getDefaultExecutorType(), null, false)`，从数据源中开启一个会话，其中`configuration.getDefaultExecutorType()`获取一个普通的执行器。
 
@@ -644,7 +644,7 @@ public void test() throws IOException {
 > 有效值：`SIMPLE` `REUSE` `BATCH`  
 > 默认值：`SIMPLE`
 
-![image-20221112163932718](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112163932718.png)
+![image-20221112163932718](./image/image-20221112163932718.png)
 
 ```java
 public SqlSession openSession() {
@@ -652,7 +652,7 @@ public SqlSession openSession() {
 }
 ```
 
-![image-20221112162906719](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112162906719.png)
+![image-20221112162906719](./image/image-20221112162906719.png)
 
 从数据源中开启一个会话
 
@@ -677,7 +677,7 @@ private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionI
 }
 ```
 
-![image-20221112164505764](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112164505764.png)
+![image-20221112164505764](./image/image-20221112164505764.png)
 
 根据配置的`Executor`类型，创建相应的`Executor`
 
@@ -702,15 +702,15 @@ public Executor newExecutor(Transaction transaction, ExecutorType executorType) 
 }
 ```
 
-![image-20221112203259187](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112203259187.png)
+![image-20221112203259187](./image/image-20221112203259187.png)
 
 注意：这个`Executor`是`org.apache.ibatis.executor.Executor`而不是`java.util.concurrent.Executor`，并不是`jdk`原生的线程池，而是定义的增删改查方法的`Executor`接口
 
-![image-20221112204229047](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112204229047.png)
+![image-20221112204229047](./image/image-20221112204229047.png)
 
 判断是否开启了二级缓存
 
-![image-20221112204424664](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112204424664.png)
+![image-20221112204424664](./image/image-20221112204424664.png)
 
 如果开启了二级缓存，就将该`Executor`包装一下，添加一些额外的功能并调用原来的方法。即在不改变现有对象结构的情况下，动态地给该对象增加一些职责，很明显用的是装饰者模式。
 
@@ -754,15 +754,15 @@ public class CachingExecutor implements Executor {
 }
 ```
 
-![image-20221112204654057](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112204654057.png)
+![image-20221112204654057](./image/image-20221112204654057.png)
 
-![image-20221112204851169](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112204851169.png)
+![image-20221112204851169](./image/image-20221112204851169.png)
 
-![image-20221112205605085](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112205605085.png)
+![image-20221112205605085](./image/image-20221112205605085.png)
 
 然后调用`interceptorChain` (拦截器链) 的`pluginAll(executor)`方法
 
-![image-20221112205913182](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112205913182.png)
+![image-20221112205913182](./image/image-20221112205913182.png)
 
 该方法会调用每个`interceptor`的`plugin(target)`方法
 
@@ -775,11 +775,11 @@ public Object pluginAll(Object target) {
 }
 ```
 
-![image-20221112210041892](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112210041892.png)
+![image-20221112210041892](./image/image-20221112210041892.png)
 
 然后创建`DefaultSqlSession`，传入`configuration`（解析`xml`文件后保存数据的对象）、`executor`(刚刚创建的封装了增删查改的接口)、`autoCommit` (是否自动提交)
 
-![image-20221112210259818](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112210259818.png)
+![image-20221112210259818](./image/image-20221112210259818.png)
 
 这个`sqlSessionFactory.openSession()`方法执行完后会返回一个`DefaultSqlSession`
 
@@ -787,7 +787,7 @@ public Object pluginAll(Object target) {
 
 我们可以调用其`getMapper(Class<T> type)`方法
 
-![image-20221112211025918](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112211025918.png)
+![image-20221112211025918](./image/image-20221112211025918.png)
 
 `DefaultSqlSession`类的`getMapper(Class<T> type)`方法会调用`configuration.getMapper(type, this)`方法
 
@@ -798,7 +798,7 @@ public <T> T getMapper(Class<T> type) {
 }
 ```
 
-![image-20221112211219641](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112211219641.png)
+![image-20221112211219641](./image/image-20221112211219641.png)
 
 `configuration.getMapper(type, this)`方法调用`mapperRegistry.getMapper(type, sqlSession)`方法（这个`mapperRegistry`是`Configuration`类的字段，里面保存了每个`Mapper`的代理对象）
 
@@ -808,7 +808,7 @@ public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
 }
 ```
 
-![image-20221112211339258](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112211339258.png)
+![image-20221112211339258](./image/image-20221112211339258.png)
 
 从`knownMappers`里获取传入的`Mapper`
 
@@ -840,7 +840,7 @@ public class MapperRegistry {
 }
 ```
 
-![image-20221112212650511](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112212650511.png)
+![image-20221112212650511](./image/image-20221112212650511.png)
 
 `newInstance`方法首先根据`sqlSession` 、`mapperInterface`(原始的Mapper接口)、`methodCache`创建`Mapper`代理，然后调用本类的`newInstance(mapperProxy)`方法
 
@@ -851,7 +851,7 @@ public T newInstance(SqlSession sqlSession) {
 }
 ```
 
-![image-20221112214236459](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112214236459.png)
+![image-20221112214236459](./image/image-20221112214236459.png)
 
 `newInstance(mapperProxy)`方法调用`newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)`方法，这个方法就是`jdk`动态代理的方法
 
@@ -862,15 +862,15 @@ protected T newInstance(MapperProxy<T> mapperProxy) {
 }
 ```
 
-![image-20221112214355194](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112214355194.png)
+![image-20221112214355194](./image/image-20221112214355194.png)
 
 前面创建的`MapperProxy`实现了`java.lang.reflect.InvocationHandler`类
 
-![image-20221112214618348](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112214618348.png)
+![image-20221112214618348](./image/image-20221112214618348.png)
 
 `java.lang.reflect.Proxy`类的`newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)`方法就需要一个`InvocationHandler`
 
-![image-20221112214723696](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112214723696.png)
+![image-20221112214723696](./image/image-20221112214723696.png)
 
 此时`openSession.getMapper(EmployeeMapper.class)`就执行结束了
 
@@ -878,7 +878,7 @@ protected T newInstance(MapperProxy<T> mapperProxy) {
 
 接下来查看`mapper.getEmpById(1)`是怎么查到数据的
 
-![image-20221112215618245](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112215618245.png)
+![image-20221112215618245](./image/image-20221112215618245.png)
 
 由于这里的`mapper`是`InvocationHandler`的代理对象`MapperProxy`，所以调用`mapper.getEmpById(1)`方法首先会执行代理对象的`invoke(Object proxy, Method method, Object[] args)`方法
 
@@ -904,7 +904,7 @@ private MapperMethodInvoker cachedInvoker(Method method) throws Throwable {
 }
 ```
 
-![image-20221112221446015](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112221446015.png)
+![image-20221112221446015](./image/image-20221112221446015.png)
 
 然后调用`mapperMethod.execute(sqlSession, args)`方法
 
@@ -915,7 +915,7 @@ public Object invoke(Object proxy, Method method, Object[] args, SqlSession sqlS
 }
 ```
 
-![image-20221112221129544](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112221129544.png)
+![image-20221112221129544](./image/image-20221112221129544.png)
 
 执行`execute`方法判断这次调用方法的类型，进行响应的操作
 
@@ -973,7 +973,7 @@ public Object execute(SqlSession sqlSession, Object[] args) {
 }
 ```
 
-![image-20221112221834306](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112221834306.png)
+![image-20221112221834306](./image/image-20221112221834306.png)
 
 `method.convertArgsToSqlCommandParam(args)`先把我们的参数转换成能用的参数，其调用`paramNameResolver.getNamedParams(args)`方法
 
@@ -983,7 +983,7 @@ public Object convertArgsToSqlCommandParam(Object[] args) {
 }
 ```
 
-![image-20221112222805405](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112222805405.png)
+![image-20221112222805405](./image/image-20221112222805405.png)
 
 如果参数为`null`直接返回`null`，如果参数是一个转换成需要的类型进行返回，如果参数是多个封装成一个`Map<String, Object>`进行返回
 
@@ -1016,7 +1016,7 @@ public Object getNamedParams(Object[] args) {
 }
 ```
 
-![image-20221112223031491](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112223031491.png)
+![image-20221112223031491](./image/image-20221112223031491.png)
 
 我们的这个例子`if`和`else if`都没走，直接进行返回
 
@@ -1046,11 +1046,11 @@ public static Object wrapToMapIfCollection(Object object, String actualParamName
 }
 ```
 
-![image-20221112223517163](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112223517163.png)
+![image-20221112223517163](./image/image-20221112223517163.png)
 
 接下来调用`sqlSession`的`selectOne(command.getName(), param)`方法
 
-![image-20221112223714636](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112223714636.png)
+![image-20221112223714636](./image/image-20221112223714636.png)
 
 可以看到即使是`sqlSession.selectOne(command.getName(), param)`还是调用的是` this.selectList(statement, parameter)`方法，然后获取返回结果中的第一个
 
@@ -1069,7 +1069,7 @@ public <T> T selectOne(String statement, Object parameter) {
 }
 ```
 
-![image-20221112223942844](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112223942844.png)
+![image-20221112223942844](./image/image-20221112223942844.png)
 
 这个` this.selectList(statement, parameter)`调用三个参数的`selectList`，`RowBounds.DEFAULT`使用默认的逻辑分页
 
@@ -1080,7 +1080,7 @@ public <E> List<E> selectList(String statement, Object parameter) {
 }
 ```
 
-![image-20221112224121062](https://gitlab.com/apzs/image/-/raw/master/image/image-20221112224121062.png)
+![image-20221112224121062](./image/image-20221112224121062.png)
 
 
 
@@ -1099,11 +1099,11 @@ public <E> List<E> selectList(String statement, Object parameter, RowBounds rowB
 }
 ```
 
-![image-20221113104809402](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113104809402.png)
+![image-20221113104809402](./image/image-20221113104809402.png)
 
 然后调用`wrapCollection(parameter)`方法，再调用`executor.query(...)`方法，执行`sql`
 
-![image-20221113105216668](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113105216668.png)
+![image-20221113105216668](./image/image-20221113105216668.png)
 
 `wrapCollection(final Object object)`方法调用`ParamNameResolver.wrapToMapIfCollection(object, null)`方法
 
@@ -1113,7 +1113,7 @@ private Object wrapCollection(final Object object) {
 }
 ```
 
-![image-20221113105307146](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113105307146.png)
+![image-20221113105307146](./image/image-20221113105307146.png)
 
 再次进到前面所说的 **`if`和`else if`都没走，直接进行返回** 的那个方法，这次还是`if`和`else if`都没走，直接进行返回
 
@@ -1137,7 +1137,7 @@ public static Object wrapToMapIfCollection(Object object, String actualParamName
 }
 ```
 
-![image-20221113105445813](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113105445813.png)
+![image-20221113105445813](./image/image-20221113105445813.png)
 
 `executor.query(...)`方法首先从`MappedStatement`中获取一个绑定的`sql`，然后创建缓存，然后调用query进行查询
 
@@ -1154,9 +1154,9 @@ public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds r
 }
 ```
 
-![image-20221113111708888](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113111708888.png)
+![image-20221113111708888](./image/image-20221113111708888.png)
 
-![image-20221113115042722](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113115042722.png)
+![image-20221113115042722](./image/image-20221113115042722.png)
 
 ```java
 public interface SqlSource {
@@ -1166,7 +1166,7 @@ public interface SqlSource {
 }
 ```
 
-![image-20221113115128752](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113115128752.png)
+![image-20221113115128752](./image/image-20221113115128752.png)
 
 由于我们在`MappedStatement`里没有缓存，所以直接调用`delegate.query(ms, parameterObject, rowBounds, resultHandler, key, boundSql)`进行查询
 
@@ -1193,7 +1193,7 @@ public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds r
 }
 ```
 
-![image-20221113112100519](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113112100519.png)
+![image-20221113112100519](./image/image-20221113112100519.png)
 
 先从一级缓存中拿数据，如果没有就调用`queryFromDatabase`方法查数据
 
@@ -1236,7 +1236,7 @@ public <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBoun
 }
 ```
 
-![image-20221113112816908](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113112816908.png)
+![image-20221113112816908](./image/image-20221113112816908.png)
 
 
 
@@ -1261,7 +1261,7 @@ private <E> List<E> queryFromDatabase(MappedStatement ms, Object parameter, RowB
 }
 ```
 
-![image-20221113114444183](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113114444183.png)
+![image-20221113114444183](./image/image-20221113114444183.png)
 
 
 
@@ -1282,7 +1282,7 @@ public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBo
 }
 ```
 
-![image-20221113120000625](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113120000625.png)
+![image-20221113120000625](./image/image-20221113120000625.png)
 
 首先创建`RoutingStatementHandler`对象
 
@@ -1294,7 +1294,7 @@ public StatementHandler newStatementHandler(Executor executor, MappedStatement m
 }
 ```
 
-![image-20221113120117666](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113120117666.png)
+![image-20221113120117666](./image/image-20221113120117666.png)
 
 `RoutingStatementHandler`的构造方法根据`ms.getStatementType()`创建不同类型的对象 （工厂方法模式）
 
@@ -1306,7 +1306,7 @@ public StatementHandler newStatementHandler(Executor executor, MappedStatement m
 
 这个获取到的`statementType`是`<select>`标签的属性，[可选 STATEMENT，PREPARED 或 CALLABLE。这会让 MyBatis 分别使用 Statement，PreparedStatement 或 CallableStatement，默认值：PREPARED。](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#select-1)
 
-![image-20221113145718679](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113145718679.png)
+![image-20221113145718679](./image/image-20221113145718679.png)
 
 ```java
 public RoutingStatementHandler(Executor executor, MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
@@ -1328,7 +1328,7 @@ public RoutingStatementHandler(Executor executor, MappedStatement ms, Object par
 }
 ```
 
-![image-20221113120445610](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113120445610.png)
+![image-20221113120445610](./image/image-20221113120445610.png)
 
 创建`PreparedStatementHandler`会调用父类的构造方法
 
@@ -1338,7 +1338,7 @@ public PreparedStatementHandler(Executor executor, MappedStatement mappedStateme
 }
 ```
 
-![image-20221113152028184](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113152028184.png)
+![image-20221113152028184](./image/image-20221113152028184.png)
 
 在这里面会封装各种信息
 
@@ -1364,7 +1364,7 @@ protected BaseStatementHandler(Executor executor, MappedStatement mappedStatemen
 }
 ```
 
-![image-20221113152539492](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113152539492.png)
+![image-20221113152539492](./image/image-20221113152539492.png)
 
 这个`ParameterHandler`的创建也是熟悉的流程，先创建`ParameterHandler`然后再调用拦截器链的`pluginAll(parameterHandler)`
 
@@ -1376,7 +1376,7 @@ public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Obj
 }
 ```
 
-![image-20221113152644717](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113152644717.png)
+![image-20221113152644717](./image/image-20221113152644717.png)
 
 该方法就是遍历所有`interceptor`，调用其`plugin(target)`方法
 
@@ -1389,7 +1389,7 @@ public Object pluginAll(Object target) {
 }
 ```
 
-![image-20221113152858458](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113152858458.png)
+![image-20221113152858458](./image/image-20221113152858458.png)
 
 `RoutingStatementHandler`创建完后，还是熟悉的流程，再次执行`interceptorChain`的`pluginAll(statementHandler)`方法
 
@@ -1401,7 +1401,7 @@ public StatementHandler newStatementHandler(Executor executor, MappedStatement m
 }
 ```
 
-![image-20221113150139010](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113150139010.png)
+![image-20221113150139010](./image/image-20221113150139010.png)
 
 该方法就是遍历所有`interceptor`，调用其`plugin(target)`方法
 
@@ -1414,11 +1414,11 @@ public Object pluginAll(Object target) {
 }
 ```
 
-![image-20221113150249200](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113150249200.png)
+![image-20221113150249200](./image/image-20221113150249200.png)
 
 然后调用`prepareStatement(handler, ms.getStatementLog())`方法，返回原生的`java.sql.Statement`对象
 
-![image-20221113150446692](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113150446692.png)
+![image-20221113150446692](./image/image-20221113150446692.png)
 
 
 
@@ -1435,7 +1435,7 @@ private Statement prepareStatement(StatementHandler handler, Log statementLog) t
 }
 ```
 
-![image-20221113151101167](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113151101167.png)
+![image-20221113151101167](./image/image-20221113151101167.png)
 
 这个`Connection`接口就是原生的`java.sql.Connection`
 
@@ -1450,11 +1450,11 @@ protected Connection getConnection(Log statementLog) throws SQLException {
 }
 ```
 
-![image-20221113151212260](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113151212260.png)
+![image-20221113151212260](./image/image-20221113151212260.png)
 
 这个`handler.parameterize(stmt);`就是对参数进行预编译
 
-![image-20221113151424260](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113151424260.png)
+![image-20221113151424260](./image/image-20221113151424260.png)
 
 其会调用`delegate.parameterize(statement);`方法
 
@@ -1465,7 +1465,7 @@ public void parameterize(Statement statement) throws SQLException {
 }
 ```
 
-![image-20221113151524548](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113151524548.png)
+![image-20221113151524548](./image/image-20221113151524548.png)
 
 `parameterize(Statement statement)`方法会调用` parameterHandler.setParameters((PreparedStatement) statement)`，`parameterHandler`是创建`PreparedStatementHandler`对象时封装的
 
@@ -1476,7 +1476,7 @@ public void parameterize(Statement statement) throws SQLException {
 }
 ```
 
-![image-20221113151621230](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113151621230.png)
+![image-20221113151621230](./image/image-20221113151621230.png)
 
 这里面会调用`TypeHandler`预编译参数
 
@@ -1516,7 +1516,7 @@ public void setParameters(PreparedStatement ps) {
   }
 ```
 
-![image-20221113153515411](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113153515411.png)
+![image-20221113153515411](./image/image-20221113153515411.png)
 
 预编译完参数后，调用`handler.query(stmt, resultHandler)`查询数据
 
@@ -1535,7 +1535,7 @@ public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBo
 }
 ```
 
-![image-20221113153643842](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113153643842.png)
+![image-20221113153643842](./image/image-20221113153643842.png)
 
 调用`delegate.query(statement, resultHandler)`查询结果
 
@@ -1546,7 +1546,7 @@ public <E> List<E> query(Statement statement, ResultHandler resultHandler) throw
 }
 ```
 
-![image-20221113154035676](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113154035676.png)
+![image-20221113154035676](./image/image-20221113154035676.png)
 
 
 
@@ -1562,19 +1562,19 @@ public <E> List<E> query(Statement statement, ResultHandler resultHandler) throw
 }
 ```
 
-![image-20221113154538736](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113154538736.png)
+![image-20221113154538736](./image/image-20221113154538736.png)
 
 
 
-![image-20221113154542837](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113154542837.png)
+![image-20221113154542837](./image/image-20221113154542837.png)
 
 再进入就是`com.mysql.cj.jdbc.ClientPreparedStatement`的`execute()`方法了，数据库厂商的代码就不看了
 
-![image-20221113154723457](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113154723457.png)
+![image-20221113154723457](./image/image-20221113154723457.png)
 
 查询完后，调用`resultSetHandler.handleResultSets(ps)`处理返回结果（`parameterHandler`和`resultSetHandler`都是在创建`PreparedStatementHandler`对象时创建的）
 
-![image-20221113154913586](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113154913586.png)
+![image-20221113154913586](./image/image-20221113154913586.png)
 
 调用`handleResultSets(Statement stmt)`处理返回结果
 
@@ -1618,7 +1618,7 @@ public List<Object> handleResultSets(Statement stmt) throws SQLException {
 }
 ```
 
-![image-20221113161151514](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113161151514.png)
+![image-20221113161151514](./image/image-20221113161151514.png)
 
 
 
@@ -1643,7 +1643,7 @@ private void handleResultSet(ResultSetWrapper rsw, ResultMap resultMap, List<Obj
 }
 ```
 
-![image-20221113161559207](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113161559207.png)
+![image-20221113161559207](./image/image-20221113161559207.png)
 
 
 
@@ -1659,7 +1659,7 @@ public void handleRowValues(ResultSetWrapper rsw, ResultMap resultMap, ResultHan
 }
 ```
 
-![image-20221113162704669](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113162704669.png)
+![image-20221113162704669](./image/image-20221113162704669.png)
 
 
 
@@ -1677,7 +1677,7 @@ private void handleRowValuesForSimpleResultMap(ResultSetWrapper rsw, ResultMap r
 }
 ```
 
-![image-20221113162737099](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113162737099.png)
+![image-20221113162737099](./image/image-20221113162737099.png)
 
 
 
@@ -1699,7 +1699,7 @@ private Object getRowValue(ResultSetWrapper rsw, ResultMap resultMap, String col
 }
 ```
 
-![image-20221113162929949](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113162929949.png)
+![image-20221113162929949](./image/image-20221113162929949.png)
 
 调用`createAutomaticMappings(rsw, resultMap, metaObject, columnPrefix)`方法
 
@@ -1723,7 +1723,7 @@ private boolean applyAutomaticMappings(ResultSetWrapper rsw, ResultMap resultMap
 }
 ```
 
-![image-20221113163003965](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113163003965.png)
+![image-20221113163003965](./image/image-20221113163003965.png)
 
 创建`typeHandler`处理数据
 
@@ -1769,7 +1769,7 @@ private List<UnMappedColumnAutoMapping> createAutomaticMappings(ResultSetWrapper
 }
 ```
 
-![image-20221113163159480](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113163159480.png)
+![image-20221113163159480](./image/image-20221113163159480.png)
 
 老师说会调用`getPropertyMappingValue`方法，使用`typeHandler`来处理结果（但是我调试的时候并没有）
 
@@ -1789,7 +1789,7 @@ private Object getPropertyMappingValue(ResultSet rs, MetaObject metaResultObject
 }
 ```
 
-![image-20221113163453241](https://gitlab.com/apzs/image/-/raw/master/image/image-20221113163453241.png)
+![image-20221113163453241](./image/image-20221113163453241.png)
 
 ## 小结 ##
 

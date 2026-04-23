@@ -529,15 +529,15 @@ pnpm i eslint -D
 npx eslint --init
 ```
 
-![image-20230705130809245](https://gitlab.com/apzs/image/-/raw/master/image/image-20230705130809245.png)
+![image-20230705130809245](./image/image-20230705130809245.png)
 
 
 
-![image-20230705130827055](https://gitlab.com/apzs/image/-/raw/master/image/image-20230705130827055.png)
+![image-20230705130827055](./image/image-20230705130827055.png)
 
 
 
-![image-20230705130946304](https://gitlab.com/apzs/image/-/raw/master/image/image-20230705130946304.png)
+![image-20230705130946304](./image/image-20230705130946304.png)
 
 **.eslint.cjs配置文件**
 
@@ -962,11 +962,11 @@ pnpm run format
 > prefix --location=global
 > ```
 >
-> <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230703131417855.png" alt="image-20230703131417855"  />
+> <img src="./image/image-20230703131417855.png" alt="image-20230703131417855"  />
 >
 > 修改`npm.cmd`文件
 >
-> <img src="https://gitlab.com/apzs/image/-/raw/master/image/image-20230703131701943.png" alt="image-20230703131701943"  />
+> <img src="./image/image-20230703131701943.png" alt="image-20230703131701943"  />
 
 #### 五、配置commitlint（规范提交）
 
@@ -1151,7 +1151,7 @@ import {Plus,Edit,Delete} from '@element-plus/icons-vue'
 </script>
 ```
 
-![image-20230705195421957](https://gitlab.com/apzs/image/-/raw/master/image/image-20230705195421957.png)
+![image-20230705195421957](./image/image-20230705195421957.png)
 
 ### 3.2src别名的配置
 
