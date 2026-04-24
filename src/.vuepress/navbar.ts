@@ -260,6 +260,7 @@ export default navbar([
             { text: '类型注解', icon: "spell-check", link: '10.类型注解' },
             { text: '高阶技巧', icon: "rocket", link: '11.高阶技巧' },
             { text: '操作MySQL', icon: "database", link: '12.操作MySQL' },
+            { text: 'DDS通讯', icon: "database", link: '13.DDS笔记' },
         ]
     },
     {
