@@ -1,104 +1,145 @@
 # CMO研究
 
-## :peach: 添加阵营
+## :peach:主界面
 
-创建一个新想定后，首先要做的就是添加阵营，要不然添加单位、创建矩形区域等很多事情都做不了。
+### :fish: 界面截图
 
-### :fish: 界面交互
+![image-20260423111404148](./image/image-20260423111404148.png)
 
-添加阵营功能在`编辑`菜单下的`添加/编辑阵营`下。
+### :fish: 对话框代码
 
-![image-20250806132852671](./image/image-20250806132852671.png)
+程序启动后，会弹出对话框，对话框左侧是一个图片，右侧是一些按钮。进入游戏首先就要创建新想定，因此我们全局搜索`创建新想定`，搜索出来3个，而很明显`Command/Command/StartGameMenuWindow.xaml`文件是最符合的。
 
-我们点击后会弹出`编辑阵营`的对话框。
+![image-20260423111844907](./image/image-20260423111844907.png)
 
-![image-20250806133114051](./image/image-20250806133114051.png)
+我们在其对应的`C#`文件的构造方法上打断点。
 
-点击添加后会再次弹出一个对话框让我们输入阵营的名称。
+> 怎么知道这个`xaml`的`c#`文件呢，`Rider`里面直接有提示，或者点击`x:Class`的`Command.StartGameMenuWindow`或`MouseDown`的`ConcatInterruptibleRecord`。
+>
+> ![image-20260423112619001](./image/image-20260423112619001.png)
+>
+> 如果没有使用`Rider`怎么办呢？其实他们就放在同一个文件夹下。
+>
+> ![image-20260423112809275](./image/image-20260423112809275.png)
 
-![image-20250806133239420](./image/image-20250806133239420.png)
+打完断点后重新启动调试，查看调用栈后可以看到，先调用的`EnableInterruptibleRecord`方法，`EnableInterruptibleRecord`方法创建的`StartGameMenuWindow`对象。
 
-点击确定后，编辑阵营的对话框就会出现刚刚添加的`红方`，选中该名称后`删除`、`对抗关系`等按钮会亮起
+![image-20260423113123550](./image/image-20260423113123550.png)
 
-![image-20250806133420820](./image/image-20250806133420820.png)
-
-### :fish: 入口代码
-
-首先我们要找出这个功能的入口位置，我们全局搜索`添加/编辑阵营`，相关代码在`MainForm.cs`的`ResetState`方法里面。
-
-![image-20250806133701843](./image/image-20250806133701843.png)
-
-其代码结构如下所示，`MainForm`的构造方法调用了`ResetState()`方法，`ResetState()`方法创建了`添加/编辑阵营`菜单项：
+根据代码可以看到`EnableInterruptibleRecord`方法是在`ShowStartWindow`方法里创建一个线程，调用线程的`Start`方法启动线程执行的。因此我们在`ShowStartWindow`方法的开头打一个断点，看看`ShowStartWindow`方法是怎么被调用的。
 
 ```c#
-public sealed class MainForm : Form
+public partial class StartGameMenuWindow : Window
 {
-	
-	[AccessedThroughProperty("Sides_TSMI")]
-	[CompilerGenerated]
-	private DarkToolStripMenuItem m_MapperAdvisor;
-	
-	internal DarkToolStripMenuItem Sides_TSMI
+
+	public static Thread StartGameWindowThread;
+
+	public static Dispatcher StartGameWindowThreadDispatcher;
+
+	public StartGameMenuWindow()
 	{
-		// 省略
-	}
-	
-	public MainForm() // <== 构造方法
-	{
-		base.Resize += CheckState;
-		base.FormClosing += SortState;
-		// 省略
-		m_WrapperAdvisor = new List<ActiveUnit>();
-		m_ObserverAdvisor = false;
-		_IssuerAdvisor = new List<System.Drawing.Point>();
-		// 省略
-		paramConnection = new ThreadLocal<List<System.Drawing.Point>>();
-		_PageConnection = new ThreadLocal<Dictionary<float, System.Drawing.Point>>();
-		ResetState();  // <== 调用了ResetState()方法
+		base.Closing += InitInterruptibleRecord; 
+		InitializeComponent(); // 解析 XAML 并构建 UI 树
 	}
 
-	private void ResetState()
+	private static void EnableInterruptibleRecord()
 	{
-	    // 省略
-        Sides_TSMI = new DarkToolStripMenuItem();
-		// 省略
-		Sides_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
-		Sides_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
-		Sides_TSMI.Name = "Sides_TSMI";
-		Sides_TSMI.Size = new System.Drawing.Size(267, 22);
-		Sides_TSMI.Text = "添加/编辑阵营";                         // <== TSMI_Editor"编辑"菜单项
-		SwitchTo_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
-		SwitchTo_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
-		SwitchTo_TSMI.Name = "SwitchTo_TSMI";
-		SwitchTo_TSMI.Size = new System.Drawing.Size(267, 22);
-		SwitchTo_TSMI.Text = "切换到...";
-		// 省略
+		Client.startGameMenuWindow_0 = new StartGameMenuWindow(); // 创建窗口对象
+		StartGameWindowThreadDispatcher = Dispatcher.CurrentDispatcher; // 抓取当前新线程的调度器，主线程正是利用这个调度器发号施令的。
+		Dispatcher.Run(); // 启动消息循环：开启了 WPF 的事件循环，开始监听鼠标点击、重绘等系统消息。
 	}
-
+	
+	public static void ShowStartWindow()
+	{
+		if (StartGameWindowThread == null)
+		{
+			StartGameWindowThread = new Thread(EnableInterruptibleRecord); // 创建线程，执行 EnableInterruptibleRecord 方法
+			StartGameWindowThread.Name = "StartGameWindowThread";
+			StartGameWindowThread.SetApartmentState(ApartmentState.STA); // WPF 规定，任何创建和操作UI元素的线程都必须是单线程单元（STA）
+			StartGameWindowThread.IsBackground = true; // 后台线程： 确保主程序退出时，这个线程也会随之自动关闭。
+			StartGameWindowThread.Start(); // 开启线程
+			while (StartGameWindowThreadDispatcher == null)
+			{  // 自旋锁。调用方（通常是主线程）会在这里稍微暂停，直到新线程把它的调度器（Dispatcher）准备好。
+				Thread.Sleep(1);
+			}
+		}
+		if (Client.startGameMenuWindow_0 == null && Debugger.IsAttached)
+		{
+			Debugger.Break();
+		}
+		StartGameWindowThreadDispatcher.InvokeAsync(delegate // 使用 InvokeAsync 进行跨线程委托
+		{
+			if (!Client.startGameMenuWindow_0.IsVisible) // 如果窗口还没显示
+			{
+				Client.startGameMenuWindow_0.WindowState = WindowState.Normal; // 恢复正常大小
+				Client.startGameMenuWindow_0.WindowStyle = WindowStyle.None; // 去掉 Windows 默认的标题栏和边框，实现无边框效果。
+				Client.startGameMenuWindow_0.Show(); // 调用 WPF 原生的 Show() 方法，渲染界面到屏幕上。
+			}
+			Client.startGameMenuWindow_0.Focus(); // 获取焦点：强行将窗口置于前端，确保用户可以直接与之交互。
+		});
+	}
+	
 }
 ```
 
-接下来我们查看`MainForm`是怎么被创建的。
+![image-20260423113316460](./image/image-20260423113316460.png)
 
-在`MainForm`的构造方法方法开头打上断点。
+可以看到`ShowStartWindow`方法是在`RateInterruptibleMap`方法里被调用的。
 
-![image-20250809142043504](./image/image-20250809142043504.png)
+```c#
+internal class AdapterCallbackCandidate : WindowsFormsApplicationBase
+{
+	
+	internal static void Main(string[] args)             // <====   Main方法
+	{
+		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
+		ItemExporter.RevertInterruptibleMap.Run(args);
+	}
 
-然后启动项目，查看调用栈就知道了：
+	private void RateInterruptibleMap(object sender, StartupEventArgs e)
+	{
+		// 省略
+		try
+		{
+			// 省略
+			Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher; // 获取当前正在执行该代码的线程关联的 Dispatcher（消息调度器），并赋值到`Client.MainThreadDispatcher`字段上，方便对相关UI进行进行控制。这里的线程是 主 UI 线程（主线程绑定的Startup事件执行的RateInterruptibleMap方法）。
+			ItemExporter.RevertInterruptibleMap.DoEvents();
+			StartGameMenuWindow.ShowStartWindow();                      // <== 调用 开始游戏的对话框界面
+			ItemExporter.RevertInterruptibleMap.DoEvents();
+		}
+		catch (Exception projectError3)
+		{
+			ProjectData.SetProjectError(projectError3);
+			ProjectData.ClearProjectError();
+		}
+	}
 
-![image-20250809142236524](./image/image-20250809142236524.png)
 
-第一个执行的是`Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;`，其所在的方法为<span id="AdapterCallbackCandidate.RateInterruptibleMap">`RateInterruptibleMap`</span>，我们再看`RateInterruptibleMap`方法是怎么被执行的。
+	[DebuggerStepThrough]
+	public AdapterCallbackCandidate()
+		: base(AuthenticationMode.Windows)
+	{
+		base.NetworkAvailabilityChanged += ResetInterruptibleMap;
+		base.Shutdown += MapInterruptibleMap;
+		base.Startup += RateInterruptibleMap;                       // <== Startup事件绑定RateInterruptibleMap方法
+		base.IsSingleInstance = false;
+		base.EnableVisualStyles = true;
+		base.SaveMySettingsOnExit = true;
+		base.ShutdownStyle = ShutdownMode.AfterMainFormCloses;
+	}
+	
+}
+```
 
-![image-20250809142418032](./image/image-20250809142418032.png)
+![image-20260423113945125](./image/image-20260423113945125.png)
 
-根据搜索发现该方法绑定的是父类的`Startup`事件。
+接着看`RateInterruptibleMap`是怎么调用的，这个方法是在本类`AdapterCallbackCandidate`的构造方法里使用`base.Startup`绑定上去的。本类继承`WindowsFormsApplicationBase`类。
 
-![image-20250809142634774](./image/image-20250809142634774.png)
+![image-20260423114111002](./image/image-20260423114111002.png)
 
-按住`ctrl`然后点击`Startup`就跳转到了`WindowsFormsApplicationBase`的`Startup`。
+点击`Startup`可以进到`WindowsFormsApplicationBase`类的`Startup`事件上，上面注释写着`在应用程序启动时发生`。
 
-![image-20250809145427569](./image/image-20250809145427569.png)
+![image-20260423114500811](./image/image-20260423114500811.png)
 
 然后我们搜索`StartupEventHandler`，发现其在`OnStartup`方法里被使用，顺腾摸瓜就发现了其具体的逻辑：
 
@@ -132,7 +173,7 @@ public sealed class MainForm : Form
 > 
 > // 安全触发事件（避免null引用）
 > if (startupEvent != null) 
->     startupEvent(this, eventArgs);
+>  startupEvent(this, eventArgs);
 > ```
 >
 > 这里直接调用委托字段`StartupEvent`，等效于触发所有订阅了`Startup`事件的方法。
@@ -241,7 +282,7 @@ internal class AdapterCallbackCandidate : WindowsFormsApplicationBase
 		try
 		{
 			// 省略
-			Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher; // 断点的第一个调用栈
+			Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;
 			ItemExporter.RevertInterruptibleMap.DoEvents();
 			StartGameMenuWindow.ShowStartWindow();
 			ItemExporter.RevertInterruptibleMap.DoEvents();
@@ -318,13 +359,514 @@ internal sealed class ItemExporter
 }
 ```
 
-因此第一个调用栈的逻辑大概是`AdapterCallbackCandidate`类的`Main`方法调用`ItemExporter.RevertInterruptibleMap.Run(args);`触发了`Startup`事件。`AdapterCallbackCandidate`订阅了`Startup`事件执行`RateInterruptibleMap`方法。`RateInterruptibleMap`方法里执行了`Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;`。
+总结一下：`AdapterCallbackCandidate`的`Main`方法访问`ItemExporter.RevertInterruptibleMap`，创建了`AdapterCallbackCandidate`对象，`AdapterCallbackCandidate`的构造方法的`Startup`事件添加了`RateInterruptibleMap`。`RateInterruptibleMap`方法里调用了`StartGameMenuWindow.ShowStartWindow();`，`StartGameMenuWindow.ShowStartWindow()`里创建了线程，线程执行`EnableInterruptibleRecord`方法，然后`EnableInterruptibleRecord`方法创建了`StartGameMenuWindow`对象。
+
+### :fish: 创建新想定
+
+`Command/Command/StartGameMenuWindow.xaml`文件的`创建新想定`按钮没有使用传统的点击事件（如 `OnClick`），而是使用了 **数据绑定 (Data Binding)**。`Command="{Binding CreateScenCommand}"` 的意思是：“当按钮被点击时，请去当前上下文（DataContext）中寻找名为 `CreateScenCommand` 的命令并执行它”。全集搜索创建新想定绑定的`CreateScenCommand`方法，我们可以在`Command/Command/StartGameMenuWindowViewModel.cs`类里找到这个方法。
+
+![image-20260423161837090](./image/image-20260423161837090.png)
+
+我们可以给`StartGameMenuWindowViewModel`类的所有包含`CreateScenCommand`的地方都打上断点，然后启动调试。
+
+> 这里的`m_TokenizerException = startGameMenuWindow_0;`是将当前窗口赋值到`m_TokenizerException `上，等会点击创建新想定时调用了`m_TokenizerException.Close();`关闭对话框。
+
+![image-20260423162305210](./image/image-20260423162305210.png)
+
+可以看到，在`StartGameMenuWindowViewModel`是构造方法里绑定的`CreateScenCommand`字段。
+
+接下来，我们查看调用栈，发现其是在`ChangeInterruptibleRecord`的构造方法里创建的`StartGameMenuWindowViewModel`对象。前面`ChangeInterruptibleRecord`怎么创建的前面已经讲过了，这里就不再赘述了。
+
+> `base.DataContext = new StartGameMenuWindowViewModel(this);`的作用是将数据和命令都绑定到 `StartGameMenuWindowViewModel` 这个类里。这里的`this`是当前对话框窗口，这个窗口被赋值到`m_TokenizerException `字段上了。
+
+![image-20260423171846195](./image/image-20260423171846195.png)
+
+接下来我们看`StartGameMenuWindowViewModel`类的相关逻辑。其实就是点击`CreateScenCommand`执行`InstantiateInterruptibleRecord`方法，该方法里使用主UI调度器执行切换到编辑模式、创建新想定功能。
+
+> `Client.MainThreadDispatcher`是主UI线程的消息调度器，前面已经讲过了。
+
+```c#
+public sealed class StartGameMenuWindowViewModel : INotifyPropertyChanged
+{
+    [CompilerGenerated]
+	private RelayCommand invocationException;
+	
+	public RelayCommand CreateScenCommand
+	{
+		[CompilerGenerated]
+		get
+		{
+			return invocationException;
+		}
+		[CompilerGenerated]
+		set
+		{
+			if (invocationException != value)
+			{
+				invocationException = value;
+				OnPropertyChanged("CreateScenCommand");
+			}
+		}
+	}
+
+	private void InstantiateInterruptibleRecord(object object_0)
+	{
+		Client.MainThreadDispatcher.InvokeAsync(delegate // 主UI线程消息调度器执行相关代码
+		{   // 检查授权
+			if (Licensing.GetModuleIsLicensed(Licensing.ModuleLicense.CommandFullVersion)) // GetModuleIsLicensed直接返回true
+			{ // 如果拥有完整版授权，进入编辑器模式并创建新想定
+				Client.CurrentGame.GameMode = Game._GameMode.ScenEdit; // 切换到编辑模式
+				Client.CreateNewScenario(); // 创建新想定
+			}
+			else
+			{   // 如果没有授权，弹出“授权不足”提示窗口
+				ItemExporter.ConnectInterruptibleTemplate.InsufficientLicenseWindow.theNeededModules = new List<Licensing.ModuleLicense> { Licensing.ModuleLicense.CommandFullVersion };
+				ItemExporter.ConnectInterruptibleTemplate.InsufficientLicenseWindow.Show();
+			}
+		});
+		m_TokenizerException.Close(); // // 关闭当前的主菜单窗口 (m_TokenizerException 实际上是 StartGameMenuWindow 的引用，前面创建StartGameMenuWindowViewModel时提到了)这里的Close调用的是原生Window的Close方法。
+	}
+	
+
+	public StartGameMenuWindowViewModel(StartGameMenuWindow startGameMenuWindow_0)
+	{
+		// 省略
+		CreateScenCommand = new RelayCommand(InstantiateInterruptibleRecord); // 给CreateScenCommand赋值，使其点击后调用InstantiateInterruptibleRecord方法
+        // 省略
+		
+	}
+
+}
+```
+
+由于`Client.CreateNewScenario()`内容比较多，等会我们再看。我们先看`new RelayCommand(InstantiateInterruptibleRecord)`做了什么。
+
+```c#
+public sealed class RelayCommand : ICommand
+{
+	private readonly Action<object> expressionPredicate;
+
+	private readonly Predicate<object> dispatcherPredicate;
+
+	public RelayCommand(Action<object> action_0)
+		: this(action_0, null)
+	{
+	}
+
+	public RelayCommand(Action<object> action_0, Predicate<object> predicate_0)
+	{
+		if (action_0 == null)
+		{
+			throw new ArgumentNullException("execute");
+		}
+		expressionPredicate = action_0; // <== 将InstantiateInterruptibleRecord赋值到expressionPredicate字段上
+		dispatcherPredicate = predicate_0;
+	}
+	
+	public void Execute(object parameter) // 按钮点击后会调用ICommand接口实现类的Execute方法
+	{
+		expressionPredicate(RuntimeHelpers.GetObjectValue(parameter)); // 执行InstantiateInterruptibleRecord方法的代码
+	}
+	
+}
+```
+
+`new RelayCommand(InstantiateInterruptibleRecord)`将`InstantiateInterruptibleRecord`赋值到`expressionPredicate`字段上，当按钮点击后会调用ICommand接口实现类的`Execute`方法，`Execute`方法也就执行`InstantiateInterruptibleRecord`方法里的代码了。
+
+![image-20260423172254002](./image/image-20260423172254002.png)
+
+下面我们看`Client.CreateNewScenario()`创建新想定做了什么。这套逻辑可以分为三个核心阶段。
+
+**1. 实例化全新的 `Scenario` 对象**
+
+方法首先调用 `new Scenario(hash)`。根据重载方法的不同，传入的数据库哈希值`algoClass.Hash`（默认数据库）或用户指定的 `string_0`。 在 `Scenario` 的构造函数中，引擎做了大量的基础初始化工作：
+
+- **分配唯一ID**：为新想定生成全新的 `TimelineID` 和 `_ObjectID`（使用 `Guid.NewGuid()`）。
+- **绑定数据库**：将传入的哈希值赋给 `DBUsed`，后续引擎会根据这个值去加载对应的数据库（DB）。
+- **初始化海量集合与缓存**：创建了用于存储单位（`ActiveUnits`）、编组（`Groups`）、武器（`_GuidedWeapons` 等）、事件引擎（`EventTriggers`, `SimEvents`）以及各类缓存（传感器、横截面积、油量计算等）的并发字典和列表。
+- **设定零点时间**：将当前UTC时间（`DateAndTime.Now.ToUniversalTime()`）设为想定的初始时间 `_Time` 和 `ZeroHour`。
+
+**2. 卸载旧想定并挂载新想定 (`SetCurrentScenario`)**
+
+接着，方法调用了 `SetCurrentScenario(..., bool_0: false)`。主要在 UI 线程（`Dispatcher.Invoke`）中执行：
+
+- **垃圾回收与清理**：如果当前已经存在一个想定，它会清空所有的武器缓存、通知消息（`Notification_Barks`）、UI引用（通过 `ReleaseReferences`），并彻底销毁旧想定的实例以释放内存。
+- **重置子窗口**：将通讯、传感器、损管、任务规划等窗口全部置空，并重新 `new` 出全新的窗口对象。
+- **加载数据库实体**：调用 `DBOps.GetDBRecordByHash`，根据第一步中传入的 `DBUsed` 真正从本地加载数据库文件。如果加载失败，会抛出异常。
+- **启动 Lua 沙盒**：为新想定绑定 Lua 环境（`Scenario_LuaSandbox`）并初始化。
+
+**3. 配置新想定的默认参数与 UI 状态**
+
+在 `SetCurrentScenario` 完成基础环境的替换后，`CreateNewScenario` 方法接着对这个全新的想定初始化状态。包括清理 UI 日志、重置时间与流速、修改文件与保存状态、启用默认的模拟特性、重置阵营与刷新 UI等。
+
+```c#
+[StandardModule]
+public sealed class Client
+{
+	internal static Mount _ManagerClass;
+	
+	internal static WeaponSalvo getterClass;
+	
+	public static ReferencePoint SelectedRefPoint;
+	
+	public static List<Module_Unit.Unit> MapVisibleUnits;
+
+	public static Dictionary<Module_Unit.Unit, Tuple<int, int>> MapVisibleUnit_ScreenCoords;
+
+	public static List<Module_Unit.Unit> MapSelectableUnits;
+	
+	[AccessedThroughProperty("_CurrentScenario")]
+	[CompilerGenerated]
+	private static Scenario composerRequest;
+	
+	[SpecialName]
+	[CompilerGenerated]
+	private static Scenario CompareConfiguration()
+	{
+		return composerRequest;
+	}
+	
+	public static void ReleaseReferences() // 清空本类的相关数据
+	{
+		try
+		{
+			if (MapVisibleUnits != null)
+			{
+				MapVisibleUnits.Clear();
+			}
+			if (MapVisibleUnit_ScreenCoords != null)
+			{
+				MapVisibleUnit_ScreenCoords.Clear();
+			}
+			if (MapSelectableUnits != null)
+			{
+				MapSelectableUnits.Clear();
+			}
+			SelectedRefPoint = null;
+			_ManagerClass = null;
+			getterClass = null;
+			ClearMessageLog();
+			stubRequest?.ReleaseReferences();
+		}
+		catch (Exception projectError)
+		{
+			ProjectData.SetProjectError(projectError);
+			ProjectData.ClearProjectError();
+		}
+	}
+
+	public static void SetCurrentScenario(Scenario scenario_0, bool bool_0)
+    	{
+    		Game Local_theGameContext = new Game();
+    		if (composerRequest != null)
+    		{
+    			Local_theGameContext = composerRequest.GameContext;
+    		}
+    		Dispatcher.Invoke(delegate
+    		{
+    			try
+    			{
+    				Scenario scenario_ = CompareConfiguration(); // 1. 获取当前正在运行的旧想定
+    				bool flag = scenario_0 != CompareConfiguration(); // 确认确实是在切换不同的想定
+    				ConcurrentDictionary<int, Weapon> cache_Weapons = null;
+    				try
+    				{
+    					if (scenario_ != null)
+    					{
+    						cache_Weapons = scenario_.Cache_Weapons;
+    					}
+    					if (flag && CompareConfiguration() != null) // 垃圾回收与旧数据清理
+    					{
+    						InsertConfiguration(null);
+    						ReleaseReferences();  // 释放旧想定的全局引用
+    						ItemExporter.ConnectInterruptibleTemplate.MainForm.ReleaseReferences();
+    						Command_Core.GlobalSingleton.GetInstance().Notification_Barks.Clear(); // // 清空旧的系统通知
+    						GameGeneral.ReleaseReferences();
+    					}
+    				}
+    				catch (Exception ex)
+    				{
+    					// 省略
+    				}
+    				ReadConfiguration(scenario_0); // 挂载新想定 (将全局当前想定指针指向新实例)
+    				bool godsEye = false;
+    				if (CurrentSide != null)
+    				{
+    					godsEye = CurrentMapProfile.GodsEye;
+    				}
+    				if (flag && bool_0)
+    				{
+    					CompareConfiguration().Cache_Weapons = cache_Weapons;
+    				}
+    				cache_Weapons = null;
+    				if (flag)
+    				{
+    					try
+    					{
+    						CompareConfiguration().GameContext = Local_theGameContext;
+    						if (Information.IsNothing(CompareConfiguration()))
+    						{
+    							GameGeneral.Debug_LastLoadedScenario = "N/A";
+    						}
+    						else
+    						{
+    							GameGeneral.Debug_LastLoadedScenario = CompareConfiguration().Title;
+    						}
+    						m_DescriptorRequest = null;
+    						Dispatcher.CurrentDispatcher.InvokeAsync(delegate
+    						{
+    							ItemExporter.ConnectInterruptibleTemplate.MainForm?.objectError?.VM?.DeleteInterruptibleRegistry();
+    						});
+    						if (scenario_ != null)
+    						{
+    							_ = ItemExporter.ConnectInterruptibleTemplate.MainForm.gclass5_0;
+    							if (ItemExporter.ConnectInterruptibleTemplate.VerifyInterruptibleCandidate().Visible)
+    							{
+    								ItemExporter.ConnectInterruptibleTemplate.VerifyInterruptibleCandidate().Close();
+    							}
+    							GameGeneral.DestroyPreviousScenario(ref scenario_, bool_1: true);
+    						}
+    						SelectThisUnit(null, bool_0: true);
+    						SelectedWaypoint = null;
+    						paramsClass = null;
+    						theCommsWindow = null;
+    						theSensorsWindow = null;
+    						theDamageControlWindow = null;
+    						ListConfiguration(null);
+    						NewMissionWindow = null;
+    						OpenMessageWindows = null;
+    						theCommsWindow = new UnitComms();  // 通信窗口
+    						theSensorsWindow = new UnitSensors(); // 传感器窗口
+    						theDamageControlWindow = new DamageControlWindow(); // 损管窗口
+    						ListConfiguration(new BackgroundWorker());
+    						NewMissionWindow = new NewMission();             // 想定编辑器窗口
+    						OpenMessageWindows = new Dictionary<LoggedMessage.MessageType, NewMessageForm>();
+    						AutosaveCountdown = 20000.0;
+    						m_CallbackRequest = null;
+    						m_CallbackRequest = new Queue<string>();
+    						RunToThisTime = null;
+    						if (scenario_ != null)
+    						{
+    							scenario_.ReleaseReferences(); // 彻底销毁旧想定的底层对象
+    							scenario_ = null;
+    						}
+    					}
+    					catch (Exception ex2)
+    					{
+    						// 省略
+    					}
+    					bool bool_ = true;
+    					try
+    					{
+    						DBOps.DBFileCheckResult dbfileCheckResult_ = DBOps.DBFileCheckResult.Undefined; // 5. 根据绑定的 DB Hash，真正从本地读取并加载数据库实体文件！
+    						CurrentDB = DBOps.GetDBRecordByHash(CompareConfiguration().DBUsed, ref dbfileCheckResult_, bool_0: true, bool_);
+    						if (CurrentDB == null)
+    						{
+    							throw new Exception(DBOps.PublishImporter(dbfileCheckResult_)); // 找不到对应数据库直接崩溃报错
+    						}
+    						Game._GameMode gameMode = CurrentGame.GameMode;
+    						CurrentGame.GameMode = gameMode;
+    					}
+    					catch (Exception ex3)
+    					{
+    						// 省略
+    					}
+    					// 省略
+    					if (CurrentScenario != null)
+    					{
+    						// 省略
+    						try
+    						{
+    							if (CurrentGame.Status == Game._GameStatus.Running)  // 引擎管线重启
+    							{
+    								CurrentGame.Pause();  // 强制暂停游戏引擎
+    							}
+    							advisorRequest?.Invoke();
+    							CurrentScenario.Scenario_LuaSandbox = LuaSandbox; // 绑定新的 Lua 脚本执行环境
+    							CurrentScenario.Scenario_LuaSandbox.RefreshStats(CurrentScenario);
+    							CurrentScenario.Initialize(); // 触发想定的内部初始化运算
+    							if (!bool_0)
+    							{
+    								Scenario currentScenario = CurrentScenario;
+    								string string_ = "";
+    								ValidateScenarioAreas(currentScenario, bool_0: false, ref string_);
+    							}
+    							StrategyRegistryFilter.SelectInterruptibleComparator(CurrentScenario);
+    							// 省略
+    							if (SimConfiguration.DefaultGamePreferences.MessageLogInWindow && MainFormShownComplete)
+    							{
+    								ItemExporter.ConnectInterruptibleTemplate.MainForm.RefreshMessageLogWindowWPF();
+    							}
+    							iteratorClass = CurrentScenario.ActiveUnits.Count;
+    							ItemExporter.ConnectInterruptibleTemplate.MainForm.RefreshCaption();  // 刷新窗口标题栏
+    							return;
+    						}
+    						catch (Exception ex9)
+    						{
+    							// 省略
+    						}
+    					}
+    				}
+    			}
+    			catch (Exception ex10)
+    			{
+    				// 省略
+    			}
+    		});
+    	}
+
+	public static void CreateNewScenario()
+	{
+		SetCurrentScenario(new Scenario(algoClass.Hash), bool_0: false); // // 1. 核心：实例化一个新的想定对象（传入默认的数据库Hash值），并交给 SetCurrentScenario 执行全局切换
+		ItemExporter.ConnectInterruptibleTemplate.MainForm?.MessageLogControlViewModel?.ResetLog(); // 清理旧的UI日志残留
+		composerRequest.SetTime(bool_0: false, DateAndTime.Now.ToUniversalTime()); // 设定想定时间为当前现实时间的零点
+		composerRequest.GameResolution = 1f; 
+		composerRequest.TimeCompression_Set(Scenario.enumTimeCompression.OneSec); // 1:1真实时间流速
+		composerRequest.LastSavedInScenEdit = true;
+		composerRequest.FileName = null; // 新建文件，尚未命名
+		// 强制开启一系列高级真实度模拟特征
+		composerRequest.DeclaredFeatures.Add(Scenario.ScenarioFeatureOption.AircraftDamage); // 启用飞机精细损伤模型
+		composerRequest.DeclaredFeatures.Add(Scenario.ScenarioFeatureOption.LandTypeEffects); // 启用地形对单位移动/隐蔽的影响
+		composerRequest.DeclaredFeatures.Add(Scenario.ScenarioFeatureOption.WeatherAffectsShipSpeed); // 启用恶劣天气对舰艇航速的影响
+		composerRequest.DeclaredFeatures.Add(Scenario.ScenarioFeatureOption.ACS_NAW_Limitations); // 启用通信与导航限制
+		ScenarioWasLoadedAsBlank = true; // 标记为空白编辑器工程
+		SaveScenarioPath = null;
+		CurrentSide = null; // 初始化时没有任何阵营
+		MustRefreshMainForm = true; // 唤醒主界面，准备进行全局重绘
+	}
+
+	public static void CreateNewScenario(string string_0)
+	{
+		SetCurrentScenario(new Scenario(string_0), bool_0: false);
+		// 省略
+	}
+	
+	public static void ClearMessageLog() // 清理消息日志
+    	{
+    		composerRequest.ClearMessageLog();
+    		if (ItemExporter.ConnectInterruptibleTemplate.MainForm.objectError.VM != null)
+    		{
+    			ItemExporter.ConnectInterruptibleTemplate.MainForm.objectError.VM.ClearLog();
+    			ItemExporter.ConnectInterruptibleTemplate.MainForm.objectError.VM.RefreshLoggedMessages();
+    		}
+    		if (ItemExporter.ConnectInterruptibleTemplate.VerifyInterruptibleCandidate().Visible || ItemExporter.ConnectInterruptibleTemplate.MainForm.gclass5_0 != null)
+    		{
+    			ItemExporter.ConnectInterruptibleTemplate.MainForm.MessageLogControlViewModel.ClearLog();
+    			ItemExporter.ConnectInterruptibleTemplate.MainForm.MessageLogControlViewModel.RefreshLoggedMessages();
+    		}
+    		MustRefreshMainForm = true;
+    	}
+
+}
+```
+
+然后我们看一下`SetCurrentScenario(new Scenario(algoClass.Hash), bool_0: false);`里面的`new Scenario(algoClass.Hash)`做了什么。
+
+### :fish:主菜单代码
+
+我们在这里介绍`文件`菜单是如何被加载进来的，其他也是同一个方法被加载进来的（点击事件相关的会在添加阵营时详细介绍）。
+
+![image-20260423152237169](./image/image-20260423152237169.png)
+
+全局搜索`文件`，发现`Command/Command/MainForm.cs`是最符合的。
+
+![image-20260423151456728](./image/image-20260423151456728.png)
+
+这段代码在`Command/Command/MainForm.cs`类的`ResetState`方法里，其代码结构如下所示。
+
+```c#
+public sealed class MainForm : Form
+{
+	
+	[AccessedThroughProperty("Sides_TSMI")]
+	[CompilerGenerated]
+	private DarkToolStripMenuItem m_MapperAdvisor;
+	
+	internal DarkToolStripMenuItem Sides_TSMI
+	{
+		// 省略
+	}
+	
+	public MainForm() // <== 构造方法
+	{
+		base.Resize += CheckState;
+		base.FormClosing += SortState;
+		// 省略
+		m_WrapperAdvisor = new List<ActiveUnit>();
+		m_ObserverAdvisor = false;
+		_IssuerAdvisor = new List<System.Drawing.Point>();
+		// 省略
+		paramConnection = new ThreadLocal<List<System.Drawing.Point>>();
+		_PageConnection = new ThreadLocal<Dictionary<float, System.Drawing.Point>>();
+		ResetState();  // <== 调用了ResetState()方法
+	}
+
+	private void ResetState()
+	{
+		productAdvisor = new Container();
+		QComponentResourceManager componentResourceManager = new QComponentResourceManager(typeof(MainForm));
+		MenuStrip1 = new DarkMenuStrip();   // <== 主菜单控件
+		FileToolStripMenuItem = new DarkToolStripMenuItem(); // 文件菜单
+		
+		MenuStrip1.SuspendLayout();
+
+		MenuStrip1.BackColor = System.Drawing.SystemColors.ScrollBar;
+		MenuStrip1.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		MenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+		MenuStrip1.Items.AddRange(new ToolStripItem[13]
+		{   // 主菜单控件 添加 文件菜单
+			FileToolStripMenuItem, ViewToolStripMenuItem1, ReportsToolStripMenuItem, TSMI_MapSettings, QuickJumpTSMI, TSMI_UnitOrders, UnitOrdersToolStripMenuItem, MissionsToolStripMenuItem, ContactsToolStripMenuItem, TSMI_Editor,
+			HelpToolStripMenuItem, TSMI_Scripts, TSMI_Testing
+		});
+		MenuStrip1.Location = new System.Drawing.Point(0, 0);
+		MenuStrip1.Name = "MenuStrip1";
+		MenuStrip1.Padding = new Padding(3, 2, 0, 2);
+		MenuStrip1.Size = new System.Drawing.Size(1162, 24);
+		MenuStrip1.TabIndex = 4;
+		MenuStrip1.Text = "MenuStrip1";
+		FileToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		FileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[8] { MaiToolStripMenuItem, TSMI_NewScenario, TSMI_LoadScenario, TSMI_LoadRecent, TSMI_SaveScen, TSMI_SaveAs, TSMI_Benchmark, ExitToolStripMenuItem });
+		FileToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+		FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+		FileToolStripMenuItem.Text = "文件";
+		
+		// 省略
+		base.Controls.Add(MenuStrip1);
+		// 省略
+		base.MainMenuStrip = MenuStrip1;
+		base.Name = "MainForm";
+		base.StartPosition = FormStartPosition.CenterScreen;
+		Text = "Command";
+		MenuStrip1.ResumeLayout(performLayout: false);
+		MenuStrip1.PerformLayout();
+		// 省略
+	}
+
+}
+```
+
+接下来我们查看`MainForm`是怎么被创建的。
+
+在`MainForm`的构造方法方法开头打上断点。
+
+![image-20250809142043504](./image/image-20250809142043504.png)
+
+然后启动项目，查看调用栈就知道了：
+
+![image-20250809142236524](./image/image-20250809142236524.png)
+
+第一个执行的是`Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;`，其所在的方法为<span id="AdapterCallbackCandidate.RateInterruptibleMap">`RateInterruptibleMap`</span>，由于对话框代码里已经介绍过了这里就不用再重复叙述了（主菜单代码里调用的是下面的`StartGameMenuWindow.ShowStartWindow();`开启的对话框）。
+
+> `Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;`的作用是将 主 UI 线程 赋值到`Client.MainThreadDispatcher`字段上，方便对主UI进行进行相关控制。
+
+![image-20250809142418032](./image/image-20250809142418032.png)
 
 ------
 
 接下来我们看第二帧的代码。
 
-第一帧中执行了`Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;`自然要加载`Client`类，从而执行了该类的静态代码块。代码块里创建了`RecorderForm`对象
+第一帧中执行了`Client.MainThreadDispatcher = Dispatcher.CurrentDispatcher;`自然要加载`Client`类，从而执行了该类的静态代码块。代码块里创建了`RecorderForm`对象。
 
 ```c#
 public sealed class Client
@@ -493,6 +1035,84 @@ internal sealed class ItemExporter
 接着看第七帧。此时`MainForm`的构造方法就执行了。
 
 ![image-20250809161113010](./image/image-20250809161113010.png)
+
+## :peach: 添加阵营
+
+创建一个新想定后，首先要做的就是添加阵营，要不然添加单位、创建矩形区域等很多事情都做不了。
+
+### :fish: 界面交互
+
+添加阵营功能在`编辑`菜单下的`添加/编辑阵营`下。
+
+![image-20250806132852671](./image/image-20250806132852671.png)
+
+我们点击后会弹出`编辑阵营`的对话框。
+
+![image-20250806133114051](./image/image-20250806133114051.png)
+
+点击添加后会再次弹出一个对话框让我们输入阵营的名称。
+
+![image-20250806133239420](./image/image-20250806133239420.png)
+
+点击确定后，编辑阵营的对话框就会出现刚刚添加的`红方`，选中该名称后`删除`、`对抗关系`等按钮会亮起
+
+![image-20250806133420820](./image/image-20250806133420820.png)
+
+### :fish: 入口代码
+
+首先我们要找出这个功能的入口位置，我们全局搜索`添加/编辑阵营`，相关代码在`MainForm.cs`的`ResetState`方法里面。
+
+![image-20250806133701843](./image/image-20250806133701843.png)
+
+其代码结构如下所示，`MainForm`的构造方法调用了`ResetState()`方法，`ResetState()`方法创建了`添加/编辑阵营`菜单项。由于主菜单代码里已经讲过了，这里就不再重复了。
+
+```c#
+public sealed class MainForm : Form
+{
+	
+	[AccessedThroughProperty("Sides_TSMI")]
+	[CompilerGenerated]
+	private DarkToolStripMenuItem m_MapperAdvisor;
+	
+	internal DarkToolStripMenuItem Sides_TSMI
+	{
+		// 省略
+	}
+	
+	public MainForm() // <== 构造方法
+	{
+		base.Resize += CheckState;
+		base.FormClosing += SortState;
+		// 省略
+		m_WrapperAdvisor = new List<ActiveUnit>();
+		m_ObserverAdvisor = false;
+		_IssuerAdvisor = new List<System.Drawing.Point>();
+		// 省略
+		paramConnection = new ThreadLocal<List<System.Drawing.Point>>();
+		_PageConnection = new ThreadLocal<Dictionary<float, System.Drawing.Point>>();
+		ResetState();  // <== 调用了ResetState()方法
+	}
+
+	private void ResetState()
+	{
+	    // 省略
+        Sides_TSMI = new DarkToolStripMenuItem();
+		// 省略
+		Sides_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		Sides_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		Sides_TSMI.Name = "Sides_TSMI";
+		Sides_TSMI.Size = new System.Drawing.Size(267, 22);
+		Sides_TSMI.Text = "添加/编辑阵营";                         // <== TSMI_Editor"编辑"菜单项
+		SwitchTo_TSMI.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+		SwitchTo_TSMI.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+		SwitchTo_TSMI.Name = "SwitchTo_TSMI";
+		SwitchTo_TSMI.Size = new System.Drawing.Size(267, 22);
+		SwitchTo_TSMI.Text = "切换到...";
+		// 省略
+	}
+
+}
+```
 
 ### :fish: 界面代码
 
