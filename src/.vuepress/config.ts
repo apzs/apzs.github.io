@@ -1,6 +1,6 @@
-import {defineUserConfig, viteBundler} from "vuepress";
+import { defineUserConfig, viteBundler } from "vuepress";
 import theme from "./theme.js";
-import {searchProPlugin} from "vuepress-plugin-search-pro";
+import { searchProPlugin } from "vuepress-plugin-search-pro";
 // @ts-ignore
 import modifyImagePath from "./plugin.js";
 // @ts-ignore
@@ -9,12 +9,22 @@ export default defineUserConfig({
     lang: "zh-CN",
     title: "apzs",
     description: "apzs 的个人博客",
+    head: [
+        [
+            "script",
+            {
+                async: true,
+                src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5945437728166286",
+                crossorigin: "anonymous"
+            }
+        ]
+    ],
     theme,
     shouldPrefetch: false, // 关闭预获取，交给 PWA 插件处理
     bundler: viteBundler({
         viteOptions: {
             // 告诉 Vite 把 .bmp 文件当作静态资源处理，不要当成 JS 解析
-            assetsInclude: ['**/*.bmp',"**/*.jpg","**/*.JPG"]
+            assetsInclude: ['**/*.bmp', "**/*.jpg", "**/*.JPG"]
         }
     }),
     plugins: [
